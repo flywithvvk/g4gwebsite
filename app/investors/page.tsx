@@ -1,419 +1,260 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
+import { useRef, useEffect, useState } from 'react';
+
+function AnimatedCounter({ target, suffix = '', prefix = '' }: { target: number; suffix?: string; prefix?: string }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!isInView) return;
+    let start = 0;
+    const step = target / (1800 / 16);
+    const timer = setInterval(() => { start += step; if (start >= target) { setCount(target); clearInterval(timer); } else { setCount(Math.floor(start)); } }, 16);
+    return () => clearInterval(timer);
+  }, [isInView, target]);
+  return <span ref={ref}>{prefix}{count}{suffix}</span>;
+}
+
+const thesis = [
+  { num: '1', title: 'Massive Market Opportunity', desc: 'India will have 2.5M+ charging points by 2030, creating a $50B+ opportunity. The market is fragmented and inefficient — ripe for AI disruption.', points: ['TAM: $50B+ by 2030', 'SAM: $5B+ solvable with tech', 'Growing at 40% CAGR'] },
+  { num: '2', title: 'No Real Competition', desc: 'Every incumbent is built for the old world. None combine regulatory expertise, operational efficiency, and AI intelligence. We\'re the first.', points: ['Zero direct competitors', 'Proprietary Automobile LLM', 'India-specific advantage'] },
+  { num: '3', title: 'Proven Unit Economics', desc: 'Early customers see 95% cost reduction and 3x operational improvement. Payback period: 2-3 months. NPS: 70+.', points: ['$500K+ ARR per customer', '90%+ gross margins', '<3 month payback'] },
+  { num: '4', title: 'Regulatory Tailwind', desc: 'Government mandates like EV2030, FAME II, and new CPO regulations create a 10-year runway. Compliance requirements only increasing.', points: ['Government backing', 'Regulatory momentum', '10-year growth runway'] },
+];
+
+const traction = [
+  { label: 'Customers Onboarded', value: '15+', icon: '👥' },
+  { label: 'Average Deal Size', value: '$500K+', icon: '💰' },
+  { label: 'Monthly Revenue Growth', value: '35%', icon: '📈' },
+  { label: 'Customer Retention', value: '100%', icon: '✅' },
+  { label: 'NPS Score', value: '70+', icon: '⭐' },
+  { label: 'Market Penetration', value: '<1%', icon: '🎯' },
+];
+
+const team = [
+  { role: 'Founder & CEO', tag: '10+ years in automobile tech', avatar: '👨‍💼', bg: 'from-accent-cyan to-accent-blue', bio: 'Former Head of Operations at India\'s largest EV charging network. Deep regulatory & operational expertise.', creds: 'B.Tech, IIT Delhi • Serial entrepreneur' },
+  { role: 'Co-Founder & CTO', tag: 'AI researcher, 8+ years', avatar: '🧠', bg: 'from-accent-blue to-green-400', bio: 'PhD in Machine Learning. Built LLM systems at major tech companies. Leading Automobile LLM development.', creds: 'PhD, IIT Bombay • Published researcher' },
+  { role: 'Advisory Board', tag: 'Industry veterans', avatar: '🎯', bg: 'from-green-400 to-purple-400', bio: 'Former executives from Ather, Hero MotoCorp, and leading Indian automotive firms.', creds: '50+ years combined • Government relationships' },
+];
 
 export default function InvestorsPage() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-  };
-
   return (
-    <div className="min-h-screen bg-primary text-white">
-      {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-32">
+    <div className="min-h-screen bg-primary text-white overflow-x-hidden">
+
+      {/* ─── HERO ─── */}
+      <section className="relative min-h-[65vh] flex items-center justify-center overflow-hidden pt-20">
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-cyan/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-blue/20 rounded-full blur-3xl"></div>
+          <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 10, repeat: Infinity }} className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent-cyan/10 rounded-full blur-[150px]" />
+          <motion.div animate={{ scale: [1.15, 1, 1.15] }} transition={{ duration: 12, repeat: Infinity }} className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent-blue/10 rounded-full blur-[150px]" />
         </div>
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(0,229,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.3) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
         <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="text-center max-w-4xl mx-auto">
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full border border-accent-cyan/30 bg-accent-cyan/5 backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full bg-accent-cyan animate-pulse" />
+              <span className="text-sm font-medium text-accent-cyan">Series A — Actively Raising</span>
+            </motion.div>
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
               Investment <span className="gradient-text">Opportunity</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300">
-              Powering India's trillion-dollar EV transformation with AI-first intelligence
+            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+              Powering India&apos;s trillion-dollar EV transformation with AI-first intelligence.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Investment Thesis */}
-      <section className="py-20 bg-primary-light">
+      {/* ─── INVESTMENT THESIS ─── */}
+      <section className="py-24 bg-primary-light">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            Investment <span className="gradient-text">Thesis</span>
-          </h2>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"
-          >
-            {/* Thesis 1 */}
-            <motion.div variants={itemVariants} className="glass-effect p-8 rounded-xl">
-              <div className="text-5xl font-bold gradient-text mb-4">1</div>
-              <h3 className="text-2xl font-semibold mb-4">Market Opportunity is Massive</h3>
-              <p className="text-gray-300 mb-4">
-                India will have 2.5M+ charging points by 2030, creating a $50B+ market opportunity for smart infrastructure. The market is fragmented and inefficient—ripe for disruption with AI.
-              </p>
-              <ul className="space-y-2 text-accent-cyan text-sm">
-                <li>✓ TAM: $50B+ by 2030</li>
-                <li>✓ SAM: $5B+ solvable with tech</li>
-                <li>✓ Growing at 40% CAGR</li>
-              </ul>
-            </motion.div>
-
-            {/* Thesis 2 */}
-            <motion.div variants={itemVariants} className="glass-effect p-8 rounded-xl">
-              <div className="text-5xl font-bold gradient-text mb-4">2</div>
-              <h3 className="text-2xl font-semibold mb-4">No Real Competition</h3>
-              <p className="text-gray-300 mb-4">
-                Every incumbent in India's automobile space is built for the old world. None combine regulatory expertise, operational efficiency, and AI intelligence. We're the first.
-              </p>
-              <ul className="space-y-2 text-accent-cyan text-sm">
-                <li>✓ Zero direct competitors</li>
-                <li>✓ Proprietary Automobile LLM</li>
-                <li>✓ India-specific advantage</li>
-              </ul>
-            </motion.div>
-
-            {/* Thesis 3 */}
-            <motion.div variants={itemVariants} className="glass-effect p-8 rounded-xl">
-              <div className="text-5xl font-bold gradient-text mb-4">3</div>
-              <h3 className="text-2xl font-semibold mb-4">Proven Unit Economics</h3>
-              <p className="text-gray-300 mb-4">
-                Early customers see 95% cost reduction and 3x operational improvement. Payback period: 2-3 months. NPS: 70+. This is a no-brainer for operators.
-              </p>
-              <ul className="space-y-2 text-accent-cyan text-sm">
-                <li>✓ $500K+ ARR per customer</li>
-                <li>✓ 90%+ gross margins</li>
-                <li>✓ {'<'}3 month payback period</li>
-              </ul>
-            </motion.div>
-
-            {/* Thesis 4 */}
-            <motion.div variants={itemVariants} className="glass-effect p-8 rounded-xl">
-              <div className="text-5xl font-bold gradient-text mb-4">4</div>
-              <h3 className="text-2xl font-semibold mb-4">Regulatory Tailwind</h3>
-              <p className="text-gray-300 mb-4">
-                Government mandates like EV2030, FAME II, and new CPO regulations create a 10-year runway for growth. Compliance requirements only increasing.
-              </p>
-              <ul className="space-y-2 text-accent-cyan text-sm">
-                <li>✓ Government backing</li>
-                <li>✓ Regulatory momentum</li>
-                <li>✓ 10-year growth runway</li>
-              </ul>
-            </motion.div>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+            <span className="text-sm font-semibold text-accent-cyan uppercase tracking-widest mb-4 block">Why Invest</span>
+            <h2 className="text-4xl md:text-5xl font-bold">Investment <span className="gradient-text">Thesis</span></h2>
           </motion.div>
-        </div>
-      </section>
 
-      {/* Market Opportunity & Traction */}
-      <section className="py-20 bg-primary">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-              Market Opportunity <span className="gradient-text">& Traction</span>
-            </h2>
-
-            <div className="grid md:grid-cols-2 gap-12">
-              {/* Market Opportunity */}
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {thesis.map((t, idx) => (
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="glass-effect p-8 rounded-xl"
+                transition={{ delay: idx * 0.1 }}
+                whileHover={{ y: -4 }}
+                className="glass-effect p-6 rounded-2xl group"
               >
-                <h3 className="text-2xl font-semibold mb-8 text-accent-cyan">Market Size by 2030</h3>
-
-                <div className="space-y-6">
-                  <div>
-                    <div className="flex justify-between mb-2">
-                      <span>Total Addressable Market (TAM)</span>
-                      <span className="font-bold text-accent-cyan">$50B+</span>
-                    </div>
-                    <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-full bg-gradient-to-r from-accent-cyan to-accent-blue"></div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between mb-2">
-                      <span>Serviceable Market (SAM)</span>
-                      <span className="font-bold text-accent-blue">$5B+</span>
-                    </div>
-                    <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-1/3 bg-gradient-to-r from-accent-blue to-accent-cyan"></div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between mb-2">
-                      <span>Target Market (SOM Year 5)</span>
-                      <span className="font-bold text-green-400">$500M+</span>
-                    </div>
-                    <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full w-1/12 bg-gradient-to-r from-green-400 to-accent-cyan"></div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-8 p-4 bg-white/5 rounded-lg border border-white/10">
-                  <p className="text-sm text-gray-300">
-                    <strong>Growth Driver:</strong> EV adoption accelerating at 40% CAGR, regulatory requirements multiplying, operator need for efficiency increasing
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Traction */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="glass-effect p-8 rounded-xl"
-              >
-                <h3 className="text-2xl font-semibold mb-8 text-accent-blue">Our Traction to Date</h3>
-
-                <div className="space-y-4">
-                  {[
-                    { label: 'Customers Onboarded', value: '15+', icon: '👥' },
-                    { label: 'Average Deal Size', value: '$500K+', icon: '💰' },
-                    { label: 'Monthly Revenue Growth', value: '35%', icon: '📈' },
-                    { label: 'Customer Retention', value: '100%', icon: '✓' },
-                    { label: 'NPS Score', value: '70+', icon: '⭐' },
-                    { label: 'Market Penetration', value: '<1%', icon: '🎯' }
-                  ].map((metric, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: idx * 0.1 }}
-                      className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10"
-                    >
-                      <span className="text-gray-300 flex items-center">
-                        <span className="text-2xl mr-3">{metric.icon}</span>
-                        {metric.label}
-                      </span>
-                      <span className="font-bold text-accent-cyan">{metric.value}</span>
-                    </motion.div>
+                <div className="text-4xl font-black gradient-text mb-3">{t.num}</div>
+                <h3 className="text-xl font-bold mb-3 group-hover:text-accent-cyan transition-colors">{t.title}</h3>
+                <p className="text-sm text-gray-400 leading-relaxed mb-4">{t.desc}</p>
+                <ul className="space-y-1.5">
+                  {t.points.map((p, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-accent-cyan">
+                      <span className="w-1 h-1 rounded-full bg-accent-cyan" />
+                      {p}
+                    </li>
                   ))}
-                </div>
+                </ul>
               </motion.div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-20 bg-primary-light">
+      {/* ─── MARKET + TRACTION ─── */}
+      <section className="py-24 bg-primary">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            Meet the <span className="gradient-text">Team</span>
-          </h2>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto"
-          >
-            {/* Founder 1 */}
-            <motion.div variants={itemVariants} className="glass-effect p-8 rounded-xl text-center">
-              <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-accent-cyan to-accent-blue rounded-full flex items-center justify-center text-3xl">
-                👨‍💼
-              </div>
-              <h3 className="text-xl font-semibold mb-1">Founder & CEO</h3>
-              <p className="text-accent-cyan font-semibold mb-3">10+ years in automobile tech</p>
-              <p className="text-sm text-gray-300 mb-4">
-                Former Head of Operations at India's largest EV charging network. Deep expertise in regulatory compliance and operational efficiency.
-              </p>
-              <div className="text-xs text-gray-400">
-                • B.Tech, IIT Delhi<br />
-                • Product at leading CPO<br />
-                • Serial entrepreneur
-              </div>
-            </motion.div>
-
-            {/* Founder 2 */}
-            <motion.div variants={itemVariants} className="glass-effect p-8 rounded-xl text-center">
-              <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-accent-blue to-green-400 rounded-full flex items-center justify-center text-3xl">
-                🧠
-              </div>
-              <h3 className="text-xl font-semibold mb-1">Co-Founder & CTO</h3>
-              <p className="text-accent-blue font-semibold mb-3">AI researcher with 8+ years</p>
-              <p className="text-sm text-gray-300 mb-4">
-                PhD in Machine Learning. Built LLM systems at major tech companies. Leading development of our proprietary Automobile LLM.
-              </p>
-              <div className="text-xs text-gray-400">
-                • PhD, IIT Bombay<br />
-                • ML at top tech firms<br />
-                • Published researcher
-              </div>
-            </motion.div>
-
-            {/* Advisor */}
-            <motion.div variants={itemVariants} className="glass-effect p-8 rounded-xl text-center">
-              <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-green-400 to-purple-400 rounded-full flex items-center justify-center text-3xl">
-                🎯
-              </div>
-              <h3 className="text-xl font-semibold mb-1">Advisory Board</h3>
-              <p className="text-green-400 font-semibold mb-3">Industry veterans</p>
-              <p className="text-sm text-gray-300 mb-4">
-                Board includes former executives from Ather, Hero MotoCorp, and leading Indian automotive firms. Deep domain expertise.
-              </p>
-              <div className="text-xs text-gray-400">
-                • 50+ years combined experience<br />
-                • Government relationships<br />
-                • Market expertise
-              </div>
-            </motion.div>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+            <span className="text-sm font-semibold text-accent-cyan uppercase tracking-widest mb-4 block">The Numbers</span>
+            <h2 className="text-4xl md:text-5xl font-bold">Market Opportunity <span className="gradient-text">& Traction</span></h2>
           </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Market */}
+            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="glass-effect p-8 rounded-2xl">
+              <h3 className="text-xl font-bold mb-6 text-accent-cyan">Market Size by 2030</h3>
+              <div className="space-y-6">
+                {[
+                  { label: 'Total Addressable (TAM)', value: '$50B+', pct: 100 },
+                  { label: 'Serviceable (SAM)', value: '$5B+', pct: 33 },
+                  { label: 'Target Year 5 (SOM)', value: '$500M+', pct: 8 },
+                ].map((bar, i) => (
+                  <div key={i}>
+                    <div className="flex justify-between text-sm mb-2">
+                      <span className="text-gray-400">{bar.label}</span>
+                      <span className="font-bold text-white">{bar.value}</span>
+                    </div>
+                    <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                      <motion.div initial={{ width: 0 }} whileInView={{ width: `${bar.pct}%` }} viewport={{ once: true }} transition={{ delay: 0.3 + i * 0.2, duration: 1.2 }} className="h-full bg-gradient-to-r from-accent-cyan to-accent-blue rounded-full" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 p-4 bg-white/5 rounded-xl border border-white/10">
+                <p className="text-xs text-gray-400"><strong className="text-white">Growth Driver:</strong> EV adoption at 40% CAGR, regulatory requirements multiplying, operator need for efficiency increasing</p>
+              </div>
+            </motion.div>
+
+            {/* Traction */}
+            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="glass-effect p-8 rounded-2xl">
+              <h3 className="text-xl font-bold mb-6 text-accent-blue">Our Traction to Date</h3>
+              <div className="space-y-3">
+                {traction.map((m, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: 10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.06 }}
+                    whileHover={{ x: 4 }}
+                    className="flex items-center justify-between p-3 bg-white/5 rounded-xl border border-white/5 hover:border-accent-cyan/20 transition-all"
+                  >
+                    <span className="text-gray-300 flex items-center gap-3 text-sm">
+                      <span className="text-xl">{m.icon}</span>
+                      {m.label}
+                    </span>
+                    <span className="font-bold text-accent-cyan text-sm">{m.value}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Key Highlights */}
-      <section className="py-20 bg-primary">
+      {/* ─── TEAM ─── */}
+      <section className="py-24 bg-primary-light">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-semibold text-center mb-16">
-            Why Invest <span className="gradient-text">in Go4Garage?</span>
-          </h2>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+            <span className="text-sm font-semibold text-accent-cyan uppercase tracking-widest mb-4 block">Leadership</span>
+            <h2 className="text-4xl md:text-5xl font-bold">Meet the <span className="gradient-text">Team</span></h2>
+          </motion.div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
-          >
-            {[
-              {
-                title: 'Massive Opportunity',
-                description: 'India\'s EV ecosystem is fragmenting. $50B market opportunity by 2030 with zero real competition.',
-                icon: '🎯'
-              },
-              {
-                title: 'Proven Model',
-                description: 'Early customers show 95% cost reduction and 3x faster operations. Unit economics are exceptional.',
-                icon: '✓'
-              },
-              {
-                title: 'Proprietary Tech',
-                description: 'Our Automobile LLM is trained on Indian regulations, workflows, and industry dynamics. Impossible to replicate.',
-                icon: '🔒'
-              },
-              {
-                title: 'Experienced Team',
-                description: 'Founders from Ather, Hero, and leading tech companies. Deep automotive and AI expertise.',
-                icon: '👥'
-              },
-              {
-                title: 'Government Tailwind',
-                description: 'Regulatory requirements multiplying. EV2030, FAME II, CPO regulations create 10-year runway.',
-                icon: '📈'
-              },
-              {
-                title: 'Market Leadership Path',
-                description: 'Clear roadmap to become market leader within 3 years. First-mover advantage in AI-first infrastructure.',
-                icon: '👑'
-              }
-            ].map((item, idx) => (
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {team.map((m, idx) => (
               <motion.div
                 key={idx}
-                variants={itemVariants}
-                className="glass-effect p-6 rounded-xl"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                whileHover={{ y: -4 }}
+                className="glass-effect p-6 rounded-2xl text-center group"
               >
-                <div className="text-4xl mb-3">{item.icon}</div>
-                <h3 className="text-xl font-semibold mb-2 text-accent-cyan">{item.title}</h3>
-                <p className="text-gray-300">{item.description}</p>
+                <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${m.bg} rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform`}>{m.avatar}</div>
+                <h3 className="text-lg font-bold mb-1">{m.role}</h3>
+                <p className="text-accent-cyan text-sm font-medium mb-3">{m.tag}</p>
+                <p className="text-xs text-gray-400 mb-3 leading-relaxed">{m.bio}</p>
+                <p className="text-[11px] text-gray-500">{m.creds}</p>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Investor Relations */}
-      <section className="py-20 bg-primary-light">
+      {/* ─── INVESTOR RELATIONS ─── */}
+      <section className="py-24 bg-primary">
         <div className="container mx-auto px-6 max-w-3xl">
-          <h2 className="text-4xl font-semibold text-center mb-16">
-            Investor <span className="gradient-text">Relations</span>
-          </h2>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold">Investor <span className="gradient-text">Relations</span></h2>
+          </motion.div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            {/* Contact Card */}
-            <motion.div variants={itemVariants} className="glass-effect p-8 rounded-xl">
-              <h3 className="text-2xl font-semibold mb-4 text-accent-cyan">For Investment Inquiries</h3>
-              <p className="text-gray-300 mb-6">
-                We're actively seeking Series A funding to accelerate product development, market expansion, and team growth.
-              </p>
-              <div className="space-y-2 text-gray-300">
-                <p><strong>Email:</strong> <a href="mailto:investors@go4garage.com" className="text-accent-cyan hover:text-accent-blue">investors@go4garage.com</a></p>
-                <p><strong>Phone:</strong> <a href="tel:+919876543210" className="text-accent-cyan hover:text-accent-blue">+91 9876 543 210</a></p>
+          <div className="space-y-5">
+            {/* Contact */}
+            <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="glass-effect p-6 rounded-2xl">
+              <h3 className="font-bold text-accent-cyan mb-3">Investment Inquiries</h3>
+              <p className="text-sm text-gray-400 mb-4">We&apos;re actively seeking Series A funding to accelerate product development, market expansion, and team growth.</p>
+              <div className="space-y-2 text-sm text-gray-300">
+                <p><strong>Email:</strong> <a href="mailto:investors@go4garage.com" className="text-accent-cyan hover:text-accent-blue transition-colors">investors@go4garage.com</a></p>
+                <p><strong>Phone:</strong> <a href="tel:+919876543210" className="text-accent-cyan hover:text-accent-blue transition-colors">+91 9876 543 210</a></p>
               </div>
             </motion.div>
 
             {/* Documents */}
-            <motion.div variants={itemVariants} className="glass-effect p-8 rounded-xl">
-              <h3 className="text-2xl font-semibold mb-4 text-accent-blue">Available Documents</h3>
-              <p className="text-gray-300 mb-6">Request our investor materials:</p>
-              <div className="space-y-3">
-                <div className="flex items-center p-3 bg-white/5 rounded-lg border border-white/10 cursor-pointer hover:border-accent-cyan transition-colors">
-                  <span className="text-2xl mr-3">📊</span>
-                  <span className="text-gray-300">Pitch Deck</span>
-                </div>
-                <div className="flex items-center p-3 bg-white/5 rounded-lg border border-white/10 cursor-pointer hover:border-accent-cyan transition-colors">
-                  <span className="text-2xl mr-3">📈</span>
-                  <span className="text-gray-300">Financial Projections</span>
-                </div>
-                <div className="flex items-center p-3 bg-white/5 rounded-lg border border-white/10 cursor-pointer hover:border-accent-cyan transition-colors">
-                  <span className="text-2xl mr-3">📋</span>
-                  <span className="text-gray-300">Executive Summary</span>
-                </div>
+            <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="glass-effect p-6 rounded-2xl">
+              <h3 className="font-bold text-accent-blue mb-3">Available Documents</h3>
+              <p className="text-sm text-gray-400 mb-4">Request our investor materials:</p>
+              <div className="space-y-2">
+                {[
+                  { icon: '📊', label: 'Pitch Deck' },
+                  { icon: '📈', label: 'Financial Projections' },
+                  { icon: '📋', label: 'Executive Summary' },
+                ].map((doc, i) => (
+                  <motion.div
+                    key={i}
+                    whileHover={{ x: 4, borderColor: 'rgba(0,229,255,0.3)' }}
+                    className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10 cursor-pointer transition-all"
+                  >
+                    <span className="text-xl">{doc.icon}</span>
+                    <span className="text-sm text-gray-300">{doc.label}</span>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
 
             {/* CTA */}
-            <motion.div variants={itemVariants} className="glass-effect p-8 rounded-xl text-center">
-              <h3 className="text-2xl font-semibold mb-4">Ready to Discuss Investment?</h3>
-              <p className="text-gray-300 mb-6">
-                Schedule a call with our founder to learn more about the opportunity and our vision.
-              </p>
+            <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="glass-effect p-8 rounded-2xl text-center">
+              <h3 className="text-xl font-bold mb-3">Ready to Discuss Investment?</h3>
+              <p className="text-sm text-gray-400 mb-6">Schedule a call with our founder to learn more about the opportunity and vision.</p>
               <Link href="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  className="px-8 py-3 bg-gradient-to-r from-accent-cyan to-accent-blue text-white rounded-lg font-semibold shadow-lg hover:shadow-accent-cyan/50 transition-shadow"
-                >
+                <motion.button whileHover={{ scale: 1.04, boxShadow: '0 0 40px rgba(0,229,255,0.3)' }} whileTap={{ scale: 0.98 }} className="px-8 py-3 bg-gradient-to-r from-accent-cyan to-accent-blue text-white rounded-xl font-semibold shadow-lg shadow-accent-cyan/10">
                   Schedule Meeting
                 </motion.button>
               </Link>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Legal Disclaimer */}
-      <section className="py-12 bg-primary border-t border-white/10">
+      {/* ─── DISCLAIMER ─── */}
+      <section className="py-8 bg-primary border-t border-white/5">
         <div className="container mx-auto px-6 max-w-3xl">
-          <p className="text-xs text-gray-400 text-center">
-            This page contains forward-looking statements. Actual results may differ. This is not an offer to sell securities.
-            Any investment will be made through legally binding documents. Please consult with legal and financial advisors.
+          <p className="text-[10px] text-gray-600 text-center leading-relaxed">
+            This page contains forward-looking statements. Actual results may differ materially. This is not an offer to sell securities.
+            Any investment will be through legally binding documents. Please consult legal and financial advisors.
           </p>
         </div>
       </section>
