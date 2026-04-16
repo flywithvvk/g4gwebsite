@@ -6,7 +6,6 @@
 [![Next.js](https://img.shields.io/badge/Next.js-16.2.4-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0.2-blue)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.2.2-38bdf8)](https://tailwindcss.com/)
-[![Firebase](https://img.shields.io/badge/Firebase-12.12.0-orange)](https://firebase.google.com/)
 [![License](https://img.shields.io/badge/License-Proprietary-red)](LICENSE)
 
 ## 🚀 Overview
@@ -39,8 +38,7 @@ Go4Garage is India's first AI-powered automobile intelligence platform, designed
 - **Language**: TypeScript 6.0.2
 - **Styling**: Tailwind CSS 4.2.2
 - **Animations**: Framer Motion 12.38.0
-- **Backend**: Firebase (Hosting, Analytics, Firestore)
-- **Deployment**: Firebase Hosting (Static Export)
+- **Deployment**: Next.js Production Server
 
 ## 🏗️ Project Structure
 
@@ -61,10 +59,8 @@ g4gwebsite/
 │   ├── Navigation.tsx     # Header navigation
 │   └── Footer.tsx         # Footer component
 ├── lib/                   # Utilities and libraries
-│   └── firebase.ts        # Firebase configuration
 ├── docs/                  # Documentation and assets
 ├── public/                # Static assets
-├── firebase.json          # Firebase configuration
 ├── next.config.js         # Next.js configuration
 ├── tailwind.config.ts     # Tailwind CSS configuration
 ├── tsconfig.json          # TypeScript configuration
@@ -77,8 +73,6 @@ g4gwebsite/
 
 - Node.js 18.x or higher
 - npm or yarn
-- Firebase CLI (for deployment)
-
 ### Installation
 
 1. **Clone the repository**
@@ -111,35 +105,17 @@ g4gwebsite/
 | `npm run start` | Start production server |
 | `npm run lint` | Run ESLint |
 
-## 🔥 Firebase Deployment
+## 🚀 Production Deployment
 
-### Setup
+```bash
+# Build for production
+npm run build
 
-1. **Install Firebase CLI**
-   ```bash
-   npm install -g firebase-tools
-   ```
+# Start the production server
+npm start
+```
 
-2. **Login to Firebase**
-   ```bash
-   firebase login
-   ```
-
-3. **Build the project**
-   ```bash
-   npm run build
-   ```
-
-4. **Deploy to Firebase**
-   ```bash
-   firebase deploy --only hosting
-   ```
-
-### Production URL
-
-Once deployed, the website will be available at:
-- **Primary**: `https://go4garage-d66fc.web.app`
-- **Custom Domain**: Configure in Firebase Console
+The server starts on port 3000 by default. Use a reverse proxy (e.g., Nginx) or a process manager (e.g., PM2) in production.
 
 ## 🎨 Design System
 
@@ -212,17 +188,9 @@ Once deployed, the website will be available at:
 
 ## 🔧 Configuration
 
-### Firebase Configuration
-
-The Firebase project is configured in `lib/firebase.ts`:
-- **Project ID**: go4garage-d66fc
-- **Analytics**: Enabled
-- **Hosting**: Static export from `/out`
-
 ### Next.js Configuration
 
-- **Output**: Static export for Firebase hosting
-- **Images**: Unoptimized for static hosting
+- **Images**: Unoptimized (no external image optimizer required)
 - **TypeScript**: Strict mode enabled
 
 ## 📊 Performance
@@ -234,10 +202,9 @@ The Firebase project is configured in `lib/firebase.ts`:
 
 ## 🔒 Security
 
-- HTTPS enforced via Firebase
+- HTTPS enforced via reverse proxy
 - Input validation on forms
 - No sensitive data in client-side code
-- Firebase security rules configured
 
 ## 🤝 Contributing
 
@@ -251,7 +218,7 @@ This is a proprietary project. For authorized contributors:
 ## 📞 Support
 
 - **Email**: hello@go4garage.com
-- **Website**: [Go4Garage](https://go4garage-d66fc.web.app)
+- **Website**: [Go4Garage](https://go4garage.com)
 - **Location**: Bangalore, India
 
 ## 📜 License
