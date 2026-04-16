@@ -117,7 +117,10 @@ const Footer: React.FC = () => {
                 <div className="flex items-center space-x-2">
                   <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="40" height="40" rx="10" fill="url(#footerLogoGrad)" />
-                    <path d="M20 8C13.4 8 8 13.4 8 20s5.4 12 12 12c1.1 0 2-.9 2-2v-3c0-1.1-.9-2-2-2-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6v1.5c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V20c0-1.7-1.3-3-3-3s-3 1.3-3 3 1.3 3 3 3c1 0 1.9-.5 2.5-1.2.7 1.2 2 2.2 3.5 2.2 2.5 0 4.5-2 4.5-4.5V20c0-6.6-5.4-12-12-12z" fill="white"/>
+                    <text x="20" y="16" textAnchor="middle" fill="white" fontSize="11" fontWeight="900" fontFamily="system-ui, sans-serif" dominantBaseline="central">G4G</text>
+                    <path d="M10 24 L16 24 L16 30 Q13 32 10 30 Z" fill="rgba(255,255,255,0.6)"/>
+                    <path d="M24 24 L30 24 L30 30 Q27 32 24 30 Z" fill="rgba(255,255,255,0.6)"/>
+                    <rect x="17" y="26" width="6" height="2" rx="1" fill="rgba(255,255,255,0.4)"/>
                     <defs><linearGradient id="footerLogoGrad" x1="0" y1="0" x2="40" y2="40"><stop stopColor="#00E5FF"/><stop offset="1" stopColor="#0066FF"/></linearGradient></defs>
                   </svg>
                   <span className="text-lg font-semibold text-white">Go4Garage</span>
