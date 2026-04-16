@@ -10,7 +10,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "npm run build && firebase deploy --only hosting",
+    "deploy:preview": "npm run build && firebase hosting:channel:deploy preview",
+    "firebase:serve": "npm run build && firebase emulators:start --only hosting"
   },
   "repository": {
     "type": "git",
@@ -39,5 +42,8 @@
     "react-dom": "^19.2.5",
     "tailwindcss": "^4.2.2",
     "typescript": "^6.0.2"
+  },
+  "devDependencies": {
+    "firebase-tools": "^15.15.0"
   }
 }
