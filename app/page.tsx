@@ -66,19 +66,19 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: 'Regulatory Complexity',
-                description: '95+ compliance requirements across state & central regulations',
-                stat: '48 Problems'
+                title: 'Regulatory & Infrastructure',
+                description: '33 states with different policies, DISCOM delays, fire permits, electrical inspector certifications — a compliance nightmare',
+                stat: '33'
               },
               {
                 title: 'Operational Fragmentation',
-                description: 'Multiple disconnected systems for CPO, service, and fleet management',
-                stat: '27 Problems'
+                description: 'Disconnected systems for CPO operations, service centers, fleet management, billing, and grid integration',
+                stat: '32'
               },
               {
-                title: 'Workforce Gap',
-                description: 'Lack of skilled technicians and standardized training for EV ecosystem',
-                stat: '20 Problems'
+                title: 'Workforce & Lifecycle Gap',
+                description: '100K+ technician shortage, no standardized EV training, battery recycling infrastructure missing',
+                stat: '20'
               }
             ].map((item, idx) => (
               <motion.div
@@ -91,7 +91,7 @@ export default function HomePage() {
               >
                 <div className="text-accent-cyan text-5xl font-bold mb-4">{item.stat}</div>
                 <h3 className="text-2xl font-semibold mb-3">{item.title}</h3>
-                <p className="text-gray-300">{item.description}</p>
+                <p className="text-gray-300 text-sm">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -106,8 +106,8 @@ export default function HomePage() {
               One Platform. <span className="gradient-text">Infinite Possibilities</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Our proprietary Automobile LLM reduces human effort by understanding and automating
-              complex regulatory, operational, and technical workflows.
+              Accelerate EV adoption and charging/service scale in India by reducing compliance friction,
+              improving uptime, and improving unit economics — powered by our proprietary Automobile LLM.
             </p>
           </div>
 
@@ -143,12 +143,12 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[
-              { name: 'URGAA Platform', tagline: 'Regulatory Intelligence', icon: '⚡' },
-              { name: 'GSTSAAS', tagline: 'Service Intelligence', icon: '🔧' },
-              { name: 'Ignition', tagline: 'Customer Experience', icon: '📱' },
-              { name: 'EV VIDYA ARJUN', tagline: 'Workforce Training', icon: '🎓' },
-              { name: 'KAILASH-AI', tagline: 'Predictive Intelligence', icon: '🔮' },
-              { name: 'Eka-AI', tagline: 'Conversational AI', icon: '💬' }
+              { name: 'URGAA (URJA)', tagline: 'Regulatory & Grid Intelligence — 48 problems', icon: '⚡' },
+              { name: 'GSTSAAS', tagline: 'Workshop, Service & Commerce — 17 problems', icon: '🔧' },
+              { name: 'Ignition App', tagline: 'Consumer Experience & Adoption — 10 problems', icon: '📱' },
+              { name: 'EV VIDYA ARJUN', tagline: 'Workforce Skilling & Certification — 8 problems', icon: '🎓' },
+              { name: 'KAILASH-AI', tagline: 'Document AI & Predictive Analytics', icon: '🔮' },
+              { name: 'Eka-AI', tagline: 'Agent Orchestration & Internal Q&A', icon: '💬' }
             ].map((product, idx) => (
               <motion.div
                 key={idx}

@@ -60,10 +60,11 @@ export default function AboutPage() {
               <div className="text-accent-cyan text-4xl font-bold mb-4">🎯</div>
               <h3 className="text-2xl font-semibold mb-4">Our Mission</h3>
               <p className="text-gray-300 mb-4">
-                To become the market leader in AI-powered automobile intelligence across India within 3 years.
+                Accelerate EV adoption and charging/service scale in India by reducing compliance friction,
+                improving uptime, and improving unit economics.
               </p>
               <p className="text-accent-cyan font-semibold">
-                Transforming chaos into clarity through intelligent automation.
+                95 problems identified. 85 solved. One platform.
               </p>
             </motion.div>
 
@@ -72,7 +73,8 @@ export default function AboutPage() {
               <div className="text-accent-blue text-4xl font-bold mb-4">🚀</div>
               <h3 className="text-2xl font-semibold mb-4">Our Vision</h3>
               <p className="text-gray-300 mb-4">
-                An AI-first automobile intelligence platform that understands every regulation, workflow, and edge case across India's EV ecosystem.
+                A comprehensive B2B2C ecosystem of 7 products, 11 departments, 14 AI sub-agents, and 69 features — solving
+                India's entire EV value chain through integrated SaaS, regulatory automation, and workforce training.
               </p>
               <p className="text-accent-blue font-semibold">
                 The Anthropic of India's automobile industry.

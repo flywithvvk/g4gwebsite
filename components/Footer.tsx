@@ -29,11 +29,11 @@ const Footer: React.FC = () => {
   const companyLinks: FooterSection = {
     title: 'Company',
     links: [
-      { label: 'About Us', href: '#about' },
-      { label: 'Investors', href: '#investors' },
-      { label: 'Contact', href: '#contact' },
-      { label: 'Careers', href: '#careers' },
-      { label: 'Press', href: '#press' },
+      { label: 'About Us', href: '/about' },
+      { label: 'Investors', href: '/investors' },
+      { label: 'Contact', href: '/contact' },
+      { label: 'Careers', href: '/contact' },
+      { label: 'Press', href: '/about' },
     ],
   };
 
@@ -41,13 +41,12 @@ const Footer: React.FC = () => {
   const productsLinks: FooterSection = {
     title: 'Products',
     links: [
-      { label: 'Go4Garage Website', href: '#product-website' },
-      { label: 'URGAA (URJA) Platform', href: '#product-urgaa' },
-      { label: 'GSTSAAS', href: '#product-gstsaas' },
-      { label: 'Ignition Mobile App', href: '#product-ignition' },
-      { label: 'ARJUN Training', href: '#product-arjun' },
-      { label: 'EKA (Analytics)', href: '#product-eka' },
-      { label: 'KAI (Intelligence)', href: '#product-kai' },
+      { label: 'URGAA (URJA) Platform', href: '/products' },
+      { label: 'GSTSAAS', href: '/products' },
+      { label: 'Ignition Mobile App', href: '/products' },
+      { label: 'EV VIDYA ARJUN', href: '/products' },
+      { label: 'KAILASH-AI', href: '/products' },
+      { label: 'Eka-AI', href: '/products' },
     ],
   };
 
@@ -55,12 +54,12 @@ const Footer: React.FC = () => {
   const solutionsLinks: FooterSection = {
     title: 'Solutions',
     links: [
-      { label: 'For Charge Point Operators', href: '#solution-cpo' },
-      { label: 'For Fleet Operators', href: '#solution-fleet' },
-      { label: 'For EV Drivers', href: '#solution-drivers' },
-      { label: 'For Workshops', href: '#solution-workshops' },
-      { label: 'For Government', href: '#solution-government' },
-      { label: 'For OEM Partners', href: '#solution-oem' },
+      { label: 'For Charge Point Operators', href: '/solutions' },
+      { label: 'For Fleet Operators', href: '/solutions' },
+      { label: 'For EV Drivers', href: '/solutions' },
+      { label: 'For Workshops', href: '/solutions' },
+      { label: 'For Government', href: '/solutions' },
+      { label: 'For OEM Partners', href: '/solutions' },
     ],
   };
 
@@ -116,9 +115,11 @@ const Footer: React.FC = () => {
               {/* Brand & Description */}
               <div className="col-span-1 md:col-span-2 lg:col-span-1 flex flex-col space-y-4">
                 <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-gradient-to-br from-accent-cyan to-accent-blue rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">G4</span>
-                  </div>
+                  <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="10" fill="url(#footerLogoGrad)" />
+                    <path d="M20 8C13.4 8 8 13.4 8 20s5.4 12 12 12c1.1 0 2-.9 2-2v-3c0-1.1-.9-2-2-2-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6v1.5c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V20c0-1.7-1.3-3-3-3s-3 1.3-3 3 1.3 3 3 3c1 0 1.9-.5 2.5-1.2.7 1.2 2 2.2 3.5 2.2 2.5 0 4.5-2 4.5-4.5V20c0-6.6-5.4-12-12-12z" fill="white"/>
+                    <defs><linearGradient id="footerLogoGrad" x1="0" y1="0" x2="40" y2="40"><stop stopColor="#00E5FF"/><stop offset="1" stopColor="#0066FF"/></linearGradient></defs>
+                  </svg>
                   <span className="text-lg font-semibold text-white">Go4Garage</span>
                 </div>
                 <p className="text-sm text-gray-400 leading-relaxed max-w-xs">

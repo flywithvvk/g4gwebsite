@@ -8,12 +8,12 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Platform', href: '#platform' },
-    { label: 'Products', href: '#products' },
-    { label: 'Solutions', href: '#solutions' },
-    { label: 'Impact', href: '#impact' },
-    { label: 'About', href: '#about' },
-    { label: 'Investors', href: '#investors' },
+    { label: 'Platform', href: '/platform' },
+    { label: 'Products', href: '/products' },
+    { label: 'Solutions', href: '/solutions' },
+    { label: 'Impact', href: '/impact' },
+    { label: 'About', href: '/about' },
+    { label: 'Investors', href: '/investors' },
   ];
 
   const containerVariants = {
@@ -82,12 +82,17 @@ const Navigation = () => {
               transition={{ duration: 0.5 }}
               className="flex items-center space-x-2"
             >
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-accent-cyan to-accent-blue flex items-center justify-center group-hover:shadow-lg group-hover:shadow-accent-cyan/50 transition-all duration-300">
-                <span className="text-white font-bold text-lg">G</span>
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="group-hover:drop-shadow-[0_0_8px_rgba(0,229,255,0.5)] transition-all duration-300">
+                <rect width="40" height="40" rx="10" fill="url(#logoGrad)" />
+                <path d="M20 8C13.4 8 8 13.4 8 20s5.4 12 12 12c1.1 0 2-.9 2-2v-3c0-1.1-.9-2-2-2-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6v1.5c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V20c0-1.7-1.3-3-3-3s-3 1.3-3 3 1.3 3 3 3c1 0 1.9-.5 2.5-1.2.7 1.2 2 2.2 3.5 2.2 2.5 0 4.5-2 4.5-4.5V20c0-6.6-5.4-12-12-12z" fill="white"/>
+                <defs><linearGradient id="logoGrad" x1="0" y1="0" x2="40" y2="40"><stop stopColor="#00E5FF"/><stop offset="1" stopColor="#0066FF"/></linearGradient></defs>
+              </svg>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold gradient-text group-hover:scale-105 transition-transform duration-300 leading-tight">
+                  Go4Garage
+                </span>
+                <span className="text-[9px] text-gray-400 tracking-[0.2em] uppercase leading-tight">Powering India&apos;s EV Future</span>
               </div>
-              <span className="text-xl font-bold gradient-text group-hover:scale-105 transition-transform duration-300">
-                Go4Garage
-              </span>
             </motion.div>
           </Link>
 

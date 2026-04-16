@@ -124,7 +124,7 @@ export default function ImpactPage() {
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-start">
                   <span className="text-accent-cyan mr-2">+</span>
-                  <span>Real-time compliance tracking across 50+ state regulations</span>
+                  <span>Real-time compliance tracking across 33 state regulatory frameworks</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-accent-cyan mr-2">+</span>

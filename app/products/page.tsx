@@ -21,20 +21,20 @@ interface Product {
 const products: Product[] = [
   {
     id: 1,
-    name: 'URGAA Platform',
+    name: 'URGAA (URJA) Platform',
     tagline: 'Regulatory & Grid Intelligence',
     description:
-      'Navigate India\'s complex regulatory landscape with AI-powered compliance automation. URGAA tracks 95+ compliance requirements across central and state regulations, automatically flagging updates and providing actionable intelligence for grid operators and CPOs.',
+      'Navigate India\'s 33-state regulatory landscape with AI-powered compliance automation. URGAA handles DISCOM connections, load sanctioning, electrical inspector certifications, fire NOCs, housing society approvals, subsidy disbursement, grid infrastructure, and real-time charger monitoring across the entire CPO lifecycle.',
     problemsSolved: 48,
     icon: '⚡',
     keyFeatures: [
-      'Real-time regulatory tracking across all states',
-      'Automated compliance requirement mapping',
-      'Grid interconnection intelligence',
-      'Regulatory update alerts and notifications',
-      'Compliance report generation',
-      'Multi-stakeholder requirement management',
-      'Historical compliance audit trails'
+      'DISCOM connection & load sanctioning automation',
+      'Multi-state regulatory compliance tracking (33 states)',
+      'Electrical inspector & fire dept certification workflows',
+      'Grid infrastructure & transformer load monitoring',
+      'Subsidy disbursement tracking (FAME-II, state schemes)',
+      'Charger uptime & SLA monitoring',
+      'Carbon credit & ESG compliance tracking'
     ],
     color: {
       gradient: 'from-accent-cyan to-blue-400',
@@ -44,19 +44,19 @@ const products: Product[] = [
   {
     id: 2,
     name: 'GSTSAAS',
-    tagline: 'Service & Commerce Intelligence',
+    tagline: 'Workshop, Service & Commerce Intelligence',
     description:
-      'Revolutionize service center operations and commerce management. GSTSAAS streamlines service scheduling, inventory management, vendor operations, and financial workflows. Automatically handle GST compliance, invoicing, and customer service intelligence.',
-    problemsSolved: 15,
+      'End-to-end workshop and service center operations platform. GSTSAAS manages service scheduling, spare parts inventory, technician dispatch, GST-compliant invoicing, insurance coordination, financing marketplace, and vendor procurement — solving the fragmented after-sales ecosystem.',
+    problemsSolved: 17,
     icon: '🔧',
     keyFeatures: [
-      'Service scheduling & technician allocation',
-      'Inventory management automation',
-      'Vendor and parts procurement',
-      'GST-compliant invoicing',
-      'Customer service history tracking',
-      'Predictive maintenance alerts',
-      'Commerce analytics dashboard'
+      'Service scheduling & technician dispatch',
+      'Spare parts inventory & procurement network',
+      'GST-compliant invoicing & tax automation',
+      'Insurance partner integration',
+      'Financing & lending marketplace',
+      'Warranty management & dispute resolution',
+      'Working capital optimization'
     ],
     color: {
       gradient: 'from-orange-400 to-red-500',
@@ -65,20 +65,20 @@ const products: Product[] = [
   },
   {
     id: 3,
-    name: 'Ignition App',
-    tagline: 'Customer Experience Intelligence',
+    name: 'Ignition Mobile App',
+    tagline: 'Consumer Experience & Adoption',
     description:
-      'Create exceptional customer journeys across every touchpoint. Ignition App delivers personalized, context-aware customer experiences through conversational AI, real-time support, and predictive engagement strategies.',
-    problemsSolved: 8,
+      'Unified consumer app for EV drivers — charger discovery, booking, payments, notifications, and support. Ignition tackles range anxiety, charging time concerns, trust deficit in new OEMs, and Tier 2/3 city neglect through personalized engagement and real-time information.',
+    problemsSolved: 10,
     icon: '📱',
     keyFeatures: [
-      'AI-powered customer support',
-      'Personalized engagement workflows',
-      'Multi-channel communication hub',
-      'Customer sentiment analysis',
-      'Real-time issue resolution',
-      'Loyalty program management',
-      'Customer journey analytics'
+      'Charger discovery & real-time availability',
+      'Booking, payments & wallet integration',
+      'Range planning & navigation',
+      'Consumer awareness & education content',
+      'Multi-channel support (WhatsApp, push, SMS)',
+      'Loyalty programs & EV incentive tracking',
+      'Tier 2/3 city charger coverage maps'
     ],
     color: {
       gradient: 'from-green-400 to-emerald-500',
@@ -88,19 +88,19 @@ const products: Product[] = [
   {
     id: 4,
     name: 'EV VIDYA ARJUN',
-    tagline: 'Workforce Intelligence',
+    tagline: 'Workforce Skilling & Certification',
     description:
-      'Upskill India\'s EV workforce through intelligent, adaptive learning. EV VIDYA ARJUN provides personalized training programs for technicians, field engineers, and operators—with real-time competency tracking and certification management.',
-    problemsSolved: 12,
+      'India\'s EV workforce platform bridging the 100K+ technician gap. ARJUN delivers adaptive learning paths, high-voltage safety training, hands-on simulation, certification management, and mentor-apprentice pairing — transforming traditional mechanics into certified EV professionals.',
+    problemsSolved: 8,
     icon: '🎓',
     keyFeatures: [
-      'Adaptive learning paths',
-      'Real-time competency assessment',
-      'Hands-on simulation training',
-      'Certification management',
-      'Mentor-apprentice pairing',
-      'Performance analytics',
-      'Multilingual content delivery'
+      'Adaptive learning paths (ICE to EV transition)',
+      'High-voltage safety competency training',
+      'Hands-on simulation & virtual labs',
+      'Industry-recognized certification management',
+      'Mentor-apprentice pairing & career progression',
+      'Multilingual content delivery',
+      'Training analytics & proficiency tracking'
     ],
     color: {
       gradient: 'from-purple-400 to-pink-500',
@@ -110,19 +110,19 @@ const products: Product[] = [
   {
     id: 5,
     name: 'KAILASH-AI',
-    tagline: 'Predictive Intelligence',
+    tagline: 'Document AI & Predictive Analytics',
     description:
-      'Predict equipment failures, demand patterns, and operational anomalies before they impact your business. KAILASH-AI uses advanced time-series forecasting to optimize maintenance, energy allocation, and resource planning.',
-    problemsSolved: 6,
+      'AI/ML engine powering the entire Go4Garage ecosystem. KAILASH-AI handles document verification (OCR, extraction, validation), predictive maintenance, demand forecasting, anomaly detection, and quality control analytics — enabling all products with intelligence.',
+    problemsSolved: 2,
     icon: '🔮',
     keyFeatures: [
-      'Equipment failure prediction',
-      'Demand forecasting',
-      'Anomaly detection',
-      'Predictive maintenance scheduling',
-      'Energy consumption optimization',
-      'Resource utilization planning',
-      'Risk scoring & early warnings'
+      'Document AI — OCR, extraction & validation',
+      'Predictive maintenance & failure prediction',
+      'Demand forecasting & energy optimization',
+      'Anomaly detection & risk scoring',
+      'Quality control analytics',
+      'RAG-based knowledge retrieval',
+      'ML model training & deployment pipeline'
     ],
     color: {
       gradient: 'from-indigo-400 to-violet-500',
@@ -132,19 +132,19 @@ const products: Product[] = [
   {
     id: 6,
     name: 'Eka-AI',
-    tagline: 'Conversational Intelligence',
+    tagline: 'Agent Orchestration & Internal Q&A',
     description:
-      'Automate complex conversations with domain-specific AI. Eka-AI handles regulatory queries, customer inquiries, and operational support through natural conversations—reducing manual effort and improving response times.',
-    problemsSolved: 6,
+      'Internal AI assistant that orchestrates all 14 sub-agents across the platform. Eka-AI handles cross-product queries, agent coordination, internal knowledge management, and provides domain-aware conversational support for both teams and partners.',
+    problemsSolved: 0,
     icon: '💬',
     keyFeatures: [
-      'Multi-turn conversation handling',
+      'Multi-agent orchestration (14 sub-agents)',
+      'Cross-product internal Q&A',
       'Domain-specific knowledge base',
+      'Agent coordination & task routing',
       'Real-time learning from interactions',
-      'Sentiment-aware responses',
-      'Escalation to humans when needed',
-      'Conversation analytics',
-      'Integration with existing systems'
+      'Escalation to human experts',
+      'Integration with all platform products'
     ],
     color: {
       gradient: 'from-cyan-400 to-blue-500',
@@ -198,7 +198,8 @@ export default function ProductsPage() {
               Our Complete <span className="gradient-text">Product Ecosystem</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8">
-              Six intelligent platforms solving {totalProblems}+ operational challenges across India's EV ecosystem.
+              Seven products addressing 95 problems — 85 directly solvable by Go4Garage across India's
+              entire EV value chain. From regulatory approvals to workforce skilling.
               From regulatory compliance to customer experience—all in one integrated platform.
             </p>
           </motion.div>
@@ -220,7 +221,7 @@ export default function ProductsPage() {
               <div className="text-lg text-gray-300">Integrated Products</div>
             </div>
             <div className="glass-effect p-8 rounded-xl text-center">
-              <div className="text-5xl font-bold gradient-text mb-3">{totalProblems}+</div>
+              <div className="text-5xl font-bold gradient-text mb-3">85</div>
               <div className="text-lg text-gray-300">Problems Solved</div>
             </div>
             <div className="glass-effect p-8 rounded-xl text-center">

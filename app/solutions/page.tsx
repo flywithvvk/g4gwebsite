@@ -25,25 +25,25 @@ const personas: Persona[] = [
     icon: '⚡',
     color: 'from-cyan-400 to-blue-400',
     challenges: [
-      'Managing 95+ compliance requirements across state & central regulations',
-      'Complex operational workflows across multiple sites',
-      'Real-time tracking and reporting for regulatory authorities',
-      'Cost optimization while maintaining compliance standards',
-      'Workforce training and standardization',
-      'Data security and regulatory audit trails'
+      'DISCOM delays and load sanctioning bottlenecks',
+      '33-state policy fragmentation across India',
+      'Fire dept NOCs and electrical inspector certification',
+      'Subsidy disbursement delays under FAME-II',
+      'Charger uptime and SLA breach management',
+      'Revenue leakage and manual audit prep'
     ],
     products: [
       {
-        name: 'URGAA Platform',
-        description: 'Automate 89.5% of compliance work with AI-driven regulatory intelligence'
+        name: 'URGAA',
+        description: 'Automate 48 regulatory problems with AI-driven compliance intelligence'
       },
       {
         name: 'KAILASH-AI',
-        description: 'Predictive analytics for operational efficiency and demand forecasting'
+        description: 'Predictive analytics for charger uptime and operational efficiency'
       }
     ],
-    impact: '3x faster compliance, 89.5% less manual work, real-time regulatory updates',
-    ctaText: 'Explore URGAA Platform'
+    impact: '48 regulatory problems automated, real-time compliance, zero manual audit prep',
+    ctaText: 'Explore URGAA'
   },
   {
     id: 'workshops-service',
@@ -51,24 +51,24 @@ const personas: Persona[] = [
     icon: '🔧',
     color: 'from-green-400 to-emerald-400',
     challenges: [
-      'Managing service schedules and technician allocation',
-      'Tracking spare parts inventory and sourcing',
-      'Standardizing EV service procedures across locations',
-      'Customer communication and follow-ups',
-      'Performance metrics and quality assurance',
-      'Revenue optimization per service center'
+      'Service network gaps across EV coverage areas',
+      'Spare parts availability and procurement delays',
+      'High EV repair costs and diagnostic tool shortage',
+      'Warranty disputes with OEMs',
+      'GST anomalies in service invoicing',
+      'Technician shortage and skill standardization'
     ],
     products: [
       {
         name: 'GSTSAAS',
-        description: 'Complete service management with inventory, scheduling, and quality tracking'
+        description: 'Automated GST invoicing and service commerce management'
       },
       {
         name: 'EV VIDYA ARJUN',
         description: 'AI-powered training platform for technician upskilling and certification'
       }
     ],
-    impact: '40% improvement in service efficiency, 99.2% quality standards, trained technicians',
+    impact: '17 service/commerce problems solved, automated GST invoicing, parts procurement network',
     ctaText: 'Explore GSTSAAS'
   },
   {
@@ -77,42 +77,40 @@ const personas: Persona[] = [
     icon: '🚗',
     color: 'from-purple-400 to-indigo-400',
     challenges: [
-      'Real-time fleet tracking and vehicle diagnostics',
-      'Optimizing charging infrastructure across routes',
+      'Fleet compliance management across states',
+      'Total cost of ownership (TCO) uncertainty',
+      'Charging optimization for fleet routes',
       'Predictive maintenance and downtime reduction',
-      'Driver behavior analysis and safety protocols',
-      'Compliance with transportation regulations',
-      'Cost per km optimization'
+      'Real-time fleet monitoring and diagnostics'
     ],
     products: [
       {
-        name: 'URGAA Platform',
+        name: 'URGAA',
         description: 'Regulatory compliance automation for fleet operations'
       },
       {
         name: 'GSTSAAS',
-        description: 'Vehicle maintenance scheduling and service tracking'
+        description: 'Fleet service management and GST invoicing'
       },
       {
         name: 'KAILASH-AI',
         description: 'Predictive maintenance and route optimization analytics'
       }
     ],
-    impact: '35% reduction in operational costs, 99.5% uptime, optimized routes',
+    impact: 'Operational cost reduction, 99.5% uptime, optimized routes',
     ctaText: 'Explore Fleet Solutions'
   },
   {
     id: 'ev-technicians',
-    name: 'EV Technicians',
+    name: 'EV Technicians & Trainees',
     icon: '🎓',
     color: 'from-orange-400 to-red-400',
     challenges: [
-      'Learning EV-specific repair and diagnostics',
-      'Keeping up with evolving EV technology',
-      'Standardized training and certification',
-      'Access to updated technical documentation',
-      'Career progression and skill development',
-      'Hands-on practical experience with new systems'
+      '100K+ technician shortage in India\u2019s EV sector',
+      'Low ICE-to-EV skill overlap for existing mechanics',
+      'High-voltage safety competency gap',
+      'Training infrastructure gaps across regions',
+      'High attrition in EV service roles'
     ],
     products: [
       {
@@ -124,8 +122,28 @@ const personas: Persona[] = [
         description: 'Conversational AI assistant for instant technical guidance and troubleshooting'
       }
     ],
-    impact: 'Industry-recognized certifications, 24/7 learning support, career advancement',
+    impact: '8 workforce problems addressed, certified EV professionals, career progression paths',
     ctaText: 'Explore Training Programs'
+  },
+  {
+    id: 'government-regulators',
+    name: 'Government & Regulators',
+    icon: '🏛️',
+    color: 'from-yellow-400 to-orange-400',
+    challenges: [
+      'Policy fragmentation across 33 states',
+      'Inter-ministerial coordination challenges',
+      'FAME-II implementation failures and delays',
+      'Document verification burden across departments'
+    ],
+    products: [
+      {
+        name: 'URGAA Platform APIs',
+        description: 'Digitized approval workflows and real-time compliance dashboards'
+      }
+    ],
+    impact: 'Digitized approvals, real-time compliance dashboards, reduced certification bottlenecks',
+    ctaText: 'Explore Regulatory Solutions'
   },
   {
     id: 'oems-manufacturers',
@@ -133,12 +151,11 @@ const personas: Persona[] = [
     icon: '🏭',
     color: 'from-blue-500 to-cyan-400',
     challenges: [
-      'Integrating with multiple CPO and service networks',
-      'Real-time vehicle health monitoring post-sale',
-      'Market demand forecasting and inventory planning',
-      'Connecting with the broader EV ecosystem',
-      'Regulatory compliance across markets',
-      'Customer experience insights and analytics'
+      'CPO integration and ecosystem connectivity',
+      'Vehicle health monitoring post-sale',
+      'Warranty management and dispute resolution',
+      'Demand forecasting and inventory planning',
+      'Localization verification across markets'
     ],
     products: [
       {
@@ -147,37 +164,11 @@ const personas: Persona[] = [
       },
       {
         name: 'KAILASH-AI',
-        description: 'Advanced analytics for market trends, demand forecasting, and performance insights'
+        description: 'Quality analytics, market insights, and demand forecasting'
       }
     ],
-    impact: 'Real-time market insights, faster time to market, ecosystem integration',
+    impact: 'Real-time market insights, quality analytics, ecosystem integration',
     ctaText: 'Explore API Platform'
-  },
-  {
-    id: 'investors-stakeholders',
-    name: 'Investors & Stakeholders',
-    icon: '📊',
-    color: 'from-yellow-400 to-orange-400',
-    challenges: [
-      'Understanding market size and growth potential in EV sector',
-      'Tracking portfolio company performance metrics',
-      'Assessing regulatory and compliance risks',
-      'Evaluating environmental and social impact',
-      'Market intelligence and competitive positioning',
-      'Data-driven investment decisions'
-    ],
-    products: [
-      {
-        name: 'Analytics Dashboard',
-        description: 'Comprehensive market analytics and portfolio performance tracking'
-      },
-      {
-        name: 'Impact Metrics',
-        description: 'ESG and sustainability metrics aligned with global standards'
-      }
-    ],
-    impact: 'Data-driven decisions, 500M+ addressable market, proven ROI metrics',
-    ctaText: 'Investor Relations'
   }
 ];
 
@@ -238,7 +229,7 @@ export default function SolutionsPage() {
               <span className="gradient-text">Every Role</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8">
-              From CPO operators to investors, discover how Go4Garage transforms your specific challenges
+              From CPO operators to government regulators, discover how Go4Garage transforms your specific challenges
               into competitive advantages with AI-powered solutions.
             </p>
           </motion.div>
@@ -358,9 +349,9 @@ export default function SolutionsPage() {
               {/* Platform Components */}
               {[
                 {
-                  name: 'URGAA Platform',
+                  name: 'URGAA',
                   description: 'Regulatory Intelligence & Compliance Automation',
-                  features: ['95+ compliance requirements', 'Real-time regulatory updates', 'State-wise tracking', 'Audit trail management'],
+                  features: ['48 regulatory problems automated', 'Real-time regulatory updates', '33-state policy compliance', 'Zero manual audit prep'],
                   icon: '⚡'
                 },
                 {
@@ -435,12 +426,12 @@ export default function SolutionsPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { value: '6+', label: 'Industry Personas Served', desc: 'From operators to investors' },
-              { value: '89.5%', label: 'Compliance Automation', desc: 'Manual effort reduction' },
-              { value: '3x', label: 'Faster Operations', desc: 'Average improvement' },
-              { value: '99.2%', label: 'Quality Standards', desc: 'Service center excellence' },
-              { value: '35%', label: 'Cost Reduction', desc: 'For fleet operators' },
-              { value: '500M+', label: 'Addressable Market', desc: 'India EV ecosystem' }
+              { value: '6+', label: 'Industry Personas Served', desc: 'From operators to regulators' },
+              { value: '48+', label: 'Regulatory Problems Automated', desc: 'For CPO operators' },
+              { value: '17+', label: 'Service Problems Solved', desc: 'For workshops & service centers' },
+              { value: '99.5%', label: 'Fleet Uptime', desc: 'For fleet operators' },
+              { value: '8+', label: 'Workforce Gaps Addressed', desc: 'For EV technicians & trainees' },
+              { value: '33', label: 'States Covered', desc: 'Policy compliance across India' }
             ].map((stat, idx) => (
               <motion.div
                 key={idx}

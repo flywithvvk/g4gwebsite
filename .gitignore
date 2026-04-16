@@ -1,5 +1,8 @@
 # Dependencies
 node_modules/
+
+# MCP config (contains API keys)
+.mcp.json
 .pnp
 .pnp.js
 
@@ -40,3 +43,4 @@ deploy-aws.sh
 # Typescript
 *.tsbuildinfo
 next-env.d.ts
+.firebase/
