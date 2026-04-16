@@ -8,135 +8,78 @@ function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: str
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const [count, setCount] = useState(0);
-
   useEffect(() => {
     if (!isInView) return;
     let start = 0;
-    const duration = 1800;
-    const step = target / (duration / 16);
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= target) { setCount(target); clearInterval(timer); }
-      else { setCount(Math.floor(start * 10) / 10); }
-    }, 16);
+    const step = target / (1800 / 16);
+    const timer = setInterval(() => { start += step; if (start >= target) { setCount(target); clearInterval(timer); } else { setCount(Math.floor(start * 10) / 10); } }, 16);
     return () => clearInterval(timer);
   }, [isInView, target]);
-
   return <span ref={ref}>{count % 1 === 0 ? Math.floor(count) : count.toFixed(1)}{suffix}</span>;
 }
 
+function Icon({ name, size = 24, className = '' }: { name: string; size?: number; className?: string }) {
+  return <span className={`material-symbols-outlined ${className}`} style={{ fontSize: size }}>{name}</span>;
+}
+
 const capabilities = [
-  {
-    title: 'Regulatory Intelligence',
-    description: 'Automated compliance tracking across 95+ requirements spanning central, state, and sector-specific mandates.',
-    icon: '⚖️',
-    features: ['Real-time regulatory updates across 33 states', 'Automated audit readiness & filing', 'DISCOM & subsidy tracking'],
-    stat: '95+',
-    statLabel: 'Requirements tracked',
-  },
-  {
-    title: 'Operational Excellence',
-    description: 'Unified platform for CPO operations, service management, and fleet optimization with predictive insights.',
-    icon: '⚙️',
-    features: ['Unified operations dashboard', 'Service workflow automation', 'Fleet analytics & routing'],
-    stat: '3x',
-    statLabel: 'Faster operations',
-  },
-  {
-    title: 'Commercial Intelligence',
-    description: 'Predictive analytics and market insights powered by our proprietary Automobile LLM.',
-    icon: '📊',
-    features: ['Market trend analysis', 'Revenue optimization engine', 'Customer intelligence & segmentation'],
-    stat: '95%',
-    statLabel: 'Cost reduction',
-  },
-  {
-    title: 'Workforce Development',
-    description: 'AI-powered training platform for technician certification and skill development in EV ecosystem.',
-    icon: '👥',
-    features: ['Adaptive learning paths', 'Industry-recognized certifications', 'Performance analytics'],
-    stat: '100K+',
-    statLabel: 'Technician gap addressed',
-  },
+  { title: 'Regulatory Intelligence', description: 'Automated compliance tracking across 95+ requirements spanning central, state, and sector-specific mandates.', icon: 'gavel', features: ['Real-time regulatory updates across 33 states', 'Automated audit readiness & filing', 'DISCOM & subsidy tracking'], stat: '95+', statLabel: 'Requirements tracked' },
+  { title: 'Operational Excellence', description: 'Unified platform for CPO operations, service management, and fleet optimization with predictive insights.', icon: 'settings', features: ['Unified operations dashboard', 'Service workflow automation', 'Fleet analytics & routing'], stat: '3x', statLabel: 'Faster operations' },
+  { title: 'Commercial Intelligence', description: 'Predictive analytics and market insights powered by our proprietary Automobile LLM.', icon: 'insights', features: ['Market trend analysis', 'Revenue optimization engine', 'Customer intelligence & segmentation'], stat: '95%', statLabel: 'Cost reduction' },
+  { title: 'Workforce Development', description: 'AI-powered training platform for technician certification and skill development in EV ecosystem.', icon: 'group', features: ['Adaptive learning paths', 'Industry-recognized certifications', 'Performance analytics'], stat: '100K+', statLabel: 'Technician gap addressed' },
 ];
 
 const comparisonData = [
-  { metric: 'Regulatory Compliance', traditional: 'Manual tracking, error-prone', go4garage: 'Automated with 89.5% accuracy', icon: '📋' },
-  { metric: 'Operations Management', traditional: '5+ disconnected systems', go4garage: 'Unified AI-powered platform', icon: '🔗' },
-  { metric: 'Time to Audit Ready', traditional: '3-4 weeks per audit', go4garage: 'Always audit-ready', icon: '⏱️' },
-  { metric: 'Workforce Training', traditional: 'Ad-hoc, unstructured', go4garage: 'AI-guided certified curriculum', icon: '🎓' },
-  { metric: 'Decision Making', traditional: 'Reactive, data-scattered', go4garage: '3x faster with predictive insights', icon: '🧠' },
-  { metric: 'Scalability', traditional: 'Limited, manual overhead', go4garage: 'Unlimited, fully automated', icon: '📈' },
+  { metric: 'Regulatory Compliance', traditional: 'Manual tracking, error-prone', go4garage: 'Automated with 89.5% accuracy', icon: 'checklist' },
+  { metric: 'Operations Management', traditional: '5+ disconnected systems', go4garage: 'Unified AI-powered platform', icon: 'hub' },
+  { metric: 'Time to Audit Ready', traditional: '3-4 weeks per audit', go4garage: 'Always audit-ready', icon: 'schedule' },
+  { metric: 'Workforce Training', traditional: 'Ad-hoc, unstructured', go4garage: 'AI-guided certified curriculum', icon: 'school' },
+  { metric: 'Decision Making', traditional: 'Reactive, data-scattered', go4garage: '3x faster with predictive insights', icon: 'psychology' },
+  { metric: 'Scalability', traditional: 'Limited, manual overhead', go4garage: 'Unlimited, fully automated', icon: 'trending_up' },
 ];
 
 const techStack = [
-  {
-    name: 'Automobile LLM',
-    description: 'Proprietary Large Language Model trained exclusively on Indian automotive regulations, workflows, and industry patterns.',
-    icon: '🧠',
-    gradient: 'from-accent-cyan/10 to-accent-blue/10',
-    border: 'border-accent-cyan/20',
-  },
-  {
-    name: 'Real-time Compliance Engine',
-    description: 'Continuous monitoring of regulatory changes across all states with instant alerts and workflow automation.',
-    icon: '⚡',
-    gradient: 'from-green-500/10 to-emerald-500/10',
-    border: 'border-green-500/20',
-  },
-  {
-    name: 'Predictive Analytics',
-    description: 'ML-powered forecasting for market trends, operational bottlenecks, and business opportunities.',
-    icon: '🔮',
-    gradient: 'from-purple-500/10 to-pink-500/10',
-    border: 'border-purple-500/20',
-  },
-];
-
-const securityBadges = [
-  { label: 'End-to-End Encryption', icon: '🔐' },
-  { label: 'Role-Based Access', icon: '🛡️' },
-  { label: 'Audit Logging', icon: '📝' },
-  { label: '99.99% Uptime SLA', icon: '✅' },
+  { name: 'Automobile LLM', description: 'Proprietary Large Language Model trained exclusively on Indian automotive regulations, workflows, and industry patterns.', icon: 'psychology', color: 'border-l-primary' },
+  { name: 'Real-time Compliance Engine', description: 'Continuous monitoring of regulatory changes across all states with instant alerts and workflow automation.', icon: 'bolt', color: 'border-l-tertiary' },
+  { name: 'Predictive Analytics', description: 'ML-powered forecasting for market trends, operational bottlenecks, and business opportunities.', icon: 'analytics', color: 'border-l-secondary' },
 ];
 
 export default function PlatformPage() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <div className="min-h-screen bg-primary text-white overflow-x-hidden">
+    <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
 
       {/* ─── HERO ─── */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-16">
         <div className="absolute inset-0">
-          <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 10, repeat: Infinity }} className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent-cyan/10 rounded-full blur-[150px]" />
-          <motion.div animate={{ scale: [1.15, 1, 1.15] }} transition={{ duration: 12, repeat: Infinity }} className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent-blue/10 rounded-full blur-[150px]" />
-          <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 8, repeat: Infinity }} className="absolute top-1/3 right-1/3 w-72 h-72 bg-purple-500/5 rounded-full blur-[100px]" />
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
+          <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 10, repeat: Infinity }} className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]" />
+          <motion.div animate={{ scale: [1.15, 1, 1.15] }} transition={{ duration: 12, repeat: Infinity }} className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-container/8 rounded-full blur-[150px]" />
         </div>
-
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(0,229,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.3) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
         <div className="container mx-auto px-6 relative z-10">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="text-center max-w-5xl mx-auto">
-            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full border border-accent-cyan/30 bg-accent-cyan/5 backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-accent-cyan animate-pulse" />
-              <span className="text-sm font-medium text-accent-cyan">Enterprise-Grade AI Platform</span>
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full border border-primary/20 bg-primary-container/10">
+              <span className="w-2 h-2 rounded-full bg-primary-container animate-pulse" />
+              <span className="text-sm font-medium text-primary font-display">Enterprise-Grade AI Platform</span>
             </motion.div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight font-display">
               The AI Platform Redefining{' '}<span className="gradient-text">Automobile Operations</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-on-surface-variant mb-10 max-w-3xl mx-auto">
               Regulatory intelligence, operational excellence, and predictive insights — unified in one enterprise platform built for India.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <motion.button whileHover={{ scale: 1.04, boxShadow: '0 0 40px rgba(0,229,255,0.3)' }} whileTap={{ scale: 0.98 }} className="px-8 py-4 bg-gradient-to-r from-accent-cyan to-accent-blue text-white rounded-xl font-semibold text-lg shadow-lg shadow-accent-cyan/20">
+                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="px-8 py-4 bg-primary text-primary-on rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-shadow">
                   Request Demo
                 </motion.button>
               </Link>
               <Link href="/products">
-                <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }} className="px-8 py-4 rounded-xl font-semibold text-lg border border-white/20 bg-white/5 backdrop-blur-sm text-white hover:bg-white/10 transition-all">
+                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="px-8 py-4 rounded-2xl font-semibold text-lg border border-outline-variant bg-surface-bright text-on-surface hover:bg-surface-container-low transition-colors">
                   View Products
                 </motion.button>
               </Link>
@@ -146,46 +89,34 @@ export default function PlatformPage() {
       </section>
 
       {/* ─── CAPABILITIES (Tabs) ─── */}
-      <section className="py-24 bg-primary-light">
+      <section className="py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="text-sm font-semibold text-accent-cyan uppercase tracking-widest mb-4 block">Core Capabilities</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Four Pillars of <span className="gradient-text">Platform Excellence</span></h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">A comprehensive AI-powered solution designed for India&apos;s automobile industry.</p>
+            <span className="text-sm font-semibold text-primary uppercase tracking-widest mb-4 block font-display">Core Capabilities</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-display">Four Pillars of <span className="gradient-text">Platform Excellence</span></h2>
+            <p className="text-on-surface-variant max-w-2xl mx-auto">A comprehensive AI-powered solution designed for India&apos;s automobile industry.</p>
           </motion.div>
 
-          {/* Tab selector */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
             {capabilities.map((cap, idx) => (
-              <motion.button
-                key={idx}
-                onClick={() => setActiveTab(idx)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={`px-5 py-3 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${activeTab === idx ? 'bg-gradient-to-r from-accent-cyan to-accent-blue text-white shadow-lg shadow-accent-cyan/20' : 'bg-white/5 text-gray-400 border border-white/10 hover:border-accent-cyan/30 hover:text-white'}`}
-              >
-                <span className="text-lg">{cap.icon}</span>
+              <motion.button key={idx} onClick={() => setActiveTab(idx)} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className={`px-5 py-3 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${activeTab === idx ? 'bg-primary text-primary-on shadow-md' : 'bg-surface-bright text-on-surface-variant border border-outline-variant/30 hover:border-primary/30 hover:text-primary'}`}>
+                <Icon name={cap.icon} size={20} />
                 <span className="hidden sm:inline">{cap.title}</span>
               </motion.button>
             ))}
           </div>
 
-          {/* Tab content */}
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="grid md:grid-cols-2 gap-8 items-center"
-          >
-            <div className="glass-effect p-8 rounded-2xl">
-              <div className="text-5xl mb-4">{capabilities[activeTab].icon}</div>
-              <h3 className="text-2xl font-bold mb-3">{capabilities[activeTab].title}</h3>
-              <p className="text-gray-400 mb-6 leading-relaxed">{capabilities[activeTab].description}</p>
+          <motion.div key={activeTab} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="bg-surface-bright p-8 rounded-2xl border border-outline-variant/30 shadow-sm">
+              <Icon name={capabilities[activeTab].icon} size={40} className="text-primary mb-4" />
+              <h3 className="text-2xl font-bold mb-3 font-display">{capabilities[activeTab].title}</h3>
+              <p className="text-on-surface-variant mb-6 leading-relaxed">{capabilities[activeTab].description}</p>
               <ul className="space-y-3">
                 {capabilities[activeTab].features.map((f, i) => (
-                  <motion.li key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }} className="flex items-center gap-3 text-sm text-gray-300">
-                    <span className="w-5 h-5 rounded-full bg-accent-cyan/20 flex items-center justify-center flex-shrink-0"><span className="w-2 h-2 rounded-full bg-accent-cyan" /></span>
+                  <motion.li key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.1 }} className="flex items-center gap-3 text-sm text-on-surface-variant">
+                    <div className="w-5 h-5 rounded-full bg-primary-container/20 flex items-center justify-center flex-shrink-0">
+                      <Icon name="check" size={14} className="text-primary" />
+                    </div>
                     {f}
                   </motion.li>
                 ))}
@@ -193,18 +124,18 @@ export default function PlatformPage() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <div className="glass-effect p-8 rounded-2xl text-center">
-                <div className="text-5xl font-black gradient-text mb-2">{capabilities[activeTab].stat}</div>
-                <div className="text-sm text-gray-400">{capabilities[activeTab].statLabel}</div>
+              <div className="bg-surface-bright p-8 rounded-2xl text-center border border-outline-variant/30 shadow-sm">
+                <div className="text-5xl font-black gradient-text mb-2 font-display">{capabilities[activeTab].stat}</div>
+                <div className="text-sm text-on-surface-variant">{capabilities[activeTab].statLabel}</div>
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="glass-effect p-6 rounded-xl text-center">
-                  <div className="text-3xl font-bold text-accent-cyan mb-1"><AnimatedCounter target={89.5} suffix="%" /></div>
-                  <div className="text-xs text-gray-500">Automation</div>
+                <div className="bg-surface-bright p-6 rounded-xl text-center border border-outline-variant/30">
+                  <div className="text-3xl font-bold text-primary mb-1 font-display"><AnimatedCounter target={89.5} suffix="%" /></div>
+                  <div className="text-xs text-on-surface-variant">Automation</div>
                 </div>
-                <div className="glass-effect p-6 rounded-xl text-center">
-                  <div className="text-3xl font-bold text-accent-blue mb-1">24/7</div>
-                  <div className="text-xs text-gray-500">Monitoring</div>
+                <div className="bg-surface-bright p-6 rounded-xl text-center border border-outline-variant/30">
+                  <div className="text-3xl font-bold text-secondary mb-1 font-display">24/7</div>
+                  <div className="text-xs text-on-surface-variant">Monitoring</div>
                 </div>
               </div>
             </div>
@@ -213,37 +144,30 @@ export default function PlatformPage() {
       </section>
 
       {/* ─── COMPARISON TABLE ─── */}
-      <section className="py-24 bg-primary">
+      <section className="py-24 bg-surface">
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="text-sm font-semibold text-accent-cyan uppercase tracking-widest mb-4 block">The Difference</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Traditional vs <span className="gradient-text">Go4Garage AI</span></h2>
+            <span className="text-sm font-semibold text-primary uppercase tracking-widest mb-4 block font-display">The Difference</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-display">Traditional vs <span className="gradient-text">Go4Garage AI</span></h2>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-4xl mx-auto">
-            <div className="glass-effect rounded-2xl overflow-hidden">
-              <div className="grid grid-cols-[1fr_1fr_1fr] text-sm font-semibold border-b border-white/10">
-                <div className="px-6 py-4 text-white">Metric</div>
-                <div className="px-6 py-4 text-gray-400 text-center">Traditional</div>
-                <div className="px-6 py-4 text-accent-cyan text-center">Go4Garage AI</div>
+            <div className="bg-surface-bright rounded-2xl overflow-hidden border border-outline-variant/30 shadow-sm">
+              <div className="grid grid-cols-[1fr_1fr_1fr] text-sm font-semibold border-b border-outline-variant/20">
+                <div className="px-6 py-4 text-on-surface font-display">Metric</div>
+                <div className="px-6 py-4 text-on-surface-variant text-center">Traditional</div>
+                <div className="px-6 py-4 text-primary text-center">Go4Garage AI</div>
               </div>
               {comparisonData.map((row, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.05 }}
-                  className="grid grid-cols-[1fr_1fr_1fr] text-sm border-b border-white/5 hover:bg-white/[0.03] transition-colors"
-                >
-                  <div className="px-6 py-4 font-semibold text-white flex items-center gap-2">
-                    <span>{row.icon}</span> {row.metric}
+                <motion.div key={idx} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.05 }} className="grid grid-cols-[1fr_1fr_1fr] text-sm border-b border-outline-variant/10 hover:bg-surface-container-low/50 transition-colors">
+                  <div className="px-6 py-4 font-semibold text-on-surface flex items-center gap-2">
+                    <Icon name={row.icon} size={18} className="text-primary" /> {row.metric}
                   </div>
-                  <div className="px-6 py-4 text-gray-500 text-center flex items-center justify-center">
-                    <span className="text-red-400/60 mr-2">✕</span> {row.traditional}
+                  <div className="px-6 py-4 text-on-surface-variant text-center flex items-center justify-center">
+                    <Icon name="close" size={16} className="text-error mr-2" /> {row.traditional}
                   </div>
-                  <div className="px-6 py-4 text-accent-cyan text-center flex items-center justify-center font-medium">
-                    <span className="text-accent-cyan mr-2">✓</span> {row.go4garage}
+                  <div className="px-6 py-4 text-primary text-center flex items-center justify-center font-medium">
+                    <Icon name="check" size={16} className="text-tertiary mr-2" /> {row.go4garage}
                   </div>
                 </motion.div>
               ))}
@@ -253,27 +177,19 @@ export default function PlatformPage() {
       </section>
 
       {/* ─── TECHNOLOGY STACK ─── */}
-      <section className="py-24 bg-primary-light">
+      <section className="py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="text-sm font-semibold text-accent-cyan uppercase tracking-widest mb-4 block">Under the Hood</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Advanced <span className="gradient-text">Technology Stack</span></h2>
+            <span className="text-sm font-semibold text-primary uppercase tracking-widest mb-4 block font-display">Under the Hood</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-display">Advanced <span className="gradient-text">Technology Stack</span></h2>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {techStack.map((tech, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                whileHover={{ y: -6 }}
-                className={`p-8 rounded-2xl bg-gradient-to-br ${tech.gradient} border ${tech.border} transition-all duration-300 group`}
-              >
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{tech.icon}</div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-accent-cyan transition-colors">{tech.name}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{tech.description}</p>
+              <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} whileHover={{ y: -4 }} className={`bg-surface-bright p-8 rounded-2xl border border-outline-variant/30 border-l-4 ${tech.color} shadow-sm hover:shadow-md transition-all group`}>
+                <Icon name={tech.icon} size={36} className="text-primary mb-4 group-hover:scale-110 transition-transform" />
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors font-display">{tech.name}</h3>
+                <p className="text-on-surface-variant text-sm leading-relaxed">{tech.description}</p>
               </motion.div>
             ))}
           </div>
@@ -281,35 +197,27 @@ export default function PlatformPage() {
       </section>
 
       {/* ─── ENTERPRISE FEATURES ─── */}
-      <section className="py-24 bg-primary">
+      <section className="py-24 bg-surface">
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="text-sm font-semibold text-accent-cyan uppercase tracking-widest mb-4 block">Enterprise Ready</span>
-            <h2 className="text-4xl md:text-5xl font-bold">Enterprise-Grade <span className="gradient-text">Features</span></h2>
+            <span className="text-sm font-semibold text-primary uppercase tracking-widest mb-4 block font-display">Enterprise Ready</span>
+            <h2 className="text-4xl md:text-5xl font-bold font-display">Enterprise-Grade <span className="gradient-text">Features</span></h2>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { title: 'Security', items: ['End-to-end encryption', 'RBAC controls', 'Audit logging', 'SOC 2 Type II'], icon: '🔒' },
-              { title: 'Scalability', items: ['Multi-tenant architecture', 'Auto-scaling infra', 'Zero-downtime deploys', '99.99% uptime SLA'], icon: '📈' },
-              { title: 'Integration', items: ['REST & GraphQL APIs', 'Webhook support', 'Pre-built connectors', 'Custom integration'], icon: '🔗' },
-              { title: 'Support', items: ['24/7 dedicated support', 'Real-time dashboards', 'Custom reporting', 'Data export & BI'], icon: '🎧' },
+              { title: 'Security', items: ['End-to-end encryption', 'RBAC controls', 'Audit logging', 'SOC 2 Type II'], icon: 'lock' },
+              { title: 'Scalability', items: ['Multi-tenant architecture', 'Auto-scaling infra', 'Zero-downtime deploys', '99.99% uptime SLA'], icon: 'trending_up' },
+              { title: 'Integration', items: ['REST & GraphQL APIs', 'Webhook support', 'Pre-built connectors', 'Custom integration'], icon: 'hub' },
+              { title: 'Support', items: ['24/7 dedicated support', 'Real-time dashboards', 'Custom reporting', 'Data export & BI'], icon: 'support_agent' },
             ].map((feature, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.08 }}
-                whileHover={{ y: -4 }}
-                className="glass-effect p-6 rounded-2xl hover:border-accent-cyan/30 transition-all group"
-              >
-                <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">{feature.icon}</div>
-                <h3 className="text-lg font-bold mb-4 text-accent-cyan">{feature.title}</h3>
+              <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.08 }} whileHover={{ y: -4 }} className="bg-surface-bright p-6 rounded-2xl border border-outline-variant/30 hover:border-primary/20 shadow-sm hover:shadow-md transition-all group">
+                <Icon name={feature.icon} size={28} className="text-primary mb-3 group-hover:scale-110 transition-transform" />
+                <h3 className="text-lg font-bold mb-4 text-primary font-display">{feature.title}</h3>
                 <ul className="space-y-2.5">
                   {feature.items.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-gray-400">
-                      <span className="w-1 h-1 rounded-full bg-accent-cyan flex-shrink-0" />
+                    <li key={i} className="flex items-center gap-2 text-sm text-on-surface-variant">
+                      <span className="w-1 h-1 rounded-full bg-primary flex-shrink-0" />
                       {item}
                     </li>
                   ))}
@@ -320,19 +228,20 @@ export default function PlatformPage() {
         </div>
       </section>
 
-      {/* ─── PERFORMANCE METRICS ─── */}
-      <section className="py-16 bg-gradient-to-r from-accent-cyan/5 via-accent-blue/5 to-accent-cyan/5 border-y border-white/5">
+      {/* ─── STATS BANNER ─── */}
+      <section className="py-16 bg-gradient-to-r from-primary-container/10 via-surface to-secondary-container/10 border-y border-outline-variant/20">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: 89.5, suffix: '%', label: 'Compliance Automation' },
-              { value: 3, suffix: 'x', label: 'Faster Operations' },
-              { value: 99.99, suffix: '%', label: 'Platform Uptime' },
-              { value: 24, suffix: '/7', label: 'Support Available' },
+              { value: 89.5, suffix: '%', label: 'Compliance Automation', icon: 'verified' },
+              { value: 3, suffix: 'x', label: 'Faster Operations', icon: 'speed' },
+              { value: 99.99, suffix: '%', label: 'Platform Uptime', icon: 'cloud_done' },
+              { value: 24, suffix: '/7', label: 'Support Available', icon: 'support_agent' },
             ].map((stat, idx) => (
               <motion.div key={idx} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="text-center">
-                <div className="text-4xl md:text-5xl font-black gradient-text mb-2"><AnimatedCounter target={stat.value} suffix={stat.suffix} /></div>
-                <div className="text-sm text-gray-400 font-medium">{stat.label}</div>
+                <Icon name={stat.icon} size={28} className="text-primary mb-2" />
+                <div className="text-4xl md:text-5xl font-black gradient-text mb-1 font-display"><AnimatedCounter target={stat.value} suffix={stat.suffix} /></div>
+                <div className="text-sm text-on-surface-variant font-medium">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -340,25 +249,22 @@ export default function PlatformPage() {
       </section>
 
       {/* ─── SECURITY BANNER ─── */}
-      <section className="py-20 bg-primary-light">
+      <section className="py-20 bg-surface-container-low">
         <div className="container mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-3">Enterprise-Grade <span className="gradient-text">Security</span></h3>
-            <p className="text-gray-400">ISO 27001 certified, SOC 2 Type II compliant, GDPR ready.</p>
+            <h3 className="text-3xl font-bold mb-3 font-display">Enterprise-Grade <span className="gradient-text">Security</span></h3>
+            <p className="text-on-surface-variant">ISO 27001 certified, SOC 2 Type II compliant, GDPR ready.</p>
           </motion.div>
           <div className="flex flex-wrap gap-4 justify-center">
-            {securityBadges.map((badge, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.08 }}
-                whileHover={{ scale: 1.05, borderColor: 'rgba(0,229,255,0.4)' }}
-                className="glass-effect px-6 py-4 rounded-xl border border-white/10 flex items-center gap-3 cursor-default"
-              >
-                <span className="text-xl">{badge.icon}</span>
-                <span className="text-sm font-medium text-gray-300">{badge.label}</span>
+            {[
+              { label: 'End-to-End Encryption', icon: 'encrypted' },
+              { label: 'Role-Based Access', icon: 'shield' },
+              { label: 'Audit Logging', icon: 'description' },
+              { label: '99.99% Uptime SLA', icon: 'verified' },
+            ].map((badge, idx) => (
+              <motion.div key={idx} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: idx * 0.08 }} whileHover={{ scale: 1.05 }} className="bg-surface-bright px-6 py-4 rounded-xl border border-outline-variant/30 flex items-center gap-3 hover:border-primary/30 transition-all">
+                <Icon name={badge.icon} size={22} className="text-primary" />
+                <span className="text-sm font-medium text-on-surface">{badge.label}</span>
               </motion.div>
             ))}
           </div>
@@ -367,19 +273,19 @@ export default function PlatformPage() {
 
       {/* ─── CTA ─── */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent-cyan/8 via-primary to-accent-blue/8" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-container/10 via-surface to-secondary-container/10" />
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Experience the <span className="gradient-text">Platform Difference</span></h2>
-            <p className="text-lg text-gray-400 mb-10 max-w-2xl mx-auto">Join leading automobile companies transforming operations with AI-powered intelligence.</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-display">Experience the <span className="gradient-text">Platform Difference</span></h2>
+            <p className="text-lg text-on-surface-variant mb-10 max-w-2xl mx-auto">Join leading automobile companies transforming operations with AI-powered intelligence.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <motion.button whileHover={{ scale: 1.04, boxShadow: '0 0 50px rgba(0,229,255,0.3)' }} whileTap={{ scale: 0.98 }} className="px-10 py-4 bg-gradient-to-r from-accent-cyan to-accent-blue text-white rounded-xl font-semibold text-lg shadow-xl shadow-accent-cyan/20">
+                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="px-10 py-4 bg-primary text-primary-on rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-shadow">
                   Request Demo
                 </motion.button>
               </Link>
               <Link href="/contact">
-                <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }} className="px-10 py-4 rounded-xl font-semibold text-lg border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-all">
+                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="px-10 py-4 rounded-2xl font-semibold text-lg border border-outline-variant bg-surface-bright text-on-surface hover:bg-surface-container-low transition-colors">
                   Contact Sales
                 </motion.button>
               </Link>

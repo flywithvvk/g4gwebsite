@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased bg-surface text-on-surface">
         <Navigation />
         <main className="min-h-screen">
           {children}

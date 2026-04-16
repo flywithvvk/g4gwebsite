@@ -9,20 +9,61 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // MD3 Surface tokens — light theme
+        surface: {
+          DEFAULT: '#f9f9f9',
+          dim: '#d9d9d9',
+          bright: '#ffffff',
+          'container-lowest': '#ffffff',
+          'container-low': '#f3f3f3',
+          container: '#ededed',
+          'container-high': '#e7e7e7',
+          'container-highest': '#e2e2e2',
+        },
+        // MD3 Primary — warm amber/brown
         primary: {
-          DEFAULT: '#0A1929',
-          light: '#1a2942',
-          dark: '#000000',
+          DEFAULT: '#904d00',
+          container: '#f18a22',
+          on: '#ffffff',
+          'on-container': '#301600',
         },
-        accent: {
-          cyan: '#00E5FF',
-          blue: '#0066FF',
-          green: '#00C853',
-          gold: '#FFD700',
+        // MD3 Secondary — purple
+        secondary: {
+          DEFAULT: '#7b41b3',
+          container: '#c588fe',
+          on: '#ffffff',
+          'on-container': '#2d0052',
         },
+        // MD3 Tertiary — green
+        tertiary: {
+          DEFAULT: '#006e2f',
+          container: '#22bc5a',
+          on: '#ffffff',
+          'on-container': '#00210a',
+        },
+        // MD3 Error
+        error: {
+          DEFAULT: '#ba1a1a',
+          container: '#ffdad6',
+        },
+        // Outline
+        outline: {
+          DEFAULT: '#7a7574',
+          variant: '#d4c4bf',
+        },
+        // On-surface text
+        'on-surface': {
+          DEFAULT: '#1c1b1b',
+          variant: '#4d4544',
+        },
+        // Inverse
+        'inverse-surface': '#312f2f',
+        'inverse-on-surface': '#f4efed',
+        'inverse-primary': '#ffb77c',
       },
       fontFamily: {
-        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
       },
     },
   },
