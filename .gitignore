@@ -34,6 +34,9 @@ yarn-error.log*
 # Vercel
 .vercel
 
+# Deployment scripts
+deploy-aws.sh
+
 # Typescript
 *.tsbuildinfo
 next-env.d.ts
