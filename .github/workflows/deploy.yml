@@ -1,13 +1,14 @@
-name: Deploy to Firebase Hosting
+name: Build & Deploy
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
-  build_and_deploy:
-    name: Build & Deploy
+  build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -26,7 +27,50 @@ jobs:
       - name: Build Next.js static export
         run: npm run build
 
+      - name: Verify build output
+        run: |
+          if [ ! -d "out" ] || [ -z "$(ls -A out)" ]; then
+            echo "::error::Build output directory 'out' is empty or missing"
+            exit 1
+          fi
+          echo "Build output OK — $(find out -type f | wc -l) files generated"
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: out/
+          retention-days: 7
+
+  deploy:
+    name: Deploy to Firebase
+    needs: build
+    runs-on: ubuntu-latest
+    # This job checks for the secret at runtime; if missing it skips gracefully
+    steps:
+      - name: Check for Firebase credentials
+        id: check
+        run: |
+          if [ -z "${{ secrets.FIREBASE_SERVICE_ACCOUNT_GO4GARAGE_D66FC }}" ]; then
+            echo "has_creds=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Firebase service account secret not configured — skipping deploy. Add FIREBASE_SERVICE_ACCOUNT_GO4GARAGE_D66FC to repo secrets."
+          else
+            echo "has_creds=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout repository
+        if: steps.check.outputs.has_creds == 'true'
+        uses: actions/checkout@v4
+
+      - name: Download build artifact
+        if: steps.check.outputs.has_creds == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          path: out/
+
       - name: Deploy to Firebase Hosting
+        if: steps.check.outputs.has_creds == 'true'
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
