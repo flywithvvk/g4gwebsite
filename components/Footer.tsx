@@ -54,7 +54,7 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2.5">
               <Image src="/icon.png" alt="Go4Garage" width={32} height={32} className="rounded-lg" />
-              <span className="text-lg font-bold font-display text-on-surface">Go4Garage</span>
+              <Image src="/logo.jpg" alt="Go4Garage" width={120} height={32} className="h-7 w-auto object-contain" />
             </div>
             <p className="text-sm text-on-surface-variant leading-relaxed max-w-xs">
               India&apos;s AI-powered automobile intelligence platform accelerating EV adoption and charging scale.

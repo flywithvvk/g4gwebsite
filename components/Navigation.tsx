@@ -34,12 +34,7 @@ const Navigation = () => {
               className="flex items-center gap-2.5"
             >
               <Image src="/icon.png" alt="Go4Garage" width={36} height={36} className="rounded-xl shadow-sm" />
-              <div className="flex flex-col">
-                <span className="text-lg font-bold font-display text-primary leading-tight">
-                  Go4Garage
-                </span>
-                <span className="text-[9px] text-on-surface-variant tracking-[0.15em] uppercase leading-tight">AutoAI Suite</span>
-              </div>
+              <Image src="/logo.jpg" alt="Go4Garage" width={150} height={40} className="h-9 w-auto object-contain" />
             </motion.div>
           </Link>
 
