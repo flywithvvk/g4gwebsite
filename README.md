@@ -107,6 +107,52 @@ g4gwebsite/
 
 ## 🚀 Production Deployment
 
+### Firebase Hosting (Recommended)
+
+This project is configured to deploy to Firebase Hosting with automatic HTTPS and CDN distribution.
+
+#### Prerequisites
+
+1. **Firebase CLI**
+   ```bash
+   npm install -g firebase-tools
+   ```
+
+2. **Firebase Project**
+   - Project ID: `go4garage-d66fc`
+   - Ensure you have access to the Firebase project
+
+#### Manual Deployment
+
+```bash
+# Build for production
+npm run build
+
+# Login to Firebase (first time only)
+firebase login
+
+# Deploy to Firebase Hosting
+firebase deploy
+```
+
+#### Automated Deployment via GitHub Actions
+
+The repository includes a GitHub Actions workflow that automatically deploys to Firebase Hosting on every push to the `main` branch.
+
+**Setup Required:**
+
+1. Go to your repository Settings → Secrets and variables → Actions
+2. Add a new repository secret named `FIREBASE_SERVICE_ACCOUNT_GO4GARAGE_D66FC`
+3. Generate a Firebase service account key:
+   ```bash
+   firebase login:ci
+   ```
+4. Copy the token and add it as the secret value
+
+Once configured, every push to `main` will automatically build and deploy the site with HTTPS enabled.
+
+### Alternative: Self-Hosted Deployment
+
 ```bash
 # Build for production
 npm run build
@@ -116,6 +162,8 @@ npm start
 ```
 
 The server starts on port 3000 by default. Use a reverse proxy (e.g., Nginx) or a process manager (e.g., PM2) in production.
+
+**Note:** For self-hosted deployments, you must configure HTTPS manually using SSL certificates (e.g., Let's Encrypt) through your reverse proxy.
 
 ## 🎨 Design System
 
@@ -202,9 +250,36 @@ The server starts on port 3000 by default. Use a reverse proxy (e.g., Nginx) or 
 
 ## 🔒 Security
 
-- HTTPS enforced via reverse proxy
-- Input validation on forms
+### HTTPS & SSL/TLS
+
+- **Firebase Hosting**: Automatic HTTPS with SSL certificates (recommended deployment)
+- **Self-Hosted**: Manual SSL/TLS configuration required via reverse proxy (e.g., Nginx with Let's Encrypt)
+
+### Security Headers
+
+The following security headers are automatically configured in `firebase.json`:
+
+- **Strict-Transport-Security (HSTS)**: Forces HTTPS for 2 years, including all subdomains
+  - `max-age=63072000; includeSubDomains; preload`
+- **Content-Security-Policy (CSP)**: Prevents XSS and data injection attacks
+- **X-Content-Type-Options**: Prevents MIME-type sniffing
+- **X-Frame-Options**: Prevents clickjacking attacks
+- **X-XSS-Protection**: Browser XSS protection
+- **Referrer-Policy**: Controls referrer information
+- **Permissions-Policy**: Restricts browser features (camera, microphone, etc.)
+
+### Application Security
+
+- Input validation on all forms
 - No sensitive data in client-side code
+- Static site generation eliminates server-side vulnerabilities
+- Environment-based configuration management
+
+### Deployment Security
+
+- Automated deployment via GitHub Actions with encrypted secrets
+- Firebase service account authentication
+- No hardcoded credentials in repository
 
 ## 🤝 Contributing
 
