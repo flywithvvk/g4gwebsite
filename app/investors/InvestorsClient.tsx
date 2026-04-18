@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Icon } from '@/components/Icon';
-import { AnimatedCounter } from '@/components/AnimatedCounter';
 
 const thesis = [
   { num: '1', title: 'Massive Market Opportunity', desc: 'India will have 2.5M+ charging points by 2030, creating a $50B+ opportunity. The market is fragmented and inefficient — ripe for AI disruption.', points: ['TAM: $50B+ by 2030', 'SAM: $5B+ solvable with tech', 'Growing at 40% CAGR'] },
