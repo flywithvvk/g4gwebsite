@@ -60,13 +60,13 @@ const Footer: React.FC = () => {
               India&apos;s AI-powered automobile intelligence platform accelerating EV adoption and charging scale.
             </p>
             <div className="space-y-2 pt-4 border-t border-outline-variant/30">
-              <a href="mailto:hello@go4garage.com" className="flex items-center gap-2 text-xs text-on-surface-variant hover:text-primary transition-colors">
+              <a href="mailto:go4garageofficial@gmail.com" className="flex items-center gap-2 text-xs text-on-surface-variant hover:text-primary transition-colors">
                 <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>mail</span>
-                hello@go4garage.com
+                go4garageofficial@gmail.com
               </a>
-              <a href="tel:+919876543210" className="flex items-center gap-2 text-xs text-on-surface-variant hover:text-primary transition-colors">
+              <a href="tel:+919110973504" className="flex items-center gap-2 text-xs text-on-surface-variant hover:text-primary transition-colors">
                 <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>call</span>
-                +91 9876 543 210
+                +91 9110 973 504
               </a>
               <span className="flex items-center gap-2 text-xs text-on-surface-variant">
                 <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>location_on</span>
@@ -106,9 +106,8 @@ const Footer: React.FC = () => {
             ))}
           </div>
           <div className="flex flex-wrap justify-center md:justify-end gap-5 text-xs text-on-surface-variant">
-            <Link href="#privacy" className="hover:text-primary transition-colors">Privacy</Link>
-            <Link href="#terms" className="hover:text-primary transition-colors">Terms</Link>
-            <Link href="#security" className="hover:text-primary transition-colors">Security</Link>
+            <Link href="/privacy" className="hover:text-primary transition-colors">Privacy</Link>
+            <Link href="/terms" className="hover:text-primary transition-colors">Terms</Link>
           </div>
         </div>
       </div>
