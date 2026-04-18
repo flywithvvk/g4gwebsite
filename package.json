@@ -1,7 +1,7 @@
 {
   "name": "g4gwebsite",
   "version": "1.0.0",
-  "description": "",
+  "description": "Go4Garage — AI-powered automobile intelligence platform. Next.js 16 static website.",
   "main": "index.js",
   "directories": {
     "doc": "docs"
@@ -13,21 +13,35 @@
     "lint": "eslint .",
     "deploy": "npm run build && firebase deploy --only hosting",
     "deploy:preview": "npm run build && firebase hosting:channel:deploy preview",
-    "firebase:serve": "npm run build && firebase emulators:start --only hosting"
+    "firebase:serve": "npm run build && firebase emulators:start --only hosting",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/flywithvvk/g4gwebsite.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "go4garage",
+    "nextjs",
+    "typescript",
+    "tailwindcss",
+    "ev",
+    "automobile",
+    "india"
+  ],
+  "author": "Go4Garage <hello@go4garage.com>",
+  "license": "UNLICENSED",
   "type": "module",
   "private": true,
   "bugs": {
     "url": "https://github.com/flywithvvk/g4gwebsite/issues"
   },
   "homepage": "https://github.com/flywithvvk/g4gwebsite#readme",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
   "dependencies": {
     "framer-motion": "^12.38.0",
     "next": "^16.2.4",
@@ -46,6 +60,7 @@
     "eslint-config-next": "^16.2.4",
     "firebase-tools": "^15.15.0",
     "postcss": "^8.5.10",
+    "prettier": "^3.8.3",
     "typescript": "^6.0.2"
   }
 }
