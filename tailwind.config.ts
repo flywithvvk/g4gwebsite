@@ -20,12 +20,12 @@ const config: Config = {
           'container-high': '#e7e7e7',
           'container-highest': '#e2e2e2',
         },
-        // MD3 Primary — purple
+        // MD3 Primary — warm amber/brown
         primary: {
-          DEFAULT: '#4A0E78',
-          container: '#7b41b3',
+          DEFAULT: '#904d00',
+          container: '#f18a22',
           on: '#ffffff',
-          'on-container': '#1a0030',
+          'on-container': '#301600',
         },
         // MD3 Secondary — purple
         secondary: {
@@ -59,7 +59,7 @@ const config: Config = {
         // Inverse
         'inverse-surface': '#312f2f',
         'inverse-on-surface': '#f4efed',
-        'inverse-primary': '#c588fe',
+        'inverse-primary': '#ffb77c',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
