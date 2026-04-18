@@ -58,7 +58,6 @@ g4gwebsite/
 ├── components/            # React components
 │   ├── Navigation.tsx     # Header navigation
 │   └── Footer.tsx         # Footer component
-├── lib/                   # Utilities and libraries
 ├── docs/                  # Documentation and assets
 ├── public/                # Static assets
 ├── next.config.js         # Next.js configuration

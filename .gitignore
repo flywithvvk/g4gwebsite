@@ -44,3 +44,11 @@ deploy-aws.sh
 *.tsbuildinfo
 next-env.d.ts
 .firebase/
+
+# Local tooling / snapshots
+.qodo/
+.snapshots/
+
+# Data archives (keep in docs/ only, not at repo root)
+/*.xlsx.zip
+/*.xlsx
