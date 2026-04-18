@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -52,9 +53,7 @@ const Footer: React.FC = () => {
           {/* Brand */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary-container flex items-center justify-center">
-                <span className="text-white text-[10px] font-bold font-display">G4G</span>
-              </div>
+              <Image src="/icon.png" alt="Go4Garage" width={32} height={32} className="rounded-lg" />
               <span className="text-lg font-bold font-display text-on-surface">Go4Garage</span>
             </div>
             <p className="text-sm text-on-surface-variant leading-relaxed max-w-xs">

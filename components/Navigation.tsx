@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -32,9 +33,7 @@ const Navigation = () => {
               transition={{ duration: 0.5 }}
               className="flex items-center gap-2.5"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-primary-container flex items-center justify-center shadow-sm">
-                <span className="text-white text-xs font-bold font-display tracking-tight">G4G</span>
-              </div>
+              <Image src="/icon.png" alt="Go4Garage" width={36} height={36} className="rounded-xl shadow-sm" />
               <div className="flex flex-col">
                 <span className="text-lg font-bold font-display text-primary leading-tight">
                   Go4Garage
