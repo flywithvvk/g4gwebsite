@@ -87,7 +87,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
         ref={videoRef}
         muted
         playsInline
-        preload="metadata"
+        preload="auto"
         poster="/images/journey-poster.jpg"
         style={{ transform: 'scale(1.02)', transformOrigin: 'center center' }}
         className="absolute inset-0 w-full h-full object-cover object-center"
@@ -118,11 +118,11 @@ export function EVJourneyVisual({ onComplete }: Props) {
       >
         <div
           style={{
-            background: 'rgba(0,0,0,0.88)',
+            background: 'rgba(0,0,0,0.92)',
             backdropFilter: 'blur(16px)',
-            borderRadius: '12px 0 0 0',
-            padding: '10px 14px 12px 14px',
-            minWidth: 284,
+            borderRadius: '14px 0 0 0',
+            padding: '56px 14px 12px 14px',
+            minWidth: 310,
           }}
         >
           {/* Challenge / resolved status row */}

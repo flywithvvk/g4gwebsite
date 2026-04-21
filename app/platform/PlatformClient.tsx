@@ -158,6 +158,7 @@ export default function PlatformClient() {
             /* ── SLIDE 0: EV Journey Video ── */
             <motion.div
               key="slide-0"
+              className="absolute inset-0"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
