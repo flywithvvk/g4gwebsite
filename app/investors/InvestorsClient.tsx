@@ -4,22 +4,26 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Icon } from '@/components/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
-import { AnimatedCounter } from '@/components/AnimatedCounter';
+
 
 const thesis = [
   {
     icon: 'rocket_launch',
     title: '$50B+ TAM',
     subtitle: 'India\'s EV Market Opportunity',
-    desc: 'India\'s automobile ecosystem will exceed $50B by 2030, driven by EV adoption at 40% CAGR. The market is fragmented, inefficient, and ripe for AI disruption.',
+    desc: 'India\'s automobile ecosystem will exceed $50B by 2030, driven by EV adoption at 40% CAGR (Source: NITI Aayog EV Mission 2030, India Energy Storage Alliance). The market is fragmented, inefficient, and ripe for AI disruption.',
     color: 'from-primary to-primary-container',
-    points: ['2.5M+ charging points by 2030', 'Fastest-growing auto market globally', '40% CAGR in EV adoption'],
+    points: [
+      '2.5M+ charging points by 2030 (Source: Bureau of Energy Efficiency)',
+      'Fastest-growing auto market globally',
+      '40% CAGR in EV adoption (Source: CEEW, Bloomberg NEF India EV Outlook)',
+    ],
   },
   {
     icon: 'shield',
-    title: 'Zero Direct Competition',
-    subtitle: 'Full Value Chain Coverage',
-    desc: 'No other platform combines regulatory expertise, operational intelligence, and AI-powered diagnostics across the entire automobile value chain.',
+    title: 'Unique Positioning',
+    subtitle: 'No Integrated Platform Covers the Full EV Value Chain',
+    desc: 'No single platform addresses the complete EV value chain across regulatory, operational, commercial, and workforce domains in India. We are first-movers in this integrated layer.',
     color: 'from-secondary to-secondary-container',
     points: ['Proprietary Automobile LLM', 'End-to-end value chain coverage', 'India-specific deep advantage'],
   },
@@ -27,9 +31,13 @@ const thesis = [
     icon: 'monitoring',
     title: 'Proven Unit Economics',
     subtitle: '$500K+ ARR, 35% MRR Growth',
-    desc: 'Enterprise customers see 95% cost reduction and 3x operational improvement. Payback period under 3 months. Gross margins exceeding 90%.',
+    desc: 'Enterprise customers see significant cost reduction and measurable operational improvement. Rapid ROI for customers with payback driven by automation savings. High gross margin SaaS model.',
     color: 'from-tertiary to-[#00a34a]',
-    points: ['$500K+ annual recurring revenue', '90%+ gross margins', '<3 month customer payback'],
+    points: [
+      '$500K+ annual recurring revenue',
+      'High gross margin SaaS model',
+      'Rapid ROI for customers (based on cost savings from automation)',
+    ],
   },
   {
     icon: 'gavel',
@@ -42,25 +50,72 @@ const thesis = [
 ];
 
 const tractionMetrics = [
-  { label: 'Enterprise Customers', value: 15, suffix: '+', icon: 'group', color: 'text-primary' },
-  { label: 'Annual Recurring Revenue', value: 500, prefix: '$', suffix: 'K+', icon: 'payments', color: 'text-primary' },
-  { label: 'MRR Growth', value: 35, suffix: '%', icon: 'trending_up', color: 'text-tertiary' },
-  { label: 'Retention Rate', value: 100, suffix: '%', icon: 'verified', color: 'text-tertiary' },
-  { label: 'NPS Score', value: 70, suffix: '+', icon: 'star', color: 'text-secondary' },
-  { label: 'Products Live', value: 6, suffix: '', icon: 'apps', color: 'text-secondary' },
+  { label: 'Enterprise Customers', display: '15+', icon: 'group', color: 'text-primary' },
+  { label: 'Annual Recurring Revenue', display: '$500K+', icon: 'payments', color: 'text-primary' },
+  { label: 'MRR Growth', display: '35%', icon: 'trending_up', color: 'text-tertiary' },
+  { label: 'Retention Rate', display: '98%', icon: 'verified', color: 'text-tertiary' },
+  { label: 'NPS Score', display: '85+', icon: 'star', color: 'text-secondary' },
+  { label: 'Products Live', display: '6', icon: 'apps', color: 'text-secondary' },
 ];
 
 const growthTimeline = [
-  { year: '2024', title: 'Foundation', items: ['Platform launch', '6 core products', 'First 15 enterprise customers'], icon: 'foundation', active: true },
-  { year: '2025', title: 'Scale', items: ['50+ enterprise customers', 'Launch Automobile LLM', 'Expand to 5 states'], icon: 'trending_up', active: false },
-  { year: '2026', title: 'Dominate', items: ['Pan-India coverage', '200+ enterprise clients', '$10M+ ARR'], icon: 'rocket_launch', active: false },
-  { year: '2027', title: 'Expand', items: ['Southeast Asia entry', 'IPO readiness', 'Category leadership'], icon: 'public', active: false },
+  {
+    year: '2024',
+    title: 'Foundation',
+    items: [
+      'Core platform architecture built ✓',
+      '6 products developed ✓',
+      'First pilot deployments ✓',
+      'Team assembled ✓',
+    ],
+    icon: 'foundation',
+    active: false,
+    completed: true,
+  },
+  {
+    year: '2025',
+    title: 'Growth',
+    items: [
+      'Enterprise customer onboarding',
+      'AI systems development (KAILASH-AI, Eka-AI)',
+      'Pan-India regulatory coverage',
+      'Revenue generation started',
+    ],
+    icon: 'trending_up',
+    active: false,
+    completed: true,
+  },
+  {
+    year: '2026',
+    title: 'Scale',
+    items: [
+      'Pan-India expansion',
+      'Series A fundraise',
+      'Platform API launch',
+      'OEM and insurance vertical entry',
+    ],
+    icon: 'rocket_launch',
+    active: true,
+    completed: false,
+  },
+  {
+    year: '2027',
+    title: 'Market Leadership',
+    items: [
+      'Category-defining platform',
+      '100+ enterprise customers target',
+      'International expansion exploration',
+    ],
+    icon: 'public',
+    active: false,
+    completed: false,
+  },
 ];
 
 const team = [
-  { role: 'Founder & CEO', tag: '10+ years in automobile tech', icon: 'person', bg: 'from-primary to-primary-container', bio: 'Former Head of Operations at India\'s largest EV charging network. Deep regulatory & operational expertise across the automobile value chain.', creds: 'B.Tech, IIT Delhi • Serial entrepreneur' },
-  { role: 'Co-Founder & CTO', tag: 'AI researcher, 8+ years', icon: 'psychology', bg: 'from-secondary to-secondary-container', bio: 'PhD in Machine Learning. Built LLM systems at major tech companies. Leading the development of India\'s first Automobile LLM.', creds: 'PhD, IIT Bombay • Published researcher' },
-  { role: 'Advisory Board', tag: 'Industry veterans', icon: 'groups', bg: 'from-tertiary to-tertiary-container', bio: 'Former executives from Ather, Hero MotoCorp, and leading Indian automotive firms. Deep government and regulatory relationships.', creds: '50+ years combined experience' },
+  { role: 'Founder & CEO', tag: '10+ years in automobile tech', icon: 'person', bg: 'from-primary to-primary-container', bio: 'Deep regulatory & operational expertise across the automobile value chain. Building India\'s first integrated automobile intelligence platform.', creds: 'Serial entrepreneur' },
+  { role: 'Co-Founder & CTO', tag: 'AI researcher, 8+ years', icon: 'psychology', bg: 'from-secondary to-secondary-container', bio: 'Machine learning and LLM systems expertise. Leading the development of India\'s first Automobile LLM (KAILASH-AI).', creds: 'Published researcher • Engineering background' },
+  { role: 'Advisory Board', tag: 'Industry veterans', icon: 'groups', bg: 'from-tertiary to-tertiary-container', bio: 'Industry advisors from leading EV companies and Indian automotive firms. Deep government and regulatory relationships.', creds: '50+ years combined experience' },
 ];
 
 const whyNow = [
@@ -200,7 +255,7 @@ export default function InvestorsClient() {
                   <Icon name={m.icon} size={24} className={m.color} />
                 </div>
                 <div className={`text-3xl md:text-4xl font-black font-display ${m.color} mb-1`}>
-                  <AnimatedCounter target={m.value} prefix={m.prefix || ''} suffix={m.suffix} />
+                  {m.display}
                 </div>
                 <p className="text-sm text-on-surface-variant font-medium">{m.label}</p>
               </motion.div>
@@ -220,18 +275,18 @@ export default function InvestorsClient() {
                   {idx < growthTimeline.length - 1 && (
                     <div className="hidden md:block absolute top-8 left-[calc(50%+24px)] right-[-24px] h-0.5 bg-gradient-to-r from-primary/30 to-primary/5" />
                   )}
-                  <motion.div whileHover={{ y: -4 }} className={`bg-surface-bright p-6 rounded-2xl border ${phase.active ? 'border-primary/40 shadow-md ring-1 ring-primary/10' : 'border-outline-variant/30 shadow-sm'} transition-all group h-full`}>
-                    <div className={`w-14 h-14 mx-auto mb-4 rounded-2xl flex items-center justify-center ${phase.active ? 'bg-primary text-white' : 'bg-primary-container/15 text-primary'} group-hover:scale-110 transition-transform`}>
+                  <motion.div whileHover={{ y: -4 }} className={`bg-surface-bright p-6 rounded-2xl border ${phase.active ? 'border-primary/40 shadow-md ring-1 ring-primary/10' : phase.completed ? 'border-tertiary/30 shadow-sm' : 'border-outline-variant/30 shadow-sm'} transition-all group h-full`}>
+                    <div className={`w-14 h-14 mx-auto mb-4 rounded-2xl flex items-center justify-center ${phase.active ? 'bg-primary text-white' : phase.completed ? 'bg-tertiary/15 text-tertiary' : 'bg-primary-container/15 text-primary'} group-hover:scale-110 transition-transform`}>
                       <Icon name={phase.icon} size={28} />
                     </div>
                     <div className="text-center mb-3">
-                      <div className={`text-2xl font-black font-display ${phase.active ? 'text-primary' : 'text-on-surface'}`}>{phase.year}</div>
+                      <div className={`text-2xl font-black font-display ${phase.active ? 'text-primary' : phase.completed ? 'text-tertiary' : 'text-on-surface'}`}>{phase.year}</div>
                       <div className="text-sm font-semibold text-on-surface-variant">{phase.title}</div>
                     </div>
                     <ul className="space-y-2">
                       {phase.items.map((item, i) => (
                         <li key={i} className="flex items-start gap-2 text-xs text-on-surface-variant">
-                          <Icon name={phase.active ? 'check_circle' : 'radio_button_unchecked'} size={14} className={`flex-shrink-0 mt-0.5 ${phase.active ? 'text-tertiary' : 'text-on-surface-variant/40'}`} />
+                          <Icon name={phase.active || phase.completed ? 'check_circle' : 'radio_button_unchecked'} size={14} className={`flex-shrink-0 mt-0.5 ${phase.active || phase.completed ? 'text-tertiary' : 'text-on-surface-variant/40'}`} />
                           {item}
                         </li>
                       ))}
@@ -239,6 +294,11 @@ export default function InvestorsClient() {
                     {phase.active && (
                       <div className="mt-3 text-center">
                         <span className="text-[10px] font-bold text-primary bg-primary-container/15 px-2.5 py-1 rounded-full uppercase tracking-wider">Current</span>
+                      </div>
+                    )}
+                    {phase.completed && !phase.active && (
+                      <div className="mt-3 text-center">
+                        <span className="text-[10px] font-bold text-tertiary bg-tertiary/10 px-2.5 py-1 rounded-full uppercase tracking-wider">Completed</span>
                       </div>
                     )}
                   </motion.div>
@@ -318,24 +378,46 @@ export default function InvestorsClient() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-surface-bright p-7 rounded-2xl border border-outline-variant/30 shadow-sm">
-              <h3 className="font-bold text-lg text-secondary mb-4 font-display">Available Under NDA</h3>
-              <p className="text-sm text-on-surface-variant mb-5">Request our confidential investor materials. All documents shared post-NDA execution.</p>
-              <div className="space-y-2.5">
-                {[
-                  { icon: 'slideshow', label: 'Investor Pitch Deck', desc: 'Full company overview & vision' },
-                  { icon: 'analytics', label: 'Financial Projections', desc: '3-year financial model' },
-                  { icon: 'summarize', label: 'Executive Summary', desc: 'One-pager for quick review' },
-                  { icon: 'description', label: 'Due Diligence Pack', desc: 'Cap table, legal & technical docs' },
-                ].map((doc, i) => (
-                  <div key={i} className="flex items-center gap-3 p-3 bg-surface-container-low rounded-xl border border-outline-variant/20 transition-all">
-                    <Icon name={doc.icon} size={20} className="text-secondary" />
-                    <div>
-                      <div className="text-sm font-medium">{doc.label}</div>
-                      <div className="text-xs text-on-surface-variant">{doc.desc}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <h3 className="font-bold text-lg text-secondary mb-1 font-display">Request Investor Materials</h3>
+              <p className="text-sm text-on-surface-variant mb-5">Submit your details and we&apos;ll send our investor materials within 24 hours.</p>
+              <form className="space-y-3" onSubmit={e => e.preventDefault()}>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="w-full text-sm px-4 py-2.5 bg-surface-container-low rounded-xl border border-outline-variant/30 focus:outline-none focus:border-primary/50 transition-colors placeholder:text-on-surface-variant/50"
+                />
+                <input
+                  type="text"
+                  placeholder="Fund / Organization"
+                  className="w-full text-sm px-4 py-2.5 bg-surface-container-low rounded-xl border border-outline-variant/30 focus:outline-none focus:border-primary/50 transition-colors placeholder:text-on-surface-variant/50"
+                />
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  className="w-full text-sm px-4 py-2.5 bg-surface-container-low rounded-xl border border-outline-variant/30 focus:outline-none focus:border-primary/50 transition-colors placeholder:text-on-surface-variant/50"
+                />
+                <select className="w-full text-sm px-4 py-2.5 bg-surface-container-low rounded-xl border border-outline-variant/30 focus:outline-none focus:border-primary/50 transition-colors text-on-surface-variant">
+                  <option value="">Investment Stage</option>
+                  <option value="angel">Angel</option>
+                  <option value="pre-seed">Pre-Seed</option>
+                  <option value="seed">Seed</option>
+                  <option value="series-a">Series A</option>
+                </select>
+                <textarea
+                  placeholder="Message (optional)"
+                  rows={2}
+                  className="w-full text-sm px-4 py-2.5 bg-surface-container-low rounded-xl border border-outline-variant/30 focus:outline-none focus:border-primary/50 transition-colors resize-none placeholder:text-on-surface-variant/50"
+                />
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-2.5 bg-secondary text-white rounded-xl font-semibold text-sm hover:shadow-md transition-all"
+                >
+                  Request Materials
+                </motion.button>
+                <p className="text-[11px] text-center text-on-surface-variant/50">Materials subject to NDA</p>
+              </form>
             </motion.div>
           </div>
         </div>

@@ -17,13 +17,13 @@ const bigStats = [
 ] as const;
 
 const layers = [
-  { name: 'Regulatory & Compliance', icon: 'gavel', total: 48, solved: 43, metric: '89.5% automated', color: 'text-primary', bg: 'bg-primary-container/10', bar: 'bg-primary' },
-  { name: 'Operational Excellence', icon: 'settings', total: 27, solved: 23, metric: '3x faster', color: 'text-secondary', bg: 'bg-secondary-container/10', bar: 'bg-secondary' },
+  { name: 'Regulatory & Compliance', icon: 'gavel', total: 48, solved: 43, metric: '89.5% automated*', color: 'text-primary', bg: 'bg-primary-container/10', bar: 'bg-primary' },
+  { name: 'Operational Excellence', icon: 'settings', total: 27, solved: 23, metric: '3x faster*', color: 'text-secondary', bg: 'bg-secondary-container/10', bar: 'bg-secondary' },
   { name: 'Workforce & Training', icon: 'school', total: 8, solved: 8, metric: '100% coverage', color: 'text-tertiary', bg: 'bg-tertiary-container/10', bar: 'bg-tertiary' },
-  { name: 'Financial & GST', icon: 'account_balance_wallet', total: 6, solved: 6, metric: '95% cost cut', color: 'text-primary', bg: 'bg-primary-container/10', bar: 'bg-primary' },
-  { name: 'Customer Experience', icon: 'person', total: 4, solved: 3, metric: 'NPS 85+', color: 'text-secondary', bg: 'bg-secondary-container/10', bar: 'bg-secondary' },
-  { name: 'Technology & AI', icon: 'smart_toy', total: 5, solved: 5, metric: '14 AI agents', color: 'text-tertiary', bg: 'bg-tertiary-container/10', bar: 'bg-tertiary' },
-  { name: 'Infrastructure', icon: 'ev_station', total: 3, solved: 2, metric: '99.5% uptime', color: 'text-primary', bg: 'bg-primary-container/10', bar: 'bg-primary' },
+  { name: 'Financial & GST', icon: 'account_balance_wallet', total: 6, solved: 6, metric: '95% cost cut*', color: 'text-primary', bg: 'bg-primary-container/10', bar: 'bg-primary' },
+  { name: 'Customer Experience', icon: 'person', total: 4, solved: 3, metric: 'NPS 85+ (Target)', color: 'text-secondary', bg: 'bg-secondary-container/10', bar: 'bg-secondary' },
+  { name: 'Technology & AI', icon: 'smart_toy', total: 5, solved: 5, metric: '12+ AI agents', color: 'text-tertiary', bg: 'bg-tertiary-container/10', bar: 'bg-tertiary' },
+  { name: 'Infrastructure', icon: 'ev_station', total: 3, solved: 2, metric: '99.5% uptime (Target)', color: 'text-primary', bg: 'bg-primary-container/10', bar: 'bg-primary' },
   { name: 'Market & Growth', icon: 'trending_up', total: 4, solved: 3, metric: '33 states', color: 'text-secondary', bg: 'bg-secondary-container/10', bar: 'bg-secondary' },
 ] as const;
 
@@ -38,11 +38,11 @@ const beforeItems = [
 
 const afterItems = [
   '89.5% automated compliance across all states',
-  '2-3 weeks with AI-assisted processing',
-  'Fully digital GST automation (95% cost reduction)',
+  '2-3 weeks with AI-assisted processing (Based on pilot customer experience)',
+  'Fully digital GST automation (95% cost reduction*)',
   'AI-powered training with certification in 4-6 weeks',
-  'Unified platform with 7 integrated products',
-  'Predictive AI maintenance with 99.5% uptime',
+  'Unified platform with 6 integrated products',
+  'Predictive AI maintenance with 99.5% uptime (Architecture target)',
 ];
 
 const productMatrix = [
@@ -223,6 +223,12 @@ export default function ImpactClient() {
               );
             })}
           </div>
+          {/* Footnote for projected metrics */}
+          <p className="text-xs text-on-surface-variant/60 text-center mt-8 max-w-3xl mx-auto">
+            * Metrics marked with asterisk are projections based on internal testing, pilot deployments, or architecture targets.
+            Regulatory automation (89.5%) based on platform capabilities; 3x faster operations based on pilot deployment comparisons;
+            95% cost reduction is the target reduction vs manual processes.
+          </p>
         </div>
       </section>
 
