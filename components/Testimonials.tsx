@@ -1,47 +1,56 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { Icon } from '@/components/Icon';
+import { AnimatedCounter } from '@/components/AnimatedCounter';
 
-interface Testimonial {
-  quote: string;
-  author: string;
-  role: string;
-  company: string;
-  avatar?: string;
-}
-
-const testimonials: Testimonial[] = [
+const deliverables = [
   {
-    quote: 'Go4Garage reduced our DISCOM approval cycle from 90 days to under 30. The regulatory intelligence is a game-changer for CPOs scaling across states.',
-    author: 'Rajesh Kumar',
-    role: 'Director of Operations',
-    company: 'ChargePoint India',
+    target: 95,
+    label: 'Problems Mapped',
+    icon: 'travel_explore',
+    desc: "Across 8 critical layers of India's EV value chain",
+    colorIcon: 'text-primary',
+    colorBg: 'bg-primary-container/20',
+    colorBgHover: 'group-hover:bg-primary-container/30',
+    colorBorder: 'border-primary/20',
   },
   {
-    quote: 'GSTSAAS transformed our workshop from paper-based chaos to digital excellence. Our job card turnaround improved by 3x within weeks.',
-    author: 'Priya Sharma',
-    role: 'Workshop Owner',
-    company: 'EV Service Hub',
+    target: 85,
+    label: 'Solvable by Platform',
+    icon: 'check_circle',
+    desc: 'Platform-addressable challenges with built-in workflows',
+    colorIcon: 'text-secondary',
+    colorBg: 'bg-secondary-container/20',
+    colorBgHover: 'group-hover:bg-secondary-container/30',
+    colorBorder: 'border-secondary/20',
   },
   {
-    quote: 'EV VIDYA ARJUN trained 200+ technicians for our network. The certification pipeline is exactly what India\'s EV aftermarket needed.',
-    author: 'Amit Patel',
-    role: 'Head of Training',
-    company: 'GreenDrive Motors',
+    target: 76,
+    label: 'Features Built',
+    icon: 'widgets',
+    desc: 'Production-ready features across all 6 products',
+    colorIcon: 'text-tertiary',
+    colorBg: 'bg-tertiary-container/20',
+    colorBgHover: 'group-hover:bg-tertiary-container/30',
+    colorBorder: 'border-tertiary/20',
   },
   {
-    quote: 'The platform\'s ability to handle 33-state compliance variations in one unified dashboard is remarkable. Nothing else comes close.',
-    author: 'Dr. Meera Nair',
-    role: 'Policy Advisor',
-    company: 'NITI Aayog',
+    target: 6,
+    label: 'Products Live',
+    icon: 'rocket_launch',
+    desc: 'Integrated products working as a unified intelligence layer',
+    colorIcon: 'text-primary',
+    colorBg: 'bg-primary-container/20',
+    colorBgHover: 'group-hover:bg-primary-container/30',
+    colorBorder: 'border-primary/20',
   },
 ];
 
 export function Testimonials() {
   return (
-    <div className="grid md:grid-cols-2 gap-6">
-      {testimonials.map((t, idx) => (
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {deliverables.map((item, idx) => (
         <motion.div
           key={idx}
           initial={{ opacity: 0, y: 20 }}
@@ -49,41 +58,16 @@ export function Testimonials() {
           viewport={{ once: true }}
           transition={{ delay: idx * 0.1 }}
           whileHover={{ y: -4 }}
-          className="relative p-8 rounded-2xl bg-surface-bright border border-outline-variant/30 shadow-sm hover:shadow-md transition-all group"
+          className={`p-6 rounded-2xl bg-surface-bright border ${item.colorBorder} shadow-sm hover:shadow-md transition-all group text-center`}
         >
-          {/* Quote icon */}
-          <div className="absolute top-4 right-6 text-6xl font-serif text-primary-container/30 leading-none select-none">
-            &ldquo;
+          <div className={`w-12 h-12 rounded-xl ${item.colorBg} ${item.colorBgHover} flex items-center justify-center mx-auto mb-4 transition-colors`}>
+            <Icon name={item.icon} size={24} className={item.colorIcon} />
           </div>
-
-          <p className="text-on-surface-variant text-sm leading-relaxed mb-6 relative z-10">
-            {t.quote}
-          </p>
-
-          <div className="flex items-center gap-3">
-            {t.avatar ? (
-              <Image
-                src={t.avatar}
-                alt={t.author}
-                width={40}
-                height={40}
-                className="rounded-full"
-              />
-            ) : (
-              <div className="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary font-bold text-sm">
-                {t.author
-                  .split(' ')
-                  .map((n) => n[0])
-                  .join('')}
-              </div>
-            )}
-            <div>
-              <div className="text-sm font-semibold text-on-surface">{t.author}</div>
-              <div className="text-xs text-on-surface-variant">
-                {t.role}, {t.company}
-              </div>
-            </div>
+          <div className="text-4xl font-black gradient-text font-display mb-1">
+            <AnimatedCounter target={item.target} />
           </div>
+          <div className="text-sm font-bold text-on-surface font-display mb-2">{item.label}</div>
+          <div className="text-xs text-on-surface-variant leading-relaxed">{item.desc}</div>
         </motion.div>
       ))}
     </div>

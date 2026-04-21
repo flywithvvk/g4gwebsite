@@ -389,7 +389,7 @@ export default function HomePage() {
             badge="Solutions"
             title="Built for Every Stakeholder"
             highlight="Every Stakeholder"
-            subtitle="Purpose-built solutions for every player in India's EV ecosystem."
+            subtitle="Purpose-built solutions addressing the real challenges of every player in India's EV ecosystem."
           />
 
           <motion.div
@@ -397,7 +397,7 @@ export default function HomePage() {
             whileInView="visible"
             viewport={{ once: true, margin: '-50px' }}
             variants={stagger}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-16"
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-16"
           >
             {personas.map((persona, idx) => (
               <motion.div key={idx} variants={fadeUp} custom={idx}>
@@ -405,14 +405,18 @@ export default function HomePage() {
                   <motion.div
                     whileHover={{ y: -6, transition: { duration: 0.2 } }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex items-start gap-4 p-6 rounded-2xl border border-outline-variant/30 bg-surface-bright hover:border-primary/30 hover:shadow-lg transition-all cursor-pointer group"
+                    className="flex flex-col gap-3 p-6 rounded-2xl border border-outline-variant/30 bg-surface-bright hover:border-primary/30 hover:shadow-lg transition-all cursor-pointer group h-full"
                   >
                     <div className="w-12 h-12 rounded-xl bg-primary-container/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary-container/25 transition-colors">
                       <Icon name={persona.icon} size={24} className="text-primary" />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <h3 className="font-bold text-on-surface group-hover:text-primary transition-colors font-display mb-1">{persona.label}</h3>
                       <p className="text-xs text-on-surface-variant leading-relaxed">{persona.challenge}</p>
+                    </div>
+                    <div className="flex items-center gap-1 text-xs text-primary font-semibold">
+                      <span>See solutions</span>
+                      <Icon name="arrow_forward" size={13} />
                     </div>
                   </motion.div>
                 </Link>
@@ -510,10 +514,10 @@ export default function HomePage() {
       <section className="py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
           <SectionHeading
-            badge="Customer Stories"
-            title="Trusted by India's EV Leaders"
-            highlight="EV Leaders"
-            subtitle="Real results from the operators, workshops, and institutions powering India's EV future."
+            badge="Platform Impact"
+            title="What Our Platform Delivers"
+            highlight="Platform Delivers"
+            subtitle="Real numbers from a platform purpose-built for India's EV ecosystem."
           />
           <div className="mt-16">
             <Testimonials />
