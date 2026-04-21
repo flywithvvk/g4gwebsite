@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 import Link from 'next/link';
 import { Icon } from '@/components/Icon';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
@@ -10,6 +11,7 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { StatsCard } from '@/components/StatsCard';
 import { Testimonials } from '@/components/Testimonials';
 import { TrustBar } from '@/components/TrustBar';
+import { EVJourneyVisual } from '@/components/EVJourneyVisual';
 
 /* ─── Data ─── */
 
@@ -70,104 +72,132 @@ const stagger = {
 } as const;
 
 export default function HomePage() {
+  const [heroSlide, setHeroSlide] = useState(0);
+
   return (
     <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          HERO
+          HERO — Slide 0: EV Journey Video | Slide 1: Platform Message
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        <ParticleBackground className="absolute inset-0 z-0" />
-
-        {/* Gradient overlays */}
-        <div className="absolute inset-0 z-[1]">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
-          <motion.div
-            animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.14, 0.08] }}
-            transition={{ duration: 12, repeat: Infinity }}
-            className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]"
-          />
-          <motion.div
-            animate={{ scale: [1.2, 1, 1.2], opacity: [0.06, 0.12, 0.06] }}
-            transition={{ duration: 14, repeat: Infinity }}
-            className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-container/8 rounded-full blur-[150px]"
-          />
-        </div>
-
-        {/* Dot grid */}
-        <div className="absolute inset-0 z-[1] opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="text-center max-w-5xl mx-auto">
-
-            {/* Animated badge */}
+      <section className="relative h-[calc(100vh-4rem)] mt-16 overflow-hidden">
+        <AnimatePresence mode="wait">
+          {heroSlide === 0 ? (
+            /* ── SLIDE 0: Full-screen EV Journey Video ── */
             <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: -10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 mb-8 rounded-full border border-primary/20 bg-primary-container/10 backdrop-blur-sm"
+              key="slide-0"
+              className="absolute inset-0"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.7 }}
             >
-              <motion.span
-                animate={{ scale: [1, 1.4, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-2 h-2 rounded-full bg-primary"
-              />
-              <span className="text-sm font-medium text-primary font-display">India&apos;s First AI-Powered Automobile Intelligence</span>
+              <EVJourneyVisual onComplete={() => { setTimeout(() => setHeroSlide(1), 2000); }} />
             </motion.div>
+          ) : (
+            /* ── SLIDE 1: Headline + CTAs ── */
+            <motion.div
+              key="slide-1"
+              className="absolute inset-0 flex items-center justify-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.7 }}
+            >
+              <ParticleBackground className="absolute inset-0 z-0" />
 
-            {/* Headline */}
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-on-surface mb-6 leading-[1.05] tracking-tight font-display">
-              The AI Platform{' '}
-              <br className="hidden md:block" />
-              Powering{' '}
-              <span className="gradient-text">India&apos;s</span>
-              <br className="hidden md:block" />
-              <span className="gradient-text">Automobile Future</span>
-            </h1>
+              {/* Gradient overlays */}
+              <div className="absolute inset-0 z-[1]">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
+                <motion.div
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.14, 0.08] }}
+                  transition={{ duration: 12, repeat: Infinity }}
+                  className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]"
+                />
+                <motion.div
+                  animate={{ scale: [1.2, 1, 1.2], opacity: [0.06, 0.12, 0.06] }}
+                  transition={{ duration: 14, repeat: Infinity }}
+                  className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-container/8 rounded-full blur-[150px]"
+                />
+              </div>
 
-            {/* Typewriter */}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mb-6">
-              <TypewriterText
-                texts={['Regulatory Intelligence', 'Operational Excellence', 'Workforce Development', 'Grid Optimization', 'Consumer Experience', 'Predictive Analytics']}
-                className="text-xl md:text-2xl font-semibold gradient-text font-display"
-              />
+              {/* Dot grid */}
+              <div className="absolute inset-0 z-[1] opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+
+              <div className="container mx-auto px-6 relative z-10">
+                <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="text-center max-w-5xl mx-auto">
+
+                  {/* Animated badge */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8, y: -10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 mb-8 rounded-full border border-primary/20 bg-primary-container/10 backdrop-blur-sm"
+                  >
+                    <motion.span
+                      animate={{ scale: [1, 1.4, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="w-2 h-2 rounded-full bg-primary"
+                    />
+                    <span className="text-sm font-medium text-primary font-display">India&apos;s First AI-Powered Automobile Intelligence</span>
+                  </motion.div>
+
+                  {/* Headline */}
+                  <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-on-surface mb-6 leading-[1.05] tracking-tight font-display">
+                    The AI Platform{' '}
+                    <br className="hidden md:block" />
+                    Powering{' '}
+                    <span className="gradient-text">India&apos;s</span>
+                    <br className="hidden md:block" />
+                    <span className="gradient-text">Automobile Future</span>
+                  </h1>
+
+                  {/* Typewriter */}
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mb-6">
+                    <TypewriterText
+                      texts={['Regulatory Intelligence', 'Operational Excellence', 'Workforce Development', 'Grid Optimization', 'Consumer Experience', 'Predictive Analytics']}
+                      className="text-xl md:text-2xl font-semibold gradient-text font-display"
+                    />
+                  </motion.div>
+
+                  {/* Sub-copy */}
+                  <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-lg md:text-xl text-on-surface-variant mb-10 max-w-2xl mx-auto leading-relaxed">
+                    95 problems in India&apos;s EV ecosystem. 85 solved by our platform. 76 features. 6 products. Zero friction.
+                  </motion.p>
+
+                  {/* CTAs */}
+                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link href="/contact">
+                      <motion.button
+                        whileHover={{ scale: 1.04, boxShadow: '0 20px 40px -12px rgba(144,77,0,0.35)' }}
+                        whileTap={{ scale: 0.98 }}
+                        className="px-8 py-4 bg-primary text-primary-on rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-shadow"
+                      >
+                        Schedule Demo
+                      </motion.button>
+                    </Link>
+                    <Link href="/platform">
+                      <motion.button
+                        whileHover={{ scale: 1.04 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="px-8 py-4 rounded-2xl font-semibold text-lg border-2 border-outline-variant bg-surface-bright/80 backdrop-blur-sm text-on-surface hover:border-primary/40 hover:bg-surface-container-low transition-all"
+                      >
+                        Explore Platform
+                      </motion.button>
+                    </Link>
+                  </motion.div>
+                </motion.div>
+
+                {/* Scroll indicator */}
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
+                  <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }} className="w-6 h-10 rounded-full border-2 border-outline-variant flex items-start justify-center p-1.5">
+                    <motion.div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  </motion.div>
+                </motion.div>
+              </div>
             </motion.div>
-
-            {/* Sub-copy */}
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-lg md:text-xl text-on-surface-variant mb-10 max-w-2xl mx-auto leading-relaxed">
-              95 problems in India&apos;s EV ecosystem. 85 solved by our platform. 76 features. 6 products. Zero friction.
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.04, boxShadow: '0 20px 40px -12px rgba(144,77,0,0.35)' }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-8 py-4 bg-primary text-primary-on rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-shadow"
-                >
-                  Schedule Demo
-                </motion.button>
-              </Link>
-              <Link href="/platform">
-                <motion.button
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-8 py-4 rounded-2xl font-semibold text-lg border-2 border-outline-variant bg-surface-bright/80 backdrop-blur-sm text-on-surface hover:border-primary/40 hover:bg-surface-container-low transition-all"
-                >
-                  Explore Platform
-                </motion.button>
-              </Link>
-            </motion.div>
-          </motion.div>
-
-          {/* Scroll indicator */}
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
-            <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }} className="w-6 h-10 rounded-full border-2 border-outline-variant flex items-start justify-center p-1.5">
-              <motion.div className="w-1.5 h-1.5 rounded-full bg-primary" />
-            </motion.div>
-          </motion.div>
-        </div>
+          )}
+        </AnimatePresence>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
