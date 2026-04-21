@@ -113,16 +113,24 @@ const growthTimeline = [
 ];
 
 const team = [
-  { role: 'Founder & CEO', tag: '10+ years in automobile tech', icon: 'person', bg: 'from-primary to-primary-container', bio: 'Deep regulatory & operational expertise across the automobile value chain. Building India\'s first integrated automobile intelligence platform.', creds: 'Serial entrepreneur' },
-  { role: 'Co-Founder & CTO', tag: 'AI researcher, 8+ years', icon: 'psychology', bg: 'from-secondary to-secondary-container', bio: 'Machine learning and LLM systems expertise. Leading the development of India\'s first Automobile LLM (KAILASH-AI).', creds: 'Published researcher • Engineering background' },
-  { role: 'Advisory Board', tag: 'Industry veterans', icon: 'groups', bg: 'from-tertiary to-tertiary-container', bio: 'Industry advisors from leading EV companies and Indian automotive firms. Deep government and regulatory relationships.', creds: '50+ years combined experience' },
+  { name: 'Vivek Raj', role: 'CEO & Founder', tag: '10+ years in automotive tech', icon: 'person', bg: 'from-primary to-primary-container', bio: '10+ years in automotive technology. Founded Go4Garage to solve India\'s EV infrastructure challenges at scale.', creds: 'Serial entrepreneur' },
+  { name: '', role: 'Co-Founder & CTO', tag: 'AI researcher, 8+ years', icon: 'psychology', bg: 'from-secondary to-secondary-container', bio: 'Machine learning and LLM systems expertise. Leading the development of India\'s first Automobile LLM.', creds: 'Engineering background • AI researcher' },
+  { name: '', role: 'Advisory Board', tag: 'EV & automotive industry veterans', icon: 'groups', bg: 'from-tertiary to-tertiary-container', bio: 'Industry advisors from leading EV companies and Indian automotive firms. Deep government and regulatory relationships.', creds: '50+ years combined experience' },
 ];
 
+
 const whyNow = [
-  { icon: 'policy', title: 'FAME-III & PM E-DRIVE', desc: 'New government schemes allocating ₹10,000+ Cr for EV ecosystem development, creating massive demand for intelligent platforms.' },
-  { icon: 'account_balance', title: 'State-Level Subsidies', desc: '28+ states have independent EV policies with compliance requirements that only AI can manage at scale.' },
-  { icon: 'engineering', title: '100K+ Technician Shortage', desc: 'India faces a critical shortage of trained EV technicians. Our AI fills this gap with intelligent diagnostics and guided repairs.' },
-  { icon: 'speed', title: 'Market Inflection Point', desc: 'EV sales crossed 1.5M units in 2024. The ecosystem infrastructure must scale 10x in 3 years — we\'re the picks and shovels.' },
+  { icon: 'policy', title: 'FAME-III Funding', desc: 'FAME-III: ₹10,000 Cr allocation for EV ecosystem development, creating massive demand for intelligent platforms.', source: 'Source: MHI, 2024' },
+  { icon: 'account_balance', title: 'EV Sales Surge', desc: 'EV Sales: 1.67M units in FY2025, 40% YoY growth. The ecosystem infrastructure must scale 10x in 3 years — we\'re the picks and shovels.', source: 'Source: SMEV' },
+  { icon: 'engineering', title: '100K+ Technician Shortage', desc: 'India faces a critical shortage of 100,000+ trained EV technicians needed by 2027. Our AI fills this gap with intelligent diagnostics and guided repairs.', source: 'Source: NSDC' },
+  { icon: 'ev_station', title: 'Charging Infrastructure Gap', desc: '2.5M charging points needed by 2030. Massive infrastructure buildout requires intelligent CPO management and compliance platforms.', source: 'Source: NITI Aayog' },
+];
+
+const competitionAdvantages = [
+  { competitor: 'ChargeZone / Statiq', scope: 'CPO charging management only', g4g: 'Full EV ecosystem — CPO + workshop + compliance + AI' },
+  { competitor: 'Generic garage tools', scope: 'Single-domain workshop ops', g4g: 'Cross-domain: regulatory, operational, commercial, workforce' },
+  { competitor: 'Analytics platforms', scope: 'Data reporting & dashboards', g4g: 'Actionable AI intelligence with Automobile LLM' },
+  { competitor: 'Compliance tools', scope: 'Point-in-time documentation', g4g: 'Real-time regulatory AI across 28+ state policies' },
 ];
 
 export default function InvestorsClient() {
@@ -302,6 +310,37 @@ export default function InvestorsClient() {
                       </div>
                     )}
                   </motion.div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── COMPETITION ─── */}
+      <section className="py-24 bg-surface-container-low">
+        <div className="container mx-auto px-6">
+          <SectionHeading badge="Competitive Landscape" title="First-Mover in Integrated" highlight="EV Intelligence" subtitle="Point solutions exist. No one has integrated the full stack — until now." />
+          <div className="max-w-4xl mx-auto">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-surface-bright p-8 rounded-2xl border border-outline-variant/30 shadow-sm mb-8">
+              <p className="text-sm text-on-surface-variant leading-relaxed">
+                Point solutions exist — ChargeZone and Statiq for CPO management, garage management tools for workshops, generic analytics platforms. No single platform integrates regulatory compliance, workshop operations, consumer experience, AI diagnostics, and workforce training into one intelligent system. That&apos;s Go4Garage&apos;s unique position.
+              </p>
+            </motion.div>
+            <div className="space-y-3">
+              <div className="grid grid-cols-3 gap-3 text-xs font-bold text-on-surface-variant uppercase tracking-wider px-4 pb-1 border-b border-outline-variant/20">
+                <span>Competitor</span>
+                <span>Fragmented Scope</span>
+                <span className="text-primary">Go4Garage Advantage</span>
+              </div>
+              {competitionAdvantages.map((row, idx) => (
+                <motion.div key={idx} initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.08 }} className="grid grid-cols-3 gap-3 items-center bg-surface-bright p-4 rounded-xl border border-outline-variant/20 hover:border-primary/20 transition-all">
+                  <span className="text-sm font-semibold text-on-surface">{row.competitor}</span>
+                  <span className="text-xs text-on-surface-variant">{row.scope}</span>
+                  <div className="flex items-center gap-2">
+                    <Icon name="check_circle" size={14} className="text-tertiary flex-shrink-0" />
+                    <span className="text-xs text-on-surface-variant">{row.g4g}</span>
+                  </div>
                 </motion.div>
               ))}
             </div>
