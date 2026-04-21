@@ -89,7 +89,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
         playsInline
         preload="metadata"
         poster="/images/journey-poster.jpg"
-        style={{ transform: 'scale(1.08)', transformOrigin: 'center center' }}
+        style={{ transform: 'scale(1.14)', transformOrigin: 'center center' }}
         className="absolute inset-0 w-full h-full object-cover object-center"
       >
         <source src="/videos/ev-journey-bg.mp4" type="video/mp4" />
@@ -106,15 +106,26 @@ export function EVJourneyVisual({ onComplete }: Props) {
       {/* Bottom vignette — darkens progress bar area */}
       <div
         className="absolute bottom-0 left-0 right-0 h-52 pointer-events-none z-10"
-        style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 50%, transparent 100%)' }}
+        style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.3) 70%, transparent 100%)' }}
       />
 
-      {/* Corner vignette — natural cinematic darkening of bottom-right
-          This elegantly covers the watermark area without any visible hard edge */}
+      {/* Corner vignette — radial dark zone over watermark area */}
       <div
         className="absolute inset-0 pointer-events-none z-10"
         style={{
-          background: 'radial-gradient(ellipse at 100% 100%, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.90) 10%, rgba(0,0,0,0.65) 20%, rgba(0,0,0,0.25) 32%, transparent 48%)',
+          background: 'radial-gradient(ellipse at 105% 105%, rgba(0,0,0,0.99) 0%, rgba(0,0,0,0.97) 12%, rgba(0,0,0,0.88) 22%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.15) 50%, transparent 62%)',
+        }}
+      />
+
+      {/* Secondary corner block — diagonal linear fade, adds extra opacity in the exact corner */}
+      <div
+        className="absolute pointer-events-none z-10"
+        style={{
+          bottom: 0,
+          right: 0,
+          width: '38%',
+          height: '28%',
+          background: 'linear-gradient(to top left, rgba(0,0,0,0.99) 0%, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.7) 42%, rgba(0,0,0,0.25) 65%, transparent 85%)',
         }}
       />
 
