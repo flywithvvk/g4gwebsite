@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react';
 import { SectionHeading } from '@/components/SectionHeading';
 import { StatsCard } from '@/components/StatsCard';
 import { Icon } from '@/components/Icon';
-import { AnimatedCounter } from '@/components/AnimatedCounter';
 import { EVJourneyVisual } from '@/components/EVJourneyVisual';
 
 

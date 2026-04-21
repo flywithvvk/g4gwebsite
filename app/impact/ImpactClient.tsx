@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { SectionHeading } from '@/components/SectionHeading';
-import { StatsCard } from '@/components/StatsCard';
 import { Icon } from '@/components/Icon';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
 
