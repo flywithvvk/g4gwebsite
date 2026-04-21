@@ -47,7 +47,7 @@ const stakeholders: Stakeholder[] = [
     ],
     products: [
       {
-        name: 'URGAA (Urja)',
+        name: 'URGAA (ऊर्जा)',
         description: 'Regulatory & Grid Intelligence — automate 48 compliance checkpoints with AI-driven approval workflows across all 33 states.',
       },
       {
@@ -171,7 +171,7 @@ const stakeholders: Stakeholder[] = [
     ],
     products: [
       {
-        name: 'URGAA (Urja)',
+        name: 'URGAA (ऊर्जा)',
         description: 'Pan-India compliance dashboard with real-time policy enforcement, subsidy tracking, and digitised approval workflows.',
       },
       {
