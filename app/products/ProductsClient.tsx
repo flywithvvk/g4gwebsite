@@ -35,14 +35,16 @@ const products: Product[] = [
       'Navigate India\u2019s 33-state regulatory landscape with AI-powered compliance automation. From DISCOM applications to carbon credits, URGAA (ऊर्जा) digitises every step of EV infrastructure permitting and grid management.',
     problemLabel: 'problems',
     problemCount: 48,
-    icon: 'bolt',
+    icon: 'ev_station',
+    slug: 'urgaa',
+    setupTime: '2-3 weeks (regulatory setup required)',
     features: [
-      'DISCOM Application Wizard',
-      'Regulatory Rules Engine (33 states)',
-      'AI Site Scoring',
-      'Grid Capacity Estimator',
-      'Smart Charging Controls',
-      'Carbon Credit Ledger',
+      'DISCOM Application Wizard — reduces 6-month delays to weeks',
+      'Site Scoring Engine — 12 parameters including grid & footfall',
+      'Tariff Management — real-time updates across 33 states',
+      'Compliance Tracker — deadline alerts & document management',
+      'Carbon Credit Tracking — automated calculation & trading',
+      'Grid Capacity Estimator — AI-powered upgrade analysis',
     ],
     colorFamily: 'primary',
   },
@@ -56,13 +58,15 @@ const products: Product[] = [
     problemLabel: 'problems',
     problemCount: 17,
     icon: 'build',
+    slug: 'gstsaas',
+    setupTime: '1-2 weeks setup',
     features: [
-      'Workshop Ops Dashboard',
-      'Parts Inventory + Reorder Automation',
-      'GST Rules + HSN/SAC Validator',
-      'Revenue Leakage Detection',
-      'Insurance Claims Support',
-      'RSA Dispatch Console',
+      'Digital Job Cards — real-time status tracking for customers',
+      'GST Invoicing — automated calculation & filing-ready exports',
+      'Inventory Management — auto-reorder alerts & OEM integration',
+      'Market Price Engine — AI-powered spare parts pricing',
+      'Customer Management — 360° profiles with service reminders',
+      'Service History — digital history shareable for resale proof',
     ],
     colorFamily: 'secondary',
   },
@@ -75,14 +79,16 @@ const products: Product[] = [
       'The consumer-facing mobile app that makes EV ownership delightful. Charger discovery, payments, roadside assistance, and a personal carbon tracker \u2014 all in one pocket-sized experience.',
     problemLabel: 'problems',
     problemCount: 10,
-    icon: 'smartphone',
+    icon: 'electric_car',
+    slug: 'ignition',
+    setupTime: '1 week setup',
     features: [
-      'Charger Discovery & Sessions',
-      'Payment Wallet (UPI, cards, prepaid)',
-      'RSA Request',
-      'TCO Calculator',
-      'Carbon Tracker',
-      'Offline Mode',
+      'Real-Time Charging Map — live availability, pricing & wait times',
+      'Vehicle Health Monitor — battery health & range prediction',
+      'Service Booking — certified centers with transparent pricing',
+      'Cost Calculator — TCO & optimised charging schedules',
+      'Roadside Assistance — one-tap emergency + technician dispatch',
+      'EV Learning Hub — tips & guides to maximise range',
     ],
     colorFamily: 'tertiary',
   },
@@ -96,13 +102,15 @@ const products: Product[] = [
     problemLabel: 'problems',
     problemCount: 8,
     icon: 'school',
+    slug: 'arjun',
+    setupTime: '2 weeks curriculum setup',
     features: [
-      'Course Management & LMS',
-      'Assessment Engine',
-      'Certification System',
-      'Gamification',
-      'AI Tutor (Kailash-AI VIDYA)',
-      'Offline Learning',
+      'Curriculum Builder — battery, motor & power electronics',
+      'Assessment Engine — practical & theoretical with auto-grading',
+      'Certification System — QR-verified credentials & digital badges',
+      'Hands-On Modules — simulation-based battery & safety training',
+      'Placement Tracking — industry connections for certified techs',
+      'Progress Analytics — cohort-level insights for institutions',
     ],
     colorFamily: 'secondary',
   },
@@ -115,14 +123,16 @@ const products: Product[] = [
       'The intelligence backbone powering every Go4Garage product. From battery health grading to OTA rollout monitoring, KAILASH-AI turns raw telemetry into actionable foresight.',
     problemLabel: 'primary problems',
     problemCount: 2,
-    icon: 'analytics',
+    icon: 'psychology',
+    slug: 'kailash-ai',
+    setupTime: 'Included with any product',
     features: [
-      'AI Diagnostics Copilot',
-      'Battery SoH Grading',
-      'Predictive Maintenance Alerts',
-      'Demand Forecasting',
-      'Anomaly Detection',
-      'OTA Rollout Monitor',
+      'Predictive Diagnostics — predict failures 2-4 weeks ahead',
+      'Analytics Dashboard — real-time intelligence across products',
+      'Anomaly Detection — unusual patterns in energy & compliance',
+      'Battery Health Scoring — degradation models for fleet & insurance',
+      'Revenue Forecasting — AI demand forecasting for CPOs & workshops',
+      'Intelligence API — REST API for third-party integration',
     ],
     colorFamily: 'primary',
   },
@@ -136,11 +146,15 @@ const products: Product[] = [
     problemLabel: 'agent orchestration',
     problemCount: 0,
     icon: 'smart_toy',
+    slug: 'eka-ai',
+    setupTime: 'Included with Professional/Enterprise plans',
     features: [
-      'EV Q&A Assistant (Local Language)',
-      'Guided Action Assistant',
-      'Multi-agent orchestration',
-      'Cross-product intelligence',
+      'Conversational AI — English & Hindi natural language interface',
+      'Multi-Agent Orchestration — compliance, diagnostics & finance agents',
+      'Knowledge Retrieval — instant access to India auto regulations',
+      'Operator Automation — AI-triggered compliance & scheduling workflows',
+      'Multi-Language Support — Hindi, English & regional languages',
+      'Platform Integration — deep integration with URGAA, GSTSAAS, KAILASH-AI',
     ],
     colorFamily: 'tertiary',
   },
@@ -330,8 +344,8 @@ export default function ProductsClient() {
                 const c = colorMap[p.colorFamily];
                 const isActive = activeProduct === idx;
                 return (
+                  <div key={p.id} className="relative group">
                   <motion.button
-                    key={p.id}
                     onClick={() => setActiveProduct(idx)}
                     whileHover={{ x: 4 }}
                     className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl text-left transition-all border ${
@@ -372,6 +386,17 @@ export default function ProductsClient() {
                       />
                     )}
                   </motion.button>
+                  {p.slug && (
+                    <Link
+                      href={`/products/${p.slug}`}
+                      className={`absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity w-7 h-7 rounded-lg ${c.iconBg} flex items-center justify-center z-10`}
+                      title={`View ${p.name} details`}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Icon name="open_in_new" size={14} className={c.text} />
+                    </Link>
+                  )}
+                  </div>
                 );
               })}
             </div>

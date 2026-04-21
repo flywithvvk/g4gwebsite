@@ -1,180 +1,274 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Icon } from '@/components/Icon';
-import { StatsCard } from '@/components/StatsCard';
 
 /* ─────────────────────────────────────────────
-   Persona Data
+   Stakeholder Data
    ───────────────────────────────────────────── */
 
-interface PersonaMetric {
+interface StakeholderMetric {
   icon: string;
-  value: number;
-  suffix?: string;
-  prefix?: string;
+  value: string;
   label: string;
-  description?: string;
 }
 
-interface PersonaProduct {
+interface StakeholderProduct {
   name: string;
   description: string;
-  href: string;
 }
 
-interface Persona {
+interface Stakeholder {
   id: string;
   name: string;
+  subtitle: string;
   icon: string;
-  tagline: string;
   challenges: string[];
-  products: PersonaProduct[];
-  metrics: PersonaMetric[];
+  products: StakeholderProduct[];
+  metrics: StakeholderMetric[];
   ctaText: string;
   ctaHref: string;
 }
 
-const personas: Persona[] = [
+const stakeholders: Stakeholder[] = [
   {
     id: 'cpo',
     name: 'CPO Operators',
+    subtitle: 'EV Charging Point Operators',
     icon: 'ev_station',
-    tagline: 'End-to-end compliance automation for charge-point operators across India.',
     challenges: [
-      'DISCOM delays and load sanctioning bottlenecks',
-      'Compliance fragmentation across 33 states',
-      'Charger uptime consistently below 85%',
-      'Profitability pressure from subsidies & tariffs',
+      'DISCOM application delays (3-6 months)',
+      '33-state compliance complexity',
+      'Site feasibility assessment',
+      'Uptime monitoring & maintenance',
     ],
     products: [
-      { name: 'URGAA (ऊर्जा)', description: 'Regulatory & Grid Intelligence — automate 48 compliance checkpoints with AI-driven workflows.', href: '/products' },
-      { name: 'Ignition', description: 'Consumer Experience — seamless charging sessions, payments, and loyalty.', href: '/products' },
+      {
+        name: 'URGAA (Urja)',
+        description: 'Regulatory & Grid Intelligence — automate 48 compliance checkpoints with AI-driven approval workflows across all 33 states.',
+      },
+      {
+        name: 'KAILASH-AI',
+        description: 'Predictive analytics for charger uptime, fault detection, and energy optimisation.',
+      },
     ],
     metrics: [
-      { icon: 'verified', value: 89.5, suffix: '%', label: 'Compliance Automation', description: 'Automated regulatory coverage' },
-      { icon: 'speed', value: 3, suffix: 'x', label: 'Faster Approvals', description: 'Vs. manual processing' },
-      { icon: 'task_alt', value: 48, label: 'Problems Solved', description: 'Regulatory checkpoints automated' },
+      { icon: 'verified', value: '89%', label: 'Compliance Automation' },
+      { icon: 'timer', value: '30 days', label: 'Avg Approval Time' },
+      { icon: 'map', value: '33 states', label: 'States Covered' },
     ],
-    ctaText: 'Explore URGAA (ऊर्जा)',
-    ctaHref: '/products',
+    ctaText: 'Book a Demo',
+    ctaHref: '/contact',
   },
   {
     id: 'workshops',
-    name: 'Workshops',
+    name: 'Workshop Owners',
+    subtitle: 'EV Service Centers',
     icon: 'build',
-    tagline: 'Digitise your workshop operations — from service invoicing to technician upskilling.',
     challenges: [
-      'Digital transformation lag across service centres',
-      'Spare parts sourcing delays and procurement friction',
-      'GST compliance complexity in multi-state invoicing',
-      'Technician skill gaps slowing EV service quality',
+      'Paper-based job cards causing errors',
+      'GST invoicing complexity',
+      'No intelligent diagnostics for EVs',
+      'Customer retention without digital tools',
     ],
     products: [
-      { name: 'GSTSAAS', description: 'Workshop & Commerce Engine — automated GST invoicing, inventory, and service management.', href: '/products' },
-      { name: 'EV VIDYA ARJUN', description: 'Workforce Skilling — AI-powered training modules for technician certification.', href: '/products' },
+      {
+        name: 'GSTSAAS',
+        description: 'Complete workshop management — GST-compliant invoicing, job cards, inventory, and CRM in one platform.',
+      },
+      {
+        name: 'KAILASH-AI',
+        description: 'AI-powered EV diagnostics and fault analysis for faster, more accurate servicing.',
+      },
+      {
+        name: 'Eka-AI',
+        description: 'Conversational AI assistant for technicians — instant answers and guided repair workflows.',
+      },
     ],
     metrics: [
-      { icon: 'savings', value: 95, suffix: '%', label: 'Cost Reduction', description: 'Operational overhead savings' },
-      { icon: 'task_alt', value: 17, label: 'Problems Solved', description: 'Service workflow gaps addressed' },
-      { icon: 'trending_up', value: 40, suffix: '%', label: 'More Volume', description: 'Service throughput increase' },
+      { icon: 'speed', value: '3x faster', label: 'Job Turnaround' },
+      { icon: 'receipt_long', value: '95%', label: 'GST Automation' },
+      { icon: 'people', value: '40% better', label: 'Customer Retention' },
     ],
-    ctaText: 'Explore GSTSAAS',
-    ctaHref: '/products',
+    ctaText: 'Book a Demo',
+    ctaHref: '/contact',
   },
   {
     id: 'fleet',
-    name: 'Fleet Operators',
+    name: 'Fleet Owners',
+    subtitle: 'Commercial EV Fleet Operators',
     icon: 'local_shipping',
-    tagline: 'Optimise total cost of ownership and fleet compliance in real time.',
     challenges: [
-      'Total cost of ownership (TCO) uncertainty',
-      'Charging cost optimisation across routes',
-      'Compliance tracking across multiple states',
-      'Route planning gaps impacting fleet efficiency',
+      'Unpredictable Total Cost of Ownership',
+      'Driver training gaps',
+      'Reactive maintenance scheduling',
+      'No route optimisation for charging',
     ],
     products: [
-      { name: 'Ignition Fleet Portal', description: 'Real-time fleet monitoring, charging analytics, and route intelligence.', href: '/products' },
-      { name: 'URGAA (ऊर्जा)', description: 'Fleet Compliance — multi-state regulatory tracking for commercial EV fleets.', href: '/products' },
+      {
+        name: 'Ignition',
+        description: 'Real-time fleet monitoring, charging analytics, route intelligence, and driver management.',
+      },
+      {
+        name: 'KAILASH-AI',
+        description: 'Predictive maintenance alerts and TCO optimisation powered by machine learning.',
+      },
+      {
+        name: 'GSTSAAS',
+        description: 'Fleet-wide GST compliance, multi-state invoicing, and procurement management.',
+      },
     ],
     metrics: [
-      { icon: 'timer', value: 99.5, suffix: '%', label: 'Uptime', description: 'Fleet operational availability' },
-      { icon: 'speed', value: 3, suffix: 'x', label: 'Faster Ops', description: 'Operational decision speed' },
-      { icon: 'savings', value: 35, suffix: '%', label: 'Cost Reduction', description: 'TCO savings achieved' },
+      { icon: 'savings', value: '20%', label: 'TCO Reduction' },
+      { icon: 'notifications_active', value: 'Predictive', label: 'Maintenance Alerts' },
+      { icon: 'monitor_heart', value: 'Real-time', label: 'Fleet Health' },
     ],
-    ctaText: 'Explore Fleet Solutions',
-    ctaHref: '/products',
+    ctaText: 'Book a Demo',
+    ctaHref: '/contact',
   },
   {
-    id: 'technicians',
-    name: 'EV Technicians',
-    icon: 'engineering',
-    tagline: 'Bridge the 100K+ EV skill gap with AI-powered training and certification.',
+    id: 'insurance',
+    name: 'Insurance Companies',
+    subtitle: 'EV Insurance Underwriters & Providers',
+    icon: 'verified_user',
     challenges: [
-      '100K+ technician skill gap across India',
-      'ICE-to-EV transition difficulty for existing mechanics',
-      'Safety certification needs for high-voltage systems',
-      'Limited career growth paths in EV servicing',
+      'Unknown EV risk pricing models',
+      'Battery valuation uncertainty',
+      'Fraud detection in new vehicle category',
+      'Claims processing complexity',
     ],
     products: [
-      { name: 'EV VIDYA ARJUN', description: 'AI Training — personalised learning paths from basics to advanced EV diagnostics.', href: '/products' },
-      { name: 'Eka-AI', description: 'Technical Guidance — conversational AI for instant troubleshooting support.', href: '/products' },
+      {
+        name: 'KAILASH-AI',
+        description: 'AI risk scoring engine for EV-specific underwriting, battery health assessment, and claims intelligence.',
+      },
+      {
+        name: 'Eka-AI',
+        description: 'Conversational claims assistant with automated document verification and fraud pattern detection.',
+      },
     ],
     metrics: [
-      { icon: 'school', value: 4, suffix: '–6 wks', label: 'To Certified', description: 'Fast-track certification timeline' },
-      { icon: 'task_alt', value: 8, label: 'Problems Solved', description: 'Workforce readiness gaps closed' },
-      { icon: 'workspace_premium', value: 100, suffix: '%', label: 'Job Ready', description: 'Post-certification placement rate' },
+      { icon: 'psychology', value: 'AI-powered', label: 'Risk Scoring' },
+      { icon: 'security', value: 'Automated', label: 'Fraud Detection' },
+      { icon: 'battery_full', value: 'Real-time', label: 'Battery Assessment' },
     ],
-    ctaText: 'Explore Training',
-    ctaHref: '/products',
+    ctaText: 'Contact Enterprise Sales',
+    ctaHref: '/contact',
   },
   {
     id: 'govt',
-    name: 'Government',
+    name: 'Government & Regulators',
+    subtitle: 'Policy Makers & Regulatory Bodies',
     icon: 'account_balance',
-    tagline: 'Unified dashboards for policy coordination, subsidy tracking, and infrastructure planning.',
     challenges: [
-      'Policy coordination across multiple ministries',
-      'Subsidy tracking complexity under FAME-II',
-      'Infrastructure planning gaps in tier-2/3 cities',
-      'Compliance monitoring across 33 states',
+      'Policy enforcement across states',
+      'Subsidy tracking & disbursement',
+      'Ecosystem health monitoring',
+      'Compliance verification',
     ],
     products: [
-      { name: 'URGAA (ऊर्जा) Govt Dashboard', description: 'Real-time compliance monitoring, digitised approval workflows, and subsidy disbursement tracking.', href: '/products' },
+      {
+        name: 'URGAA (Urja)',
+        description: 'Pan-India compliance dashboard with real-time policy enforcement, subsidy tracking, and digitised approval workflows.',
+      },
+      {
+        name: 'KAILASH-AI',
+        description: 'Ecosystem intelligence — monitoring EV adoption trends, infrastructure gaps, and compliance health across all 33 states.',
+      },
     ],
     metrics: [
-      { icon: 'map', value: 33, label: 'States Covered', description: 'Pan-India regulatory coverage' },
-      { icon: 'description', value: 95, suffix: '%', label: 'Doc Automation', description: 'Document processing automated' },
-      { icon: 'dashboard', value: 100, suffix: '%', label: 'Real-Time Dashboards', description: 'Live compliance visibility' },
+      { icon: 'dashboard', value: 'Real-time', label: 'Compliance Monitoring' },
+      { icon: 'map', value: '33 states', label: 'State Coverage' },
+      { icon: 'policy', value: 'Live updates', label: 'Policy Tracking' },
     ],
-    ctaText: 'Explore Regulatory',
+    ctaText: 'Contact for Partnership',
+    ctaHref: '/contact',
+  },
+  {
+    id: 'training',
+    name: 'Training Institutions',
+    subtitle: 'EV Skill Development Centres',
+    icon: 'school',
+    challenges: [
+      'No standardised EV curriculum',
+      'Growing skill gap in EV sector',
+      'Certification fragmentation',
+      'Placement tracking gaps',
+    ],
+    products: [
+      {
+        name: 'EV VIDYA ARJUN',
+        description: 'Industry-aligned EV training platform with AI-personalised learning paths, certification management, and placement tracking.',
+      },
+    ],
+    metrics: [
+      { icon: 'workspace_premium', value: '200+', label: 'Technicians Certified' },
+      { icon: 'schedule', value: '4-6 weeks', label: 'Program Duration' },
+      { icon: 'factory', value: 'Industry-aligned', label: 'Curriculum' },
+    ],
+    ctaText: 'Explore Training Platform',
+    ctaHref: '/products',
+  },
+  {
+    id: 'consumers',
+    name: 'EV Buyers / Consumers',
+    subtitle: 'Individual EV Owners',
+    icon: 'electric_car',
+    challenges: [
+      'Range anxiety & charging access',
+      'Maintenance cost uncertainty',
+      'Resale value unpredictability',
+      'Finding certified EV service centers',
+    ],
+    products: [
+      {
+        name: 'Ignition App',
+        description: "India's EV companion — real-time charging network map, service cost estimator, certified workshop locator, and resale value insights.",
+      },
+    ],
+    metrics: [
+      { icon: 'ev_station', value: 'Real-time', label: 'Charging Network' },
+      { icon: 'receipt', value: 'Transparent', label: 'Service Costs' },
+      { icon: 'verified', value: 'Certified', label: 'Service Locator' },
+    ],
+    ctaText: 'Download Ignition App',
     ctaHref: '/products',
   },
   {
     id: 'oems',
-    name: 'OEMs',
-    icon: 'factory',
-    tagline: 'End-to-end visibility into dealer networks, warranty tracking, and market intelligence.',
+    name: 'OEMs / Manufacturers',
+    subtitle: 'EV Original Equipment Manufacturers',
+    icon: 'precision_manufacturing',
     challenges: [
-      'Dealer network management at scale',
-      'Warranty tracking and dispute resolution',
-      'Service quality monitoring across partners',
-      'Actionable market insights from field data',
+      'After-sales quality monitoring',
+      'Warranty management complexity',
+      'Dealer network training readiness',
+      'Field failure pattern analysis',
     ],
     products: [
-      { name: 'GSTSAAS', description: 'Dealer & service network commerce management with GST-compliant invoicing.', href: '/products' },
-      { name: 'KAILASH-AI', description: 'Quality analytics, demand forecasting, and market intelligence.', href: '/products' },
+      {
+        name: 'KAILASH-AI',
+        description: 'Field intelligence platform — warranty analytics, failure pattern detection, and dealer readiness scoring.',
+      },
+      {
+        name: 'EV VIDYA ARJUN',
+        description: 'Dealer and technician training at scale with certification tracking and readiness dashboards.',
+      },
+      {
+        name: 'GSTSAAS',
+        description: 'Dealer network commerce management with GST-compliant invoicing and inventory control.',
+      },
     ],
     metrics: [
-      { icon: 'visibility', value: 100, suffix: '%', label: 'End-to-End Visibility', description: 'Full supply-chain transparency' },
-      { icon: 'insights', value: 100, suffix: '%', label: 'Real-Time Insights', description: 'Live data from the field' },
-      { icon: 'public', value: 360, suffix: '°', label: 'Coverage', description: 'Holistic ecosystem view' },
+      { icon: 'savings', value: 'Reduced', label: 'Warranty Cost' },
+      { icon: 'leaderboard', value: 'Scored', label: 'Dealer Readiness' },
+      { icon: 'bug_report', value: 'Insights-driven', label: 'Field Failures' },
     ],
-    ctaText: 'Explore API Platform',
-    ctaHref: '/products',
+    ctaText: 'Contact Enterprise Sales',
+    ctaHref: '/contact',
   },
 ];
 
@@ -188,22 +282,206 @@ const comparisonRows = [
 ];
 
 /* ─────────────────────────────────────────────
-   Component
+   Metric Card
+   ───────────────────────────────────────────── */
+
+function MetricCard({ metric }: { metric: StakeholderMetric }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.92 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      whileHover={{ y: -4 }}
+      className="relative p-5 rounded-2xl bg-surface border border-outline-variant/30 shadow-sm hover:shadow-md transition-all group overflow-hidden text-center"
+    >
+      <div className="absolute top-0 right-0 w-20 h-20 bg-primary-container/5 rounded-full -translate-y-6 translate-x-6 group-hover:bg-primary-container/10 transition-colors" />
+      <Icon name={metric.icon} size={24} className="text-primary mb-2 mx-auto" />
+      <div className="text-xl font-black gradient-text font-display mb-1 leading-tight">
+        {metric.value}
+      </div>
+      <div className="text-xs font-semibold text-on-surface-variant">{metric.label}</div>
+    </motion.div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   Stakeholder Section
+   ───────────────────────────────────────────── */
+
+function StakeholderSection({
+  stakeholder,
+  index,
+  sectionRef,
+}: {
+  stakeholder: Stakeholder;
+  index: number;
+  sectionRef: (el: HTMLElement | null) => void;
+}) {
+  const isAlt = index % 2 === 1;
+
+  return (
+    <section
+      id={stakeholder.id}
+      ref={sectionRef}
+      className={`py-20 scroll-mt-32 ${isAlt ? 'bg-surface-variant/5' : 'bg-surface'}`}
+    >
+      <div className="container mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-3">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-primary-container/15 flex items-center justify-center shrink-0">
+                <Icon name={stakeholder.icon} size={32} className="text-primary" />
+              </div>
+              <div>
+                <h2 className="text-2xl md:text-3xl font-bold font-display leading-tight">
+                  {stakeholder.name}
+                </h2>
+                <p className="text-sm text-on-surface-variant font-medium">{stakeholder.subtitle}</p>
+              </div>
+            </div>
+            <Link href={stakeholder.ctaHref}>
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="shrink-0 px-6 py-3 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
+              >
+                {stakeholder.ctaText}
+              </motion.button>
+            </Link>
+          </div>
+
+          <div className="h-px bg-outline-variant/30 mb-8" />
+
+          <div className="grid lg:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, x: -16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="p-7 rounded-2xl bg-surface-bright border border-outline-variant/30 shadow-sm"
+            >
+              <h3 className="text-xs font-semibold text-primary uppercase tracking-widest mb-5 font-display flex items-center gap-2">
+                <Icon name="report_problem" size={15} className="text-primary" />
+                Key Challenges
+              </h3>
+              <ul className="space-y-3">
+                {stakeholder.challenges.map((c, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -8 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.12 + i * 0.07 }}
+                    className="flex items-start gap-3 text-sm text-on-surface-variant leading-relaxed"
+                  >
+                    <Icon name="cancel" size={17} className="text-error/70 mt-0.5 shrink-0" />
+                    {c}
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <div className="space-y-6">
+              <motion.div
+                initial={{ opacity: 0, x: 16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.12 }}
+                className="p-7 rounded-2xl bg-surface-bright border border-outline-variant/30 shadow-sm"
+              >
+                <h3 className="text-xs font-semibold text-primary uppercase tracking-widest mb-5 font-display flex items-center gap-2">
+                  <Icon name="inventory_2" size={15} className="text-primary" />
+                  Recommended Products
+                </h3>
+                <div className={`grid gap-3 ${stakeholder.products.length > 1 ? 'sm:grid-cols-2' : ''}`}>
+                  {stakeholder.products.map((product, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 8 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.18 + i * 0.08 }}
+                      className="px-4 py-3 bg-primary-container/8 rounded-xl border border-primary/10"
+                    >
+                      <p className="font-bold text-sm text-on-surface font-display mb-1">
+                        {product.name}
+                      </p>
+                      <p className="text-xs text-on-surface-variant leading-relaxed">
+                        {product.description}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              <div>
+                <h3 className="text-xs font-semibold text-primary uppercase tracking-widest mb-4 font-display flex items-center gap-2 px-1">
+                  <Icon name="analytics" size={15} className="text-primary" />
+                  Impact Metrics
+                </h3>
+                <div className="grid grid-cols-3 gap-3">
+                  {stakeholder.metrics.map((m, i) => (
+                    <MetricCard key={i} metric={m} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   Main Component
    ───────────────────────────────────────────── */
 
 export default function SolutionsClient() {
-  const [activePersona, setActivePersona] = useState<string>('cpo');
+  const [activeId, setActiveId] = useState<string>('cpo');
+  const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
+  const selectorRef = useRef<HTMLDivElement>(null);
 
-  const selected = personas.find((p) => p.id === activePersona)!;
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    stakeholders.forEach((s) => {
+      const el = sectionRefs.current[s.id];
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveId(s.id);
+        },
+        { rootMargin: '-35% 0px -60% 0px' },
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  useEffect(() => {
+    const btn = selectorRef.current?.querySelector<HTMLElement>(`[data-id="${activeId}"]`);
+    btn?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }, [activeId]);
+
+  const scrollToSection = (id: string) => {
+    const el = sectionRefs.current[id];
+    if (!el) return;
+    const offset = 128;
+    const top = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
 
-      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          HERO
-         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden pt-16">
-        {/* Dot grid */}
+      {/* HERO */}
+      <section className="relative min-h-[72vh] flex items-center justify-center overflow-hidden pt-16">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -211,8 +489,6 @@ export default function SolutionsClient() {
             backgroundSize: '40px 40px',
           }}
         />
-
-        {/* Animated blur orbs */}
         <motion.div
           animate={{ scale: [1, 1.15, 1], x: [0, 30, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
@@ -223,24 +499,22 @@ export default function SolutionsClient() {
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-container/10 rounded-full blur-[130px]"
         />
-
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
 
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.9 }}
             className="text-center max-w-4xl mx-auto"
           >
-            {/* Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
               className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full border border-primary/20 bg-primary-container/10"
             >
-              <span className="w-2 h-2 rounded-full bg-primary-container animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span className="text-sm font-medium text-primary font-display">
                 Tailored for Every Stakeholder
               </span>
@@ -249,185 +523,77 @@ export default function SolutionsClient() {
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight font-display">
               Solutions for{' '}
               <span className="gradient-text">Every Role</span>
+              <br />
+              <span className="text-3xl md:text-4xl font-semibold text-on-surface-variant">
+                in India&apos;s EV Ecosystem
+              </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto">
-              Discover how Go4Garage transforms your specific challenges into
-              competitive advantages — from CPO operators to government
-              regulators.
+            <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto mb-10">
+              Eight specialised solutions — built for CPO operators, workshops, fleets,
+              insurers, regulators, trainers, consumers, and OEMs.
             </p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="flex flex-wrap justify-center gap-2"
+            >
+              {stakeholders.map((s) => (
+                <button
+                  key={s.id}
+                  onClick={() => scrollToSection(s.id)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border border-outline-variant/40 bg-surface-bright hover:border-primary/40 hover:text-primary text-on-surface-variant transition-all"
+                >
+                  <Icon name={s.icon} size={14} />
+                  {s.name}
+                </button>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          PERSONA TABS (sticky)
-         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="sticky top-16 z-30 backdrop-blur-xl bg-surface-bright/90 border-y border-outline-variant/20">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex flex-wrap justify-center gap-3">
-            {personas.map((p) => (
+      {/* STICKY ROLE SELECTOR */}
+      <div className="sticky top-16 z-30 backdrop-blur-xl bg-surface-bright/92 border-b border-outline-variant/20 shadow-sm">
+        <div className="container mx-auto px-4 py-3">
+          <div
+            ref={selectorRef}
+            className="flex gap-2 overflow-x-auto pb-0.5"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {stakeholders.map((s) => (
               <motion.button
-                key={p.id}
-                onClick={() => setActivePersona(p.id)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
-                  activePersona === p.id
+                key={s.id}
+                data-id={s.id}
+                onClick={() => scrollToSection(s.id)}
+                whileTap={{ scale: 0.96 }}
+                className={`flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+                  activeId === s.id
                     ? 'bg-primary text-primary-on shadow-md'
-                    : 'bg-surface-bright text-on-surface-variant border border-outline-variant/30 hover:border-primary/30 hover:text-primary'
+                    : 'bg-transparent text-on-surface-variant border border-outline-variant/30 hover:border-primary/30 hover:text-primary'
                 }`}
               >
-                <Icon name={p.icon} size={18} />
-                <span className="hidden sm:inline">{p.name}</span>
+                <Icon name={s.icon} size={16} />
+                <span className="whitespace-nowrap">{s.name}</span>
               </motion.button>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          PERSONA DETAIL SECTION
-         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="py-24 bg-surface-container-low">
-        <div className="container mx-auto px-6">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={selected.id}
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -24 }}
-              transition={{ duration: 0.4, ease: 'easeInOut' }}
-            >
-              {/* ── Header ── */}
-              <div className="flex flex-col md:flex-row items-center gap-5 mb-14">
-                <div className="w-16 h-16 rounded-2xl bg-primary-container/15 flex items-center justify-center shrink-0">
-                  <Icon name={selected.icon} size={36} className="text-primary" />
-                </div>
-                <div className="text-center md:text-left">
-                  <h2 className="text-3xl md:text-4xl font-bold font-display">
-                    {selected.name}
-                  </h2>
-                  <p className="text-on-surface-variant text-lg mt-1 max-w-2xl">
-                    {selected.tagline}
-                  </p>
-                </div>
-              </div>
+      {/* 8 STAKEHOLDER SECTIONS */}
+      {stakeholders.map((s, idx) => (
+        <StakeholderSection
+          key={s.id}
+          stakeholder={s}
+          index={idx}
+          sectionRef={(el) => { sectionRefs.current[s.id] = el; }}
+        />
+      ))}
 
-              {/* ── Two-column: Challenges + Products ── */}
-              <div className="grid lg:grid-cols-2 gap-10 mb-14">
-                {/* Challenges */}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 }}
-                  className="p-8 rounded-2xl bg-surface-bright border border-outline-variant/30 shadow-sm"
-                >
-                  <h3 className="text-xs font-semibold text-primary uppercase tracking-widest mb-6 font-display flex items-center gap-2">
-                    <Icon name="warning" size={16} className="text-primary" />
-                    Key Challenges
-                  </h3>
-                  <ul className="space-y-4">
-                    {selected.challenges.map((c, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-3 text-sm text-on-surface-variant leading-relaxed"
-                      >
-                        <Icon
-                          name="warning"
-                          size={18}
-                          className="text-error mt-0.5 flex-shrink-0"
-                        />
-                        {c}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-
-                {/* Products */}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.15 }}
-                  className="p-8 rounded-2xl bg-surface-bright border border-outline-variant/30 shadow-sm"
-                >
-                  <h3 className="text-xs font-semibold text-primary uppercase tracking-widest mb-6 font-display flex items-center gap-2">
-                    <Icon name="inventory_2" size={16} className="text-primary" />
-                    Recommended Products
-                  </h3>
-                  <div className="space-y-4">
-                    {selected.products.map((product, i) => (
-                      <Link key={i} href={product.href}>
-                        <motion.div
-                          whileHover={{ x: 4 }}
-                          className="group px-5 py-4 bg-surface-container-low rounded-xl border border-outline-variant/20 hover:border-primary/30 transition-all cursor-pointer"
-                        >
-                          <div className="flex items-center justify-between mb-1">
-                            <p className="font-bold text-sm text-on-surface font-display">
-                              {product.name}
-                            </p>
-                            <Icon
-                              name="arrow_forward"
-                              size={16}
-                              className="text-primary opacity-0 group-hover:opacity-100 transition-opacity"
-                            />
-                          </div>
-                          <p className="text-xs text-on-surface-variant leading-relaxed">
-                            {product.description}
-                          </p>
-                        </motion.div>
-                      </Link>
-                    ))}
-                  </div>
-                </motion.div>
-              </div>
-
-              {/* ── Impact Metrics ── */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="mb-14"
-              >
-                <h3 className="text-xs font-semibold text-primary uppercase tracking-widest mb-8 font-display text-center flex items-center justify-center gap-2">
-                  <Icon name="analytics" size={16} className="text-primary" />
-                  Impact Metrics
-                </h3>
-                <div className="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
-                  {selected.metrics.map((m, i) => (
-                    <StatsCard
-                      key={`${selected.id}-${i}`}
-                      icon={m.icon}
-                      value={m.value}
-                      suffix={m.suffix}
-                      prefix={m.prefix}
-                      label={m.label}
-                      description={m.description}
-                    />
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* ── CTA Button ── */}
-              <div className="text-center">
-                <Link href={selected.ctaHref}>
-                  <motion.button
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="px-10 py-4 bg-primary text-primary-on rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-shadow"
-                  >
-                    {selected.ctaText}
-                  </motion.button>
-                </Link>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </section>
-
-      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          COMPARISON TABLE
-         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* COMPARISON TABLE */}
       <section className="py-24 bg-surface">
         <div className="container mx-auto px-6">
           <SectionHeading
@@ -442,14 +608,12 @@ export default function SolutionsClient() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto bg-surface-bright rounded-2xl overflow-hidden border border-outline-variant/30 shadow-sm"
           >
-            {/* Table header */}
             <div className="grid grid-cols-3 text-sm font-semibold border-b border-outline-variant/20">
               <div className="px-6 py-4 text-on-surface font-display">Capability</div>
               <div className="px-6 py-4 text-center text-primary font-display">Go4Garage</div>
               <div className="px-6 py-4 text-center text-on-surface-variant font-display">Generic Solutions</div>
             </div>
 
-            {/* Table rows */}
             {comparisonRows.map((cap, idx) => (
               <motion.div
                 key={idx}
@@ -472,11 +636,8 @@ export default function SolutionsClient() {
         </div>
       </section>
 
-      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          CTA SECTION
-         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      {/* CTA SECTION */}
       <section className="py-24 relative overflow-hidden bg-surface-container-low">
-        {/* Background effects */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/10 via-surface to-secondary-container/10" />
         <motion.div
           animate={{ scale: [1, 1.1, 1] }}
