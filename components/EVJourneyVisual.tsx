@@ -109,7 +109,18 @@ export function EVJourneyVisual({ onComplete }: Props) {
         style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.2) 0%, transparent 22%)' }}
       />
 
-      {/* ═══════════ BOTTOM-RIGHT COMPACT PANEL — all stage UI + watermark cover ═══════════ */}
+      {/* ═══════════ WATERMARK KILL COVER — sits behind panel, covers HeyGen logo ═══════════ */}
+      <div
+        className="absolute bottom-0 right-0 z-[28] pointer-events-none"
+        style={{
+          width: 'min(260px, 42vw)',
+          height: 150,
+          background: 'rgba(0,0,0,0.95)',
+          borderRadius: '10px 0 0 0',
+        }}
+      />
+
+      {/* ═══════════ STAGE UI PANEL — compact, sits above kill cover ═══════════ */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: started ? 1 : 0, y: started ? 0 : 16 }}
@@ -118,11 +129,11 @@ export function EVJourneyVisual({ onComplete }: Props) {
       >
         <div
           style={{
-            background: 'rgba(0,0,0,0.92)',
+            background: 'rgba(0,0,0,0.88)',
             backdropFilter: 'blur(16px)',
-            borderRadius: '14px 0 0 0',
-            padding: '56px 14px 12px 14px',
-            minWidth: 310,
+            borderRadius: '10px 0 0 0',
+            padding: '10px 14px 12px 14px',
+            width: 'min(260px, 42vw)',
           }}
         >
           {/* Challenge / resolved status row */}
