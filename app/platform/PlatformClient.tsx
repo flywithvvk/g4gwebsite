@@ -73,21 +73,20 @@ const capabilityTabs = [
 ];
 
 const comparisonRows = [
-  { icon: 'gavel', traditional: 'Manual compliance filing across 33 states', g4g: 'AI-automated regulatory compliance with real-time updates' },
-  { icon: 'timer', traditional: '3-6 month DISCOM approval delays', g4g: 'AI-guided applications reducing approval time' },
-  { icon: 'device_hub', traditional: 'Multiple disconnected tools (Excel, WhatsApp, paper)', g4g: 'Single unified platform for all operations' },
-  { icon: 'smart_toy', traditional: 'Generic AI chatbots with no domain knowledge', g4g: 'Domain-trained automotive AI with 95% problem coverage' },
-  { icon: 'notifications_off', traditional: 'No regulatory change notifications', g4g: 'Real-time policy tracking across all 33 states' },
-  { icon: 'receipt_long', traditional: 'Manual GST invoicing prone to errors', g4g: 'Automated GST compliance with 95%+ accuracy' },
-  { icon: 'build', traditional: 'Reactive maintenance (fix when broken)', g4g: 'Predictive maintenance with AI anomaly detection' },
+  { icon: 'gavel', dimension: 'Compliance Filing', traditional: 'Manual, state-by-state, 6-8 week delays', g4g: 'AI-automated across 33 states, days not weeks' },
+  { icon: 'build', dimension: 'Workshop Management', traditional: 'Paper job cards, manual GST filing', g4g: 'Digital job cards with AI diagnostics + auto GST' },
+  { icon: 'electric_bolt', dimension: 'EV Diagnostics', traditional: 'Generic OBD tools, manual interpretation', g4g: 'AI fault analysis with predictive maintenance' },
+  { icon: 'school', dimension: 'Technician Training', traditional: 'Classroom-only, no certification tracking', g4g: 'AI-personalized learning paths with certification' },
+  { icon: 'insights', dimension: 'Analytics & Insights', traditional: 'Excel spreadsheets, monthly reports', g4g: 'Real-time AI dashboards with anomaly detection' },
+  { icon: 'hub', dimension: 'Platform Coverage', traditional: 'Single point solution per problem', g4g: '6 integrated products on unified data layer' },
 ];
 
 const techCards = [
   {
     icon: 'psychology',
-    title: 'Automobile LLM',
-    description: 'AI Intelligence powered by multiple specialized models with domain-specific fine-tuning for Indian automotive regulations, service procedures, and compliance workflows — including open-source foundation models optimized for the Indian automobile ecosystem.',
-    features: ['Contextual policy interpretation', 'Multi-language support', 'Continuous fine-tuning'],
+    title: 'Proprietary Automotive AI Engine',
+    description: 'Proprietary Automotive AI Engine — powered by domain-tuned models and a multi-LLM routing system that selects the optimal AI model across 10 dimensions for each task. Includes fine-tuned models for Indian automotive regulations and a RAG-powered knowledge base of 55+ regulatory documents.',
+    features: ['Multi-LLM routing across 10 dimensions', 'RAG knowledge base: 55+ regulatory documents', 'Fine-tuned for Indian automotive regulations'],
   },
   {
     icon: 'verified',
@@ -110,9 +109,9 @@ const techCards = [
 ];
 
 const enterpriseFeatures = [
-  { icon: 'security', title: 'Security', description: 'SOC 2 readiness path — enterprise security practices with end-to-end encryption, RBAC, and audit logging' },
+  { icon: 'security', title: 'Security', description: 'Enterprise security architecture with audit logging, RBAC, and encryption at rest' },
   { icon: 'trending_up', title: 'Scalability', description: 'High availability architecture with redundancy and auto-scaling infrastructure for cloud-native deployments' },
-  { icon: 'integration_instructions', title: 'Integration', description: 'REST APIs, webhooks, and API-first architecture with integration support for SAP, Tally, GSTN, and OEM systems' },
+  { icon: 'integration_instructions', title: 'Integration', description: 'API-first architecture with integration support for enterprise systems including GSTN, Tally-compatible exports, and OEM data feeds' },
   { icon: 'support_agent', title: 'Support', description: '24/7 dedicated support with SLA-backed response times and named account managers' },
   { icon: 'apartment', title: 'Multi-tenancy', description: 'Complete tenant isolation with configurable branding, permissions, and data sovereignty' },
   { icon: 'palette', title: 'White-label', description: 'White-label ready architecture for partner deployments' },
@@ -344,14 +343,17 @@ export default function PlatformClient() {
           <motion.div {...fadeUp} className="max-w-4xl mx-auto">
             <div className="rounded-2xl overflow-hidden border border-outline-variant/30 shadow-sm">
               {/* Header */}
-              <div className="grid grid-cols-2 text-sm font-bold">
-                <div className="px-6 py-4 text-red-700 font-display bg-red-500/10 flex items-center gap-2">
-                  <Icon name="close" size={18} className="text-red-500" />
+              <div className="grid grid-cols-3 text-sm font-bold">
+                <div className="px-6 py-4 text-on-surface-variant font-display bg-surface-container/30">
+                  Dimension
+                </div>
+                <div className="px-6 py-4 text-red-700 font-display bg-red-500/10 flex items-center gap-2 border-l border-red-500/20">
+                  <Icon name="cancel" size={18} className="text-red-500" />
                   Traditional Approach
                 </div>
-                <div className="px-6 py-4 text-tertiary font-display bg-tertiary-container/20 flex items-center gap-2 border-l border-tertiary/20">
-                  <Icon name="check_circle" size={18} className="text-tertiary" />
-                  With Go4Garage
+                <div className="px-6 py-4 text-green-700 dark:text-green-400 font-display bg-green-500/10 flex items-center gap-2 border-l border-green-500/20">
+                  <Icon name="check_circle" size={18} className="text-green-500" />
+                  Go4Garage Platform
                 </div>
               </div>
               {/* Rows */}
@@ -362,13 +364,18 @@ export default function PlatformClient() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.05 }}
-                  className="grid grid-cols-2 text-sm border-t border-outline-variant/10"
+                  className="grid grid-cols-3 text-sm border-t border-outline-variant/10"
                 >
-                  <div className="px-6 py-4 text-on-surface-variant flex items-start gap-3 bg-red-500/5 hover:bg-red-500/10 transition-colors">
+                  <div className="px-6 py-4 text-on-surface font-semibold flex items-center gap-3 bg-surface-container/20">
+                    <Icon name={row.icon} size={18} className="text-primary flex-shrink-0" />
+                    <span>{row.dimension}</span>
+                  </div>
+                  <div className="px-6 py-4 text-on-surface-variant flex items-start gap-3 bg-red-500/5 hover:bg-red-500/10 transition-colors border-l border-red-500/10">
+                    <Icon name="cancel" size={18} className="text-red-400 mt-0.5 flex-shrink-0" />
                     <span>{row.traditional}</span>
                   </div>
-                  <div className="px-6 py-4 text-on-surface font-medium flex items-start gap-3 bg-tertiary-container/10 hover:bg-tertiary-container/20 transition-colors border-l border-tertiary/15">
-                    <Icon name="check_circle" size={18} className="text-tertiary mt-0.5 flex-shrink-0" />
+                  <div className="px-6 py-4 text-on-surface font-medium flex items-start gap-3 bg-green-500/5 hover:bg-green-500/10 transition-colors border-l border-green-500/15">
+                    <Icon name="check_circle" size={18} className="text-green-500 mt-0.5 flex-shrink-0" />
                     <span>{row.g4g}</span>
                   </div>
                 </motion.div>

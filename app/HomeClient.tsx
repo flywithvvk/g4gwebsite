@@ -41,12 +41,10 @@ const problemLayers = [
 ];
 
 const personas = [
-  { icon: 'ev_station', label: 'CPO Operators', desc: 'End-to-end charging station compliance & operations', href: '/solutions' },
-  { icon: 'build', label: 'Workshops', desc: 'Digital service management & parts commerce', href: '/solutions' },
-  { icon: 'local_shipping', label: 'Fleet Operators', desc: 'Fleet analytics, routing & energy optimization', href: '/solutions' },
-  { icon: 'school', label: 'EV Technicians', desc: 'Certified skilling & workforce development', href: '/solutions' },
-  { icon: 'account_balance', label: 'Government', desc: 'Policy compliance dashboards & reporting', href: '/solutions' },
-  { icon: 'factory', label: 'OEMs', desc: 'Market intelligence & dealer network tools', href: '/solutions' },
+  { icon: 'ev_station', label: 'CPO Operators', challenge: 'Navigating 33-state compliance hurdles while scaling charging infrastructure', href: '/solutions' },
+  { icon: 'build', label: 'Workshop Owners', challenge: 'Managing job cards, parts inventory, and GST filings with fragmented tools', href: '/solutions' },
+  { icon: 'local_shipping', label: 'Fleet Owners', challenge: 'Optimising range, charging schedules, and energy costs across mixed EV fleets', href: '/solutions' },
+  { icon: 'electric_car', label: 'EV Consumers', challenge: 'Finding certified service, tracking warranty, and understanding total cost of ownership', href: '/solutions' },
 ];
 
 const howItWorks = [
@@ -414,7 +412,7 @@ export default function HomePage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-on-surface group-hover:text-primary transition-colors font-display mb-1">{persona.label}</h3>
-                      <p className="text-xs text-on-surface-variant leading-relaxed">{persona.desc}</p>
+                      <p className="text-xs text-on-surface-variant leading-relaxed">{persona.challenge}</p>
                     </div>
                   </motion.div>
                 </Link>
