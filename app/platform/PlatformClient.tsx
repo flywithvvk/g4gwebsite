@@ -10,9 +10,9 @@ import { AnimatedCounter } from '@/components/AnimatedCounter';
 import { EVJourneyVisual } from '@/components/EVJourneyVisual';
 
 
-/* ═══════════════════════════════════════════════════════
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    DATA
-   ═══════════════════════════════════════════════════════ */
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 const capabilityTabs = [
   {
@@ -119,9 +119,9 @@ const enterpriseFeatures = [
   { icon: 'palette', title: 'White-label', description: 'White-label ready architecture for partner deployments' },
 ];
 
-/* ═══════════════════════════════════════════════════════
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    HELPERS
-   ═══════════════════════════════════════════════════════ */
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 const colorMap = {
   primary: { text: 'text-primary', bg: 'bg-primary-container/15', border: 'border-primary/30', activeBg: 'bg-primary', activeText: 'text-white' },
@@ -131,9 +131,9 @@ const colorMap = {
 
 const fadeUp = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
 
-/* ═══════════════════════════════════════════════════════
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    COMPONENT
-   ═══════════════════════════════════════════════════════ */
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 export default function PlatformClient() {
   const [activeTab, setActiveTab] = useState(0);

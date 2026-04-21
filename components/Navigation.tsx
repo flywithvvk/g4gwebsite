@@ -73,13 +73,19 @@ const Navigation = () => {
             })}
           </div>
 
-          {/* Contact CTA */}
+          {/* CTAs */}
           <motion.div
-            className="hidden md:block"
+            className="hidden md:flex items-center gap-2"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
+            <Link
+              href="/demo"
+              className="px-4 py-2.5 rounded-xl font-semibold text-sm text-primary border border-primary/30 hover:bg-primary-container/10 transition-all duration-200"
+            >
+              Book Demo
+            </Link>
             <Link
               href="/contact"
               className="px-5 py-2.5 rounded-xl font-semibold text-sm text-primary-on bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg transition-all duration-200"
@@ -138,6 +144,13 @@ const Navigation = () => {
                   </Link>
                 );
               })}
+              <Link
+                href="/demo"
+                onClick={() => setIsOpen(false)}
+                className="block w-full text-center mt-1 px-4 py-3 rounded-xl font-semibold text-sm text-primary border border-primary/30 hover:bg-primary-container/10"
+              >
+                Book Demo
+              </Link>
               <Link
                 href="/contact"
                 onClick={() => setIsOpen(false)}

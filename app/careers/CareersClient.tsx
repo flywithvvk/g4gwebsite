@@ -7,27 +7,27 @@ import { SectionHeading } from '@/components/SectionHeading';
 
 const benefits = [
   {
-    icon: 'rocket_launch',
+    icon: 'target',
     title: 'Mission-Driven Work',
-    desc: 'Impact millions of lives by accelerating EV adoption and building intelligent infrastructure for India\'s automobile future.',
+    desc: 'Solving 95 real EV industry problems that matter — from regulatory compliance to workshop digitization.',
     color: 'border-l-primary',
   },
   {
-    icon: 'psychology',
-    title: 'Cutting-Edge Tech',
-    desc: 'Work with AI/ML, proprietary LLMs, React, Next.js, MongoDB, and cloud-native architecture at the bleeding edge.',
+    icon: 'smart_toy',
+    title: 'Cutting-Edge AI',
+    desc: 'Work with LLMs, multi-agent systems, and production AI powering KAILASH-AI and Eka-AI.',
     color: 'border-l-secondary',
   },
   {
-    icon: 'trending_up',
-    title: 'Growth Culture',
-    desc: 'Learn, build, and ship fast in a startup culture that values ownership, experimentation, and continuous learning.',
+    icon: 'public',
+    title: 'Pan-India Impact',
+    desc: 'Platform deployed across all 33 Indian states — real scale, real users, real infrastructure.',
     color: 'border-l-tertiary',
   },
   {
-    icon: 'flag',
-    title: 'India-First Impact',
-    desc: 'Solve real, hard problems for India — from regulatory compliance to workforce training to sustainable mobility.',
+    icon: 'rocket_launch',
+    title: 'Early Stage Upside',
+    desc: 'Join at Series A stage with meaningful equity. Be part of the founding team shaping India\'s EV future.',
     color: 'border-l-primary-container',
   },
 ];
@@ -39,56 +39,45 @@ interface Job {
   type: string;
   icon: string;
   accent: string;
+  description: string;
 }
 
 const openPositions: Job[] = [
   {
-    title: 'Senior Full-Stack Engineer',
+    title: 'Full Stack Engineer',
     department: 'Engineering',
-    location: 'Bangalore',
+    location: 'Remote / Bangalore',
     type: 'Full-time',
     icon: 'code',
     accent: 'primary',
+    description: 'Build the products shaping India\'s EV industry',
   },
   {
     title: 'AI/ML Engineer',
-    department: 'Data & AI',
+    department: 'AI/ML',
     location: 'Bangalore',
     type: 'Full-time',
     icon: 'model_training',
     accent: 'secondary',
+    description: 'Work on KAILASH-AI and Eka-AI systems',
   },
   {
-    title: 'Product Manager',
-    department: 'Product',
-    location: 'Bangalore',
-    type: 'Full-time',
-    icon: 'inventory',
-    accent: 'tertiary',
-  },
-  {
-    title: 'DevOps Engineer',
-    department: 'Engineering',
-    location: 'Bangalore / Remote',
-    type: 'Full-time',
-    icon: 'cloud',
-    accent: 'primary',
-  },
-  {
-    title: 'Business Development Manager',
-    department: 'Growth',
-    location: 'Bangalore',
+    title: 'Sales Executive (B2B SaaS)',
+    department: 'Sales',
+    location: 'Delhi / Mumbai / Bangalore',
     type: 'Full-time',
     icon: 'handshake',
-    accent: 'secondary',
+    accent: 'tertiary',
+    description: 'Help EV businesses transform with our platform',
   },
   {
-    title: 'UX Designer',
-    department: 'Design',
-    location: 'Bangalore',
+    title: 'EV Domain Expert',
+    department: 'Consulting',
+    location: 'Remote',
     type: 'Full-time',
-    icon: 'palette',
-    accent: 'tertiary',
+    icon: 'engineering',
+    accent: 'primary',
+    description: 'Bring your regulatory or workshop expertise to product development',
   },
 ];
 
@@ -246,8 +235,11 @@ export default function CareersClient() {
                         <span className="w-1 h-1 rounded-full bg-outline-variant" />
                         <span>{job.type}</span>
                       </div>
+                      <p className="text-sm text-on-surface-variant mb-4 leading-relaxed">
+                        {job.description}
+                      </p>
                       <a
-                        href={`mailto:careers@go4garage.com?subject=Application: ${job.title}`}
+                        href={`mailto:careers@go4garage.in?subject=Application: ${job.title}`}
                         className="inline-flex items-center gap-2 px-5 py-2 bg-primary text-primary-on rounded-full text-sm font-semibold hover:bg-primary/90 transition-all shadow-sm hover:shadow-md"
                       >
                         Apply Now <Icon name="send" size={16} />

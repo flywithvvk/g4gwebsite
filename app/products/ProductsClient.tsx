@@ -21,6 +21,8 @@ interface Product {
   icon: string;
   features: string[];
   colorFamily: 'primary' | 'secondary' | 'tertiary';
+  slug?: string;
+  setupTime?: string;
 }
 
 const products: Product[] = [
@@ -418,7 +420,7 @@ export default function ProductsClient() {
                   <h4 className="text-xs font-semibold uppercase tracking-widest text-on-surface-variant mb-4 font-display">
                     Key Capabilities
                   </h4>
-                  <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+                  <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3 mb-8">
                     {selected.features.map((feat, i) => (
                       <motion.li
                         key={feat}
@@ -432,6 +434,23 @@ export default function ProductsClient() {
                       </motion.li>
                     ))}
                   </ul>
+
+                  {/* View full details link */}
+                  <div className="pt-4 border-t border-outline-variant/20 flex items-center justify-between flex-wrap gap-3">
+                    {selected.setupTime && (
+                      <span className="text-xs text-on-surface-variant">
+                        Setup time:{' '}
+                        <span className="font-medium text-on-surface">{selected.setupTime}</span>
+                      </span>
+                    )}
+                    <Link
+                      href={selected.slug ? `/products/${selected.slug}` : '/products'}
+                      className={`inline-flex items-center gap-1.5 text-sm font-semibold ${colors.text} hover:underline font-display`}
+                    >
+                      View Full Details
+                      <Icon name="arrow_forward" size={16} className={colors.text} />
+                    </Link>
+                  </div>
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -599,6 +618,36 @@ export default function ProductsClient() {
               ))}
             </div>
           </div>
+
+          {/* per-product setup times */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="mt-12 max-w-5xl mx-auto"
+          >
+            <h3 className="text-center text-sm font-semibold uppercase tracking-widest text-on-surface-variant mb-6 font-display">
+              Per-product setup time
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+              {products.map((p) => {
+                const c = colorMap[p.colorFamily];
+                return (
+                  <div
+                    key={p.id}
+                    className={`${c.bg} border ${c.borderLight} rounded-xl p-3 text-center`}
+                  >
+                    <Icon name={p.icon} size={18} className={`${c.text} mx-auto mb-1`} />
+                    <p className={`text-[11px] font-bold font-display ${c.text} mb-1 truncate`}>
+                      {p.name.split(' ')[0]}
+                    </p>
+                    <p className="text-[10px] text-on-surface-variant leading-snug">{p.setupTime}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
         </div>
       </section>
 

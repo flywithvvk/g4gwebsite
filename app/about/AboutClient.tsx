@@ -56,9 +56,9 @@ export default function AboutClient() {
   return (
     <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
 
-      {/* ════════════════════════════════════════════════════════════════
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           SECTION 1 — SPLIT HERO
-      ════════════════════════════════════════════════════════════════ */}
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="relative min-h-[80vh] flex items-center overflow-hidden pt-20 pb-16">
         {/* Background effects */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
@@ -128,9 +128,9 @@ export default function AboutClient() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════════
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           SECTION 2 — MISSION & VISION
-      ════════════════════════════════════════════════════════════════ */}
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
           <SectionHeading badge="Our Purpose" title="Driving" highlight="Change" />
@@ -182,9 +182,9 @@ export default function AboutClient() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════════
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           SECTION 3 — CORE VALUES
-      ════════════════════════════════════════════════════════════════ */}
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 bg-surface">
         <div className="container mx-auto px-6">
           <SectionHeading badge="What Drives Us" title="Our Core" highlight="Values" />
@@ -213,9 +213,9 @@ export default function AboutClient() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════════
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           SECTION 4 — JOURNEY TIMELINE
-      ════════════════════════════════════════════════════════════════ */}
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
           <SectionHeading badge="The Journey" title="Our" highlight="Milestones" />
@@ -294,9 +294,9 @@ export default function AboutClient() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════════
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           SECTION 5 — TEAM
-      ════════════════════════════════════════════════════════════════ */}
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 bg-surface">
         <div className="container mx-auto px-6">
           <SectionHeading badge="Leadership" title="Meet the" highlight="Team" />
@@ -333,9 +333,9 @@ export default function AboutClient() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════════
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           SECTION 6 — IMPACT STATS
-      ════════════════════════════════════════════════════════════════ */}
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
           <SectionHeading badge="Our Impact" title="Numbers That" highlight="Matter" />
@@ -371,9 +371,9 @@ export default function AboutClient() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════════════════
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           SECTION 7 — CTA
-      ════════════════════════════════════════════════════════════════ */}
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/12 via-surface to-secondary-container/12" />
         <motion.div
