@@ -50,7 +50,7 @@ export default function PrivacyPage() {
 
           <section>
             <h2 className="text-lg font-semibold text-on-surface">8. Contact</h2>
-            <p>If you have questions about this privacy policy, contact us at <a href="mailto:go4garageofficial@gmail.com" className="text-primary hover:underline">go4garageofficial@gmail.com</a> or call <a href="tel:+919110973504" className="text-primary hover:underline">+91 9110 973 504</a>.</p>
+            <p>If you have questions about this privacy policy, contact us at <a href="mailto:go4garageofficial@gmail.com" className="text-primary hover:underline">go4garageofficial@gmail.com</a> or <a href="mailto:connect@go4garage.in" className="text-primary hover:underline">connect@go4garage.in</a>.</p>
           </section>
         </div>
       </div>

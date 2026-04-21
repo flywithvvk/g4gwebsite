@@ -39,9 +39,9 @@ const articles: Article[] = [
     icon: 'policy',
   },
   {
-    title: 'How URGAA Automates 33-State Compliance',
+    title: 'How URGAA (ऊर्जा) Automates 33-State Compliance',
     excerpt:
-      'From DISCOM approvals to MNRE subsidies — discover how URGAA handles 48 compliance workflows automatically.',
+      'From DISCOM approvals to MNRE subsidies — discover how URGAA (ऊर्जा) handles 48 compliance workflows automatically.',
     date: 'Jan 5, 2025',
     category: 'Product Updates',
     readTime: '4 min read',

@@ -43,8 +43,8 @@ const faqs: FAQItem[] = [
   },
   // Products
   {
-    q: 'What is URGAA?',
-    a: 'URGAA is our Regulatory & Grid Intelligence platform. It handles 48 compliance problems across 33 states — automating DISCOM approvals, MNRE subsidies, state EV policy tracking, grid connectivity, and more. It reduces compliance overhead by up to 89.5%.',
+    q: 'What is URGAA (ऊर्जा)?',
+    a: 'URGAA (ऊर्जा) is our Regulatory & Grid Intelligence platform. It handles 48 compliance problems across 33 states — automating DISCOM approvals, MNRE subsidies, state EV policy tracking, grid connectivity, and more. It reduces compliance overhead by up to 89.5%.',
     category: 'Products',
   },
   {
@@ -80,7 +80,7 @@ const faqs: FAQItem[] = [
   },
   {
     q: 'Can I use only one product?',
-    a: 'Absolutely. Each product — URGAA, GSTSAAS, EV VIDYA ARJUN, and others — works independently as a standalone solution. However, products are designed to work better together, sharing data and intelligence for maximum impact.',
+    a: 'Absolutely. Each product — URGAA (ऊर्जा), GSTSAAS, EV VIDYA ARJUN, and others — works independently as a standalone solution. However, products are designed to work better together, sharing data and intelligence for maximum impact.',
     category: 'Implementation',
   },
   // Pricing

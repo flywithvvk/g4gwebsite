@@ -13,6 +13,7 @@ const Footer: React.FC = () => {
       links: [
         { label: 'About Us', href: '/about' },
         { label: 'Investors', href: '/investors' },
+        { label: 'Careers', href: '/careers' },
         { label: 'Contact', href: '/contact' },
         { label: 'Impact', href: '/impact' },
       ],
@@ -20,7 +21,7 @@ const Footer: React.FC = () => {
     {
       title: 'Products',
       links: [
-        { label: 'URGAA (URJA)', href: '/products' },
+        { label: 'URGAA (ऊर्जा)', href: '/products' },
         { label: 'GSTSAAS', href: '/products' },
         { label: 'Ignition App', href: '/products' },
         { label: 'EV VIDYA ARJUN', href: '/products' },
@@ -36,6 +37,15 @@ const Footer: React.FC = () => {
         { label: 'EV Drivers', href: '/solutions' },
         { label: 'Workshops', href: '/solutions' },
         { label: 'Government', href: '/solutions' },
+      ],
+    },
+    {
+      title: 'Resources',
+      links: [
+        { label: 'Blog', href: '/blog' },
+        { label: 'Case Studies', href: '/case-studies' },
+        { label: 'FAQ', href: '/faq' },
+        { label: 'Pricing', href: '/pricing' },
       ],
     },
   ];
@@ -64,9 +74,9 @@ const Footer: React.FC = () => {
                 <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>mail</span>
                 go4garageofficial@gmail.com
               </a>
-              <a href="tel:+919110973504" className="flex items-center gap-2 text-xs text-on-surface-variant hover:text-primary transition-colors">
-                <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>call</span>
-                +91 9110 973 504
+              <a href="mailto:connect@go4garage.in" className="flex items-center gap-2 text-xs text-on-surface-variant hover:text-primary transition-colors">
+                <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>mail</span>
+                connect@go4garage.in
               </a>
               <span className="flex items-center gap-2 text-xs text-on-surface-variant">
                 <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>location_on</span>

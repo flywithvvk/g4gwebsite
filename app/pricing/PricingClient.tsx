@@ -24,7 +24,7 @@ const tiers: Tier[] = [
     description: 'Get started with essential tools to digitize your operations and stay compliant.',
     features: [
       'Up to 5 charging stations or 1 workshop',
-      'GSTSAAS or URGAA (choose one)',
+      'GSTSAAS or URGAA (ऊर्जा) (choose one)',
       'Basic analytics & reporting',
       'Email support',
       'Standard onboarding',
@@ -77,7 +77,7 @@ interface ComparisonFeature {
 
 const comparisonFeatures: ComparisonFeature[] = [
   { name: 'Charging Stations / Workshops', starter: '5 / 1', professional: '50 / 10', enterprise: 'Unlimited' },
-  { name: 'URGAA Regulatory Intelligence', starter: true, professional: true, enterprise: true },
+  { name: 'URGAA (ऊर्जा) Regulatory Intelligence', starter: true, professional: true, enterprise: true },
   { name: 'GSTSAAS Workshop Engine', starter: true, professional: true, enterprise: true },
   { name: 'EV VIDYA ARJUN Training', starter: false, professional: true, enterprise: true },
   { name: 'KAILASH-AI Advanced Analytics', starter: false, professional: true, enterprise: true },

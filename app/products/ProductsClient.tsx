@@ -4,215 +4,710 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Icon } from '@/components/Icon';
+import { SectionHeading } from '@/components/SectionHeading';
+import { StatsCard } from '@/components/StatsCard';
+import { AnimatedCounter } from '@/components/AnimatedCounter';
+
+/* ───────────────────────── DATA ───────────────────────── */
 
 interface Product {
-  id: number; name: string; tagline: string; description: string; problemsSolved: number; icon: string; keyFeatures: string[]; aiType: string; color: string;
+  id: string;
+  name: string;
+  prdCode: string;
+  tagline: string;
+  description: string;
+  problemLabel: string;
+  problemCount: number;
+  icon: string;
+  features: string[];
+  colorFamily: 'primary' | 'secondary' | 'tertiary';
 }
 
 const products: Product[] = [
-  { id: 1, name: 'URGAA (URJA) Platform', tagline: 'Regulatory & Grid Intelligence', icon: 'bolt', description: 'Navigate India\'s 33-state regulatory landscape with AI-powered compliance automation. URGAA handles DISCOM connections, load sanctioning, electrical inspector certifications, fire NOCs, subsidy disbursement, and real-time charger monitoring.', problemsSolved: 48, aiType: 'Regulatory AI', color: 'border-l-primary', keyFeatures: ['DISCOM connection & load sanctioning automation', 'Multi-state regulatory compliance (33 states)', 'Electrical inspector & fire dept workflows', 'Grid infrastructure & transformer monitoring', 'Subsidy tracking (FAME-II, state schemes)', 'Charger uptime & SLA monitoring', 'Carbon credit & ESG compliance'] },
-  { id: 2, name: 'GSTSAAS', tagline: 'Workshop, Service & Commerce', icon: 'build', description: 'End-to-end workshop and service center operations — service scheduling, spare parts inventory, technician dispatch, GST-compliant invoicing, insurance coordination, and vendor procurement.', problemsSolved: 17, aiType: 'Operations AI', color: 'border-l-secondary', keyFeatures: ['Service scheduling & technician dispatch', 'Spare parts inventory & procurement', 'GST-compliant invoicing & tax automation', 'Insurance partner integration', 'Financing & lending marketplace', 'Warranty management & dispute resolution', 'Working capital optimization'] },
-  { id: 3, name: 'Ignition Mobile App', tagline: 'Consumer Experience & Adoption', icon: 'smartphone', description: 'Unified consumer app for EV drivers — charger discovery, booking, payments, notifications, and support. Tackles range anxiety and trust deficit through real-time information.', problemsSolved: 10, aiType: 'Conversational AI', color: 'border-l-tertiary', keyFeatures: ['Charger discovery & real-time availability', 'Booking, payments & wallet integration', 'Range planning & navigation', 'Consumer awareness & education', 'Multi-channel support (WhatsApp, push, SMS)', 'Loyalty programs & EV incentives', 'Tier 2/3 city charger coverage maps'] },
-  { id: 4, name: 'EV VIDYA ARJUN', tagline: 'Workforce Skilling & Certification', icon: 'school', description: 'India\'s EV workforce platform bridging the 100K+ technician gap. Adaptive learning paths, high-voltage safety training, certification management, and mentor-apprentice pairing.', problemsSolved: 8, aiType: 'Learning AI', color: 'border-l-secondary', keyFeatures: ['Adaptive learning paths (ICE to EV)', 'High-voltage safety competency training', 'Hands-on simulation & virtual labs', 'Industry-recognized certifications', 'Mentor-apprentice pairing', 'Multilingual content delivery', 'Training analytics & proficiency tracking'] },
-  { id: 5, name: 'KAILASH-AI', tagline: 'Document AI & Predictive Analytics', icon: 'analytics', description: 'AI/ML engine powering the entire ecosystem. Document verification (OCR, extraction), predictive maintenance, demand forecasting, anomaly detection, and quality control analytics.', problemsSolved: 2, aiType: 'Predictive AI', color: 'border-l-primary', keyFeatures: ['Document AI — OCR, extraction & validation', 'Predictive maintenance & failure prediction', 'Demand forecasting & energy optimization', 'Anomaly detection & risk scoring', 'Quality control analytics', 'RAG-based knowledge retrieval', 'ML model training & deployment pipeline'] },
-  { id: 6, name: 'Eka-AI', tagline: 'Agent Orchestration & Internal Q&A', icon: 'smart_toy', description: 'Internal AI assistant orchestrating all 14 sub-agents across the platform. Cross-product queries, agent coordination, knowledge management, and domain-aware conversational support.', problemsSolved: 0, aiType: 'Orchestration AI', color: 'border-l-tertiary', keyFeatures: ['Multi-agent orchestration (14 sub-agents)', 'Cross-product internal Q&A', 'Domain-specific knowledge base', 'Agent coordination & task routing', 'Real-time learning from interactions', 'Escalation to human experts', 'Integration with all products'] },
+  {
+    id: 'urgaa',
+    name: 'URGAA (ऊर्जा)',
+    prdCode: 'PRD-URG-001',
+    tagline: 'Regulatory & Grid Intelligence',
+    description:
+      'Navigate India\u2019s 33-state regulatory landscape with AI-powered compliance automation. From DISCOM applications to carbon credits, URGAA (ऊर्जा) digitises every step of EV infrastructure permitting and grid management.',
+    problemLabel: 'problems',
+    problemCount: 48,
+    icon: 'bolt',
+    features: [
+      'DISCOM Application Wizard',
+      'Regulatory Rules Engine (33 states)',
+      'AI Site Scoring',
+      'Grid Capacity Estimator',
+      'Smart Charging Controls',
+      'Carbon Credit Ledger',
+    ],
+    colorFamily: 'primary',
+  },
+  {
+    id: 'gstsaas',
+    name: 'GSTSAAS',
+    prdCode: 'PRD-GST-001',
+    tagline: 'Workshop & Commerce Engine',
+    description:
+      'End-to-end workshop and service-centre operations \u2014 inventory, invoicing, insurance, and RSA dispatch. GSTSAAS turns every garage into a digitally-native, GST-compliant profit centre.',
+    problemLabel: 'problems',
+    problemCount: 17,
+    icon: 'build',
+    features: [
+      'Workshop Ops Dashboard',
+      'Parts Inventory + Reorder Automation',
+      'GST Rules + HSN/SAC Validator',
+      'Revenue Leakage Detection',
+      'Insurance Claims Support',
+      'RSA Dispatch Console',
+    ],
+    colorFamily: 'secondary',
+  },
+  {
+    id: 'ignition',
+    name: 'Ignition App',
+    prdCode: 'PRD-APP-001',
+    tagline: 'Consumer Experience App',
+    description:
+      'The consumer-facing mobile app that makes EV ownership delightful. Charger discovery, payments, roadside assistance, and a personal carbon tracker \u2014 all in one pocket-sized experience.',
+    problemLabel: 'problems',
+    problemCount: 10,
+    icon: 'smartphone',
+    features: [
+      'Charger Discovery & Sessions',
+      'Payment Wallet (UPI, cards, prepaid)',
+      'RSA Request',
+      'TCO Calculator',
+      'Carbon Tracker',
+      'Offline Mode',
+    ],
+    colorFamily: 'tertiary',
+  },
+  {
+    id: 'arjun',
+    name: 'EV VIDYA ARJUN',
+    prdCode: 'PRD-ARJ-001',
+    tagline: 'Workforce Skilling Platform',
+    description:
+      'India\u2019s EV workforce platform bridging the 100 K+ technician gap. Adaptive courses, certifications, gamification, and an AI tutor ensure every mechanic becomes EV-ready.',
+    problemLabel: 'problems',
+    problemCount: 8,
+    icon: 'school',
+    features: [
+      'Course Management & LMS',
+      'Assessment Engine',
+      'Certification System',
+      'Gamification',
+      'AI Tutor (Kailash-AI VIDYA)',
+      'Offline Learning',
+    ],
+    colorFamily: 'secondary',
+  },
+  {
+    id: 'kailash',
+    name: 'KAILASH-AI',
+    prdCode: 'PRD-KAI-001',
+    tagline: 'Predictive Analytics & AI Engine',
+    description:
+      'The intelligence backbone powering every Go4Garage product. From battery health grading to OTA rollout monitoring, KAILASH-AI turns raw telemetry into actionable foresight.',
+    problemLabel: 'primary problems',
+    problemCount: 2,
+    icon: 'analytics',
+    features: [
+      'AI Diagnostics Copilot',
+      'Battery SoH Grading',
+      'Predictive Maintenance Alerts',
+      'Demand Forecasting',
+      'Anomaly Detection',
+      'OTA Rollout Monitor',
+    ],
+    colorFamily: 'primary',
+  },
+  {
+    id: 'eka',
+    name: 'Eka-AI',
+    prdCode: 'PRD-EKA-001',
+    tagline: 'AI Agent Orchestration',
+    description:
+      'The orchestration layer that coordinates every AI agent in the ecosystem. Multi-lingual Q&A, guided actions, and cross-product intelligence \u2014 Eka makes the platform feel like one brain.',
+    problemLabel: 'agent orchestration',
+    problemCount: 0,
+    icon: 'smart_toy',
+    features: [
+      'EV Q&A Assistant (Local Language)',
+      'Guided Action Assistant',
+      'Multi-agent orchestration',
+      'Cross-product intelligence',
+    ],
+    colorFamily: 'tertiary',
+  },
 ];
 
-const integrations = [
-  { pair: 'URGAA + GSTSAAS', description: 'Compliance requirements auto-flow into service scheduling and vendor management', icon: 'sync_alt' },
-  { pair: 'EV VIDYA + KAILASH', description: 'Predictive failures trigger just-in-time training for relevant skill gaps', icon: 'school' },
-  { pair: 'Ignition + Eka-AI', description: 'Conversational AI powers customer support while learning from interactions', icon: 'smart_toy' },
-  { pair: 'Full Ecosystem', description: 'Every product feeds insights to improve the entire platform intelligence', icon: 'hub' },
+const colorMap = {
+  primary: {
+    bg: 'bg-primary-container/12',
+    bgHover: 'hover:bg-primary-container/20',
+    border: 'border-[#904d00]',
+    borderLight: 'border-primary/20',
+    text: 'text-primary',
+    iconBg: 'bg-primary-container/15',
+    badge: 'bg-primary-container/15 text-primary',
+    activeBg: 'bg-primary-container/20',
+    dot: 'bg-[#904d00]',
+  },
+  secondary: {
+    bg: 'bg-secondary-container/12',
+    bgHover: 'hover:bg-secondary-container/20',
+    border: 'border-[#7b41b3]',
+    borderLight: 'border-secondary/20',
+    text: 'text-secondary',
+    iconBg: 'bg-secondary-container/15',
+    badge: 'bg-secondary-container/15 text-secondary',
+    activeBg: 'bg-secondary-container/20',
+    dot: 'bg-[#7b41b3]',
+  },
+  tertiary: {
+    bg: 'bg-tertiary-container/12',
+    bgHover: 'hover:bg-tertiary-container/20',
+    border: 'border-[#006e2f]',
+    borderLight: 'border-tertiary/20',
+    text: 'text-tertiary',
+    iconBg: 'bg-tertiary-container/15',
+    badge: 'bg-tertiary-container/15 text-tertiary',
+    activeBg: 'bg-tertiary-container/20',
+    dot: 'bg-[#006e2f]',
+  },
+};
+
+const featureMatrix: { category: string; checks: boolean[] }[] = [
+  { category: 'Regulatory Compliance', checks: [true, false, false, false, false, false] },
+  { category: 'Workshop Operations', checks: [false, true, false, false, false, false] },
+  { category: 'Consumer Experience', checks: [false, false, true, false, false, false] },
+  { category: 'Workforce Training', checks: [false, false, false, true, false, false] },
+  { category: 'AI & Analytics', checks: [true, true, false, false, true, true] },
+  { category: 'Agent Orchestration', checks: [false, false, false, false, false, true] },
 ];
+
+const timelinePhases = [
+  { phase: 'Week 1', title: 'Assessment', icon: 'search', desc: 'Workflow analysis & pain point mapping' },
+  { phase: 'Week 2\u20133', title: 'Setup & Configuration', icon: 'settings', desc: 'Deploy products & integrate existing systems' },
+  { phase: 'Week 4', title: 'Training & Onboarding', icon: 'school', desc: 'Team training & feature walkthrough' },
+  { phase: 'Week 5+', title: 'Optimization', icon: 'trending_up', desc: 'AI learns, adapts & scales with your operations' },
+];
+
+/* ──────────────────── FLOATING ICONS ──────────────────── */
+
+function FloatingProductIcons() {
+  const icons = products.map((p) => ({ icon: p.icon, color: colorMap[p.colorFamily].text }));
+  return (
+    <div className="absolute inset-0 pointer-events-none">
+      {icons.map((item, i) => {
+        const angle = (360 / icons.length) * i;
+        const radius = 220;
+        return (
+          <motion.div
+            key={i}
+            className="absolute left-1/2 top-1/2"
+            style={{ width: 44, height: 44, marginLeft: -22, marginTop: -22 }}
+            animate={{ rotate: [angle, angle + 360] }}
+            transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+          >
+            <motion.div
+              className={`w-11 h-11 rounded-xl bg-surface-bright/80 backdrop-blur border border-outline-variant/30 flex items-center justify-center shadow-sm ${item.color}`}
+              style={{ transform: `translateX(${radius}px)` }}
+              animate={{ rotate: [0, -360] }}
+              transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+            >
+              <Icon name={item.icon} size={22} />
+            </motion.div>
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ──────────────────── COMPONENT ──────────────────── */
 
 export default function ProductsClient() {
-  const [expandedId, setExpandedId] = useState<number | null>(null);
-  const totalProblems = products.reduce((sum, p) => sum + p.problemsSolved, 0);
+  const [activeProduct, setActiveProduct] = useState(0);
+  const selected = products[activeProduct];
+  const colors = colorMap[selected.colorFamily];
 
   return (
     <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
-
-      {/* ─── HERO ─── */}
-      <section className="relative min-h-[65vh] flex items-center justify-center overflow-hidden pt-16 pb-10">
+      {/* ━━━ 1 · HERO ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20 pb-12">
+        {/* bg blobs */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
-        <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 10, repeat: Infinity }} className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]" />
-        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], x: [0, 30, 0] }}
+          transition={{ duration: 12, repeat: Infinity }}
+          className="absolute top-1/4 left-1/4 w-[520px] h-[520px] bg-primary-container/10 rounded-full blur-[160px]"
+        />
+        <motion.div
+          animate={{ scale: [1, 1.15, 1], x: [0, -20, 0] }}
+          transition={{ duration: 14, repeat: Infinity }}
+          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-container/10 rounded-full blur-[140px]"
+        />
+        {/* dot grid */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)',
+            backgroundSize: '40px 40px',
+          }}
+        />
+
+        {/* floating orbiting icons (hidden on mobile) */}
+        <div className="hidden lg:block">
+          <FloatingProductIcons />
+        </div>
 
         <div className="container mx-auto px-6 relative z-10">
-          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="text-center max-w-4xl mx-auto">
-            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full border border-primary/20 bg-primary-container/10">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9 }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            {/* badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-5 py-2 mb-8 rounded-full border border-primary/20 bg-primary-container/10"
+            >
               <span className="w-2 h-2 rounded-full bg-primary-container animate-pulse" />
-              <span className="text-sm font-medium text-primary font-display">6 Products &bull; {totalProblems} Problems Solved</span>
+              <span className="text-sm font-medium text-primary font-display">
+                6 Products &bull; Complete Ecosystem
+              </span>
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight font-display">
-              Our Complete <span className="gradient-text">Product Ecosystem</span>
+              Complete Ecosystem{' '}
+              <span className="gradient-text">Platform</span>
             </h1>
-            <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto">
-              From regulatory compliance to customer experience — all in one integrated platform powering India&apos;s entire EV value chain.
+
+            <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+              95 problems identified &rarr; 85 solvable &rarr; one integrated platform.
+              <br className="hidden md:block" />
+              India&apos;s first AI-powered automobile intelligence ecosystem.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* ─── STATS ─── */}
-      <section className="py-12 bg-gradient-to-r from-primary-container/10 via-surface to-secondary-container/10 border-y border-outline-variant/20">
+      {/* ━━━ 2 · STATS BAR ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="py-16 bg-gradient-to-r from-primary-container/8 via-surface to-secondary-container/8 border-y border-outline-variant/20">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-3 gap-8">
-            {[
-              { value: `${products.length}`, label: 'Integrated Products', icon: 'inventory_2' },
-              { value: `${totalProblems}`, label: 'Problems Solved', icon: 'check_circle' },
-              { value: '360°', label: 'Complete Coverage', icon: 'public' },
-            ].map((stat, idx) => (
-              <motion.div key={idx} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="text-center">
-                <Icon name={stat.icon} size={28} className="text-primary mb-2" />
-                <div className="text-4xl md:text-5xl font-black gradient-text mb-1 font-display">{stat.value}</div>
-                <div className="text-sm text-on-surface-variant font-medium">{stat.label}</div>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <StatsCard icon="inventory_2" value={6} label="Products" description="Integrated ecosystem" />
+            <StatsCard icon="featured_play_list" value={76} label="Features" description="Across all products" />
+            <StatsCard icon="check_circle" value={85} label="Problems Solved" description="End-to-end coverage" />
+            <StatsCard icon="map" value={33} label="States Covered" description="Pan-India compliance" />
           </div>
         </div>
       </section>
 
-      {/* ─── PRODUCT CARDS ─── */}
-      <section className="py-24 bg-surface-container-low">
+      {/* ━━━ 3 · INTERACTIVE PRODUCT SHOWCASE ━━━━━━━━━ */}
+      <section className="py-24 bg-surface-container-low overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map((product, idx) => (
-              <motion.div key={product.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.08 }} layout>
-                <motion.div onClick={() => setExpandedId(expandedId === product.id ? null : product.id)} whileHover={{ y: -4 }} className={`p-6 rounded-2xl bg-surface-bright border border-outline-variant/30 border-l-4 ${product.color} cursor-pointer group transition-all shadow-sm hover:shadow-md`}>
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary-container/15 flex items-center justify-center">
-                      <Icon name={product.icon} size={26} className="text-primary group-hover:scale-110 transition-transform" />
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs px-3 py-1 rounded-full bg-secondary-container/15 text-secondary font-semibold">{product.aiType}</span>
-                      {product.problemsSolved > 0 && (
-                        <span className="text-xs font-bold px-3 py-1 rounded-full bg-primary-container/15 text-primary border border-primary/15">
-                          {product.problemsSolved}
-                        </span>
-                      )}
-                    </div>
-                  </div>
+          <SectionHeading
+            badge="Product Suite"
+            title="Explore Our"
+            highlight="Products"
+            subtitle="Click any product to dive into its capabilities, features, and the problems it solves."
+          />
 
-                  <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors font-display">{product.name}</h3>
-                  <p className="text-sm text-primary font-medium mb-3">{product.tagline}</p>
-                  <p className="text-sm text-on-surface-variant leading-relaxed mb-4">{product.description}</p>
-
-                  <AnimatePresence>
-                    {expandedId === product.id && (
-                      <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden">
-                        <div className="p-4 bg-surface-container-low rounded-xl mb-4 border border-outline-variant/20">
-                          <h4 className="text-xs font-semibold text-primary uppercase tracking-wider mb-3 font-display">Key Features</h4>
-                          <ul className="space-y-2">
-                            {product.keyFeatures.map((feature, i) => (
-                              <motion.li key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.04 }} className="flex items-start gap-2 text-xs text-on-surface-variant">
-                                <span className="w-1 h-1 rounded-full bg-primary mt-1.5 flex-shrink-0" />
-                                {feature}
-                              </motion.li>
-                            ))}
-                          </ul>
-                        </div>
-                      </motion.div>
+          <div className="mt-16 flex flex-col lg:flex-row gap-8">
+            {/* ── Left: vertical tabs ── */}
+            <div className="lg:w-[340px] flex-shrink-0 space-y-2">
+              {products.map((p, idx) => {
+                const c = colorMap[p.colorFamily];
+                const isActive = activeProduct === idx;
+                return (
+                  <motion.button
+                    key={p.id}
+                    onClick={() => setActiveProduct(idx)}
+                    whileHover={{ x: 4 }}
+                    className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl text-left transition-all border ${
+                      isActive
+                        ? `${c.activeBg} ${c.border} border-l-4 shadow-sm`
+                        : 'border-transparent hover:bg-surface-bright'
+                    }`}
+                  >
+                    <div
+                      className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                        isActive ? c.iconBg : 'bg-surface-bright'
+                      }`}
+                    >
+                      <Icon
+                        name={p.icon}
+                        size={22}
+                        className={isActive ? c.text : 'text-on-surface-variant'}
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <span
+                        className={`block font-semibold text-sm truncate font-display ${
+                          isActive ? c.text : 'text-on-surface'
+                        }`}
+                      >
+                        {p.name}
+                      </span>
+                      <span className="text-xs text-on-surface-variant">
+                        {p.problemCount > 0
+                          ? `${p.problemCount} ${p.problemLabel}`
+                          : p.problemLabel}
+                      </span>
+                    </div>
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeIndicator"
+                        className={`ml-auto w-1.5 h-8 rounded-full ${c.dot}`}
+                      />
                     )}
-                  </AnimatePresence>
+                  </motion.button>
+                );
+              })}
+            </div>
 
-                  <div className="flex items-center justify-between pt-3 border-t border-outline-variant/20">
-                    <span className="text-xs text-on-surface-variant">{expandedId === product.id ? 'Click to collapse' : 'Click to expand'}</span>
-                    <motion.span animate={{ rotate: expandedId === product.id ? 180 : 0 }} className="text-primary text-sm">
-                      <Icon name="expand_more" size={20} />
-                    </motion.span>
+            {/* ── Right: detail card ── */}
+            <div className="flex-1 min-w-0">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={selected.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.35 }}
+                  className={`rounded-2xl bg-surface-bright border-l-4 ${colors.border} border border-outline-variant/30 p-8 md:p-10 shadow-sm`}
+                >
+                  {/* header */}
+                  <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
+                    <div className="flex items-center gap-4">
+                      <div className={`w-14 h-14 rounded-2xl ${colors.iconBg} flex items-center justify-center`}>
+                        <Icon name={selected.icon} size={30} className={colors.text} />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold font-display">{selected.name}</h3>
+                        <p className={`text-sm font-medium ${colors.text}`}>{selected.tagline}</p>
+                      </div>
+                    </div>
+                    <span className={`text-xs font-mono px-3 py-1 rounded-full ${colors.badge}`}>
+                      {selected.prdCode}
+                    </span>
                   </div>
+
+                  {/* problem counter */}
+                  {selected.problemCount > 0 && (
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className={`text-3xl font-black ${colors.text} font-display`}>
+                        <AnimatedCounter target={selected.problemCount} />
+                      </div>
+                      <span className="text-sm text-on-surface-variant">{selected.problemLabel} addressed</span>
+                    </div>
+                  )}
+
+                  {/* description */}
+                  <p className="text-on-surface-variant leading-relaxed mb-8">{selected.description}</p>
+
+                  {/* features */}
+                  <h4 className="text-xs font-semibold uppercase tracking-widest text-on-surface-variant mb-4 font-display">
+                    Key Capabilities
+                  </h4>
+                  <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+                    {selected.features.map((feat, i) => (
+                      <motion.li
+                        key={feat}
+                        initial={{ opacity: 0, x: -8 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.06 }}
+                        className="flex items-start gap-2 text-sm text-on-surface-variant"
+                      >
+                        <Icon name="check_circle" size={18} className={`${colors.text} mt-0.5 flex-shrink-0`} />
+                        {feat}
+                      </motion.li>
+                    ))}
+                  </ul>
                 </motion.div>
-              </motion.div>
-            ))}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ─── HOW THEY CONNECT ─── */}
-      <section className="py-24 bg-surface">
+      {/* ━━━ 4 · PRODUCT INTEGRATION DIAGRAM ━━━━━━━━━ */}
+      <section className="py-24 bg-surface overflow-hidden">
         <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="text-sm font-semibold text-primary uppercase tracking-widest mb-4 block font-display">Integration</span>
-            <h2 className="text-4xl md:text-5xl font-bold font-display">How They <span className="gradient-text">Work Together</span></h2>
+          <SectionHeading
+            badge="Architecture"
+            title="How Everything"
+            highlight="Connects"
+            subtitle="Every product feeds intelligence into a shared AI core, creating a compounding data advantage."
+          />
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative max-w-3xl mx-auto mt-16 aspect-square hidden md:block"
+          >
+            {/* connection lines */}
+            {products.map((_, i) => {
+              const angle = (360 / products.length) * i - 90;
+              const rad = (angle * Math.PI) / 180;
+              const r = 42;
+              const x2 = 50 + r * Math.cos(rad);
+              const y2 = 50 + r * Math.sin(rad);
+              return (
+                <svg
+                  key={`line-${i}`}
+                  className="absolute inset-0 w-full h-full pointer-events-none"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                >
+                  <line
+                    x1="50"
+                    y1="50"
+                    x2={x2}
+                    y2={y2}
+                    stroke="#904d00"
+                    strokeWidth="0.3"
+                    strokeDasharray="2 2"
+                    opacity={0.35}
+                  />
+                </svg>
+              );
+            })}
+
+            {/* centre hub */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full bg-gradient-to-br from-primary-container/25 to-secondary-container/25 border-2 border-primary/20 flex flex-col items-center justify-center shadow-lg z-10 cursor-default"
+            >
+              <Icon name="hub" size={32} className="text-primary mb-1" />
+              <span className="text-xs font-bold text-primary font-display text-center leading-tight">
+                Go4Garage
+                <br />
+                AI Core
+              </span>
+            </motion.div>
+
+            {/* product nodes */}
+            {products.map((p, i) => {
+              const angle = (360 / products.length) * i - 90;
+              const rad = (angle * Math.PI) / 180;
+              const r = 42;
+              const left = `${50 + r * Math.cos(rad)}%`;
+              const top = `${50 + r * Math.sin(rad)}%`;
+              const c = colorMap[p.colorFamily];
+              return (
+                <motion.div
+                  key={p.id}
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, type: 'spring' }}
+                  whileHover={{ scale: 1.12 }}
+                  className={`absolute -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-2xl ${c.bg} border ${c.borderLight} flex flex-col items-center justify-center shadow-sm cursor-default z-10`}
+                  style={{ left, top }}
+                >
+                  <Icon name={p.icon} size={26} className={c.text} />
+                  <span className={`text-[10px] font-bold mt-1 ${c.text} text-center leading-tight font-display`}>
+                    {p.name.length > 12 ? p.name.split(' ')[0] : p.name}
+                  </span>
+                </motion.div>
+              );
+            })}
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-start max-w-5xl mx-auto">
-            <div className="space-y-6">
-              {[
-                { step: '1', title: 'Unified Intelligence Layer', desc: 'All products share a single AI backbone trained on Indian automobile regulations and workflows', icon: 'psychology' },
-                { step: '2', title: 'Real-time Data Sync', desc: 'Changes in one product instantly update across the ecosystem for consistency', icon: 'sync' },
-                { step: '3', title: 'Cross-Product Intelligence', desc: 'Regulatory changes auto-trigger training updates and operational workflows', icon: 'hub' },
-                { step: '4', title: 'Single Dashboard', desc: 'Manage all products from one unified control center with role-based access', icon: 'dashboard' },
-              ].map((item, idx) => (
-                <motion.div key={idx} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="flex items-start gap-4 group">
-                  <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center flex-shrink-0 text-white text-sm font-bold shadow-md">
-                    {item.step}
+          {/* mobile fallback: simple grid */}
+          <div className="md:hidden mt-12 grid grid-cols-2 gap-4">
+            <div className="col-span-2 flex justify-center mb-2">
+              <div className="w-28 h-28 rounded-full bg-gradient-to-br from-primary-container/25 to-secondary-container/25 border-2 border-primary/20 flex flex-col items-center justify-center">
+                <Icon name="hub" size={28} className="text-primary mb-1" />
+                <span className="text-[10px] font-bold text-primary font-display text-center leading-tight">
+                  Go4Garage
+                  <br />
+                  AI Core
+                </span>
+              </div>
+            </div>
+            {products.map((p) => {
+              const c = colorMap[p.colorFamily];
+              return (
+                <div
+                  key={p.id}
+                  className={`rounded-xl ${c.bg} border ${c.borderLight} p-4 flex flex-col items-center text-center`}
+                >
+                  <Icon name={p.icon} size={24} className={c.text} />
+                  <span className={`text-xs font-bold mt-1 ${c.text} font-display`}>{p.name}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ━━━ 5 · IMPLEMENTATION TIMELINE ━━━━━━━━━━━━━━ */}
+      <section className="py-24 bg-surface-container-low overflow-hidden">
+        <div className="container mx-auto px-6">
+          <SectionHeading
+            badge="Go Live"
+            title="Quick"
+            highlight="Implementation"
+            subtitle="From assessment to full optimisation in under five weeks."
+          />
+
+          <div className="mt-16 relative max-w-5xl mx-auto">
+            {/* connecting progress bar (desktop) */}
+            <div className="hidden md:block absolute top-[52px] left-[12.5%] right-[12.5%] h-1 bg-outline-variant/20 rounded-full">
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: '100%' }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, ease: 'easeInOut' }}
+                className="h-full bg-gradient-to-r from-[#904d00] via-[#7b41b3] to-[#006e2f] rounded-full"
+              />
+            </div>
+
+            <div className="grid md:grid-cols-4 gap-6">
+              {timelinePhases.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.15, duration: 0.5 }}
+                  whileHover={{ y: -4 }}
+                  className="relative bg-surface-bright p-6 pt-16 rounded-2xl text-center border border-outline-variant/30 shadow-sm hover:shadow-lg transition-all group"
+                >
+                  {/* circle icon */}
+                  <div className="absolute -top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-primary flex items-center justify-center shadow-md z-10">
+                    <Icon name={item.icon} size={26} className="text-white" />
                   </div>
-                  <div>
-                    <h3 className="font-bold mb-1 group-hover:text-primary transition-colors font-display">{item.title}</h3>
-                    <p className="text-sm text-on-surface-variant">{item.desc}</p>
+                  <div className="text-xs font-bold text-primary mb-2 font-display uppercase tracking-wider">
+                    {item.phase}
                   </div>
+                  <h3 className="text-lg font-bold mb-2 font-display">{item.title}</h3>
+                  <p className="text-sm text-on-surface-variant leading-relaxed">{item.desc}</p>
                 </motion.div>
               ))}
             </div>
-
-            <div className="space-y-4">
-              <h3 className="text-xl font-bold mb-6 font-display">Seamless Integration</h3>
-              {integrations.map((item, idx) => (
-                <motion.div key={idx} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} whileHover={{ x: 4 }} className="bg-surface-bright p-4 rounded-xl border-l-4 border-l-primary/30 border border-outline-variant/20 shadow-sm">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Icon name={item.icon} size={18} className="text-primary" />
-                    <h4 className="font-semibold text-primary text-sm">{item.pair}</h4>
-                  </div>
-                  <p className="text-xs text-on-surface-variant">{item.description}</p>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
 
-      {/* ─── TIMELINE ─── */}
-      <section className="py-24 bg-surface-container-low">
+      {/* ━━━ 6 · FEATURE COMPARISON MATRIX ━━━━━━━━━━━ */}
+      <section className="py-24 bg-surface overflow-hidden">
         <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="text-sm font-semibold text-primary uppercase tracking-widest mb-4 block font-display">Go Live</span>
-            <h2 className="text-4xl md:text-5xl font-bold font-display">Quick <span className="gradient-text">Implementation</span></h2>
-          </motion.div>
+          <SectionHeading
+            badge="Comparison"
+            title="Feature"
+            highlight="Matrix"
+            subtitle="See at a glance which capabilities each product delivers."
+          />
 
-          <div className="grid md:grid-cols-4 gap-5 max-w-4xl mx-auto">
-            {[
-              { phase: 'Week 1', title: 'Assessment', desc: 'Understand your workflows and pain points', icon: 'search' },
-              { phase: 'Week 2', title: 'Setup', desc: 'Deploy core products and integrate systems', icon: 'settings' },
-              { phase: 'Week 3', title: 'Training', desc: 'Team onboarding and feature training', icon: 'school' },
-              { phase: 'Week 4+', title: 'Optimization', desc: 'Continuous improvement and scaling', icon: 'trending_up' },
-            ].map((item, idx) => (
-              <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} whileHover={{ y: -4 }} className="bg-surface-bright p-6 rounded-2xl text-center border border-outline-variant/30 shadow-sm hover:shadow-md transition-all group">
-                <Icon name={item.icon} size={28} className="text-primary mb-3 group-hover:scale-110 transition-transform" />
-                <div className="text-xs font-bold text-primary mb-2 font-display">{item.phase}</div>
-                <h3 className="font-bold mb-2 font-display">{item.title}</h3>
-                <p className="text-xs text-on-surface-variant">{item.desc}</p>
-              </motion.div>
-            ))}
+          <div className="mt-16 max-w-5xl mx-auto overflow-x-auto rounded-2xl border border-outline-variant/30 shadow-sm">
+            <table className="w-full min-w-[700px] text-sm">
+              <thead>
+                <tr className="bg-surface-bright">
+                  <th className="text-left px-5 py-4 font-display font-semibold text-on-surface">
+                    Feature Category
+                  </th>
+                  {products.map((p) => {
+                    const c = colorMap[p.colorFamily];
+                    return (
+                      <th key={p.id} className="px-3 py-4 text-center">
+                        <div className="flex flex-col items-center gap-1">
+                          <Icon name={p.icon} size={20} className={c.text} />
+                          <span className={`text-xs font-bold font-display ${c.text}`}>
+                            {p.name.split(' ')[0]}
+                          </span>
+                        </div>
+                      </th>
+                    );
+                  })}
+                </tr>
+              </thead>
+              <tbody>
+                {featureMatrix.map((row, rIdx) => (
+                  <motion.tr
+                    key={row.category}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: rIdx * 0.05 }}
+                    className={rIdx % 2 === 0 ? 'bg-surface' : 'bg-surface-container-low'}
+                  >
+                    <td className="px-5 py-3.5 font-medium text-on-surface">{row.category}</td>
+                    {row.checks.map((ok, cIdx) => (
+                      <td key={cIdx} className="px-3 py-3.5 text-center">
+                        {ok ? (
+                          <Icon
+                            name="check_circle"
+                            size={20}
+                            className={colorMap[products[cIdx].colorFamily].text}
+                          />
+                        ) : (
+                          <span className="text-on-surface-variant/40">&mdash;</span>
+                        )}
+                      </td>
+                    ))}
+                  </motion.tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
-      {/* ─── CTA ─── */}
+      {/* ━━━ 7 · CTA ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-container/10 via-surface to-secondary-container/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-container/12 via-surface to-secondary-container/12" />
+        <motion.div
+          animate={{ scale: [1, 1.15, 1] }}
+          transition={{ duration: 10, repeat: Infinity }}
+          className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-tertiary-container/8 rounded-full blur-[140px]"
+        />
+
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-display">Ready to Transform Your <span className="gradient-text">Operations?</span></h2>
-            <p className="text-lg text-on-surface-variant mb-10 max-w-2xl mx-auto">Experience the complete Go4Garage ecosystem. Schedule a personalized demo with our product specialists.</p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-display">
+              Ready to Transform Your{' '}
+              <span className="gradient-text">Operations?</span>
+            </h2>
+            <p className="text-lg text-on-surface-variant mb-10 max-w-2xl mx-auto leading-relaxed">
+              Schedule a personalised demo and see how the complete Go4Garage ecosystem can streamline
+              your workflows, cut costs, and unlock AI-powered growth.
+            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="px-10 py-4 bg-primary text-primary-on rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-shadow">Schedule Demo</motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-10 py-4 bg-primary text-white rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-shadow"
+                >
+                  Schedule Demo
+                </motion.button>
               </Link>
-              <Link href="/">
-                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="px-10 py-4 rounded-2xl font-semibold text-lg border border-outline-variant bg-surface-bright text-on-surface hover:bg-surface-container-low transition-colors">Back to Home</motion.button>
+              <Link href="/platform">
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-10 py-4 rounded-2xl font-semibold text-lg border-2 border-outline-variant bg-surface-bright text-on-surface hover:bg-surface-container-low transition-colors"
+                >
+                  Explore Platform
+                </motion.button>
               </Link>
             </div>
           </motion.div>

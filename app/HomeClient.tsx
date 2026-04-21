@@ -14,7 +14,7 @@ import { TrustBar } from '@/components/TrustBar';
 /* ─── Data ─── */
 
 const products = [
-  { name: 'URGAA (URJA)', tagline: 'Regulatory & Grid Intelligence', problems: 48, icon: 'bolt', color: 'bg-primary-container/15 border-primary/20', href: '/products' },
+  { name: 'URGAA (ऊर्जा)', tagline: 'Regulatory & Grid Intelligence', problems: 48, icon: 'bolt', color: 'bg-primary-container/15 border-primary/20', href: '/products' },
   { name: 'GSTSAAS', tagline: 'Workshop & Commerce Engine', problems: 17, icon: 'build', color: 'bg-secondary-container/15 border-secondary/20', href: '/products' },
   { name: 'Ignition App', tagline: 'Consumer Experience App', problems: 10, icon: 'smartphone', color: 'bg-tertiary-container/15 border-tertiary/20', href: '/products' },
   { name: 'EV VIDYA ARJUN', tagline: 'Workforce Skilling Platform', problems: 8, icon: 'school', color: 'bg-secondary-container/15 border-secondary/20', href: '/products' },

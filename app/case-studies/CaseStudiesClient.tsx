@@ -24,7 +24,7 @@ const caseStudies: CaseStudy[] = [
     challenge:
       'Managing compliance across 12 states manually — different regulations, forms, timelines, and approval bodies. A team of 8 spent 40+ hours/week on paperwork alone.',
     solution:
-      'URGAA Regulatory Intelligence Engine automated compliance tracking, form generation, deadline management, and status monitoring across all 12 states simultaneously.',
+      'URGAA (ऊर्जा) Regulatory Intelligence Engine automated compliance tracking, form generation, deadline management, and status monitoring across all 12 states simultaneously.',
     results: [
       { label: 'Compliance Automation', value: '89.5%' },
       { label: 'Faster Approvals', value: '70%' },
@@ -72,7 +72,7 @@ const caseStudies: CaseStudy[] = [
     challenge:
       'Peak-hour charging inflating energy costs, no visibility into Total Cost of Ownership (TCO), and manual scheduling across 50+ vehicles.',
     solution:
-      'Ignition Fleet Portal + URGAA Smart Charging — AI-optimized charging schedules based on grid pricing, route planning, and real-time TCO analytics.',
+      'Ignition Fleet Portal + URGAA (ऊर्जा) Smart Charging — AI-optimized charging schedules based on grid pricing, route planning, and real-time TCO analytics.',
     results: [
       { label: 'Cost Reduction', value: '40%' },
       { label: 'TCO Visibility', value: 'Real-time' },
