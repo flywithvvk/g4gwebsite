@@ -14,13 +14,20 @@ import { TrustBar } from '@/components/TrustBar';
 /* ─── Data ─── */
 
 const products = [
-  { name: 'URGAA (ऊर्जा)', tagline: 'Regulatory & Grid Intelligence', problems: 48, icon: 'bolt', color: 'bg-primary-container/15 border-primary/20', href: '/products' },
-  { name: 'GSTSAAS', tagline: 'Workshop & Commerce Engine', problems: 17, icon: 'build', color: 'bg-secondary-container/15 border-secondary/20', href: '/products' },
-  { name: 'Ignition App', tagline: 'Consumer Experience App', problems: 10, icon: 'smartphone', color: 'bg-tertiary-container/15 border-tertiary/20', href: '/products' },
-  { name: 'EV VIDYA ARJUN', tagline: 'Workforce Skilling Platform', problems: 8, icon: 'school', color: 'bg-secondary-container/15 border-secondary/20', href: '/products' },
-  { name: 'KAILASH-AI', tagline: 'Document AI & Predictive Analytics', problems: 2, icon: 'analytics', color: 'bg-primary-container/15 border-primary/20', href: '/products' },
-  { name: 'Eka-AI', tagline: 'Agent Orchestration & Q&A', problems: 0, icon: 'smart_toy', color: 'bg-tertiary-container/15 border-tertiary/20', href: '/products' },
+  { name: 'URGAA (ऊर्जा)', tagline: 'Regulatory & Grid Intelligence', problems: 48, icon: 'bolt', color: 'bg-primary-container/15 border-primary/20', cf: 'primary', href: '/products' },
+  { name: 'GSTSAAS', tagline: 'Workshop & Commerce Engine', problems: 17, icon: 'build', color: 'bg-secondary-container/15 border-secondary/20', cf: 'secondary', href: '/products' },
+  { name: 'Ignition App', tagline: 'Consumer Experience App', problems: 10, icon: 'smartphone', color: 'bg-tertiary-container/15 border-tertiary/20', cf: 'tertiary', href: '/products' },
+  { name: 'EV VIDYA ARJUN', tagline: 'Workforce Skilling Platform', problems: 8, icon: 'school', color: 'bg-secondary-container/15 border-secondary/20', cf: 'secondary', href: '/products' },
+  { name: 'KAILASH-AI', tagline: 'Document AI & Predictive Analytics', problems: 2, icon: 'analytics', color: 'bg-primary-container/15 border-primary/20', cf: 'primary', href: '/products' },
+  { name: 'Eka-AI', tagline: 'Agent Orchestration & Q&A', problems: 0, icon: 'smart_toy', color: 'bg-tertiary-container/15 border-tertiary/20', cf: 'tertiary', href: '/products' },
 ];
+
+type ColorFamily = 'primary' | 'secondary' | 'tertiary';
+const cfColor: Record<ColorFamily, { icon: string; iconBg: string; iconBgHover: string; bar: string; badge: string; badgeText: string; text: string }> = {
+  primary:   { icon: 'text-primary',   iconBg: 'bg-primary-container/20',   iconBgHover: 'group-hover:bg-primary-container/30',   bar: 'bg-primary/70',   badge: 'bg-primary-container/15 border-primary/20',   badgeText: 'text-primary',   text: 'group-hover:text-primary'   },
+  secondary: { icon: 'text-secondary', iconBg: 'bg-secondary-container/20', iconBgHover: 'group-hover:bg-secondary-container/30', bar: 'bg-secondary/70', badge: 'bg-secondary-container/15 border-secondary/20', badgeText: 'text-secondary', text: 'group-hover:text-secondary' },
+  tertiary:  { icon: 'text-tertiary',  iconBg: 'bg-tertiary-container/20',  iconBgHover: 'group-hover:bg-tertiary-container/30',  bar: 'bg-tertiary/70',  badge: 'bg-tertiary-container/15 border-tertiary/20',  badgeText: 'text-tertiary',  text: 'group-hover:text-tertiary'  },
+};
 
 const problemLayers = [
   { layer: 'L1', title: 'Battery & Supply Chain', problems: 12, icon: 'battery_full', color: 'border-l-primary' },
@@ -234,8 +241,9 @@ export default function HomePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           STATS BANNER
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="py-16 bg-gradient-to-r from-primary-container/10 via-surface to-secondary-container/10 border-y border-outline-variant/20">
-        <div className="container mx-auto px-6">
+      <section className="py-16 relative overflow-hidden border-y border-outline-variant/15">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-container/8 via-secondary-container/5 to-tertiary-container/8" />
+        <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <StatsCard icon="verified" value={89.5} suffix="%" label="Compliance Automation" description="Regulatory filings handled by AI" />
             <StatsCard icon="speed" value={3} suffix="x" label="Faster Operations" description="Compared to manual workflows" />
@@ -272,14 +280,18 @@ export default function HomePage() {
                     className={`relative p-6 rounded-2xl border ${product.color} transition-all cursor-pointer group h-full bg-surface-bright shadow-sm hover:shadow-lg`}
                   >
                     <div className="flex items-start justify-between mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center group-hover:bg-primary-container/30 transition-colors">
-                        <Icon name={product.icon} size={24} className="text-primary" />
+                      <div className={`w-12 h-12 rounded-xl ${cfColor[product.cf as ColorFamily].iconBg} ${cfColor[product.cf as ColorFamily].iconBgHover} flex items-center justify-center transition-colors`}>
+                        <Icon name={product.icon} size={24} className={cfColor[product.cf as ColorFamily].icon} />
                       </div>
-                      <span className={`text-xs font-bold px-3 py-1 rounded-full border ${product.problems > 0 ? 'bg-primary-container/15 text-primary border-primary/15' : 'bg-tertiary-container/15 text-tertiary border-tertiary/15'}`}>
+                      <span className={`text-xs font-bold px-3 py-1 rounded-full border ${
+                        product.problems > 0
+                          ? `${cfColor[product.cf as ColorFamily].badge} ${cfColor[product.cf as ColorFamily].badgeText}`
+                          : 'bg-tertiary-container/15 text-tertiary border-tertiary/15'
+                      }`}>
                         {product.problems > 0 ? `${product.problems} problems` : 'Orchestrator'}
                       </span>
                     </div>
-                    <h3 className="text-lg font-bold mb-1 group-hover:text-primary transition-colors font-display">{product.name}</h3>
+                    <h3 className={`text-lg font-bold mb-1 ${cfColor[product.cf as ColorFamily].text} transition-colors font-display`}>{product.name}</h3>
                     <p className="text-sm text-on-surface-variant">{product.tagline}</p>
 
                     {/* Progress bar showing relative problem coverage */}
@@ -289,11 +301,11 @@ export default function HomePage() {
                         whileInView={{ width: `${Math.max((product.problems / 48) * 100, 8)}%` }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 + idx * 0.1, duration: 1 }}
-                        className="h-full bg-primary/60 rounded-full"
+                        className={`h-full ${cfColor[product.cf as ColorFamily].bar} rounded-full`}
                       />
                     </div>
 
-                    <div className="mt-3 flex items-center gap-1 text-xs text-primary opacity-0 group-hover:opacity-100 transition-opacity font-medium">
+                    <div className={`mt-3 flex items-center gap-1 text-xs ${cfColor[product.cf as ColorFamily].badgeText} opacity-0 group-hover:opacity-100 transition-opacity font-medium`}>
                       <span>Learn more</span>
                       <Icon name="arrow_forward" size={14} />
                     </div>
@@ -504,7 +516,19 @@ export default function HomePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           TESTIMONIALS
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <Testimonials />
+      <section className="py-24 bg-surface-container-low">
+        <div className="container mx-auto px-6">
+          <SectionHeading
+            badge="Customer Stories"
+            title="Trusted by India's EV Leaders"
+            highlight="EV Leaders"
+            subtitle="Real results from the operators, workshops, and institutions powering India's EV future."
+          />
+          <div className="mt-16">
+            <Testimonials />
+          </div>
+        </div>
+      </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           FINAL CTA

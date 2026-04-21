@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -8,20 +8,34 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
     { label: 'Platform', href: '/platform', icon: 'dashboard' },
     { label: 'Products', href: '/products', icon: 'inventory_2' },
     { label: 'Solutions', href: '/solutions', icon: 'lightbulb' },
     { label: 'Impact', href: '/impact', icon: 'trending_up' },
+    { label: 'Pricing', href: '/pricing', icon: 'payments' },
     { label: 'About', href: '/about', icon: 'info' },
     { label: 'Investors', href: '/investors', icon: 'account_balance' },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50">
-      <div className="absolute inset-0 bg-surface-bright/80 backdrop-blur-xl border-b border-outline-variant/40" />
+    <motion.nav
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="fixed top-0 left-0 right-0 z-50"
+    >
+      <div className={`absolute inset-0 backdrop-blur-xl border-b transition-all duration-300 ${scrolled ? 'bg-surface-bright/95 border-outline-variant/40 shadow-sm' : 'bg-surface-bright/70 border-outline-variant/20'}`} />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -135,7 +149,7 @@ const Navigation = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 };
 
