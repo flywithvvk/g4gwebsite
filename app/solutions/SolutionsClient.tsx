@@ -270,7 +270,214 @@ const stakeholders: Stakeholder[] = [
     ctaText: 'Contact Enterprise Sales',
     ctaHref: '/contact',
   },
+  // ── Ecosystem Partners (sections 9-15) ──────────────────────────
+  {
+    id: 'nbfc',
+    name: 'NBFC / Banks',
+    subtitle: 'EV Financing & Lending Institutions',
+    icon: 'account_balance',
+    challenges: [
+      'EV loan risk assessment with no historical data',
+      'Battery residual value uncertainty for loan collateral',
+      'Default prediction for new vehicle category',
+      'Lack of EV-specific credit scoring models',
+    ],
+    products: [
+      {
+        name: 'KAILASH-AI',
+        description: 'AI-powered EV loan risk engine — battery residual value modelling, default prediction, and EV-specific credit scoring for informed lending decisions.',
+      },
+      {
+        name: 'Eka-AI',
+        description: 'Conversational AI for loan officers — instant EV market insights, borrower query handling, and automated document verification workflows.',
+      },
+    ],
+    metrics: [
+      { icon: 'psychology', value: 'AI-powered', label: 'Risk Scoring' },
+      { icon: 'battery_full', value: 'Accurate', label: 'Residual Value Model' },
+      { icon: 'analytics', value: 'Real-time', label: 'Portfolio Analytics' },
+    ],
+    ctaText: 'Contact Enterprise Sales',
+    ctaHref: '/contact',
+  },
+  {
+    id: 'technicians',
+    name: 'EV Technicians',
+    subtitle: 'EV Service Technicians & Mechanics',
+    icon: 'engineering',
+    challenges: [
+      'High-voltage safety knowledge gaps',
+      'No standardised diagnostic tools for EVs',
+      'Career path uncertainty during EV transition',
+      'Access to OEM-specific repair procedures',
+    ],
+    products: [
+      {
+        name: 'EV VIDYA ARJUN',
+        description: 'EV technician upskilling platform with high-voltage safety certification, AI-guided repair procedures, and OEM-specific module access.',
+      },
+      {
+        name: 'Eka-AI',
+        description: 'AI repair assistant — real-time diagnostic guidance, wiring diagrams, and OEM procedure lookup via conversational interface.',
+      },
+      {
+        name: 'GSTSAAS',
+        description: 'Workshop billing and job card management with GST-compliant invoicing — ideal for independent EV technicians.',
+      },
+    ],
+    metrics: [
+      { icon: 'smart_toy', value: 'AI-guided', label: 'Repairs' },
+      { icon: 'verified', value: 'Certified', label: 'Safety Training' },
+      { icon: 'description', value: 'OEM-ready', label: 'Procedures' },
+    ],
+    ctaText: 'Start Learning',
+    ctaHref: '/products/arjun',
+  },
+  {
+    id: 'discoms',
+    name: 'DISCOMs',
+    subtitle: 'Distribution Companies & Grid Operators',
+    icon: 'electrical_services',
+    challenges: [
+      'Load forecasting for EV charging demand',
+      'Transformer health monitoring near charging clusters',
+      'V2G (Vehicle-to-Grid) integration complexity',
+      'Peak load management and tariff optimisation',
+    ],
+    products: [
+      {
+        name: 'URGAA (ऊर्जा)',
+        description: 'Regulatory intelligence for grid operators — EV charging load mapping, compliance workflows, and V2G integration framework across 33 states.',
+      },
+      {
+        name: 'KAILASH-AI',
+        description: 'Predictive load forecasting for EV charging clusters, transformer health monitoring, and peak demand optimisation using AI.',
+      },
+    ],
+    metrics: [
+      { icon: 'bolt', value: 'AI-accurate', label: 'Load Forecast' },
+      { icon: 'monitor_heart', value: 'Real-time', label: 'Grid Health' },
+      { icon: 'electric_bolt', value: 'V2G Ready', label: 'Integration' },
+    ],
+    ctaText: 'Contact for Partnership',
+    ctaHref: '/contact',
+  },
+  {
+    id: 'recyclers',
+    name: 'Battery Recyclers',
+    subtitle: 'Battery Recyclers & Second-Life Companies',
+    icon: 'recycling',
+    challenges: [
+      'State-of-Health (SoH) assessment accuracy',
+      'Collection logistics across India',
+      'Regulatory compliance for hazardous materials',
+      'Second-life battery grading & certification',
+    ],
+    products: [
+      {
+        name: 'KAILASH-AI',
+        description: 'Battery State-of-Health assessment engine — precise SoH grading, second-life certification scoring, and failure pattern analysis for recycling operations.',
+      },
+      {
+        name: 'URGAA (ऊर्जा)',
+        description: 'Compliance tracking for hazardous material handling, collection logistics management, and multi-state disposal approvals.',
+      },
+    ],
+    metrics: [
+      { icon: 'battery_saver', value: 'Precise', label: 'SoH Assessment' },
+      { icon: 'policy', value: 'Tracked', label: 'Compliance' },
+      { icon: 'grade', value: 'Certified', label: 'Second-Life Grading' },
+    ],
+    ctaText: 'Contact Enterprise Sales',
+    ctaHref: '/contact',
+  },
+  {
+    id: 'parts-suppliers',
+    name: 'Parts Suppliers',
+    subtitle: 'EV Component & Parts Distributors',
+    icon: 'inventory_2',
+    challenges: [
+      'Demand forecasting for new EV parts',
+      'Counterfeit part identification challenges',
+      'Multi-state inventory management',
+      'OEM compatibility verification',
+    ],
+    products: [
+      {
+        name: 'GSTSAAS',
+        description: 'Multi-location inventory management with GST-compliant invoicing, demand forecasting dashboards, and OEM compatibility cataloguing.',
+      },
+      {
+        name: 'KAILASH-AI',
+        description: 'AI demand forecasting for EV parts with counterfeit detection signals, supply chain analytics, and cross-state stock visibility.',
+      },
+    ],
+    metrics: [
+      { icon: 'trending_up', value: 'AI-driven', label: 'Demand Forecast' },
+      { icon: 'inventory', value: 'Optimised', label: 'Inventory' },
+      { icon: 'security', value: 'Detected', label: 'Counterfeit Detection' },
+    ],
+    ctaText: 'Contact Sales',
+    ctaHref: '/contact',
+  },
+  {
+    id: 'investors-type',
+    name: 'Investors',
+    subtitle: 'VCs, PEs & Strategic Investors',
+    icon: 'trending_up',
+    challenges: [
+      'EV market sizing with limited data availability',
+      'Due diligence on EV technology startups',
+      'Portfolio risk assessment in nascent category',
+      'Regulatory impact assessment across states',
+    ],
+    products: [
+      {
+        name: 'KAILASH-AI',
+        description: 'Market intelligence platform — EV sector sizing data, startup due diligence analytics, portfolio risk dashboards, and multi-state regulatory impact tracking.',
+      },
+    ],
+    metrics: [
+      { icon: 'insights', value: 'Deep', label: 'Market Intelligence' },
+      { icon: 'dashboard', value: 'Live', label: 'Risk Dashboard' },
+      { icon: 'policy', value: 'All-state', label: 'Regulatory Tracker' },
+    ],
+    ctaText: 'View Investor Page →',
+    ctaHref: '/investors',
+  },
+  {
+    id: 'rsa-partners',
+    name: 'RSA Partners',
+    subtitle: 'Roadside Assistance & Emergency Services',
+    icon: 'emergency',
+    challenges: [
+      'EV-specific tow safety procedures and protocols',
+      'Coverage gaps in non-urban and highway areas',
+      'Dispatch optimisation for EV emergencies',
+      'Parts availability for on-road EV repairs',
+    ],
+    products: [
+      {
+        name: 'Ignition',
+        description: 'EV-specific dispatch and coverage management — real-time EV breakdown alerts, routing to nearest partner, and SLA tracking.',
+      },
+      {
+        name: 'GSTSAAS',
+        description: 'Service billing, parts inventory, and job management for RSA operations with GST-compliant invoicing across service locations.',
+      },
+    ],
+    metrics: [
+      { icon: 'local_shipping', value: 'Optimised', label: 'Dispatch' },
+      { icon: 'verified_user', value: 'Certified', label: 'Safety Protocols' },
+      { icon: 'map', value: 'Pan-India', label: 'Coverage Map' },
+    ],
+    ctaText: 'Partner with Us',
+    ctaHref: '/contact',
+  },
 ];
+
+const primaryUserIds = ['cpo', 'workshops', 'fleet', 'insurance', 'govt', 'training', 'consumers', 'oems'];
+const ecosystemPartnerIds = ['nbfc', 'technicians', 'discoms', 'recyclers', 'parts-suppliers', 'investors-type', 'rsa-partners'];
 
 const comparisonRows = [
   'India-Specific Compliance',
@@ -526,8 +733,9 @@ export default function SolutionsClient() {
             </h1>
 
             <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto mb-10">
-              Eight specialised solutions — built for CPO operators, workshops, fleets,
-              insurers, regulators, trainers, consumers, and OEMs.
+              Fifteen specialised solutions — built for every stakeholder across
+              India&apos;s EV ecosystem, from operators and workshops to financiers,
+              recyclers, and beyond.
             </p>
 
             <motion.div
@@ -553,33 +761,65 @@ export default function SolutionsClient() {
 
       {/* STICKY ROLE SELECTOR */}
       <div className="sticky top-16 z-30 backdrop-blur-xl bg-surface-bright/92 border-b border-outline-variant/20 shadow-sm">
-        <div className="container mx-auto px-4 py-3">
+        <div className="container mx-auto px-4 py-2">
           <div
             ref={selectorRef}
-            className="flex gap-2 overflow-x-auto pb-0.5"
+            className="flex items-center gap-2 overflow-x-auto pb-0.5"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {stakeholders.map((s) => (
-              <motion.button
-                key={s.id}
-                data-id={s.id}
-                onClick={() => scrollToSection(s.id)}
-                whileTap={{ scale: 0.96 }}
-                className={`flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
-                  activeId === s.id
-                    ? 'bg-primary text-primary-on shadow-md'
-                    : 'bg-transparent text-on-surface-variant border border-outline-variant/30 hover:border-primary/30 hover:text-primary'
-                }`}
-              >
-                <Icon name={s.icon} size={16} />
-                <span className="whitespace-nowrap">{s.name}</span>
-              </motion.button>
-            ))}
+            {/* Primary Users group */}
+            <span className="flex-shrink-0 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50 pr-1 whitespace-nowrap">
+              Primary
+            </span>
+            {stakeholders
+              .filter((s) => primaryUserIds.includes(s.id))
+              .map((s) => (
+                <motion.button
+                  key={s.id}
+                  data-id={s.id}
+                  onClick={() => scrollToSection(s.id)}
+                  whileTap={{ scale: 0.96 }}
+                  className={`flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+                    activeId === s.id
+                      ? 'bg-primary text-primary-on shadow-md'
+                      : 'bg-transparent text-on-surface-variant border border-outline-variant/30 hover:border-primary/30 hover:text-primary'
+                  }`}
+                >
+                  <Icon name={s.icon} size={16} />
+                  <span className="whitespace-nowrap">{s.name}</span>
+                </motion.button>
+              ))}
+
+            {/* Divider */}
+            <div className="flex-shrink-0 w-px h-8 bg-outline-variant/40 mx-1" />
+
+            {/* Ecosystem Partners group */}
+            <span className="flex-shrink-0 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50 pr-1 whitespace-nowrap">
+              Ecosystem
+            </span>
+            {stakeholders
+              .filter((s) => ecosystemPartnerIds.includes(s.id))
+              .map((s) => (
+                <motion.button
+                  key={s.id}
+                  data-id={s.id}
+                  onClick={() => scrollToSection(s.id)}
+                  whileTap={{ scale: 0.96 }}
+                  className={`flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+                    activeId === s.id
+                      ? 'bg-secondary text-secondary-on shadow-md'
+                      : 'bg-transparent text-on-surface-variant border border-outline-variant/30 hover:border-secondary/40 hover:text-secondary'
+                  }`}
+                >
+                  <Icon name={s.icon} size={16} />
+                  <span className="whitespace-nowrap">{s.name}</span>
+                </motion.button>
+              ))}
           </div>
         </div>
       </div>
 
-      {/* 8 STAKEHOLDER SECTIONS */}
+      {/* 15 STAKEHOLDER SECTIONS */}
       {stakeholders.map((s, idx) => (
         <StakeholderSection
           key={s.id}

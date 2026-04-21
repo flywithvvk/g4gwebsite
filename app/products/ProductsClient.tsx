@@ -244,6 +244,160 @@ function FloatingProductIcons() {
   );
 }
 
+/* ──────────────────── TECH ARCH DIAGRAM ──────────────────── */
+
+function TechArchDiagram() {
+  const userTypes = [
+    { icon: 'engineering', label: 'Workshop Owner' },
+    { icon: 'local_shipping', label: 'Fleet Owner' },
+    { icon: 'ev_station', label: 'CPO Operator' },
+    { icon: 'person', label: 'EV Consumer' },
+    { icon: 'account_balance', label: 'Government' },
+  ];
+
+  const appProducts = [
+    { icon: 'ev_station', name: 'URGAA', tagline: 'Regulatory & Grid Intelligence', color: 'text-primary' },
+    { icon: 'receipt_long', name: 'GSTSAAS', tagline: 'Workshop & Commerce Engine', color: 'text-secondary' },
+    { icon: 'electric_car', name: 'Ignition', tagline: 'Consumer Experience App', color: 'text-tertiary' },
+    { icon: 'school', name: 'EV VIDYA ARJUN', tagline: 'Workforce Skilling Platform', color: 'text-secondary' },
+    { icon: 'psychology', name: 'KAILASH-AI', tagline: 'Predictive Analytics & AI', color: 'text-primary' },
+    { icon: 'smart_toy', name: 'Eka-AI', tagline: 'AI Agent Orchestration', color: 'text-tertiary' },
+  ];
+
+  const intelligenceComponents = [
+    { icon: 'hub', name: 'Multi-LLM Router', note: '10 models' },
+    { icon: 'library_books', name: 'RAG Knowledge Base', note: '55+ docs' },
+    { icon: 'category', name: 'Domain Classifier', note: '' },
+    { icon: 'rule', name: 'Rules Engine', note: '' },
+  ];
+
+  const dataComponents = [
+    { icon: 'storage', name: 'PostgreSQL + pgvector' },
+    { icon: 'speed', name: 'Redis Cache' },
+    { icon: 'computer', name: 'Ollama Local' },
+    { icon: 'cloud', name: 'OpenRouter Cloud' },
+  ];
+
+  return (
+    <div className="w-full max-w-5xl mx-auto mt-16">
+      {/* LAYER 1 — USER LAYER */}
+      <div className="rounded-t-xl border border-outline-variant/30 bg-surface-variant/10 p-4">
+        <p className="font-mono text-[10px] text-on-surface-variant/50 uppercase tracking-widest mb-3">
+          Layer 1 — User Layer
+        </p>
+        <div className="flex flex-wrap gap-2 justify-center">
+          {userTypes.map((u) => (
+            <div
+              key={u.label}
+              className="flex items-center gap-1.5 px-3 py-1.5 border border-outline-variant/30 rounded-full text-sm text-on-surface-variant bg-surface/50"
+            >
+              <Icon name={u.icon} size={16} className="text-on-surface-variant/60" />
+              <span>{u.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Arrow — User → App */}
+      <div className="flex justify-center py-1.5 border-x border-outline-variant/20">
+        <span className="flex flex-col items-center text-on-surface-variant/40 text-xs font-mono leading-tight">
+          <span>↓</span>
+          <span>API calls</span>
+        </span>
+      </div>
+
+      {/* LAYER 2 — APPLICATION LAYER */}
+      <div className="border border-outline-variant/30 bg-primary-container/5 p-4">
+        <p className="font-mono text-[10px] text-on-surface-variant/50 uppercase tracking-widest mb-3">
+          Layer 2 — Application Layer
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+          {appProducts.map((p) => (
+            <div
+              key={p.name}
+              className="border border-outline-variant/25 rounded-lg p-3 bg-surface/50 flex items-start gap-2"
+            >
+              <Icon name={p.icon} size={22} className={`${p.color} shrink-0 mt-0.5`} />
+              <div className="min-w-0">
+                <div className="text-sm font-bold text-on-surface leading-tight">{p.name}</div>
+                <div className="text-xs text-on-surface-variant/60 mt-0.5 leading-tight">{p.tagline}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Arrow — App → Intelligence */}
+      <div className="flex justify-center py-1.5 border-x border-outline-variant/20">
+        <span className="flex flex-col items-center text-on-surface-variant/40 text-xs font-mono leading-tight">
+          <span>↓</span>
+          <span>generate()</span>
+        </span>
+      </div>
+
+      {/* LAYER 3 — INTELLIGENCE LAYER */}
+      <div className="border border-outline-variant/30 bg-secondary-container/5 p-4">
+        <p className="font-mono text-[10px] text-on-surface-variant/50 uppercase tracking-widest mb-3 flex items-center gap-2">
+          Layer 3 — Intelligence Layer
+          <span className="normal-case font-sans text-on-surface-variant/35 border border-outline-variant/20 rounded px-1.5 py-0.5 text-[10px]">
+            EKA Brain
+          </span>
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          {intelligenceComponents.map((c) => (
+            <div
+              key={c.name}
+              className="border border-outline-variant/20 rounded-lg p-3 bg-surface/40 flex flex-col items-center text-center gap-1"
+            >
+              <Icon name={c.icon} size={18} className="text-on-surface-variant/60" />
+              <div className="text-xs font-medium text-on-surface leading-tight">{c.name}</div>
+              {c.note && (
+                <div className="text-[10px] font-mono text-on-surface-variant/40">({c.note})</div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Arrow — Intelligence → Data */}
+      <div className="flex justify-center py-1.5 border-x border-outline-variant/20">
+        <span className="flex flex-col items-center text-on-surface-variant/40 text-xs font-mono leading-tight">
+          <span>↓</span>
+          <span>DB / LLM</span>
+        </span>
+      </div>
+
+      {/* LAYER 4 — DATA LAYER */}
+      <div className="rounded-b-xl border border-outline-variant/30 bg-surface-bright/20 p-4">
+        <p className="font-mono text-[10px] text-on-surface-variant/50 uppercase tracking-widest mb-3">
+          Layer 4 — Data Layer
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          {dataComponents.map((d) => (
+            <div
+              key={d.name}
+              className="border border-outline-variant/20 rounded-lg p-3 bg-surface/40 flex flex-col items-center text-center gap-1"
+            >
+              <Icon name={d.icon} size={18} className="text-on-surface-variant/50" />
+              <div className="text-xs font-medium text-on-surface-variant/80 leading-tight">{d.name}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Cross-connects (desktop only) */}
+      <div className="hidden md:flex gap-3 mt-4 justify-center flex-wrap">
+        <span className="text-xs font-mono text-on-surface-variant/40 border border-outline-variant/20 rounded-full px-3 py-1 bg-surface/30">
+          GSTSAAS → KAILASH-AI (job data)
+        </span>
+        <span className="text-xs font-mono text-on-surface-variant/40 border border-outline-variant/20 rounded-full px-3 py-1 bg-surface/30">
+          KAILASH-AI → Eka-AI (insights)
+        </span>
+      </div>
+    </div>
+  );
+}
+
 /* ──────────────────── COMPONENT ──────────────────── */
 
 export default function ProductsClient() {
@@ -493,107 +647,7 @@ export default function ProductsClient() {
             subtitle="Every product feeds intelligence into a shared AI core, creating a compounding data advantage."
           />
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative max-w-3xl mx-auto mt-16 aspect-square hidden md:block"
-          >
-            {/* connection lines */}
-            {products.map((_, i) => {
-              const angle = (360 / products.length) * i - 90;
-              const rad = (angle * Math.PI) / 180;
-              const r = 42;
-              const x2 = 50 + r * Math.cos(rad);
-              const y2 = 50 + r * Math.sin(rad);
-              return (
-                <svg
-                  key={`line-${i}`}
-                  className="absolute inset-0 w-full h-full pointer-events-none"
-                  viewBox="0 0 100 100"
-                  preserveAspectRatio="none"
-                >
-                  <line
-                    x1="50"
-                    y1="50"
-                    x2={x2}
-                    y2={y2}
-                    stroke="#904d00"
-                    strokeWidth="0.3"
-                    strokeDasharray="2 2"
-                    opacity={0.35}
-                  />
-                </svg>
-              );
-            })}
-
-            {/* centre hub */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full bg-gradient-to-br from-primary-container/25 to-secondary-container/25 border-2 border-primary/20 flex flex-col items-center justify-center shadow-lg z-10 cursor-default"
-            >
-              <Icon name="hub" size={32} className="text-primary mb-1" />
-              <span className="text-xs font-bold text-primary font-display text-center leading-tight">
-                Go4Garage
-                <br />
-                AI Core
-              </span>
-            </motion.div>
-
-            {/* product nodes */}
-            {products.map((p, i) => {
-              const angle = (360 / products.length) * i - 90;
-              const rad = (angle * Math.PI) / 180;
-              const r = 42;
-              const left = `${50 + r * Math.cos(rad)}%`;
-              const top = `${50 + r * Math.sin(rad)}%`;
-              const c = colorMap[p.colorFamily];
-              return (
-                <motion.div
-                  key={p.id}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, type: 'spring' }}
-                  whileHover={{ scale: 1.12 }}
-                  className={`absolute -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-2xl ${c.bg} border ${c.borderLight} flex flex-col items-center justify-center shadow-sm cursor-default z-10`}
-                  style={{ left, top }}
-                >
-                  <Icon name={p.icon} size={26} className={c.text} />
-                  <span className={`text-[10px] font-bold mt-1 ${c.text} text-center leading-tight font-display`}>
-                    {p.name.length > 12 ? p.name.split(' ')[0] : p.name}
-                  </span>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-
-          {/* mobile fallback: simple grid */}
-          <div className="md:hidden mt-12 grid grid-cols-2 gap-4">
-            <div className="col-span-2 flex justify-center mb-2">
-              <div className="w-28 h-28 rounded-full bg-gradient-to-br from-primary-container/25 to-secondary-container/25 border-2 border-primary/20 flex flex-col items-center justify-center">
-                <Icon name="hub" size={28} className="text-primary mb-1" />
-                <span className="text-[10px] font-bold text-primary font-display text-center leading-tight">
-                  Go4Garage
-                  <br />
-                  AI Core
-                </span>
-              </div>
-            </div>
-            {products.map((p) => {
-              const c = colorMap[p.colorFamily];
-              return (
-                <div
-                  key={p.id}
-                  className={`rounded-xl ${c.bg} border ${c.borderLight} p-4 flex flex-col items-center text-center`}
-                >
-                  <Icon name={p.icon} size={24} className={c.text} />
-                  <span className={`text-xs font-bold mt-1 ${c.text} font-display`}>{p.name}</span>
-                </div>
-              );
-            })}
-          </div>
+          <TechArchDiagram />
         </div>
       </section>
 
