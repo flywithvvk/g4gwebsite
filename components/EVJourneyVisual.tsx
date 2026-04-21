@@ -8,14 +8,28 @@ import { Icon } from '@/components/Icon';
    CHALLENGE DATA
    ================================================================= */
 
-const STEP_LABELS = ['Regulatory', 'DISCOM', 'Infrastructure', 'Grid', 'Revenue'];
+// 8 real challenge layers from Go4Garage's 95-problem matrix
+const STEP_LABELS = [
+  'Regulatory',   // L8 — 15 problems
+  'DISCOM',        // L7 — grid & energy
+  'Site Setup',    // L1 — supply chain
+  'Financing',     // L3 — economics
+  'Operations',    // L4 — after-sales
+  'Consumers',     // L2 — adoption
+  'Workforce',     // L5 — skilled talent
+  'Battery',       // L6 — lifecycle & safety
+];
 
+// Evenly distributed across 8–41 s (33 s total ÷ 8 = ~4 s each)
 const CHALLENGE_WINDOWS = [
-  [8, 13],
-  [16, 21],
-  [23, 28],
-  [30, 35],
-  [36, 41],
+  [7,  12],   // Regulatory
+  [12, 17],   // DISCOM
+  [17, 21],   // Site Setup
+  [21, 26],   // Financing
+  [26, 30],   // Operations
+  [30, 34],   // Consumers
+  [34, 37],   // Workforce
+  [37, 41],   // Battery
 ] as const;
 
 const ARRIVED_TIME = 41;
@@ -89,9 +103,12 @@ export function EVJourneyVisual({ onComplete }: Props) {
         playsInline
         preload="auto"
         poster="/images/journey-poster.jpg"
-        style={{ transform: 'scale(1.02)', transformOrigin: 'center center' }}
+        style={{ transform: 'scale(1.02)', transformOrigin: 'center center', imageRendering: 'high-quality' }}
         className="absolute inset-0 w-full h-full object-cover object-center"
       >
+        {/* WebM VP9 — best quality/size for Chrome/Firefox/Edge */}
+        <source src="/videos/ev-journey-bg.webm" type="video/webm" />
+        {/* MP4 H.264 — faststart-optimised fallback for Safari */}
         <source src="/videos/ev-journey-bg.mp4" type="video/mp4" />
       </video>
 

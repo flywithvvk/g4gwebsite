@@ -46,7 +46,7 @@ const openPositions: Job[] = [
   {
     title: 'Full Stack Engineer',
     department: 'Engineering',
-    location: 'Remote / Bangalore',
+    location: 'Remote / 🇮🇳 India',
     type: 'Full-time',
     icon: 'code',
     accent: 'primary',
@@ -55,7 +55,7 @@ const openPositions: Job[] = [
   {
     title: 'AI/ML Engineer',
     department: 'AI/ML',
-    location: 'Bangalore',
+    location: '🇮🇳 India | Bharat',
     type: 'Full-time',
     icon: 'model_training',
     accent: 'secondary',
@@ -64,7 +64,7 @@ const openPositions: Job[] = [
   {
     title: 'Sales Executive (B2B SaaS)',
     department: 'Sales',
-    location: 'Delhi / Mumbai / Bangalore',
+    location: 'Pan-India 🇮🇳',
     type: 'Full-time',
     icon: 'handshake',
     accent: 'tertiary',

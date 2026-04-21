@@ -27,7 +27,7 @@ const contactMethods = [
     title: 'Visit Us',
     detail: 'WeWork Galaxy, 43 Residency Road',
     href: 'https://maps.google.com/?q=WeWork+Galaxy+43+Residency+Road+Bangalore',
-    sub: 'Bangalore, Karnataka 560025',
+    sub: '🇮🇳 India | Bharat',
     color: 'from-tertiary to-[#00a34a]',
   },
 ];
@@ -398,13 +398,13 @@ export default function ContactClient() {
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-6">
               <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-surface-bright p-7 rounded-2xl border border-outline-variant/30 shadow-sm">
-                <h3 className="text-lg font-bold mb-4 font-display">Bangalore <span className="gradient-text">Headquarters</span></h3>
+                <h3 className="text-lg font-bold mb-4 font-display">🇮🇳 India | Bharat <span className="gradient-text">Headquarters</span></h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
                     <Icon name="location_on" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <div>
                       <p className="text-sm font-medium">WeWork Galaxy, 43 Residency Road</p>
-                      <p className="text-xs text-on-surface-variant mt-0.5">Bangalore, Karnataka 560025</p>
+                      <p className="text-xs text-on-surface-variant mt-0.5">🇮🇳 India | Bharat</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -436,8 +436,8 @@ export default function ContactClient() {
                   <div className="w-16 h-16 mx-auto mb-4 bg-primary-container/15 rounded-2xl flex items-center justify-center">
                     <Icon name="map" size={32} className="text-primary" />
                   </div>
-                  <h4 className="font-bold text-base mb-2 font-display">WeWork Galaxy, Bangalore</h4>
-                  <p className="text-sm text-on-surface-variant mb-4">43 Residency Road, Karnataka 560025</p>
+                  <h4 className="font-bold text-base mb-2 font-display">WeWork Galaxy</h4>
+                  <p className="text-sm text-on-surface-variant mb-4">43 Residency Road, 🇮🇳 India | Bharat</p>
                   <motion.a href="https://maps.google.com/?q=WeWork+Galaxy+43+Residency+Road+Bangalore" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-all">
                     <Icon name="open_in_new" size={16} />
                     Open in Maps
