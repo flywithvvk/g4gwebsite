@@ -187,7 +187,6 @@ export default function AboutClient() {
                   whileHover={{ y: -4, scale: 1.02 }}
                   className="bg-surface-bright/80 backdrop-blur-sm p-6 rounded-2xl border border-outline-variant/30 shadow-sm hover:shadow-md transition-all group"
                 >
-                  <Icon name={item.icon} size={24} className="text-primary mb-3 group-hover:scale-110 transition-transform" />
                   <div className="text-3xl md:text-4xl font-black gradient-text mb-1 font-display">
                     <AnimatedCounter target={item.value} />
                   </div>
@@ -214,16 +213,12 @@ export default function AboutClient() {
               whileHover={{ y: -4 }}
               className="bg-surface-bright p-8 rounded-2xl border border-outline-variant/30 border-l-4 border-l-primary shadow-sm hover:shadow-md transition-all"
             >
-              <div className="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center mb-5">
-                <Icon name="flag" size={28} className="text-primary" />
-              </div>
               <h3 className="text-2xl font-bold mb-4 font-display">Our Mission</h3>
               <p className="text-on-surface-variant leading-relaxed mb-4">
                 Accelerate EV adoption and charging/service scale in India by reducing compliance friction,
                 improving uptime, and improving unit economics.
               </p>
               <div className="flex items-center gap-2 pt-3 border-t border-outline-variant/20">
-                <Icon name="auto_awesome" size={16} className="text-primary" />
                 <p className="text-primary font-semibold text-sm">95 problems identified. 85 solved. One platform.</p>
               </div>
             </motion.div>
@@ -236,16 +231,12 @@ export default function AboutClient() {
               whileHover={{ y: -4 }}
               className="bg-surface-bright p-8 rounded-2xl border border-outline-variant/30 border-l-4 border-l-secondary shadow-sm hover:shadow-md transition-all"
             >
-              <div className="w-12 h-12 rounded-xl bg-secondary-container/20 flex items-center justify-center mb-5">
-                <Icon name="visibility" size={28} className="text-secondary" />
-              </div>
               <h3 className="text-2xl font-bold mb-4 font-display">Our Vision</h3>
               <p className="text-on-surface-variant leading-relaxed mb-4">
                 To be the intelligence backbone of India&apos;s $50B+ automobile transformation — powering
                 every operator, technician, and stakeholder with AI-driven insights and automation.
               </p>
               <div className="flex items-center gap-2 pt-3 border-t border-outline-variant/20">
-                <Icon name="auto_awesome" size={16} className="text-secondary" />
                 <p className="text-secondary font-semibold text-sm">The intelligence layer for India&apos;s automobile industry.</p>
               </div>
             </motion.div>
@@ -274,7 +265,7 @@ export default function AboutClient() {
                 className={`bg-surface-bright p-6 rounded-2xl border border-outline-variant/30 border-l-4 ${v.color} shadow-sm hover:shadow-lg transition-all group cursor-default`}
               >
                 <div className="w-10 h-10 rounded-xl bg-primary-container/15 flex items-center justify-center mb-4 group-hover:bg-primary-container/25 transition-colors">
-                  <Icon name={v.icon} size={24} className="text-primary group-hover:scale-110 transition-transform" />
+                  <Icon name={v.icon} size={20} className="text-on-surface-variant" />
                 </div>
                 <h3 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors font-display">{v.title}</h3>
                 <p className="text-sm text-on-surface-variant leading-relaxed">{v.desc}</p>

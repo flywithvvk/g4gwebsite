@@ -171,7 +171,6 @@ export default function ImpactClient() {
                 className="text-center"
               >
                 <ProgressRing percent={stat.percent} color={stat.color}>
-                  <span style={{ color: stat.color }}><Icon name={stat.icon} size={22} className="mb-1" /></span>
                   <span className="text-2xl md:text-3xl font-black font-display">
                     <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                   </span>
@@ -200,9 +199,6 @@ export default function ImpactClient() {
                   whileHover={{ y: -4 }}
                   className="bg-surface-bright p-5 rounded-2xl border border-outline-variant/30 shadow-sm hover:shadow-md transition-all group"
                 >
-                  <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl ${layer.bg} mb-3`}>
-                    <Icon name={layer.icon} size={22} className={layer.color} />
-                  </div>
                   <h3 className="font-bold text-sm mb-2 font-display group-hover:text-primary transition-colors">{layer.name}</h3>
                   <div className="flex items-baseline gap-1.5 mb-1">
                     <span className="text-2xl font-black font-display">{layer.solved}</span>
@@ -247,7 +243,6 @@ export default function ImpactClient() {
               className="bg-red-50/60 dark:bg-red-950/10 rounded-2xl border border-red-200/40 p-6"
             >
               <div className="flex items-center gap-2 mb-5">
-                <Icon name="cancel" size={24} className="text-red-500" />
                 <h3 className="font-bold text-lg font-display text-red-700 dark:text-red-400">Before</h3>
               </div>
               <ul className="space-y-3">
@@ -260,7 +255,7 @@ export default function ImpactClient() {
                     transition={{ delay: 0.1 + i * 0.06 }}
                     className="flex items-start gap-2.5 text-sm text-on-surface-variant"
                   >
-                    <Icon name="close" size={16} className="text-red-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-red-400 flex-shrink-0 mt-0.5">—</span>
                     {item}
                   </motion.li>
                 ))}
@@ -300,7 +295,6 @@ export default function ImpactClient() {
               className="bg-emerald-50/60 dark:bg-emerald-950/10 rounded-2xl border border-emerald-200/40 p-6"
             >
               <div className="flex items-center gap-2 mb-5">
-                <Icon name="check_circle" size={24} className="text-tertiary" />
                 <h3 className="font-bold text-lg font-display text-tertiary">After Go4Garage</h3>
               </div>
               <ul className="space-y-3">
@@ -313,7 +307,7 @@ export default function ImpactClient() {
                     transition={{ delay: 0.1 + i * 0.06 }}
                     className="flex items-start gap-2.5 text-sm text-on-surface-variant"
                   >
-                    <Icon name="check" size={16} className="text-tertiary mt-0.5 flex-shrink-0" />
+                    <span className="text-tertiary flex-shrink-0 mt-0.5">—</span>
                     {item}
                   </motion.li>
                 ))}
@@ -391,8 +385,7 @@ export default function ImpactClient() {
                 <h4 className="font-bold font-display text-sm mb-2">{row.product}</h4>
                 <div className="flex flex-wrap gap-1.5">
                   {row.layers.map((layer) => (
-                    <span key={layer} className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-medium rounded-full bg-primary-container/15 text-primary">
-                      <Icon name="check" size={12} className="text-primary" />
+                    <span key={layer} className="px-2 py-0.5 text-[10px] font-medium rounded-full bg-primary-container/15 text-primary">
                       {layer.split(' ')[0]}
                     </span>
                   ))}
@@ -419,7 +412,7 @@ export default function ImpactClient() {
                 className="bg-surface-bright p-6 rounded-2xl border border-outline-variant/30 shadow-sm hover:shadow-md transition-all group"
               >
                 <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-primary-container/10 mb-4 group-hover:bg-primary-container/20 transition-colors">
-                  <Icon name={item.icon} size={24} className="text-primary group-hover:scale-110 transition-transform" />
+                  <Icon name={item.icon} size={20} className="text-on-surface-variant" />
                 </div>
                 <h3 className="font-bold text-base mb-2 font-display group-hover:text-primary transition-colors">{item.title}</h3>
                 <p className="text-sm text-on-surface-variant leading-relaxed">{item.desc}</p>

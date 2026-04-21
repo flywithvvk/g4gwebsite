@@ -204,10 +204,7 @@ export default function HomePage() {
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
                 className={`relative bg-surface-bright p-6 rounded-2xl border border-outline-variant/30 border-l-4 ${layer.color} shadow-sm hover:shadow-lg transition-all group`}
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-primary-container/20 flex items-center justify-center group-hover:bg-primary-container/30 transition-colors">
-                    <Icon name={layer.icon} size={22} className="text-primary" />
-                  </div>
+                <div className="flex items-center justify-end mb-4">
                   <span className="text-xs font-bold text-on-surface-variant/60 font-display">{layer.layer}</span>
                 </div>
                 <h3 className="text-sm font-bold mb-2 group-hover:text-primary transition-colors font-display leading-tight">{layer.title}</h3>
@@ -227,11 +224,9 @@ export default function HomePage() {
             className="text-center mt-12 flex flex-wrap items-center justify-center gap-3"
           >
             <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary-container/15 border border-primary/20">
-              <Icon name="check_circle" size={18} className="text-primary" />
               <span className="text-sm font-semibold text-primary"><span className="text-lg font-bold">85</span> Solvable by Go4Garage</span>
             </span>
             <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface-container border border-outline-variant/30">
-              <Icon name="info" size={18} className="text-on-surface-variant" />
               <span className="text-sm text-on-surface-variant"><span className="text-lg font-bold">10</span> Macro / Systemic</span>
             </span>
           </motion.div>
@@ -357,7 +352,7 @@ export default function HomePage() {
                     transition={{ delay: idx * 0.15 + 0.2, type: 'spring', stiffness: 300 }}
                     className="w-14 h-14 rounded-2xl bg-primary-container/20 border-2 border-primary/30 flex items-center justify-center flex-shrink-0"
                   >
-                    <Icon name={item.icon} size={26} className="text-primary" />
+                    <Icon name={item.icon} size={20} className="text-on-surface-variant" />
                   </motion.div>
                   {idx < howItWorks.length - 1 && (
                     <motion.div
@@ -456,9 +451,7 @@ export default function HomePage() {
                     'End-to-end CPO operations + service + workforce',
                   ].map((item, idx) => (
                     <motion.div key={idx} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 + idx * 0.1 }} className="flex items-start gap-3">
-                      <div className="w-5 h-5 rounded-full bg-primary-container/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Icon name="check" size={14} className="text-primary" />
-                      </div>
+                      <span className="text-on-surface-variant flex-shrink-0 mt-0.5">—</span>
                       <span className="text-on-surface-variant text-sm">{item}</span>
                     </motion.div>
                   ))}
@@ -539,15 +532,6 @@ export default function HomePage() {
 
         <div className="container mx-auto px-6 relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto">
-            <motion.div
-              initial={{ scale: 0.8 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ type: 'spring', stiffness: 200 }}
-              className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary-container/20 mb-8"
-            >
-              <Icon name="rocket_launch" size={32} className="text-primary" />
-            </motion.div>
 
             <h2 className="text-4xl md:text-6xl font-bold mb-6 font-display">
               Ready to <span className="gradient-text">Transform</span> Your Operations?
@@ -583,18 +567,9 @@ export default function HomePage() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="flex flex-wrap items-center justify-center gap-6 mt-12 text-xs text-on-surface-variant"
+              className="mt-12 text-xs text-on-surface-variant"
             >
-              {[
-                { icon: 'lock', text: 'Enterprise-grade security' },
-                { icon: 'schedule', text: 'Setup in under 48 hours' },
-                { icon: 'support_agent', text: 'Dedicated success team' },
-              ].map((item, i) => (
-                <span key={i} className="inline-flex items-center gap-1.5">
-                  <Icon name={item.icon} size={14} className="text-primary" />
-                  {item.text}
-                </span>
-              ))}
+              Enterprise-grade security • Setup in under 48 hours • Dedicated success team
             </motion.div>
           </motion.div>
         </div>

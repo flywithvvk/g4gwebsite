@@ -305,7 +305,7 @@ export default function PlatformClient() {
             >
               {/* Left: overview */}
               <div className={`p-8 rounded-2xl border ${clr.border} ${clr.bg} shadow-sm`}>
-                <Icon name={tab.icon} size={44} className={`${clr.text} mb-4`} />
+                <Icon name={tab.icon} size={28} className={`${clr.text} mb-4`} />
                 <h3 className="text-2xl font-bold mb-3 font-display">{tab.title}</h3>
                 <p className="text-on-surface-variant leading-relaxed">{tab.description}</p>
               </div>
@@ -321,7 +321,7 @@ export default function PlatformClient() {
                     className="bg-surface-bright p-6 rounded-xl border border-outline-variant/30 hover:shadow-md transition-all group"
                   >
                     <div className={`w-10 h-10 rounded-lg ${clr.bg} flex items-center justify-center mb-3`}>
-                      <Icon name={f.icon} size={22} className={clr.text} />
+                      <Icon name={f.icon} size={20} className="text-on-surface-variant" />
                     </div>
                     <h4 className="font-bold text-on-surface mb-1.5 font-display">{f.name}</h4>
                     <p className="text-sm text-on-surface-variant leading-relaxed">{f.desc}</p>
@@ -366,7 +366,6 @@ export default function PlatformClient() {
                   className="grid grid-cols-2 text-sm border-t border-outline-variant/10"
                 >
                   <div className="px-6 py-4 text-on-surface-variant flex items-start gap-3 bg-red-500/5 hover:bg-red-500/10 transition-colors">
-                    <Icon name={row.icon} size={18} className="text-red-400 mt-0.5 flex-shrink-0" />
                     <span>{row.traditional}</span>
                   </div>
                   <div className="px-6 py-4 text-on-surface font-medium flex items-start gap-3 bg-tertiary-container/10 hover:bg-tertiary-container/20 transition-colors border-l border-tertiary/15">
@@ -402,7 +401,7 @@ export default function PlatformClient() {
                 className="bg-surface-bright p-7 rounded-2xl border border-outline-variant/30 shadow-sm hover:shadow-lg transition-all group"
               >
                 <div className="w-12 h-12 rounded-xl bg-primary-container/15 flex items-center justify-center mb-4 group-hover:bg-primary-container/25 transition-colors">
-                  <Icon name={tech.icon} size={28} className="text-primary" />
+                  <Icon name={tech.icon} size={20} className="text-on-surface-variant" />
                 </div>
                 <h3 className="text-lg font-bold mb-2 font-display group-hover:text-primary transition-colors">{tech.title}</h3>
                 <p className="text-sm text-on-surface-variant leading-relaxed mb-4">{tech.description}</p>
@@ -580,7 +579,7 @@ export default function PlatformClient() {
                 className="bg-surface-bright p-7 rounded-2xl border border-outline-variant/30 shadow-sm hover:shadow-lg hover:border-primary/20 transition-all group"
               >
                 <div className="w-12 h-12 rounded-xl bg-primary-container/15 flex items-center justify-center mb-4 group-hover:bg-primary-container/25 transition-colors">
-                  <Icon name={feat.icon} size={26} className="text-primary" />
+                  <Icon name={feat.icon} size={20} className="text-on-surface-variant" />
                 </div>
                 <h3 className="text-lg font-bold mb-2 font-display group-hover:text-primary transition-colors">{feat.title}</h3>
                 <p className="text-sm text-on-surface-variant leading-relaxed">{feat.description}</p>

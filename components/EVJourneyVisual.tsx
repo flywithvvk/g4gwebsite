@@ -103,7 +103,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
         playsInline
         preload="auto"
         poster="/images/journey-poster.jpg"
-        style={{ transform: 'scale(1.02)', transformOrigin: 'center center', imageRendering: 'high-quality' }}
+        style={{ transform: 'scale(1.02)', transformOrigin: 'center center' }}
         className="absolute inset-0 w-full h-full object-cover object-center"
       >
         {/* WebM VP9 — best quality/size for Chrome/Firefox/Edge */}
