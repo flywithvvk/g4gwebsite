@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 const SITE_URL = "https://www.go4garage.com";
 
@@ -66,6 +67,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#904d00" />
       </head>
       <body className="font-sans antialiased bg-surface text-on-surface">
+        <ScrollProgress />
         <Navigation />
         <main className="min-h-screen">
           {children}

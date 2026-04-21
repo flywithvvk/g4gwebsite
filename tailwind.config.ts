@@ -11,14 +11,14 @@ const config: Config = {
       colors: {
         // MD3 Surface tokens — light theme
         surface: {
-          DEFAULT: '#f9f9f9',
-          dim: '#d9d9d9',
+          DEFAULT: '#ffffff',
+          dim: '#f5f5f5',
           bright: '#ffffff',
           'container-lowest': '#ffffff',
-          'container-low': '#f3f3f3',
-          container: '#ededed',
-          'container-high': '#e7e7e7',
-          'container-highest': '#e2e2e2',
+          'container-low': '#ffffff',
+          container: '#fafafa',
+          'container-high': '#f5f5f5',
+          'container-highest': '#f0f0f0',
         },
         // MD3 Primary — warm amber/brown
         primary: {
@@ -46,10 +46,10 @@ const config: Config = {
           DEFAULT: '#ba1a1a',
           container: '#ffdad6',
         },
-        // Outline
+        // Outline — black borders
         outline: {
-          DEFAULT: '#7a7574',
-          variant: '#d4c4bf',
+          DEFAULT: '#000000',
+          variant: '#000000',
         },
         // On-surface text
         'on-surface': {

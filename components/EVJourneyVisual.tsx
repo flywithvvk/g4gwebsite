@@ -80,7 +80,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
   const showArrived = time >= ARRIVED_TIME;
 
   return (
-    <div className="relative h-screen overflow-hidden bg-black">
+    <div className="relative h-full overflow-hidden bg-black">
 
       {/* ═══════════ VIDEO — minimal 2% scale, keeps content intact ═══════════ */}
       <video
@@ -95,246 +95,150 @@ export function EVJourneyVisual({ onComplete }: Props) {
         <source src="/videos/ev-journey-bg.mp4" type="video/mp4" />
       </video>
 
-      {/* ═══════════ CINEMATIC OVERLAY SYSTEM ═══════════ */}
+      {/* ═══════════ MINIMAL OVERLAYS — readability only, no dark shadows ═══════════ */}
 
-      {/* Top vignette — keeps nav area dark */}
+      {/* Very light top fade */}
       <div
-        className="absolute top-0 left-0 right-0 h-40 pointer-events-none z-10"
-        style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)' }}
+        className="absolute top-0 left-0 right-0 h-16 pointer-events-none z-10"
+        style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 100%)' }}
       />
 
-      {/* Bottom vignette — darkens progress bar area */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-52 pointer-events-none z-10"
-        style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.3) 70%, transparent 100%)' }}
-      />
-
-      {/* Corner vignette — radial dark zone over watermark area */}
+      {/* Subtle left vignette */}
       <div
         className="absolute inset-0 pointer-events-none z-10"
-        style={{
-          background: 'radial-gradient(ellipse at 105% 105%, rgba(0,0,0,0.99) 0%, rgba(0,0,0,0.97) 12%, rgba(0,0,0,0.88) 22%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.15) 50%, transparent 62%)',
-        }}
+        style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.2) 0%, transparent 22%)' }}
       />
 
-      {/* Secondary corner block — diagonal linear fade, adds extra opacity in the exact corner */}
-      <div
-        className="absolute pointer-events-none z-10"
-        style={{
-          bottom: 0,
-          right: 0,
-          width: '38%',
-          height: '28%',
-          background: 'linear-gradient(to top left, rgba(0,0,0,0.99) 0%, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.7) 42%, rgba(0,0,0,0.25) 65%, transparent 85%)',
-        }}
-      />
-
-      {/* Left vignette — subtle depth */}
-      <div
-        className="absolute inset-0 pointer-events-none z-10"
-        style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.3) 0%, transparent 25%)' }}
-      />
-
-      {/* ═══════════ GO4GARAGE BRAND BADGE — positioned over watermark spot ═══════════ */}
+      {/* ═══════════ BOTTOM-RIGHT COMPACT PANEL — all stage UI + watermark cover ═══════════ */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, y: 8 }}
-        animate={{ opacity: started ? 1 : 0, scale: started ? 1 : 0.8, y: started ? 0 : 8 }}
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: started ? 1 : 0, y: started ? 0 : 16 }}
         transition={{ duration: 0.5, delay: 0.8 }}
-        className="absolute z-30 flex items-center gap-2.5 pointer-events-none"
-        style={{ bottom: 12, right: 12 }}
+        className="absolute bottom-0 right-0 z-30 pointer-events-none"
       >
         <div
-          className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border border-white/15"
-          style={{ background: 'rgba(6,6,6,0.88)', backdropFilter: 'blur(18px)' }}
+          style={{
+            background: 'rgba(0,0,0,0.88)',
+            backdropFilter: 'blur(16px)',
+            borderRadius: '12px 0 0 0',
+            padding: '10px 14px 12px 14px',
+            minWidth: 284,
+          }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/icon.png" alt="Go4Garage" style={{ width: 22, height: 22, objectFit: 'contain' }} />
-          <div>
-            <div className="text-[11px] font-bold text-white font-display leading-none">Go4Garage</div>
-            <div className="text-[9px] text-white/45 leading-none mt-0.5 tracking-wide">AI · EV · India</div>
-          </div>
-          <div className="w-px h-6 bg-white/15" />
-          <div className="flex items-center gap-1">
-            <div className="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse" />
-            <span className="text-[9px] text-tertiary/90 font-semibold">LIVE</span>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* ═══════════ CONTENT OVERLAY ═══════════ */}
-      <div className="relative z-20 flex flex-col h-screen">
-
-        {/* ── Top: journey label + active challenge pill ── */}
-        <div className="pt-20 pb-2 px-6 md:px-10 space-y-3">
-
-          <motion.div
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: started ? 1 : 0, y: started ? 0 : -12 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-white/15 backdrop-blur-md"
-            style={{ background: 'rgba(0,0,0,0.5)' }}
-          >
-            <motion.span
-              animate={{ scale: [1, 1.4, 1], opacity: [0.7, 1, 0.7] }}
-              transition={{ duration: 2.5, repeat: Infinity }}
-              className="w-2 h-2 rounded-full bg-tertiary"
-            />
-            <span
-              className="text-[11px] font-bold text-white tracking-[0.18em] uppercase font-display"
-              style={{ textShadow: '0 1px 6px rgba(0,0,0,0.9)' }}
-            >
-              The EV Charging Journey
-            </span>
-          </motion.div>
-
+          {/* Challenge / resolved status row */}
           <AnimatePresence mode="wait">
             {activeIdx >= 0 && !showArrived && (
               <motion.div
-                key={`challenge-${activeIdx}`}
-                initial={{ opacity: 0, x: -16, scale: 0.95 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                exit={{ opacity: 0, x: 12, scale: 0.95 }}
-                transition={{ duration: 0.35 }}
-                className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl border border-red-400/40 backdrop-blur-md w-fit"
-                style={{ background: 'rgba(200,30,30,0.22)' }}
+                key={`ch-${activeIdx}`}
+                initial={{ opacity: 0, x: 8 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -8 }}
+                transition={{ duration: 0.3 }}
+                className="flex items-center gap-1.5 mb-2.5"
               >
                 <motion.div
                   animate={{ rotate: [0, 10, -10, 0] }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  <Icon name="warning" size={14} className="text-red-300" />
+                  <Icon name="warning" size={11} className="text-red-400" />
                 </motion.div>
-                <span
-                  className="text-[11px] font-bold text-red-100 tracking-wider uppercase"
-                  style={{ textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}
-                >
+                <span className="text-[10px] font-bold text-red-200 uppercase tracking-wider">
                   Challenge {activeIdx + 1} · {STEP_LABELS[activeIdx]}
                 </span>
               </motion.div>
             )}
-
             {showArrived && (
               <motion.div
-                key="resolved"
-                initial={{ opacity: 0, x: -16, scale: 0.95 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
+                key="arrived-pill"
+                initial={{ opacity: 0, x: 8 }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4 }}
-                className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl border border-tertiary/40 backdrop-blur-md w-fit"
-                style={{ background: 'rgba(0,110,47,0.22)' }}
+                className="flex items-center gap-1.5 mb-2.5"
               >
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: 'spring', stiffness: 300, delay: 0.1 }}
-                >
-                  <Icon name="check_circle" size={14} className="text-tertiary" />
-                </motion.div>
-                <span
-                  className="text-[11px] font-bold text-white tracking-wider uppercase"
-                  style={{ textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}
-                >
+                <Icon name="check_circle" size={11} className="text-tertiary" />
+                <span className="text-[10px] font-bold text-white uppercase tracking-wider">
                   All 5 Challenges Resolved
                 </span>
               </motion.div>
             )}
           </AnimatePresence>
-        </div>
 
-        <div className="flex-1" />
-
-        {/* ── Bottom: journey steps + progress ── */}
-        <div className="px-6 md:px-10 pb-8 md:pb-10" style={{ paddingRight: 'clamp(24px, 5vw, 220px)' }}>
-
-          {/* Step indicators */}
-          <div className="flex items-end flex-wrap gap-x-1 gap-y-2 mb-5">
+          {/* Step row — single compact line */}
+          <div className="flex items-center gap-1 mb-2.5 flex-wrap">
             {STEP_LABELS.map((label, i) => {
               const done = time >= CHALLENGE_WINDOWS[i][1];
               const active = activeIdx === i;
-              const upcoming = !done && !active;
               return (
-                <div key={i} className="flex items-center gap-1.5">
-                  <motion.div
-                    animate={active ? { scale: [1, 1.15, 1] } : {}}
-                    transition={{ duration: 1.2, repeat: Infinity }}
-                    className="flex flex-col items-center gap-1"
+                <div key={i} className="flex items-center gap-1">
+                  <div
+                    className="w-3.5 h-3.5 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-500"
+                    style={{
+                      background: done
+                        ? 'var(--color-tertiary)'
+                        : active
+                        ? 'rgba(255,255,255,0.9)'
+                        : 'rgba(255,255,255,0.18)',
+                      border: !done && !active ? '1px solid rgba(255,255,255,0.35)' : 'none',
+                    }}
                   >
-                    <div
-                      className={`
-                        rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-500
-                        ${done ? 'w-6 h-6 shadow-lg' : active ? 'w-6 h-6 shadow-lg shadow-white/30' : 'w-4.5 h-4.5'}
-                      `}
-                      style={{
-                        background: done
-                          ? 'var(--color-tertiary)'
-                          : active
-                          ? 'rgba(255,255,255,0.95)'
-                          : 'rgba(255,255,255,0.25)',
-                        border: upcoming ? '1.5px solid rgba(255,255,255,0.5)' : 'none',
-                      }}
-                    >
-                      {done && <Icon name="check" size={12} className="text-white" />}
-                      {active && (
-                        <motion.div
-                          animate={{ scale: [1, 1.3, 1] }}
-                          transition={{ duration: 1, repeat: Infinity }}
-                          className="w-2.5 h-2.5 rounded-full bg-primary"
-                        />
-                      )}
-                    </div>
-
-                    <div className="flex items-center gap-0.5">
-                      <span
-                        className={`text-[9px] font-bold tracking-widest uppercase transition-all duration-500 ${
-                          done ? 'text-tertiary' : active ? 'text-white' : 'text-white/55'
-                        }`}
-                        style={{ textShadow: '0 1px 6px rgba(0,0,0,1)' }}
-                      >
-                        {label}
-                      </span>
-                    </div>
-                  </motion.div>
-
-                  {i < 4 && (
-                    <div className="mb-4 mx-0.5">
-                      <div
-                        className={`w-5 md:w-8 h-[2px] rounded-full transition-all duration-700 ${
-                          done ? 'bg-tertiary/80' : 'bg-white/20'
-                        }`}
+                    {done && <Icon name="check" size={8} className="text-white" />}
+                    {active && (
+                      <motion.div
+                        animate={{ scale: [1, 1.3, 1] }}
+                        transition={{ duration: 1, repeat: Infinity }}
+                        className="w-1.5 h-1.5 rounded-full bg-primary"
                       />
-                    </div>
+                    )}
+                  </div>
+                  <span
+                    className={`text-[8px] font-bold uppercase tracking-wide transition-all duration-500 ${
+                      done ? 'text-tertiary' : active ? 'text-white' : 'text-white/35'
+                    }`}
+                  >
+                    {label}
+                  </span>
+                  {i < 4 && (
+                    <div
+                      className={`w-3 h-px mx-0.5 transition-all duration-700 ${
+                        done ? 'bg-tertiary/60' : 'bg-white/15'
+                      }`}
+                    />
                   )}
                 </div>
               );
             })}
           </div>
 
-          {/* Progress bar — wider and more polished */}
-          <div className="max-w-xs">
-            <div className="flex justify-between items-center mb-1.5">
-              <span
-                className="text-[10px] font-semibold text-white/80"
-                style={{ textShadow: '0 1px 4px rgba(0,0,0,1)' }}
-              >
-                {completedCount} of 5 resolved
-              </span>
-              <span
-                className="text-[10px] font-semibold text-white/80 tabular-nums"
-                style={{ textShadow: '0 1px 4px rgba(0,0,0,1)' }}
-              >
-                {Math.round(progress)}%
-              </span>
+          {/* Thin progress bar */}
+          <div
+            className="h-[3px] rounded-full overflow-hidden mb-2.5"
+            style={{ background: 'rgba(255,255,255,0.12)' }}
+          >
+            <motion.div
+              className="h-full rounded-full"
+              style={{
+                background: 'linear-gradient(90deg, #904d00 0%, #f18a22 40%, #7b41b3 75%, #22bc5a 100%)',
+              }}
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 0.25, ease: 'linear' }}
+            />
+          </div>
+
+          {/* Brand row */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1.5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/icon.png" alt="Go4Garage" style={{ width: 16, height: 16, objectFit: 'contain' }} />
+              <span className="text-[10px] font-bold text-white">Go4Garage</span>
+              <span className="text-[8px] text-white/35">AI · EV · India</span>
             </div>
-            <div className="h-[6px] rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.18)' }}>
-              <motion.div
-                className="h-full rounded-full"
-                style={{ background: 'linear-gradient(90deg, #904d00 0%, #f18a22 40%, #7b41b3 75%, #22bc5a 100%)' }}
-                animate={{ width: `${progress}%` }}
-                transition={{ duration: 0.25, ease: 'linear' }}
-              />
+            <div className="flex items-center gap-1">
+              <div className="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse" />
+              <span className="text-[9px] text-tertiary/90 font-semibold">LIVE</span>
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* ── Arrived celebration overlay ── */}
       <AnimatePresence>
@@ -344,7 +248,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="absolute inset-0 z-25 flex items-center justify-center"
+            className="absolute inset-0 z-[25] flex items-center justify-center"
             style={{ background: 'rgba(0,0,0,0.45)', backdropFilter: 'blur(2px)' }}
           >
             <motion.div

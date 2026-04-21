@@ -2,11 +2,13 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SectionHeading } from '@/components/SectionHeading';
 import { StatsCard } from '@/components/StatsCard';
 import { Icon } from '@/components/Icon';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
+import { EVJourneyVisual } from '@/components/EVJourneyVisual';
+
 
 /* ═══════════════════════════════════════════════════════
    DATA
@@ -159,78 +161,124 @@ const fadeUp = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0
 
 export default function PlatformClient() {
   const [activeTab, setActiveTab] = useState(0);
+  const [heroSlide, setHeroSlide] = useState(0);
   const tab = capabilityTabs[activeTab];
   const clr = colorMap[tab.color];
+
+  // Slide 1 auto-returns to Slide 0 (video) after 10s
+  useEffect(() => {
+    if (heroSlide !== 1) return;
+    const timer = setTimeout(() => setHeroSlide(0), 10000);
+    return () => clearTimeout(timer);
+  }, [heroSlide]);
 
   return (
     <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
 
-      {/* ─────────────────────── 1 · HERO ─────────────────────── */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
-        {/* Animated background */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
-          <motion.div
-            animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
-            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]"
-          />
-          <motion.div
-            animate={{ scale: [1.2, 1, 1.2], opacity: [1, 0.6, 1] }}
-            transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-container/8 rounded-full blur-[150px]"
-          />
-          <motion.div
-            animate={{ scale: [1, 1.15, 1] }}
-            transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-tertiary-container/6 rounded-full blur-[120px]"
-          />
-        </div>
-        {/* Dot grid */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '40px 40px' }}
-        />
-
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9 }} className="text-center max-w-5xl mx-auto">
-            {/* Badge */}
+      {/* ─────────────────────── 1 · HERO SLIDER ─────────────────────── */}
+      <section className="relative h-[calc(100vh-4rem)] mt-16 overflow-hidden">
+        <AnimatePresence mode="wait">
+          {heroSlide === 0 ? (
+            /* ── SLIDE 0: EV Journey Video ── */
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 mb-8 rounded-full border border-primary/20 bg-primary-container/10"
+              key="slide-0"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.7 }}
             >
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm font-semibold text-primary font-display tracking-wide">Enterprise-Grade Platform</span>
+              <EVJourneyVisual
+                onComplete={() => {
+                  setTimeout(() => setHeroSlide(1), 3000);
+                }}
+              />
             </motion.div>
-
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight font-display">
-              Enterprise-Grade AI{' '}
-              <span className="gradient-text">Intelligence Platform</span>
-            </h1>
-
-            <p className="text-lg md:text-xl text-on-surface-variant mb-12 max-w-3xl mx-auto leading-relaxed">
-              One unified platform powering regulatory intelligence, operational excellence, commercial automation, and workforce development across India&apos;s entire automobile ecosystem.
-            </p>
-
-            {/* Stats row */}
+          ) : (
+            /* ── SLIDE 1: Platform Overview ── */
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.7 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto"
+              key="slide-1"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.7 }}
+              className="relative h-[calc(100vh-4rem)] flex items-center justify-center pt-4"
             >
-              {[
-                { icon: 'bug_report', value: 95, label: 'Problems Mapped' },
-                { icon: 'check_circle', value: 85, label: 'Solvable' },
-                { icon: 'widgets', value: 76, label: 'Features' },
-                { icon: 'inventory_2', value: 7, label: 'Products' },
-              ].map((s, i) => (
-                <StatsCard key={i} icon={s.icon} value={s.value} label={s.label} />
-              ))}
+              {/* Animated background */}
+              <div className="absolute inset-0">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
+                <motion.div
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
+                  transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]"
+                />
+                <motion.div
+                  animate={{ scale: [1.2, 1, 1.2], opacity: [1, 0.6, 1] }}
+                  transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-container/8 rounded-full blur-[150px]"
+                />
+              </div>
+              {/* Dot grid */}
+              <div
+                className="absolute inset-0 opacity-[0.04]"
+                style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '40px 40px' }}
+              />
+
+              <div className="container mx-auto px-6 relative z-10">
+                <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9 }} className="text-center max-w-5xl mx-auto">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 mb-8 rounded-full border border-primary/20 bg-primary-container/10"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                    <span className="text-sm font-semibold text-primary font-display tracking-wide">Enterprise-Grade Platform</span>
+                  </motion.div>
+
+                  <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight font-display">
+                    Enterprise-Grade AI{' '}
+                    <span className="gradient-text">Intelligence Platform</span>
+                  </h1>
+
+                  <p className="text-lg md:text-xl text-on-surface-variant mb-12 max-w-3xl mx-auto leading-relaxed">
+                    One unified platform powering regulatory intelligence, operational excellence, commercial automation, and workforce development across India&apos;s entire automobile ecosystem.
+                  </p>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.7 }}
+                    className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto"
+                  >
+                    {[
+                      { icon: 'bug_report', value: 95, label: 'Problems Mapped' },
+                      { icon: 'check_circle', value: 85, label: 'Solvable' },
+                      { icon: 'widgets', value: 76, label: 'Features' },
+                      { icon: 'inventory_2', value: 7, label: 'Products' },
+                    ].map((s, i) => (
+                      <StatsCard key={i} icon={s.icon} value={s.value} label={s.label} />
+                    ))}
+                  </motion.div>
+                </motion.div>
+              </div>
             </motion.div>
-          </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* ── Slide Indicator Dots ── */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
+          {[0, 1].map((idx) => (
+            <button
+              key={idx}
+              onClick={() => setHeroSlide(idx)}
+              className={`transition-all duration-300 rounded-full ${
+                heroSlide === idx
+                  ? 'w-8 h-3 bg-primary shadow-lg'
+                  : 'w-3 h-3 bg-white/40 hover:bg-white/60 border border-white/20'
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
         </div>
       </section>
 
