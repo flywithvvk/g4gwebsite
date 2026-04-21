@@ -2,10 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { AnimatedCounter } from './AnimatedCounter';
-import { Icon } from './Icon';
 
 interface StatsCardProps {
-  icon: string;
+  icon?: string;
   value: number;
   suffix?: string;
   prefix?: string;
@@ -13,7 +12,7 @@ interface StatsCardProps {
   description?: string;
 }
 
-export function StatsCard({ icon, value, suffix = '', prefix = '', label, description }: StatsCardProps) {
+export function StatsCard({ value, suffix = '', prefix = '', label, description }: StatsCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -23,7 +22,6 @@ export function StatsCard({ icon, value, suffix = '', prefix = '', label, descri
       className="relative p-6 rounded-2xl bg-surface-bright border border-outline-variant/30 shadow-sm hover:shadow-lg transition-all group overflow-hidden"
     >
       <div className="absolute top-0 right-0 w-24 h-24 bg-primary-container/5 rounded-full -translate-y-8 translate-x-8 group-hover:bg-primary-container/10 transition-colors" />
-      <Icon name={icon} size={28} className="text-primary mb-3" />
       <div className="text-3xl md:text-4xl font-black gradient-text mb-1 font-display">
         <AnimatedCounter target={value} prefix={prefix} suffix={suffix} />
       </div>
