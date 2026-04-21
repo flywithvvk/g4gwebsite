@@ -74,21 +74,20 @@ const capabilityTabs = [
 ];
 
 const comparisonRows = [
-  { traditional: 'Manual regulatory filings', g4g: 'AI-automated compliance across 33 states' },
-  { traditional: 'Spreadsheet-based operations', g4g: 'Real-time digital dashboards' },
-  { traditional: 'Fragmented billing & tax', g4g: 'Unified GST-compliant automation' },
-  { traditional: 'No predictive insights', g4g: 'AI-driven forecasting & anomaly detection' },
-  { traditional: 'Classroom-only training', g4g: 'AI-powered adaptive learning with offline access' },
-  { traditional: 'Siloed data systems', g4g: 'Integrated data platform with cross-product intelligence' },
-  { traditional: 'Reactive maintenance', g4g: 'Predictive maintenance with Battery SoH grading' },
-  { traditional: 'Paper-based approvals', g4g: 'Multi-authority digital approval orchestration' },
+  { icon: 'gavel', traditional: 'Manual compliance filing across 33 states', g4g: 'AI-automated regulatory compliance with real-time updates' },
+  { icon: 'timer', traditional: '3-6 month DISCOM approval delays', g4g: 'AI-guided applications reducing approval time' },
+  { icon: 'device_hub', traditional: 'Multiple disconnected tools (Excel, WhatsApp, paper)', g4g: 'Single unified platform for all operations' },
+  { icon: 'smart_toy', traditional: 'Generic AI chatbots with no domain knowledge', g4g: 'Domain-trained automotive AI with 95% problem coverage' },
+  { icon: 'notifications_off', traditional: 'No regulatory change notifications', g4g: 'Real-time policy tracking across all 33 states' },
+  { icon: 'receipt_long', traditional: 'Manual GST invoicing prone to errors', g4g: 'Automated GST compliance with 95%+ accuracy' },
+  { icon: 'build', traditional: 'Reactive maintenance (fix when broken)', g4g: 'Predictive maintenance with AI anomaly detection' },
 ];
 
 const techCards = [
   {
     icon: 'psychology',
     title: 'Automobile LLM',
-    description: 'Domain-specific large language model trained on Indian automobile regulations, service manuals, and industry knowledge',
+    description: 'AI Intelligence powered by multiple specialized models with domain-specific fine-tuning for Indian automotive regulations, service procedures, and compliance workflows — including open-source foundation models optimized for the Indian automobile ecosystem.',
     features: ['Contextual policy interpretation', 'Multi-language support', 'Continuous fine-tuning'],
   },
   {
@@ -111,36 +110,13 @@ const techCards = [
   },
 ];
 
-const architectureLayers = [
-  {
-    label: 'Applications',
-    color: 'bg-primary-container/15 border-primary/30',
-    items: ['Ignition App', 'Admin Console', 'Partner Portal'],
-  },
-  {
-    label: 'Intelligence Engine',
-    color: 'bg-secondary-container/15 border-secondary/30',
-    items: ['KAILASH-AI', 'Eka-AI Agents'],
-  },
-  {
-    label: 'Platform Services',
-    color: 'bg-tertiary-container/15 border-tertiary/30',
-    items: ['URGAA (ऊर्जा)', 'GSTSAAS', 'EV VIDYA ARJUN'],
-  },
-  {
-    label: 'Data & Infrastructure',
-    color: 'bg-primary-container/10 border-primary/20',
-    items: ['Data Lake', 'ML Pipeline', 'API Gateway'],
-  },
-];
-
 const enterpriseFeatures = [
-  { icon: 'security', title: 'Security', description: 'SOC 2 compliant infrastructure with end-to-end encryption, RBAC, and audit logging' },
-  { icon: 'trending_up', title: 'Scalability', description: 'Cloud-native architecture handling 10K+ concurrent users with auto-scaling and 99.9% uptime SLA' },
-  { icon: 'integration_instructions', title: 'Integration', description: 'REST APIs, webhooks, and pre-built connectors for SAP, Tally, GSTN, and OEM systems' },
+  { icon: 'security', title: 'Security', description: 'SOC 2 readiness path — enterprise security practices with end-to-end encryption, RBAC, and audit logging' },
+  { icon: 'trending_up', title: 'Scalability', description: 'High availability architecture with redundancy and auto-scaling infrastructure for cloud-native deployments' },
+  { icon: 'integration_instructions', title: 'Integration', description: 'REST APIs, webhooks, and API-first architecture with integration support for SAP, Tally, GSTN, and OEM systems' },
   { icon: 'support_agent', title: 'Support', description: '24/7 dedicated support with SLA-backed response times and named account managers' },
   { icon: 'apartment', title: 'Multi-tenancy', description: 'Complete tenant isolation with configurable branding, permissions, and data sovereignty' },
-  { icon: 'palette', title: 'White-label', description: 'Fully customizable UI, branding, and domain mapping for partner deployments' },
+  { icon: 'palette', title: 'White-label', description: 'White-label ready architecture for partner deployments' },
 ];
 
 /* ═══════════════════════════════════════════════════════
@@ -366,11 +342,17 @@ export default function PlatformClient() {
           />
 
           <motion.div {...fadeUp} className="max-w-4xl mx-auto">
-            <div className="bg-surface-bright rounded-2xl overflow-hidden border border-outline-variant/30 shadow-sm">
+            <div className="rounded-2xl overflow-hidden border border-outline-variant/30 shadow-sm">
               {/* Header */}
-              <div className="grid grid-cols-2 text-sm font-bold border-b border-outline-variant/20">
-                <div className="px-6 py-4 text-on-surface-variant font-display bg-surface-container-low/50">Traditional Approach</div>
-                <div className="px-6 py-4 text-primary font-display border-l-4 border-primary/40 bg-primary-container/5">Go4Garage Platform</div>
+              <div className="grid grid-cols-2 text-sm font-bold">
+                <div className="px-6 py-4 text-red-700 font-display bg-red-500/10 flex items-center gap-2">
+                  <Icon name="close" size={18} className="text-red-500" />
+                  Traditional Approach
+                </div>
+                <div className="px-6 py-4 text-tertiary font-display bg-tertiary-container/20 flex items-center gap-2 border-l border-tertiary/20">
+                  <Icon name="check_circle" size={18} className="text-tertiary" />
+                  With Go4Garage
+                </div>
               </div>
               {/* Rows */}
               {comparisonRows.map((row, idx) => (
@@ -379,14 +361,14 @@ export default function PlatformClient() {
                   initial={{ opacity: 0, x: -12 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: idx * 0.04 }}
-                  className="grid grid-cols-2 text-sm border-b border-outline-variant/10 last:border-b-0 hover:bg-surface-container-low/30 transition-colors"
+                  transition={{ delay: idx * 0.05 }}
+                  className="grid grid-cols-2 text-sm border-t border-outline-variant/10"
                 >
-                  <div className="px-6 py-4 text-on-surface-variant flex items-start gap-2.5">
-                    <Icon name="close" size={18} className="text-red-500 mt-0.5 flex-shrink-0" />
+                  <div className="px-6 py-4 text-on-surface-variant flex items-start gap-3 bg-red-500/5 hover:bg-red-500/10 transition-colors">
+                    <Icon name={row.icon} size={18} className="text-red-400 mt-0.5 flex-shrink-0" />
                     <span>{row.traditional}</span>
                   </div>
-                  <div className="px-6 py-4 text-on-surface font-medium flex items-start gap-2.5 border-l-4 border-primary/10">
+                  <div className="px-6 py-4 text-on-surface font-medium flex items-start gap-3 bg-tertiary-container/10 hover:bg-tertiary-container/20 transition-colors border-l border-tertiary/15">
                     <Icon name="check_circle" size={18} className="text-tertiary mt-0.5 flex-shrink-0" />
                     <span>{row.g4g}</span>
                   </div>
@@ -447,40 +429,130 @@ export default function PlatformClient() {
             subtitle="A layered, modular architecture designed for extensibility, security, and scale."
           />
 
-          <motion.div {...fadeUp} className="max-w-4xl mx-auto space-y-4">
-            {architectureLayers.map((layer, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.12 }}
-                className="relative"
-              >
-                <div className={`rounded-2xl border-2 ${layer.color} p-6`}>
-                  <div className="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-3 font-display">
-                    {layer.label}
-                  </div>
-                  <div className="flex flex-wrap gap-3">
-                    {layer.items.map((item, i) => (
-                      <motion.div
-                        key={i}
-                        whileHover={{ scale: 1.04 }}
-                        className="px-5 py-3 rounded-xl bg-surface-bright border border-outline-variant/30 text-sm font-semibold text-on-surface shadow-sm hover:shadow-md transition-all"
-                      >
-                        {item}
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-                {/* Connecting line */}
-                {idx < architectureLayers.length - 1 && (
-                  <div className="flex justify-center py-1">
-                    <div className="w-0.5 h-4 bg-outline-variant/40 rounded-full" />
-                  </div>
-                )}
-              </motion.div>
-            ))}
+          <motion.div {...fadeUp} className="max-w-4xl mx-auto">
+
+            {/* ── Applications Layer ── */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0 }}
+              className="rounded-2xl border-2 bg-primary-container/15 border-primary/30 p-6"
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <span className="text-xs font-bold uppercase tracking-widest text-primary font-display">Applications Layer</span>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { icon: 'phone_android', name: 'Ignition App' },
+                  { icon: 'admin_panel_settings', name: 'Admin Console' },
+                  { icon: 'group', name: 'Partner Portal' },
+                ].map((item) => (
+                  <motion.div key={item.name} whileHover={{ scale: 1.04 }}
+                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl bg-surface-bright border border-primary/25 text-sm font-semibold text-on-surface shadow-sm hover:shadow-md hover:border-primary/50 transition-all"
+                  >
+                    <Icon name={item.icon} size={18} className="text-primary" />
+                    <span>{item.name}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* ── Connector ── */}
+            <div className="flex justify-center py-1">
+              <div className="flex flex-col items-center">
+                <div className="w-px h-4 bg-outline-variant/50" />
+                <Icon name="swap_vert" size={22} className="text-outline-variant/60" />
+                <div className="w-px h-4 bg-outline-variant/50" />
+              </div>
+            </div>
+
+            {/* ── AI Intelligence Layer ── */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.12 }}
+              className="rounded-2xl border-2 bg-secondary-container/15 border-secondary/30 p-6"
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
+                <span className="text-xs font-bold uppercase tracking-widest text-secondary font-display">AI Intelligence Layer</span>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { icon: 'psychology', name: 'KAILASH-AI' },
+                  { icon: 'smart_toy', name: 'Eka-AI Agents' },
+                ].map((item) => (
+                  <motion.div key={item.name} whileHover={{ scale: 1.04 }}
+                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl bg-surface-bright border border-secondary/25 text-sm font-semibold text-on-surface shadow-sm hover:shadow-md hover:border-secondary/50 transition-all"
+                  >
+                    <Icon name={item.icon} size={18} className="text-secondary" />
+                    <span>{item.name}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* ── Connector ── */}
+            <div className="flex justify-center py-1">
+              <div className="flex flex-col items-center">
+                <div className="w-px h-4 bg-outline-variant/50" />
+                <Icon name="swap_vert" size={22} className="text-outline-variant/60" />
+                <div className="w-px h-4 bg-outline-variant/50" />
+              </div>
+            </div>
+
+            {/* ── Platform Services Layer ── */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.24 }}
+              className="rounded-2xl border-2 bg-tertiary-container/15 border-tertiary/30 p-6"
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-2 h-2 rounded-full bg-tertiary animate-pulse" />
+                <span className="text-xs font-bold uppercase tracking-widest text-tertiary font-display">Platform Services Layer</span>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { icon: 'electric_bolt', name: 'URGAA (ऊर्जा)' },
+                  { icon: 'receipt_long', name: 'GSTSAAS' },
+                  { icon: 'school', name: 'EV VIDYA ARJUN' },
+                ].map((item) => (
+                  <motion.div key={item.name} whileHover={{ scale: 1.04 }}
+                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl bg-surface-bright border border-tertiary/25 text-sm font-semibold text-on-surface shadow-sm hover:shadow-md hover:border-tertiary/50 transition-all"
+                  >
+                    <Icon name={item.icon} size={18} className="text-tertiary" />
+                    <span>{item.name}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* ── Connector ── */}
+            <div className="flex justify-center py-1">
+              <div className="flex flex-col items-center">
+                <div className="w-px h-4 bg-outline-variant/50" />
+                <Icon name="swap_vert" size={22} className="text-outline-variant/60" />
+                <div className="w-px h-4 bg-outline-variant/50" />
+              </div>
+            </div>
+
+            {/* ── Foundation Layer ── */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.36 }}
+              className="rounded-2xl border-2 bg-surface-container/30 border-outline-variant/50 p-6"
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-2 h-2 rounded-full bg-on-surface-variant animate-pulse" />
+                <span className="text-xs font-bold uppercase tracking-widest text-on-surface-variant font-display">Foundation Layer</span>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { icon: 'storage', name: 'Data Lake' },
+                  { icon: 'model_training', name: 'ML Pipeline' },
+                  { icon: 'api', name: 'API Gateway' },
+                ].map((item) => (
+                  <motion.div key={item.name} whileHover={{ scale: 1.04 }}
+                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl bg-surface-bright border border-outline-variant/30 text-sm font-semibold text-on-surface shadow-sm hover:shadow-md hover:border-outline-variant/60 transition-all"
+                  >
+                    <Icon name={item.icon} size={18} className="text-on-surface-variant" />
+                    <span>{item.name}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
           </motion.div>
         </div>
       </section>
