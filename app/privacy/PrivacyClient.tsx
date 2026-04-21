@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { IndiaFlag } from '@/components/IndiaFlag';
 
 export default function PrivacyClient() {
   return (
@@ -217,7 +218,7 @@ export default function PrivacyClient() {
               <p className="mt-3">
                 <strong className="text-on-surface">Data Protection Officer / Grievance Officer</strong><br />
                 Go4Garage Antigravity Technologies Pvt. Ltd.<br />
-                🇮🇳 India · Bharat
+                <span className="inline-flex items-center gap-1.5"><IndiaFlag size={15} /> India · Bharat</span>
               </p>
               <p className="mt-2">
                 Email:{' '}

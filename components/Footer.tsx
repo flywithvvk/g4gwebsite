@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { IndiaFlag } from '@/components/IndiaFlag';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -112,7 +113,7 @@ const Footer: React.FC = () => {
               </a>
               <span className="flex items-center gap-2 text-xs text-on-surface-variant">
                 <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>location_on</span>
-                🇮🇳 India · Bharat
+                <IndiaFlag size={16} /> India · Bharat
               </span>
             </div>
           </div>

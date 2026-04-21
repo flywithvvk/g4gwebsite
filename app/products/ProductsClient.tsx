@@ -248,11 +248,13 @@ function FloatingProductIcons() {
 
 function TechArchDiagram() {
   const userTypes = [
-    { icon: 'engineering', label: 'Workshop Owner' },
-    { icon: 'local_shipping', label: 'Fleet Owner' },
-    { icon: 'ev_station', label: 'CPO Operator' },
-    { icon: 'person', label: 'EV Consumer' },
+    { icon: 'engineering', label: 'Workshop Owners' },
+    { icon: 'local_shipping', label: 'Fleet Operators' },
+    { icon: 'ev_station', label: 'CPO Operators' },
+    { icon: 'person', label: 'EV Consumers' },
     { icon: 'account_balance', label: 'Government' },
+    { icon: 'account_balance_wallet', label: 'NBFC & Lenders' },
+    { icon: 'groups', label: 'Training Bodies' },
   ];
 
   const appProducts = [
@@ -260,138 +262,190 @@ function TechArchDiagram() {
     { icon: 'receipt_long', name: 'GSTSAAS', tagline: 'Workshop & Commerce Engine', color: 'text-secondary' },
     { icon: 'electric_car', name: 'Ignition', tagline: 'Consumer Experience App', color: 'text-tertiary' },
     { icon: 'school', name: 'EV VIDYA ARJUN', tagline: 'Workforce Skilling Platform', color: 'text-secondary' },
-    { icon: 'psychology', name: 'KAILASH-AI', tagline: 'Predictive Analytics & AI', color: 'text-primary' },
+    { icon: 'psychology', name: 'KAILASH-AI', tagline: 'Predictive Analytics', color: 'text-primary' },
     { icon: 'smart_toy', name: 'Eka-AI', tagline: 'AI Agent Orchestration', color: 'text-tertiary' },
   ];
 
-  const intelligenceComponents = [
-    { icon: 'hub', name: 'Multi-LLM Router', note: '10 models' },
-    { icon: 'library_books', name: 'RAG Knowledge Base', note: '55+ docs' },
-    { icon: 'category', name: 'Domain Classifier', note: '' },
-    { icon: 'rule', name: 'Rules Engine', note: '' },
+  const intelligenceLeft = [
+    { icon: 'hub', name: 'Adaptive Model Selection', note: '12-dimension scoring matrix' },
+    { icon: 'library_books', name: 'Domain Knowledge Engine', note: '50K+ structured automotive records' },
+  ];
+  const intelligenceCenter = [
+    { icon: 'psychology', name: 'EKA Orchestrator', note: 'Unified intelligence coordinator' },
+    { icon: 'manage_search', name: 'Semantic Retrieval Engine', note: 'Dense vector similarity matching' },
+  ];
+  const intelligenceRight = [
+    { icon: 'security', name: 'Intent & Safety Filter', note: 'Multi-stage context guardrails' },
+    { icon: 'rule', name: 'Compliance Rules Graph', note: '33-state regulatory ruleset' },
   ];
 
   const dataComponents = [
-    { icon: 'storage', name: 'PostgreSQL + pgvector' },
-    { icon: 'speed', name: 'Redis Cache' },
-    { icon: 'computer', name: 'Ollama Local' },
-    { icon: 'cloud', name: 'OpenRouter Cloud' },
+    { icon: 'storage', name: 'Proprietary Vector Index', note: 'High-dimension semantic store' },
+    { icon: 'speed', name: 'Real-Time State Layer', note: 'Sub-10ms response cache' },
+    { icon: 'computer', name: 'Edge AI Processing', note: 'On-premises secure inference' },
+    { icon: 'cloud', name: 'Cloud Intelligence Fabric', note: 'Elastic multi-model inference' },
+    { icon: 'history', name: 'Telemetry & Audit Store', note: 'Immutable compliance log' },
   ];
 
   return (
     <div className="w-full max-w-5xl mx-auto mt-16">
-      {/* LAYER 1 — USER LAYER */}
+      {/* LAYER 1 — USER INTERFACES */}
       <div className="rounded-t-xl border border-outline-variant/30 bg-surface-variant/10 p-4">
-        <p className="font-mono text-[10px] text-on-surface-variant/50 uppercase tracking-widest mb-3">
-          Layer 1 — User Layer
-        </p>
+        <div className="flex items-center justify-between mb-3">
+          <p className="font-mono text-[10px] text-on-surface-variant/50 uppercase tracking-widest">
+            Layer 1 — User Interfaces
+          </p>
+          <span className="text-[9px] font-mono text-on-surface-variant/30 border border-outline-variant/20 rounded px-2 py-0.5">
+            REST · WebSocket · Mobile SDK
+          </span>
+        </div>
         <div className="flex flex-wrap gap-2 justify-center">
           {userTypes.map((u) => (
             <div
               key={u.label}
-              className="flex items-center gap-1.5 px-3 py-1.5 border border-outline-variant/30 rounded-full text-sm text-on-surface-variant bg-surface/50"
+              className="flex items-center gap-1.5 px-3 py-1.5 border border-outline-variant/30 rounded-full text-on-surface-variant bg-surface/50"
             >
-              <Icon name={u.icon} size={16} className="text-on-surface-variant/60" />
-              <span>{u.label}</span>
+              <Icon name={u.icon} size={13} className="text-on-surface-variant/60" />
+              <span className="text-[11px]">{u.label}</span>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Arrow — User → App */}
+      {/* Arrow */}
       <div className="flex justify-center py-1.5 border-x border-outline-variant/20">
-        <span className="flex flex-col items-center text-on-surface-variant/40 text-xs font-mono leading-tight">
+        <span className="flex flex-col items-center text-on-surface-variant/40 text-[10px] font-mono leading-tight">
           <span>↓</span>
-          <span>API calls</span>
+          <span>authenticated requests · session context</span>
         </span>
       </div>
 
       {/* LAYER 2 — APPLICATION LAYER */}
       <div className="border border-outline-variant/30 bg-primary-container/5 p-4">
-        <p className="font-mono text-[10px] text-on-surface-variant/50 uppercase tracking-widest mb-3">
-          Layer 2 — Application Layer
-        </p>
+        <div className="flex items-center justify-between mb-3">
+          <p className="font-mono text-[10px] text-on-surface-variant/50 uppercase tracking-widest">
+            Layer 2 — Application Products
+          </p>
+          <span className="text-[9px] font-mono text-on-surface-variant/30 border border-outline-variant/20 rounded px-2 py-0.5">
+            6 integrated modules · shared session context
+          </span>
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
           {appProducts.map((p) => (
             <div
               key={p.name}
               className="border border-outline-variant/25 rounded-lg p-3 bg-surface/50 flex items-start gap-2"
             >
-              <Icon name={p.icon} size={22} className={`${p.color} shrink-0 mt-0.5`} />
+              <Icon name={p.icon} size={20} className={`${p.color} shrink-0 mt-0.5`} />
               <div className="min-w-0">
                 <div className="text-sm font-bold text-on-surface leading-tight">{p.name}</div>
-                <div className="text-xs text-on-surface-variant/60 mt-0.5 leading-tight">{p.tagline}</div>
+                <div className="text-[10px] text-on-surface-variant/60 mt-0.5 leading-tight">{p.tagline}</div>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Arrow — App → Intelligence */}
+      {/* Arrow */}
       <div className="flex justify-center py-1.5 border-x border-outline-variant/20">
-        <span className="flex flex-col items-center text-on-surface-variant/40 text-xs font-mono leading-tight">
+        <span className="flex flex-col items-center text-on-surface-variant/40 text-[10px] font-mono leading-tight">
           <span>↓</span>
-          <span>generate()</span>
+          <span>intelligence requests · context injection · feedback signals</span>
         </span>
       </div>
 
-      {/* LAYER 3 — INTELLIGENCE LAYER */}
+      {/* LAYER 3 — EKA INTELLIGENCE PLATFORM */}
       <div className="border border-outline-variant/30 bg-secondary-container/5 p-4">
-        <p className="font-mono text-[10px] text-on-surface-variant/50 uppercase tracking-widest mb-3 flex items-center gap-2">
-          Layer 3 — Intelligence Layer
-          <span className="normal-case font-sans text-on-surface-variant/35 border border-outline-variant/20 rounded px-1.5 py-0.5 text-[10px]">
-            EKA Brain
+        <div className="flex items-center justify-between mb-3">
+          <p className="font-mono text-[10px] text-on-surface-variant/50 uppercase tracking-widest">
+            Layer 3 — EKA Intelligence Platform
+          </p>
+          <span className="text-[9px] font-mono text-tertiary/60 border border-tertiary/20 rounded px-2 py-0.5 bg-tertiary-container/10">
+            Proprietary · AI Core
           </span>
-        </p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-          {intelligenceComponents.map((c) => (
-            <div
-              key={c.name}
-              className="border border-outline-variant/20 rounded-lg p-3 bg-surface/40 flex flex-col items-center text-center gap-1"
-            >
-              <Icon name={c.icon} size={18} className="text-on-surface-variant/60" />
-              <div className="text-xs font-medium text-on-surface leading-tight">{c.name}</div>
-              {c.note && (
-                <div className="text-[10px] font-mono text-on-surface-variant/40">({c.note})</div>
-              )}
-            </div>
-          ))}
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {/* Left column */}
+          <div className="space-y-2">
+            {intelligenceLeft.map((c) => (
+              <div key={c.name} className="border border-outline-variant/20 rounded-lg p-3 bg-surface/40">
+                <div className="flex items-center gap-1.5 mb-1">
+                  <Icon name={c.icon} size={13} className="text-on-surface-variant/60" />
+                  <div className="text-xs font-semibold text-on-surface leading-tight">{c.name}</div>
+                </div>
+                <div className="text-[10px] font-mono text-on-surface-variant/40">{c.note}</div>
+              </div>
+            ))}
+          </div>
+          {/* Center column — highlighted */}
+          <div className="space-y-2">
+            {intelligenceCenter.map((c) => (
+              <div key={c.name} className="border border-secondary/30 rounded-lg p-3 bg-secondary-container/10">
+                <div className="flex items-center gap-1.5 mb-1">
+                  <Icon name={c.icon} size={13} className="text-secondary/70" />
+                  <div className="text-xs font-bold text-on-surface leading-tight">{c.name}</div>
+                </div>
+                <div className="text-[10px] font-mono text-on-surface-variant/40">{c.note}</div>
+              </div>
+            ))}
+          </div>
+          {/* Right column */}
+          <div className="space-y-2">
+            {intelligenceRight.map((c) => (
+              <div key={c.name} className="border border-outline-variant/20 rounded-lg p-3 bg-surface/40">
+                <div className="flex items-center gap-1.5 mb-1">
+                  <Icon name={c.icon} size={13} className="text-on-surface-variant/60" />
+                  <div className="text-xs font-semibold text-on-surface leading-tight">{c.name}</div>
+                </div>
+                <div className="text-[10px] font-mono text-on-surface-variant/40">{c.note}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Arrow — Intelligence → Data */}
+      {/* Arrow */}
       <div className="flex justify-center py-1.5 border-x border-outline-variant/20">
-        <span className="flex flex-col items-center text-on-surface-variant/40 text-xs font-mono leading-tight">
+        <span className="flex flex-col items-center text-on-surface-variant/40 text-[10px] font-mono leading-tight">
           <span>↓</span>
-          <span>DB / LLM</span>
+          <span>vector queries · model inference · state reads · write-back</span>
         </span>
       </div>
 
-      {/* LAYER 4 — DATA LAYER */}
+      {/* LAYER 4 — DATA & INFRASTRUCTURE */}
       <div className="rounded-b-xl border border-outline-variant/30 bg-surface-bright/20 p-4">
-        <p className="font-mono text-[10px] text-on-surface-variant/50 uppercase tracking-widest mb-3">
-          Layer 4 — Data Layer
-        </p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+        <div className="flex items-center justify-between mb-3">
+          <p className="font-mono text-[10px] text-on-surface-variant/50 uppercase tracking-widest">
+            Layer 4 — Data & Infrastructure
+          </p>
+          <span className="text-[9px] font-mono text-on-surface-variant/30 border border-outline-variant/20 rounded px-2 py-0.5">
+            data sovereignty · encrypted at rest & in transit
+          </span>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
           {dataComponents.map((d) => (
             <div
               key={d.name}
-              className="border border-outline-variant/20 rounded-lg p-3 bg-surface/40 flex flex-col items-center text-center gap-1"
+              className="border border-outline-variant/20 rounded-lg p-2.5 bg-surface/40 flex flex-col items-center text-center gap-1"
             >
-              <Icon name={d.icon} size={18} className="text-on-surface-variant/50" />
-              <div className="text-xs font-medium text-on-surface-variant/80 leading-tight">{d.name}</div>
+              <Icon name={d.icon} size={16} className="text-on-surface-variant/50" />
+              <div className="text-[10px] font-medium text-on-surface-variant/80 leading-tight">{d.name}</div>
+              <div className="text-[9px] font-mono text-on-surface-variant/35 leading-tight">{d.note}</div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Cross-connects (desktop only) */}
+      {/* Cross-connects */}
       <div className="hidden md:flex gap-3 mt-4 justify-center flex-wrap">
-        <span className="text-xs font-mono text-on-surface-variant/40 border border-outline-variant/20 rounded-full px-3 py-1 bg-surface/30">
-          GSTSAAS → KAILASH-AI (job data)
+        <span className="text-[10px] font-mono text-on-surface-variant/40 border border-outline-variant/20 rounded-full px-3 py-1 bg-surface/30">
+          all modules → EKA Orchestrator (shared intelligence)
         </span>
-        <span className="text-xs font-mono text-on-surface-variant/40 border border-outline-variant/20 rounded-full px-3 py-1 bg-surface/30">
-          KAILASH-AI → Eka-AI (insights)
+        <span className="text-[10px] font-mono text-on-surface-variant/40 border border-outline-variant/20 rounded-full px-3 py-1 bg-surface/30">
+          analytics signals → cross-product insights
+        </span>
+        <span className="text-[10px] font-mono text-on-surface-variant/40 border border-outline-variant/20 rounded-full px-3 py-1 bg-surface/30">
+          every action → immutable audit trail
         </span>
       </div>
     </div>
@@ -430,10 +484,7 @@ export default function ProductsClient() {
           }}
         />
 
-        {/* floating orbiting icons (hidden on mobile) */}
-        <div className="hidden lg:block">
-          <FloatingProductIcons />
-        </div>
+
 
         <div className="container mx-auto px-6 relative z-10">
           <motion.div

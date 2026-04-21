@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { IndiaFlag } from '@/components/IndiaFlag';
 
 export default function TermsClient() {
   return (
@@ -226,7 +227,7 @@ export default function TermsClient() {
               <p className="mt-3">
                 <strong className="text-on-surface">Legal Team</strong><br />
                 Go4Garage Antigravity Technologies Pvt. Ltd.<br />
-                🇮🇳 India · Bharat
+                <span className="inline-flex items-center gap-1.5"><IndiaFlag size={15} /> India · Bharat</span>
               </p>
               <p className="mt-2">
                 Email:{' '}
