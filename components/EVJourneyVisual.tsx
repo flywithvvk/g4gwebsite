@@ -186,7 +186,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
               >
                 <Icon name="check_circle" size={11} className="text-tertiary" />
                 <span className="text-[10px] font-bold text-white uppercase tracking-wider">
-                  All 5 Challenges Resolved
+                  All 8 Challenges Resolved
                 </span>
               </motion.div>
             )}
@@ -318,7 +318,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
               {/* Stats row */}
               <div className="flex justify-center gap-6 mb-2">
                 {[
-                  { v: '5', l: 'Challenges' },
+                  { v: '95', l: 'Problems' },
                   { v: '33', l: 'States' },
                   { v: '89%', l: 'Faster' },
                 ].map((s, i) => (
