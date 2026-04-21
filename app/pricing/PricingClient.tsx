@@ -15,6 +15,9 @@ interface Tier {
   recommended?: boolean;
   gradient: string;
   accent: string;
+  price?: string;
+  priceNote?: string;
+  billingAlt?: string;
 }
 
 const tiers: Tier[] = [
@@ -32,6 +35,9 @@ const tiers: Tier[] = [
     icon: 'rocket_launch',
     gradient: 'from-primary/5 to-primary-container/5',
     accent: 'primary',
+    price: '₹4,999/month',
+    priceNote: 'per location, billed annually',
+    billingAlt: 'Or ₹5,999/month billed monthly',
   },
   {
     name: 'Professional',
@@ -76,33 +82,82 @@ interface ComparisonFeature {
 }
 
 const comparisonFeatures: ComparisonFeature[] = [
-  { name: 'Charging Stations / Workshops', starter: '5 / 1', professional: '50 / 10', enterprise: 'Unlimited' },
-  { name: 'URGAA (ऊर्जा) Regulatory Intelligence', starter: true, professional: true, enterprise: true },
-  { name: 'GSTSAAS Workshop Engine', starter: true, professional: true, enterprise: true },
-  { name: 'EV VIDYA ARJUN Training', starter: false, professional: true, enterprise: true },
-  { name: 'KAILASH-AI Advanced Analytics', starter: false, professional: true, enterprise: true },
-  { name: 'Eka-AI Assistant', starter: false, professional: true, enterprise: true },
-  { name: 'Ignition Fleet Portal', starter: false, professional: true, enterprise: true },
+  {
+    name: 'URGAA (ऊर्जा) — Regulatory Intelligence',
+    starter: '1 state, basic compliance tracking',
+    professional: 'Up to 5 states, full automation, DISCOM wizard',
+    enterprise: 'All 33 states, custom rules, API access, white-label',
+  },
+  {
+    name: 'GSTSAAS — Workshop Engine',
+    starter: '1 location, basic job cards, GST invoicing',
+    professional: 'Up to 5 locations, inventory, customer management',
+    enterprise: 'Unlimited locations, multi-branch reporting, custom workflows',
+  },
+  {
+    name: 'Ignition — Fleet Portal',
+    starter: 'Basic vehicle health monitoring',
+    professional: 'Full diagnostics, service booking, cost calculator',
+    enterprise: 'Fleet management, white-label, OEM integration',
+  },
+  {
+    name: 'EV VIDYA ARJUN — Training',
+    starter: false,
+    professional: 'Access to standard curriculum',
+    enterprise: 'Custom curriculum, certification, bulk enrollment',
+  },
+  {
+    name: 'KAILASH-AI — Advanced Analytics',
+    starter: 'Basic analytics',
+    professional: 'Predictive analytics, anomaly detection',
+    enterprise: 'Custom models, API access, dedicated instance',
+  },
+  {
+    name: 'Eka-AI — Conversational AI',
+    starter: false,
+    professional: 'Conversational AI, limited queries',
+    enterprise: 'Full multi-agent orchestration, custom training, API',
+  },
   { name: 'White-Label Options', starter: false, professional: false, enterprise: true },
-  { name: 'Custom AI Models', starter: false, professional: false, enterprise: true },
   { name: 'API Access', starter: false, professional: true, enterprise: true },
-  { name: 'Support', starter: 'Email', professional: 'Priority', enterprise: '24/7 Dedicated' },
+  {
+    name: 'Support',
+    starter: 'Email, 48hr response',
+    professional: 'Priority email + chat, 24hr response',
+    enterprise: 'Dedicated account manager, 4hr SLA, phone support',
+  },
   { name: 'SLA Guarantees', starter: false, professional: false, enterprise: true },
   { name: 'Onboarding', starter: 'Standard', professional: 'Dedicated', enterprise: 'Custom' },
 ];
 
 const pricingFaqs = [
   {
+    q: 'Can I switch between plans?',
+    a: 'Yes, you can upgrade or downgrade your plan at any time. Upgrades take effect immediately; downgrades apply at the next billing cycle.',
+  },
+  {
+    q: 'Is there a free trial?',
+    a: 'We offer a 14-day free trial on the Starter plan. No credit card required. Enterprise trials available upon request.',
+  },
+  {
+    q: 'What payment methods do you accept?',
+    a: 'We accept all major credit/debit cards, UPI, net banking, and NEFT/RTGS for enterprise customers. GST invoices provided.',
+  },
+  {
+    q: 'Can I use only one product?',
+    a: 'Absolutely. Start with any individual product — most customers begin with GSTSAAS or URGAA and expand over time.',
+  },
+  {
+    q: "What's the minimum contract length?",
+    a: 'Monthly plans available with no minimum commitment. Annual plans offer 2 months free (16% savings).',
+  },
+  {
+    q: 'Do you offer discounts for annual billing?',
+    a: 'Yes — annual billing saves approximately 16% compared to monthly billing (2 months free).',
+  },
+  {
     q: 'Is there a setup fee?',
-    a: 'No hidden setup fees. Onboarding and implementation support are included in all plans. Enterprise customers with custom requirements may have a one-time integration fee discussed during scoping.',
-  },
-  {
-    q: 'Can I change plans later?',
-    a: 'Yes, you can upgrade your plan at any time. Downgrades are processed at the end of your current billing cycle. Our team will help migrate your setup seamlessly.',
-  },
-  {
-    q: 'Do you offer annual discounts?',
-    a: 'Yes, we offer significant discounts for annual commitments. Contact our sales team for detailed pricing based on your specific usage and requirements.',
+    a: 'No setup fees for Starter or Professional plans. Enterprise plans may include an onboarding fee depending on customization needs.',
   },
 ];
 
@@ -210,17 +265,40 @@ export default function PricingClient() {
                     {tier.description}
                   </p>
 
-                  <Link
-                    href="/contact"
-                    className={`w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold transition-all shadow-sm hover:shadow-md ${
-                      tier.recommended
-                        ? 'bg-primary text-primary-on hover:bg-primary/90'
-                        : 'bg-surface-container text-on-surface hover:bg-surface-container-high'
-                    }`}
-                  >
-                    <Icon name="mail" size={18} />
-                    Contact Sales
-                  </Link>
+                  {tier.price ? (
+                    <div className="mb-5">
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-3xl font-bold font-display text-on-surface">
+                          {tier.price}
+                        </span>
+                      </div>
+                      {tier.priceNote && (
+                        <p className="text-xs text-on-surface-variant mt-0.5">{tier.priceNote}</p>
+                      )}
+                      {tier.billingAlt && (
+                        <p className="text-xs text-on-surface-variant/70 mt-1">{tier.billingAlt}</p>
+                      )}
+                      <Link
+                        href="/contact"
+                        className="mt-4 w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold transition-all shadow-sm hover:shadow-md bg-surface-container text-on-surface hover:bg-surface-container-high"
+                      >
+                        <Icon name="rocket_launch" size={18} />
+                        Get Started
+                      </Link>
+                    </div>
+                  ) : (
+                    <Link
+                      href="/contact"
+                      className={`w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold transition-all shadow-sm hover:shadow-md ${
+                        tier.recommended
+                          ? 'bg-primary text-primary-on hover:bg-primary/90'
+                          : 'bg-surface-container text-on-surface hover:bg-surface-container-high'
+                      }`}
+                    >
+                      <Icon name="mail" size={18} />
+                      Contact Sales
+                    </Link>
+                  )}
                 </div>
 
                 <div className="px-8 pb-8 pt-2 flex-1">
