@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Icon } from '@/components/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 
-const categories = ['All', 'Industry', 'Product Updates', 'Insights', 'Technology'] as const;
+const categories = ['All', 'Regulatory', 'Workshop', 'Charging', 'AI & Tech', 'Policy'] as const;
 
 type Category = (typeof categories)[number];
 
@@ -17,79 +17,87 @@ interface Article {
   category: Exclude<Category, 'All'>;
   readTime: string;
   icon: string;
+  slug: string;
 }
 
 const featuredArticle = {
   title: "India's EV Revolution: How AI is Transforming Compliance",
   excerpt:
     'The EV ecosystem in India is growing at an unprecedented pace. But with growth comes regulatory complexity — across 33 states, multiple ministries, and evolving policies. Learn how AI-powered intelligence is cutting through the chaos to deliver 89.5% compliance automation.',
-  date: 'Jan 15, 2025',
-  category: 'Industry' as const,
+  date: 'Jan 2026',
+  category: 'Regulatory' as const,
   readTime: '8 min read',
 };
 
 const articles: Article[] = [
   {
-    title: 'Understanding FAME-III: What It Means for CPOs',
+    title: 'Complete Guide to DISCOM Applications for EV Charging Stations in India',
     excerpt:
-      'A deep dive into the upcoming FAME-III policy framework and its implications for Charge Point Operators across India.',
-    date: 'Jan 10, 2025',
-    category: 'Industry',
-    readTime: '5 min read',
+      'A step-by-step walkthrough of DISCOM application processes across all Indian states — timelines, documentation, and common pitfalls to avoid.',
+    date: 'Jan 2026',
+    category: 'Regulatory',
+    readTime: '8 min read',
     icon: 'policy',
+    slug: 'discom-applications-ev-charging-india',
   },
   {
-    title: 'How URGAA (ऊर्जा) Automates 33-State Compliance',
+    title: 'How Indian EV Workshops Can Automate GST Compliance in 2026',
     excerpt:
-      'From DISCOM approvals to MNRE subsidies — discover how URGAA (ऊर्जा) handles 48 compliance workflows automatically.',
-    date: 'Jan 5, 2025',
-    category: 'Product Updates',
-    readTime: '4 min read',
-    icon: 'verified',
-  },
-  {
-    title: "The 100K Technician Gap: Solving India's EV Workforce Crisis",
-    excerpt:
-      'India needs 100,000+ certified EV technicians by 2030. Here\'s how structured training and AI-assisted learning can bridge the gap.',
-    date: 'Dec 28, 2024',
-    category: 'Insights',
+      'GST complexity in EV servicing is real — from input credits to workshop billing. Discover how automation reduces compliance burden by 80%.',
+    date: 'Jan 2026',
+    category: 'Workshop',
     readTime: '6 min read',
-    icon: 'engineering',
-  },
-  {
-    title: 'Smart Charging: Reducing Grid Stress with AI',
-    excerpt:
-      'Peak-hour charging strains the grid and inflates costs. Learn how AI-driven scheduling optimizes energy use for fleet operators.',
-    date: 'Dec 20, 2024',
-    category: 'Technology',
-    readTime: '3 min read',
-    icon: 'bolt',
-  },
-  {
-    title: 'GST Anomalies in EV Charging: A Complete Guide',
-    excerpt:
-      'Navigating GST complexities in the EV charging sector — from input credits to state-level variations and compliance pitfalls.',
-    date: 'Dec 15, 2024',
-    category: 'Industry',
-    readTime: '7 min read',
     icon: 'receipt_long',
+    slug: 'ev-workshops-gst-compliance-automation-2026',
   },
   {
-    title: 'Battery SoH Grading: Why It Matters for Resale Value',
+    title: '33-State EV Charging Regulations: What CPOs Need to Know',
     excerpt:
-      'State-of-Health grading gives batteries a transparent quality score. Here\'s why it\'s essential for the EV resale ecosystem.',
-    date: 'Dec 10, 2024',
-    category: 'Technology',
+      'Charge Point Operators face a patchwork of state-level rules. This comprehensive guide covers every state\'s requirements in one place.',
+    date: 'Dec 2025',
+    category: 'Regulatory',
+    readTime: '10 min read',
+    icon: 'verified',
+    slug: '33-state-ev-charging-regulations-cpos',
+  },
+  {
+    title: 'Predictive Maintenance for EV Fleets: AI-Powered Approach',
+    excerpt:
+      'How AI and IoT sensor data can predict component failures before they happen — reducing downtime and extending battery life for fleet operators.',
+    date: 'Dec 2025',
+    category: 'AI & Tech',
+    readTime: '7 min read',
+    icon: 'model_training',
+    slug: 'predictive-maintenance-ev-fleets-ai',
+  },
+  {
+    title: 'EV Technician Certification: Why Standardization Matters for India',
+    excerpt:
+      'India needs 100,000+ certified EV technicians by 2030. Here\'s why a national certification standard is critical and what it should include.',
+    date: 'Nov 2025',
+    category: 'Workshop',
     readTime: '5 min read',
-    icon: 'battery_charging_full',
+    icon: 'engineering',
+    slug: 'ev-technician-certification-india',
+  },
+  {
+    title: "Understanding India's EV Subsidy Landscape: State vs Central Schemes",
+    excerpt:
+      'From FAME to state-level incentives — navigating India\'s EV subsidy ecosystem can unlock significant savings for buyers and operators alike.',
+    date: 'Nov 2025',
+    category: 'Policy',
+    readTime: '9 min read',
+    icon: 'account_balance',
+    slug: 'india-ev-subsidy-state-vs-central',
   },
 ];
 
 const categoryColors: Record<string, string> = {
-  Industry: 'bg-primary/10 text-primary',
-  'Product Updates': 'bg-secondary/10 text-secondary',
-  Insights: 'bg-tertiary/10 text-tertiary',
-  Technology: 'bg-primary-container/20 text-primary-on-container',
+  Regulatory: 'bg-primary/10 text-primary',
+  Workshop: 'bg-secondary/10 text-secondary',
+  Charging: 'bg-tertiary/10 text-tertiary',
+  'AI & Tech': 'bg-primary-container/20 text-on-surface',
+  Policy: 'bg-secondary-container/20 text-secondary',
 };
 
 export default function BlogClient() {
@@ -229,7 +237,7 @@ export default function BlogClient() {
               {filtered.map((article, idx) => (
                 <motion.a
                   key={article.title}
-                  href="#"
+                  href={`/blog/${article.slug}`}
                   layout
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
