@@ -4,49 +4,113 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Icon } from '@/components/Icon';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
+import { ParticleBackground } from '@/components/ParticleBackground';
+import { TypewriterText } from '@/components/TypewriterText';
+import { SectionHeading } from '@/components/SectionHeading';
+import { StatsCard } from '@/components/StatsCard';
+import { Testimonials } from '@/components/Testimonials';
+import { TrustBar } from '@/components/TrustBar';
+
+/* ─── Data ─── */
 
 const products = [
-  { name: 'URGAA', tagline: 'Regulatory & Grid Intelligence', problems: 48, icon: 'bolt', color: 'bg-primary-container/15 border-primary/20', href: '/products' },
+  { name: 'URGAA (URJA)', tagline: 'Regulatory & Grid Intelligence', problems: 48, icon: 'bolt', color: 'bg-primary-container/15 border-primary/20', href: '/products' },
   { name: 'GSTSAAS', tagline: 'Workshop & Commerce Engine', problems: 17, icon: 'build', color: 'bg-secondary-container/15 border-secondary/20', href: '/products' },
-  { name: 'Ignition', tagline: 'Consumer Experience App', problems: 10, icon: 'smartphone', color: 'bg-tertiary-container/15 border-tertiary/20', href: '/products' },
+  { name: 'Ignition App', tagline: 'Consumer Experience App', problems: 10, icon: 'smartphone', color: 'bg-tertiary-container/15 border-tertiary/20', href: '/products' },
   { name: 'EV VIDYA ARJUN', tagline: 'Workforce Skilling Platform', problems: 8, icon: 'school', color: 'bg-secondary-container/15 border-secondary/20', href: '/products' },
   { name: 'KAILASH-AI', tagline: 'Document AI & Predictive Analytics', problems: 2, icon: 'analytics', color: 'bg-primary-container/15 border-primary/20', href: '/products' },
   { name: 'Eka-AI', tagline: 'Agent Orchestration & Q&A', problems: 0, icon: 'smart_toy', color: 'bg-tertiary-container/15 border-tertiary/20', href: '/products' },
 ];
 
-const personas = [
-  { icon: 'ev_station', label: 'CPO Operators', href: '/solutions' },
-  { icon: 'build', label: 'Workshops', href: '/solutions' },
-  { icon: 'local_shipping', label: 'Fleet Operators', href: '/solutions' },
-  { icon: 'school', label: 'EV Technicians', href: '/solutions' },
-  { icon: 'account_balance', label: 'Government', href: '/solutions' },
-  { icon: 'factory', label: 'OEMs', href: '/solutions' },
+const problemLayers = [
+  { layer: 'L1', title: 'Battery & Supply Chain', problems: 12, icon: 'battery_full', color: 'border-l-primary' },
+  { layer: 'L2', title: 'Consumer Adoption Barriers', problems: 10, icon: 'people', color: 'border-l-secondary' },
+  { layer: 'L3', title: 'Financing & Economics', problems: 8, icon: 'account_balance_wallet', color: 'border-l-tertiary' },
+  { layer: 'L4', title: 'After-Sales & Service', problems: 9, icon: 'build_circle', color: 'border-l-primary' },
+  { layer: 'L5', title: 'Skilled Workforce', problems: 7, icon: 'school', color: 'border-l-secondary' },
+  { layer: 'L6', title: 'Battery Lifecycle', problems: 8, icon: 'recycling', color: 'border-l-tertiary' },
+  { layer: 'L7', title: 'Grid & Energy Integration', problems: 6, icon: 'electrical_services', color: 'border-l-primary' },
+  { layer: 'L8', title: 'Regulatory & Infrastructure', problems: 35, icon: 'gavel', color: 'border-l-secondary' },
 ];
+
+const personas = [
+  { icon: 'ev_station', label: 'CPO Operators', desc: 'End-to-end charging station compliance & operations', href: '/solutions' },
+  { icon: 'build', label: 'Workshops', desc: 'Digital service management & parts commerce', href: '/solutions' },
+  { icon: 'local_shipping', label: 'Fleet Operators', desc: 'Fleet analytics, routing & energy optimization', href: '/solutions' },
+  { icon: 'school', label: 'EV Technicians', desc: 'Certified skilling & workforce development', href: '/solutions' },
+  { icon: 'account_balance', label: 'Government', desc: 'Policy compliance dashboards & reporting', href: '/solutions' },
+  { icon: 'factory', label: 'OEMs', desc: 'Market intelligence & dealer network tools', href: '/solutions' },
+];
+
+const howItWorks = [
+  { step: '01', title: 'Assessment', desc: 'We analyze your current operations, compliance gaps, and workflow bottlenecks across the EV value chain.', icon: 'search' },
+  { step: '02', title: 'Integration', desc: 'Seamless platform setup with your existing systems — no disruption, no downtime, fully guided onboarding.', icon: 'integration_instructions' },
+  { step: '03', title: 'Automation', desc: 'AI takes over compliance filings, document processing, workforce scheduling, and operational workflows.', icon: 'auto_fix_high' },
+  { step: '04', title: 'Scale', desc: 'Grow with real-time intelligence, predictive analytics, and AI agents working 24/7 across all 33 states.', icon: 'trending_up' },
+];
+
+/* ─── Animation Variants ─── */
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.6, ease: 'easeOut' as const },
+  }),
+} as const;
+
+const stagger = {
+  visible: { transition: { staggerChildren: 0.08 } },
+} as const;
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
 
-      {/* ─── HERO ─── */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          HERO
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        {/* Warm gradient background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
-          <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 12, repeat: Infinity }} className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]" />
-          <motion.div animate={{ scale: [1.15, 1, 1.15] }} transition={{ duration: 14, repeat: Infinity }} className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-container/8 rounded-full blur-[150px]" />
+        <ParticleBackground className="absolute inset-0 z-0" />
+
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 z-[1]">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
+          <motion.div
+            animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.14, 0.08] }}
+            transition={{ duration: 12, repeat: Infinity }}
+            className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]"
+          />
+          <motion.div
+            animate={{ scale: [1.2, 1, 1.2], opacity: [0.06, 0.12, 0.06] }}
+            transition={{ duration: 14, repeat: Infinity }}
+            className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-container/8 rounded-full blur-[150px]"
+          />
         </div>
 
-        {/* Subtle dot grid */}
-        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+        {/* Dot grid */}
+        <div className="absolute inset-0 z-[1] opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
         <div className="container mx-auto px-6 relative z-10">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="text-center max-w-5xl mx-auto">
-            {/* Badge */}
-            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }} className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full border border-primary/20 bg-primary-container/10">
-              <span className="w-2 h-2 rounded-full bg-primary-container animate-pulse" />
-              <span className="text-sm font-medium text-primary font-display">AI-Powered Automobile Intelligence</span>
+
+            {/* Animated badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: -10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 mb-8 rounded-full border border-primary/20 bg-primary-container/10 backdrop-blur-sm"
+            >
+              <motion.span
+                animate={{ scale: [1, 1.4, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-2 h-2 rounded-full bg-primary"
+              />
+              <span className="text-sm font-medium text-primary font-display">India&apos;s First AI-Powered Automobile Intelligence</span>
             </motion.div>
 
+            {/* Headline */}
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-on-surface mb-6 leading-[1.05] tracking-tight font-display">
               The AI Platform{' '}
               <br className="hidden md:block" />
@@ -56,18 +120,36 @@ export default function HomePage() {
               <span className="gradient-text">Automobile Future</span>
             </h1>
 
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="text-lg md:text-xl text-on-surface-variant mb-10 max-w-2xl mx-auto leading-relaxed">
-              From regulatory chaos to operational excellence. One platform. 6 products. 85 problems solved. Zero friction.
+            {/* Typewriter */}
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mb-6">
+              <TypewriterText
+                texts={['Regulatory Intelligence', 'Operational Excellence', 'Workforce Development', 'Grid Optimization', 'Consumer Experience', 'Predictive Analytics']}
+                className="text-xl md:text-2xl font-semibold gradient-text font-display"
+              />
+            </motion.div>
+
+            {/* Sub-copy */}
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-lg md:text-xl text-on-surface-variant mb-10 max-w-2xl mx-auto leading-relaxed">
+              95 problems in India&apos;s EV ecosystem. 85 solved by our platform. 76 features. 6 products. Zero friction.
             </motion.p>
 
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} className="flex flex-col sm:flex-row gap-4 justify-center">
+            {/* CTAs */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="px-8 py-4 bg-primary text-primary-on rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-shadow">
+                <motion.button
+                  whileHover={{ scale: 1.04, boxShadow: '0 20px 40px -12px rgba(144,77,0,0.35)' }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-8 py-4 bg-primary text-primary-on rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-shadow"
+                >
                   Schedule Demo
                 </motion.button>
               </Link>
               <Link href="/platform">
-                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="px-8 py-4 rounded-2xl font-semibold text-lg border border-outline-variant bg-surface-bright text-on-surface hover:bg-surface-container-low transition-colors">
+                <motion.button
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-8 py-4 rounded-2xl font-semibold text-lg border-2 border-outline-variant bg-surface-bright/80 backdrop-blur-sm text-on-surface hover:border-primary/40 hover:bg-surface-container-low transition-all"
+                >
                   Explore Platform
                 </motion.button>
               </Link>
@@ -75,7 +157,7 @@ export default function HomePage() {
           </motion.div>
 
           {/* Scroll indicator */}
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
             <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }} className="w-6 h-10 rounded-full border-2 border-outline-variant flex items-start justify-center p-1.5">
               <motion.div className="w-1.5 h-1.5 rounded-full bg-primary" />
             </motion.div>
@@ -83,93 +165,135 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── THE PROBLEM ─── */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          TRUST BAR
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <TrustBar />
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          THE PROBLEM — 8 Layers
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="text-sm font-semibold text-primary uppercase tracking-widest mb-4 block font-display">The Challenge</span>
-            <h2 className="text-4xl md:text-5xl font-bold font-display">
-              India&apos;s Automobile Ecosystem Needs{' '}
-              <span className="gradient-text">Intelligent Infrastructure</span>
-            </h2>
-          </motion.div>
+          <SectionHeading
+            badge="The Challenge"
+            title="95 Problems Across India's EV Ecosystem"
+            highlight="95 Problems"
+            subtitle="We've mapped every challenge across 8 critical layers — and built solutions for 85 of them."
+          />
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { stat: '33', title: 'Regulatory & Infrastructure', description: 'States with different policies, DISCOM delays, fire permits, electrical inspector certifications — a compliance nightmare.', icon: 'gavel', color: 'border-l-primary' },
-              { stat: '32', title: 'Operational Fragmentation', description: 'Disconnected systems for CPO operations, service centers, fleet management, billing, and grid integration.', icon: 'hub', color: 'border-l-secondary' },
-              { stat: '20', title: 'Workforce & Lifecycle Gap', description: '100K+ technician shortage, no standardized EV training, battery recycling infrastructure missing.', icon: 'group', color: 'border-l-tertiary' },
-            ].map((item, idx) => (
-              <motion.div key={idx} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.15 }} whileHover={{ y: -4 }} className={`bg-surface-bright p-8 rounded-2xl border border-outline-variant/30 border-l-4 ${item.color} shadow-sm hover:shadow-md transition-all group`}>
-                <Icon name={item.icon} size={32} className="text-primary mb-4" />
-                <div className="text-4xl font-black gradient-text mb-3 font-display">
-                  <AnimatedCounter target={parseInt(item.stat)} />
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-50px' }}
+            variants={stagger}
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-16"
+          >
+            {problemLayers.map((layer, idx) => (
+              <motion.div
+                key={idx}
+                variants={fadeUp}
+                custom={idx}
+                whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                className={`relative bg-surface-bright p-6 rounded-2xl border border-outline-variant/30 border-l-4 ${layer.color} shadow-sm hover:shadow-lg transition-all group`}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-primary-container/20 flex items-center justify-center group-hover:bg-primary-container/30 transition-colors">
+                    <Icon name={layer.icon} size={22} className="text-primary" />
+                  </div>
+                  <span className="text-xs font-bold text-on-surface-variant/60 font-display">{layer.layer}</span>
                 </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors font-display">{item.title}</h3>
-                <p className="text-on-surface-variant text-sm leading-relaxed">{item.description}</p>
+                <h3 className="text-sm font-bold mb-2 group-hover:text-primary transition-colors font-display leading-tight">{layer.title}</h3>
+                <div className="text-3xl font-black gradient-text font-display">
+                  <AnimatedCounter target={layer.problems} />
+                  <span className="text-base font-semibold text-on-surface-variant ml-1">problems</span>
+                </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.5 }} className="text-center mt-12 text-lg text-on-surface-variant">
-            Total: <span className="text-primary font-bold">85 problems</span> across the value chain — all solvable by Go4Garage.
-          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+            className="text-center mt-12 flex flex-wrap items-center justify-center gap-3"
+          >
+            <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary-container/15 border border-primary/20">
+              <Icon name="check_circle" size={18} className="text-primary" />
+              <span className="text-sm font-semibold text-primary"><span className="text-lg font-bold">85</span> Solvable by Go4Garage</span>
+            </span>
+            <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface-container border border-outline-variant/30">
+              <Icon name="info" size={18} className="text-on-surface-variant" />
+              <span className="text-sm text-on-surface-variant"><span className="text-lg font-bold">10</span> Macro / Systemic</span>
+            </span>
+          </motion.div>
         </div>
       </section>
 
-      {/* ─── STATS BANNER ─── */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          STATS BANNER
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-16 bg-gradient-to-r from-primary-container/10 via-surface to-secondary-container/10 border-y border-outline-variant/20">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { value: 89.5, suffix: '%', label: 'Compliance Automation', icon: 'verified' },
-              { value: 3, suffix: 'x', label: 'Faster Operations', icon: 'speed' },
-              { value: 95, suffix: '%', label: 'Cost Reduction', icon: 'savings' },
-              { value: 100, suffix: '%', label: 'India-Focused', icon: 'public' },
-            ].map((stat, idx) => (
-              <motion.div key={idx} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="text-center">
-                <Icon name={stat.icon} size={28} className="text-primary mb-2" />
-                <div className="text-4xl md:text-5xl font-black gradient-text mb-1 font-display">
-                  <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-                </div>
-                <div className="text-sm text-on-surface-variant font-medium">{stat.label}</div>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <StatsCard icon="verified" value={89.5} suffix="%" label="Compliance Automation" description="Regulatory filings handled by AI" />
+            <StatsCard icon="speed" value={3} suffix="x" label="Faster Operations" description="Compared to manual workflows" />
+            <StatsCard icon="savings" value={95} suffix="%" label="Cost Reduction" description="In compliance processing costs" />
+            <StatsCard icon="public" value={100} suffix="%" label="India-Focused" description="Built for Indian regulations" />
           </div>
         </div>
       </section>
 
-      {/* ─── PRODUCT ECOSYSTEM ─── */}
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          PRODUCT ECOSYSTEM
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 bg-surface">
         <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="text-sm font-semibold text-primary uppercase tracking-widest mb-4 block font-display">Our Products</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-display">
-              Complete <span className="gradient-text">Ecosystem Platform</span>
-            </h2>
-            <p className="text-on-surface-variant max-w-2xl mx-auto">
-              6 integrated products working as one unified intelligence layer across the entire EV value chain.
-            </p>
-          </motion.div>
+          <SectionHeading
+            badge="Our Products"
+            title="Complete Ecosystem Platform"
+            highlight="Ecosystem Platform"
+            subtitle="6 integrated products working as one unified intelligence layer across the entire EV value chain."
+          />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-50px' }}
+            variants={stagger}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-16"
+          >
             {products.map((product, idx) => (
-              <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.08 }}>
+              <motion.div key={idx} variants={fadeUp} custom={idx}>
                 <Link href={product.href}>
-                  <motion.div whileHover={{ y: -4 }} className={`relative p-6 rounded-2xl border ${product.color} transition-all cursor-pointer group h-full bg-surface-bright shadow-sm hover:shadow-md`}>
+                  <motion.div
+                    whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                    className={`relative p-6 rounded-2xl border ${product.color} transition-all cursor-pointer group h-full bg-surface-bright shadow-sm hover:shadow-lg`}
+                  >
                     <div className="flex items-start justify-between mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center group-hover:bg-primary-container/30 transition-colors">
                         <Icon name={product.icon} size={24} className="text-primary" />
                       </div>
-                      {product.problems > 0 && (
-                        <span className="text-xs font-bold px-3 py-1 rounded-full bg-primary-container/15 text-primary border border-primary/15">
-                          {product.problems} problems
-                        </span>
-                      )}
+                      <span className={`text-xs font-bold px-3 py-1 rounded-full border ${product.problems > 0 ? 'bg-primary-container/15 text-primary border-primary/15' : 'bg-tertiary-container/15 text-tertiary border-tertiary/15'}`}>
+                        {product.problems > 0 ? `${product.problems} problems` : 'Orchestrator'}
+                      </span>
                     </div>
                     <h3 className="text-lg font-bold mb-1 group-hover:text-primary transition-colors font-display">{product.name}</h3>
                     <p className="text-sm text-on-surface-variant">{product.tagline}</p>
-                    <div className="mt-4 flex items-center gap-1 text-xs text-primary opacity-0 group-hover:opacity-100 transition-opacity font-medium">
+
+                    {/* Progress bar showing relative problem coverage */}
+                    <div className="mt-4 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${Math.max((product.problems / 48) * 100, 8)}%` }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3 + idx * 0.1, duration: 1 }}
+                        className="h-full bg-primary/60 rounded-full"
+                      />
+                    </div>
+
+                    <div className="mt-3 flex items-center gap-1 text-xs text-primary opacity-0 group-hover:opacity-100 transition-opacity font-medium">
                       <span>Learn more</span>
                       <Icon name="arrow_forward" size={14} />
                     </div>
@@ -177,7 +301,7 @@ export default function HomePage() {
                 </Link>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mt-10">
             <Link href="/products">
@@ -189,33 +313,114 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── WHO WE SERVE ─── */}
-      <section className="py-24 bg-surface-container-low">
-        <div className="container mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="text-sm font-semibold text-primary uppercase tracking-widest mb-4 block font-display">Solutions</span>
-            <h2 className="text-4xl md:text-5xl font-bold font-display">Built for <span className="gradient-text">Every Stakeholder</span></h2>
-          </motion.div>
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          HOW IT WORKS
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="py-24 bg-surface-container-low relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-secondary-container/5 rounded-full blur-[200px] -translate-x-1/3" />
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {personas.map((persona, idx) => (
-              <motion.div key={idx} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: idx * 0.06 }}>
-                <Link href={persona.href}>
-                  <motion.div whileHover={{ y: -6 }} whileTap={{ scale: 0.97 }} className="flex flex-col items-center gap-3 p-6 rounded-2xl border border-outline-variant/30 bg-surface-bright hover:border-primary/30 hover:shadow-md transition-all cursor-pointer group text-center">
-                    <div className="w-12 h-12 rounded-xl bg-primary-container/15 flex items-center justify-center group-hover:bg-primary-container/25 transition-colors">
-                      <Icon name={persona.icon} size={24} className="text-primary" />
-                    </div>
-                    <span className="text-sm font-medium text-on-surface-variant group-hover:text-on-surface transition-colors">{persona.label}</span>
+        <div className="container mx-auto px-6 relative z-10">
+          <SectionHeading
+            badge="How It Works"
+            title="From Chaos to Intelligence in 4 Steps"
+            highlight="4 Steps"
+            subtitle="A structured approach to transforming your EV operations with AI-first intelligence."
+          />
+
+          <div className="max-w-4xl mx-auto mt-16">
+            {howItWorks.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: idx % 2 === 0 ? -40 : 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-30px' }}
+                transition={{ delay: idx * 0.15, duration: 0.6 }}
+                className="relative flex gap-6 mb-8 last:mb-0"
+              >
+                {/* Timeline connector */}
+                <div className="flex flex-col items-center">
+                  <motion.div
+                    whileInView={{ scale: [0, 1] }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.15 + 0.2, type: 'spring', stiffness: 300 }}
+                    className="w-14 h-14 rounded-2xl bg-primary-container/20 border-2 border-primary/30 flex items-center justify-center flex-shrink-0"
+                  >
+                    <Icon name={item.icon} size={26} className="text-primary" />
                   </motion.div>
-                </Link>
+                  {idx < howItWorks.length - 1 && (
+                    <motion.div
+                      initial={{ height: 0 }}
+                      whileInView={{ height: '100%' }}
+                      viewport={{ once: true }}
+                      transition={{ delay: idx * 0.15 + 0.4, duration: 0.5 }}
+                      className="w-0.5 bg-gradient-to-b from-primary/30 to-primary/5 flex-1 mt-2"
+                    />
+                  )}
+                </div>
+
+                {/* Content card */}
+                <motion.div
+                  whileHover={{ y: -3 }}
+                  className="flex-1 bg-surface-bright p-6 rounded-2xl border border-outline-variant/30 shadow-sm hover:shadow-md transition-all mb-2 group"
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-xs font-bold text-primary/50 font-display">STEP {item.step}</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors font-display">{item.title}</h3>
+                  <p className="text-sm text-on-surface-variant leading-relaxed">{item.desc}</p>
+                </motion.div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── AI DIFFERENTIATOR ─── */}
-      <section className="py-24 bg-surface relative overflow-hidden">
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          WHO WE SERVE
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="py-24 bg-surface">
+        <div className="container mx-auto px-6">
+          <SectionHeading
+            badge="Solutions"
+            title="Built for Every Stakeholder"
+            highlight="Every Stakeholder"
+            subtitle="Purpose-built solutions for every player in India's EV ecosystem."
+          />
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-50px' }}
+            variants={stagger}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-16"
+          >
+            {personas.map((persona, idx) => (
+              <motion.div key={idx} variants={fadeUp} custom={idx}>
+                <Link href={persona.href}>
+                  <motion.div
+                    whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex items-start gap-4 p-6 rounded-2xl border border-outline-variant/30 bg-surface-bright hover:border-primary/30 hover:shadow-lg transition-all cursor-pointer group"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-primary-container/15 flex items-center justify-center flex-shrink-0 group-hover:bg-primary-container/25 transition-colors">
+                      <Icon name={persona.icon} size={24} className="text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-on-surface group-hover:text-primary transition-colors font-display mb-1">{persona.label}</h3>
+                      <p className="text-xs text-on-surface-variant leading-relaxed">{persona.desc}</p>
+                    </div>
+                  </motion.div>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          AI DIFFERENTIATOR — Why Go4Garage
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="py-24 bg-surface-container-low relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-container/5 rounded-full blur-[200px] -translate-y-1/2 translate-x-1/3" />
 
         <div className="container mx-auto px-6 relative z-10">
@@ -273,12 +478,14 @@ export default function HomePage() {
 
                   <div className="mt-8 grid grid-cols-3 gap-4 pt-6 border-t border-outline-variant/20">
                     {[
-                      { val: '14', label: 'AI Agents', color: 'text-primary' },
-                      { val: '69', label: 'Features', color: 'text-secondary' },
-                      { val: '33', label: 'States', color: 'text-tertiary' },
+                      { val: 14, label: 'AI Agents', color: 'text-primary' },
+                      { val: 76, label: 'Features', color: 'text-secondary' },
+                      { val: 33, label: 'States', color: 'text-tertiary' },
                     ].map((m, i) => (
                       <div key={i} className="text-center">
-                        <div className={`text-2xl font-bold font-display ${m.color}`}>{m.val}</div>
+                        <div className={`text-2xl font-bold font-display ${m.color}`}>
+                          <AnimatedCounter target={m.val} />
+                        </div>
                         <div className="text-xs text-on-surface-variant">{m.label}</div>
                       </div>
                     ))}
@@ -294,29 +501,77 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── FINAL CTA ─── */}
-      <section className="py-24 relative overflow-hidden">
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          TESTIMONIALS
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <Testimonials />
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          FINAL CTA
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <section className="py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/10 via-surface to-secondary-container/10" />
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+
         <div className="container mx-auto px-6 relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-display">
-              Ready to Transform Your Operations?
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto">
+            <motion.div
+              initial={{ scale: 0.8 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ type: 'spring', stiffness: 200 }}
+              className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary-container/20 mb-8"
+            >
+              <Icon name="rocket_launch" size={32} className="text-primary" />
+            </motion.div>
+
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 font-display">
+              Ready to <span className="gradient-text">Transform</span> Your Operations?
             </h2>
-            <p className="text-lg text-on-surface-variant mb-10">
-              Join the platform that&apos;s powering India&apos;s automobile future with AI-first intelligence.
+            <p className="text-lg text-on-surface-variant mb-10 leading-relaxed">
+              Join the platform that&apos;s powering India&apos;s automobile future with AI-first intelligence across 33 states.
             </p>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="px-10 py-4 bg-primary text-primary-on rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-shadow">
+                <motion.button
+                  whileHover={{ scale: 1.04, boxShadow: '0 20px 40px -12px rgba(144,77,0,0.35)' }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-10 py-4 bg-primary text-primary-on rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-shadow"
+                >
                   Schedule Demo
                 </motion.button>
               </Link>
               <Link href="/investors">
-                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="px-10 py-4 rounded-2xl font-semibold text-lg border border-outline-variant bg-surface-bright text-on-surface hover:bg-surface-container-low transition-colors">
+                <motion.button
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-10 py-4 rounded-2xl font-semibold text-lg border-2 border-outline-variant bg-surface-bright text-on-surface hover:border-primary/40 hover:bg-surface-container-low transition-all"
+                >
                   For Investors
                 </motion.button>
               </Link>
             </div>
+
+            {/* Trust indicators */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="flex flex-wrap items-center justify-center gap-6 mt-12 text-xs text-on-surface-variant"
+            >
+              {[
+                { icon: 'lock', text: 'Enterprise-grade security' },
+                { icon: 'schedule', text: 'Setup in under 48 hours' },
+                { icon: 'support_agent', text: 'Dedicated success team' },
+              ].map((item, i) => (
+                <span key={i} className="inline-flex items-center gap-1.5">
+                  <Icon name={item.icon} size={14} className="text-primary" />
+                  {item.text}
+                </span>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </section>
