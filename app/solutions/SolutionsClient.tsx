@@ -199,9 +199,9 @@ export default function SolutionsClient() {
   return (
     <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
 
-      {/* ═══════════════════════════════════════
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           HERO
-         ═══════════════════════════════════════ */}
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden pt-16">
         {/* Dot grid */}
         <div
@@ -260,9 +260,9 @@ export default function SolutionsClient() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           PERSONA TABS (sticky)
-         ═══════════════════════════════════════ */}
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="sticky top-16 z-30 backdrop-blur-xl bg-surface-bright/90 border-y border-outline-variant/20">
         <div className="container mx-auto px-6 py-4">
           <div className="flex flex-wrap justify-center gap-3">
@@ -286,9 +286,9 @@ export default function SolutionsClient() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           PERSONA DETAIL SECTION
-         ═══════════════════════════════════════ */}
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
           <AnimatePresence mode="wait">
@@ -425,9 +425,9 @@ export default function SolutionsClient() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           COMPARISON TABLE
-         ═══════════════════════════════════════ */}
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 bg-surface">
         <div className="container mx-auto px-6">
           <SectionHeading
@@ -472,9 +472,9 @@ export default function SolutionsClient() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           CTA SECTION
-         ═══════════════════════════════════════ */}
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 relative overflow-hidden bg-surface-container-low">
         {/* Background effects */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/10 via-surface to-secondary-container/10" />
