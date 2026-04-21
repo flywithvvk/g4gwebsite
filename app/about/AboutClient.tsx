@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useState } from 'react';
 import { SectionHeading } from '@/components/SectionHeading';
 import { StatsCard } from '@/components/StatsCard';
 import { Icon } from '@/components/Icon';
@@ -14,7 +13,7 @@ const heroNumbers = [
   { value: 95, label: 'Problems Mapped', icon: 'search' },
   { value: 85, label: 'Solvable Today', icon: 'check_circle' },
   { value: 76, label: 'Features Built', icon: 'widgets' },
-  { value: 7, label: 'Products Live', icon: 'inventory_2' },
+  { value: 6, label: 'Products Launched', icon: 'inventory_2' },
 ];
 
 const coreValues = [
@@ -25,18 +24,92 @@ const coreValues = [
 ];
 
 const milestones = [
-  { period: '2024 Q1', title: 'The Spark', desc: 'Founded in Bangalore after deep problem-validation across India\'s EV and automobile ecosystem. 95 pain points mapped across 33 states.', icon: 'rocket_launch' },
-  { period: '2024 Q3', title: 'First Prototype', desc: 'Built the URGAA (ऊर्जा) prototype and onboarded first CPO partners. Proved that AI-powered compliance could reduce manual work by 89%.', icon: 'build' },
-  { period: '2025 Q1', title: 'GSTSAAS Launch', desc: 'Launched GSTSAAS platform with 15+ paying customers. First revenue milestone crossed — product-market fit validated.', icon: 'storefront' },
-  { period: '2025 Q3', title: 'EV VIDYA ARJUN', desc: 'Launched India\'s first AI-powered EV technician training platform. 200+ technicians trained across 8 states.', icon: 'school' },
-  { period: '2026 Q1', title: 'Full Platform Live', desc: 'KAILASH-AI and Eka-AI deployed. Complete ecosystem — 7 products, 14 AI agents, 76 features — fully operational.', icon: 'hub' },
-  { period: '2026+', title: 'Pan-India Scale', desc: 'Expanding to all 33 states. Series A fundraise to accelerate growth and become India\'s automobile intelligence backbone.', icon: 'trending_up' },
+  {
+    year: '2023',
+    title: 'Research & Discovery',
+    color: 'primary',
+    icon: 'search',
+    bullets: [
+      '95 EV industry problems mapped across 8 domains',
+      '15+ stakeholder interviews conducted across India',
+      'Market opportunity of ₹50B+ identified',
+    ],
+  },
+  {
+    year: '2024',
+    title: 'Build & Pilot',
+    color: 'secondary',
+    icon: 'build',
+    bullets: [
+      'Platform development started',
+      '6 products designed and built — URGAA, GSTSAAS, Ignition, ARJUN, KAILASH-AI, Eka-AI',
+      'First pilot deployments with early customers',
+      'KAILASH-AI intelligence engine development',
+    ],
+  },
+  {
+    year: '2025',
+    title: 'Grow & Validate',
+    color: 'tertiary',
+    icon: 'trending_up',
+    bullets: [
+      'Enterprise customer onboarding',
+      'Eka-AI multi-agent system development',
+      'Pan-India compliance coverage expanded to 33 states',
+      'AI agents trained on Indian automobile regulations',
+    ],
+  },
+  {
+    year: '2026',
+    title: 'Scale',
+    color: 'primary',
+    icon: 'rocket_launch',
+    bullets: [
+      'Pan-India rollout underway',
+      'Series A fundraise in progress',
+      'Platform serving multiple enterprise clients',
+      'Expanding to OEM and insurance verticals',
+    ],
+  },
 ];
 
 const team = [
-  { role: 'CEO & Founder', expertise: '10+ years in automobile tech', icon: 'person', bg: 'from-primary to-primary-container', details: ['Former Head of Operations at India\'s largest EV charging network', 'Deep expertise in regulatory compliance and operational efficiency', 'Serial entrepreneur with passion for India\'s EV transformation'] },
-  { role: 'CTO & Co-Founder', expertise: 'AI researcher, 8+ years', icon: 'psychology', bg: 'from-secondary to-secondary-container', details: ['Built production-grade LLM systems at top tech companies', 'Leading development of proprietary Automobile LLM', 'Expertise spanning ML, NLP, and large-scale distributed systems'] },
-  { role: 'Advisory Board', expertise: 'Industry veterans', icon: 'groups', bg: 'from-tertiary to-tertiary-container', details: ['Former executives from leading automotive and EV firms', '50+ years combined experience across the automotive value chain', 'Government relationships and deep market expertise'] },
+  {
+    name: 'Vivek Raj',
+    role: 'Founder & CEO',
+    expertise: 'Automobile tech & EV ecosystem',
+    icon: 'person',
+    bg: 'from-primary to-primary-container',
+    details: [
+      'Deep expertise in automobile regulations and EV operations across India',
+      'Built Go4Garage after mapping 95 pain points across the EV ecosystem',
+      'Passionate about transforming India\'s automobile intelligence landscape',
+    ],
+  },
+  {
+    name: 'Engineering Team',
+    role: 'Technology Leadership',
+    expertise: 'AI / ML & Platform Engineering',
+    icon: 'psychology',
+    bg: 'from-secondary to-secondary-container',
+    details: [
+      'Building proprietary KAILASH-AI Automobile LLM from the ground up',
+      'Expertise in ML, NLP, and large-scale distributed systems',
+      'Developing Eka-AI multi-agent orchestration engine',
+    ],
+  },
+  {
+    name: 'Advisory Circle',
+    role: 'Advisory Board',
+    expertise: 'Industry & regulatory veterans',
+    icon: 'groups',
+    bg: 'from-tertiary to-tertiary-container',
+    details: [
+      'Deep domain expertise in automobile regulations and compliance',
+      'Extensive experience across India\'s EV and automotive value chain',
+      'Strategic guidance on policy, partnerships, and market expansion',
+    ],
+  },
 ];
 
 /* ─── Stagger animation variants ─── */
@@ -51,8 +124,6 @@ const fadeUp = {
 };
 
 export default function AboutClient() {
-  const [activeTimeline, setActiveTimeline] = useState<number | null>(null);
-
   return (
     <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
 
@@ -219,77 +290,63 @@ export default function AboutClient() {
       <section className="py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
           <SectionHeading badge="The Journey" title="Our" highlight="Milestones" />
-          <div className="relative max-w-5xl mx-auto">
-            {/* Center line */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/40 via-secondary/30 to-tertiary/20 -translate-x-1/2" />
-            {/* Mobile line */}
-            <div className="md:hidden absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/40 via-secondary/30 to-tertiary/20" />
+          <div className="relative max-w-3xl mx-auto">
+            {/* Vertical line on left */}
+            <div className="absolute left-5 top-5 bottom-5 w-0.5 bg-gradient-to-b from-primary/60 via-secondary/40 to-tertiary/30" />
 
-            <div className="space-y-12 md:space-y-16">
-              {milestones.map((m, idx) => {
-                const isLeft = idx % 2 === 0;
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-50px' }}
+              className="space-y-10"
+            >
+              {milestones.map((m) => {
+                const isSecondary = m.color === 'secondary';
+                const isTertiary = m.color === 'tertiary';
+                const dotClass = isTertiary
+                  ? 'border-tertiary text-tertiary bg-tertiary-container/30'
+                  : isSecondary
+                  ? 'border-secondary text-secondary bg-secondary-container/30'
+                  : 'border-primary text-primary bg-primary-container/30';
+                const badgeClass = isTertiary
+                  ? 'bg-tertiary/15 text-tertiary border border-tertiary/30'
+                  : isSecondary
+                  ? 'bg-secondary/15 text-secondary border border-secondary/30'
+                  : 'bg-primary/15 text-primary border border-primary/30';
+                const bulletClass = isTertiary ? 'bg-tertiary' : isSecondary ? 'bg-secondary' : 'bg-primary';
                 return (
-                  <motion.div
-                    key={m.period}
-                    initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: '-50px' }}
-                    transition={{ duration: 0.6, delay: idx * 0.08 }}
-                    className="relative"
-                  >
-                    {/* Desktop layout */}
-                    <div className={`hidden md:grid md:grid-cols-2 gap-8 items-center ${isLeft ? '' : 'direction-rtl'}`}>
-                      {/* Card side */}
-                      <div className={isLeft ? 'text-right' : 'text-left md:col-start-2'}>
-                        <motion.div
-                          whileHover={{ y: -4 }}
-                          onMouseEnter={() => setActiveTimeline(idx)}
-                          onMouseLeave={() => setActiveTimeline(null)}
-                          className={`inline-block bg-surface-bright p-6 rounded-2xl border border-outline-variant/30 shadow-sm hover:shadow-lg transition-all text-left max-w-md ${isLeft ? 'ml-auto' : 'mr-auto'}`}
-                        >
-                          <span className="inline-block text-xs font-bold text-primary bg-primary-container/15 px-3 py-1 rounded-full mb-3 font-display">
-                            {m.period}
-                          </span>
-                          <h3 className="text-lg font-bold mb-2 font-display">{m.title}</h3>
-                          <p className="text-sm text-on-surface-variant leading-relaxed">{m.desc}</p>
-                        </motion.div>
-                      </div>
-                      {/* Empty side */}
-                      <div className={isLeft ? 'md:col-start-2' : 'md:col-start-1 md:row-start-1'} />
+                  <motion.div key={m.year} variants={fadeUp} className="relative flex gap-6 pl-14 items-start">
+                    {/* Dot marker */}
+                    <div
+                      className={`absolute left-0 top-1 w-10 h-10 rounded-full border-2 ${dotClass} flex items-center justify-center shadow-md z-10 flex-shrink-0`}
+                    >
+                      <Icon name={m.icon} size={18} />
                     </div>
-
-                    {/* Center circle — Desktop */}
-                    <div className="hidden md:block absolute left-1/2 top-6 -translate-x-1/2 z-10">
-                      <motion.div
-                        animate={activeTimeline === idx ? { scale: 1.2 } : { scale: 1 }}
-                        className="w-10 h-10 rounded-full bg-surface-bright border-2 border-primary flex items-center justify-center shadow-md"
-                      >
-                        <Icon name={m.icon} size={18} className="text-primary" />
-                      </motion.div>
-                    </div>
-
-                    {/* Mobile layout */}
-                    <div className="md:hidden flex gap-5 pl-1">
-                      <div className="flex flex-col items-center flex-shrink-0">
-                        <div className="w-10 h-10 rounded-full bg-surface-bright border-2 border-primary flex items-center justify-center shadow-md z-10">
-                          <Icon name={m.icon} size={18} className="text-primary" />
-                        </div>
-                      </div>
-                      <motion.div
-                        whileHover={{ y: -2 }}
-                        className="bg-surface-bright p-5 rounded-2xl border border-outline-variant/30 shadow-sm flex-1"
-                      >
-                        <span className="inline-block text-xs font-bold text-primary bg-primary-container/15 px-3 py-1 rounded-full mb-2 font-display">
-                          {m.period}
+                    {/* Content card */}
+                    <motion.div
+                      whileHover={{ y: -4 }}
+                      className="flex-1 bg-surface-bright p-6 rounded-2xl border border-outline-variant/30 shadow-sm hover:shadow-lg transition-all"
+                    >
+                      <div className="flex flex-wrap items-center gap-3 mb-4">
+                        <span className={`text-sm font-black px-4 py-1.5 rounded-full font-display ${badgeClass}`}>
+                          {m.year}
                         </span>
-                        <h3 className="text-base font-bold mb-1 font-display">{m.title}</h3>
-                        <p className="text-sm text-on-surface-variant leading-relaxed">{m.desc}</p>
-                      </motion.div>
-                    </div>
+                        <h3 className="text-xl font-bold font-display">{m.title}</h3>
+                      </div>
+                      <ul className="space-y-2">
+                        {m.bullets.map((b, i) => (
+                          <li key={i} className="text-sm text-on-surface-variant flex items-start gap-2.5 leading-relaxed">
+                            <span className={`w-1.5 h-1.5 rounded-full ${bulletClass} mt-1.5 flex-shrink-0`} />
+                            {b}
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
                   </motion.div>
                 );
               })}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -317,6 +374,7 @@ export default function AboutClient() {
                 <div className={`w-18 h-18 w-[72px] h-[72px] mx-auto mb-5 bg-gradient-to-br ${member.bg} rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:shadow-xl transition-all`}>
                   <Icon name={member.icon} size={32} className="text-white" />
                 </div>
+                <p className="text-xs font-semibold text-on-surface-variant/60 uppercase tracking-wider mb-1">{member.name}</p>
                 <h3 className="text-xl font-bold mb-1 font-display">{member.role}</h3>
                 <p className="text-primary text-sm font-semibold mb-5">{member.expertise}</p>
                 <div className="space-y-2.5 text-left">
@@ -330,36 +388,51 @@ export default function AboutClient() {
               </motion.div>
             ))}
           </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="mt-12 text-center text-on-surface-variant text-sm max-w-2xl mx-auto"
+          >
+            We&apos;re a passionate team of automobile tech and AI specialists.{' '}
+            <Link href="/contact" className="text-primary font-semibold hover:underline">Connect with us</Link>
+            {' '}to learn more about the team, or{' '}
+            <Link href="/careers" className="text-secondary font-semibold hover:underline">explore open positions</Link>.
+          </motion.p>
         </div>
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          SECTION 6 — IMPACT STATS
+          SECTION 6 — NUMBERS THAT MATTER
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
           <SectionHeading badge="Our Impact" title="Numbers That" highlight="Matter" />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6 max-w-5xl mx-auto">
             <StatsCard
-              icon="verified"
-              value={89.5}
-              suffix="%"
-              label="Compliance Automation"
-              description="Reduction in manual compliance work"
-            />
-            <StatsCard
-              icon="speed"
-              value={3}
-              suffix="x"
-              label="Faster Operations"
-              description="Speed improvement across workflows"
-            />
-            <StatsCard
-              icon="savings"
+              icon="search"
               value={95}
-              suffix="%"
-              label="Cost Reduction"
-              description="Average operational cost savings"
+              label="Problems Mapped"
+              description="EV industry problems identified"
+            />
+            <StatsCard
+              icon="check_circle"
+              value={85}
+              label="Solvable Today"
+              description="Problems the platform solves"
+            />
+            <StatsCard
+              icon="widgets"
+              value={76}
+              label="Features Built"
+              description="Across all products"
+            />
+            <StatsCard
+              icon="inventory_2"
+              value={6}
+              label="Products Launched"
+              description="Live in the ecosystem"
             />
             <StatsCard
               icon="public"
