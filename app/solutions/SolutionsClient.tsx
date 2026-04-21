@@ -294,8 +294,7 @@ function MetricCard({ metric }: { metric: StakeholderMetric }) {
       whileHover={{ y: -4 }}
       className="relative p-5 rounded-2xl bg-surface border border-outline-variant/30 shadow-sm hover:shadow-md transition-all group overflow-hidden text-center"
     >
-      <div className="absolute top-0 right-0 w-20 h-20 bg-primary-container/5 rounded-full -translate-y-6 translate-x-6 group-hover:bg-primary-container/10 transition-colors" />
-      <Icon name={metric.icon} size={24} className="text-primary mb-2 mx-auto" />
+      <div className="relative w-20 h-20 bg-primary-container/5 rounded-full -translate-y-6 translate-x-6 group-hover:bg-primary-container/10 transition-colors" />
       <div className="text-xl font-black gradient-text font-display mb-1 leading-tight">
         {metric.value}
       </div>
@@ -334,8 +333,8 @@ function StakeholderSection({
         >
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-3">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-primary-container/15 flex items-center justify-center shrink-0">
-                <Icon name={stakeholder.icon} size={32} className="text-primary" />
+              <div className="w-12 h-12 rounded-2xl bg-primary-container/15 flex items-center justify-center shrink-0">
+                <Icon name={stakeholder.icon} size={20} className="text-on-surface-variant" />
               </div>
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold font-display leading-tight">
@@ -365,8 +364,7 @@ function StakeholderSection({
               transition={{ delay: 0.1 }}
               className="p-7 rounded-2xl bg-surface-bright border border-outline-variant/30 shadow-sm"
             >
-              <h3 className="text-xs font-semibold text-primary uppercase tracking-widest mb-5 font-display flex items-center gap-2">
-                <Icon name="report_problem" size={15} className="text-primary" />
+              <h3 className="text-xs font-semibold text-primary uppercase tracking-widest mb-5 font-display">
                 Key Challenges
               </h3>
               <ul className="space-y-3">
@@ -379,7 +377,7 @@ function StakeholderSection({
                     transition={{ delay: 0.12 + i * 0.07 }}
                     className="flex items-start gap-3 text-sm text-on-surface-variant leading-relaxed"
                   >
-                    <Icon name="cancel" size={17} className="text-error/70 mt-0.5 shrink-0" />
+                    <span className="text-on-surface-variant flex-shrink-0 mt-0.5">—</span>
                     {c}
                   </motion.li>
                 ))}
@@ -394,8 +392,7 @@ function StakeholderSection({
                 transition={{ delay: 0.12 }}
                 className="p-7 rounded-2xl bg-surface-bright border border-outline-variant/30 shadow-sm"
               >
-                <h3 className="text-xs font-semibold text-primary uppercase tracking-widest mb-5 font-display flex items-center gap-2">
-                  <Icon name="inventory_2" size={15} className="text-primary" />
+                <h3 className="text-xs font-semibold text-primary uppercase tracking-widest mb-5 font-display">
                   Recommended Products
                 </h3>
                 <div className={`grid gap-3 ${stakeholder.products.length > 1 ? 'sm:grid-cols-2' : ''}`}>
@@ -420,8 +417,7 @@ function StakeholderSection({
               </motion.div>
 
               <div>
-                <h3 className="text-xs font-semibold text-primary uppercase tracking-widest mb-4 font-display flex items-center gap-2 px-1">
-                  <Icon name="analytics" size={15} className="text-primary" />
+                <h3 className="text-xs font-semibold text-primary uppercase tracking-widest mb-4 font-display px-1">
                   Impact Metrics
                 </h3>
                 <div className="grid grid-cols-3 gap-3">
