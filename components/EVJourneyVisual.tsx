@@ -82,14 +82,14 @@ export function EVJourneyVisual({ onComplete }: Props) {
   return (
     <div className="relative h-screen overflow-hidden bg-black">
 
-      {/* ═══════════ VIDEO — scaled up to push watermark outside viewport ═══════════ */}
+      {/* ═══════════ VIDEO — minimal 2% scale, keeps content intact ═══════════ */}
       <video
         ref={videoRef}
         muted
         playsInline
         preload="metadata"
         poster="/images/journey-poster.jpg"
-        style={{ transform: 'scale(1.14)', transformOrigin: 'center center' }}
+        style={{ transform: 'scale(1.02)', transformOrigin: 'center center' }}
         className="absolute inset-0 w-full h-full object-cover object-center"
       >
         <source src="/videos/ev-journey-bg.mp4" type="video/mp4" />
@@ -135,17 +135,17 @@ export function EVJourneyVisual({ onComplete }: Props) {
         style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.3) 0%, transparent 25%)' }}
       />
 
-      {/* ═══════════ GO4GARAGE BRAND BADGE ═══════════ */}
+      {/* ═══════════ GO4GARAGE BRAND BADGE — positioned over watermark spot ═══════════ */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8, y: 8 }}
         animate={{ opacity: started ? 1 : 0, scale: started ? 1 : 0.8, y: started ? 0 : 8 }}
         transition={{ duration: 0.5, delay: 0.8 }}
         className="absolute z-30 flex items-center gap-2.5 pointer-events-none"
-        style={{ bottom: 28, right: 24 }}
+        style={{ bottom: 12, right: 12 }}
       >
         <div
-          className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl border border-white/15"
-          style={{ background: 'rgba(8,8,8,0.75)', backdropFilter: 'blur(16px)' }}
+          className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border border-white/15"
+          style={{ background: 'rgba(6,6,6,0.88)', backdropFilter: 'blur(18px)' }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/icon.png" alt="Go4Garage" style={{ width: 22, height: 22, objectFit: 'contain' }} />
