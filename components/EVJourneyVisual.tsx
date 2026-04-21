@@ -99,6 +99,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
       {/* ═══════════ VIDEO — minimal 2% scale, keeps content intact ═══════════ */}
       <video
         ref={videoRef}
+        autoPlay
         muted
         playsInline
         preload="auto"

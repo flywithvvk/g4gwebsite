@@ -14,12 +14,12 @@ import { TrustBar } from '@/components/TrustBar';
 /* ─── Data ─── */
 
 const products = [
-  { name: 'URGAA (ऊर्जा)', tagline: 'Regulatory & Grid Intelligence', problems: 48, icon: 'bolt', color: 'bg-primary-container/15 border-primary/20', cf: 'primary', href: '/products' },
+  { name: 'URGAA (ऊर्जा)', tagline: 'Regulatory & Grid Intelligence', problems: 27, icon: 'bolt', color: 'bg-primary-container/15 border-primary/20', cf: 'primary', href: '/products' },
   { name: 'GSTSAAS', tagline: 'Workshop & Commerce Engine', problems: 17, icon: 'build', color: 'bg-secondary-container/15 border-secondary/20', cf: 'secondary', href: '/products' },
-  { name: 'Ignition App', tagline: 'Consumer Experience App', problems: 10, icon: 'smartphone', color: 'bg-tertiary-container/15 border-tertiary/20', cf: 'tertiary', href: '/products' },
-  { name: 'EV VIDYA ARJUN', tagline: 'Workforce Skilling Platform', problems: 8, icon: 'school', color: 'bg-secondary-container/15 border-secondary/20', cf: 'secondary', href: '/products' },
-  { name: 'KAILASH-AI', tagline: 'Document AI & Predictive Analytics', problems: 2, icon: 'analytics', color: 'bg-primary-container/15 border-primary/20', cf: 'primary', href: '/products' },
-  { name: 'Eka-AI', tagline: 'Agent Orchestration & Q&A', problems: 0, icon: 'smart_toy', color: 'bg-tertiary-container/15 border-tertiary/20', cf: 'tertiary', href: '/products' },
+  { name: 'Ignition App', tagline: 'Consumer Experience App', problems: 11, icon: 'smartphone', color: 'bg-tertiary-container/15 border-tertiary/20', cf: 'tertiary', href: '/products' },
+  { name: 'EV VIDYA ARJUN', tagline: 'Workforce Skilling Platform', problems: 9, icon: 'school', color: 'bg-secondary-container/15 border-secondary/20', cf: 'secondary', href: '/products' },
+  { name: 'KAILASH-AI', tagline: 'Document AI & Predictive Analytics', problems: 18, icon: 'analytics', color: 'bg-primary-container/15 border-primary/20', cf: 'primary', href: '/products' },
+  { name: 'Eka-AI', tagline: 'Agent Orchestration & Q&A', problems: 3, icon: 'smart_toy', color: 'bg-tertiary-container/15 border-tertiary/20', cf: 'tertiary', href: '/products' },
 ];
 
 type ColorFamily = 'primary' | 'secondary' | 'tertiary';
@@ -30,14 +30,14 @@ const cfColor: Record<ColorFamily, { icon: string; iconBg: string; iconBgHover: 
 };
 
 const problemLayers = [
-  { layer: 'L1', title: 'Battery & Supply Chain', problems: 12, icon: 'battery_full', color: 'border-l-primary' },
-  { layer: 'L2', title: 'Consumer Adoption Barriers', problems: 10, icon: 'people', color: 'border-l-secondary' },
+  { layer: 'L1', title: 'Battery & Supply Chain', problems: 15, icon: 'battery_full', color: 'border-l-primary' },
+  { layer: 'L2', title: 'Consumer Adoption Barriers', problems: 12, icon: 'people', color: 'border-l-secondary' },
   { layer: 'L3', title: 'Financing & Economics', problems: 8, icon: 'account_balance_wallet', color: 'border-l-tertiary' },
-  { layer: 'L4', title: 'After-Sales & Service', problems: 9, icon: 'build_circle', color: 'border-l-primary' },
-  { layer: 'L5', title: 'Skilled Workforce', problems: 7, icon: 'school', color: 'border-l-secondary' },
-  { layer: 'L6', title: 'Battery Lifecycle', problems: 8, icon: 'recycling', color: 'border-l-tertiary' },
-  { layer: 'L7', title: 'Grid & Energy Integration', problems: 6, icon: 'electrical_services', color: 'border-l-primary' },
-  { layer: 'L8', title: 'Regulatory & Infrastructure', problems: 35, icon: 'gavel', color: 'border-l-secondary' },
+  { layer: 'L4', title: 'After-Sales & Service', problems: 18, icon: 'build_circle', color: 'border-l-primary' },
+  { layer: 'L5', title: 'Skilled Workforce', problems: 8, icon: 'school', color: 'border-l-secondary' },
+  { layer: 'L6', title: 'Battery Lifecycle', problems: 7, icon: 'recycling', color: 'border-l-tertiary' },
+  { layer: 'L7', title: 'Grid & Energy Integration', problems: 12, icon: 'electrical_services', color: 'border-l-primary' },
+  { layer: 'L8', title: 'Regulatory & Infrastructure', problems: 15, icon: 'gavel', color: 'border-l-secondary' },
 ];
 
 const personas = [

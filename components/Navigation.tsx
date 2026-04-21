@@ -47,7 +47,6 @@ const Navigation = () => {
               transition={{ duration: 0.5 }}
               className="flex items-center gap-2.5"
             >
-              <Image src="/icon.png" alt="Go4Garage" width={36} height={36} className="rounded-xl shadow-sm" />
               <Image src="/logo.jpg" alt="Go4Garage" width={150} height={40} className="h-9 w-auto object-contain" />
             </motion.div>
           </Link>
