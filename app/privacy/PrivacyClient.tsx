@@ -217,7 +217,7 @@ export default function PrivacyClient() {
               <p className="mt-3">
                 <strong className="text-on-surface">Data Protection Officer / Grievance Officer</strong><br />
                 Go4Garage Antigravity Technologies Pvt. Ltd.<br />
-                Bangalore, Karnataka, India
+                🇮🇳 India · Bharat
               </p>
               <p className="mt-2">
                 Email:{' '}

@@ -202,7 +202,7 @@ export default function TermsClient() {
             <p className="text-base text-on-surface-variant leading-relaxed">
               These Terms shall be governed by and construed in accordance with the laws of India. Subject to the
               arbitration clause below, you agree to submit to the exclusive jurisdiction of the courts located in
-              Bangalore, Karnataka, India for the resolution of any disputes not subject to arbitration.
+              India for the resolution of any disputes not subject to arbitration.
             </p>
           </section>
 
@@ -214,8 +214,7 @@ export default function TermsClient() {
               termination, or invalidity thereof shall first be attempted to be resolved through good-faith
               negotiations. If not resolved within 30 days, the dispute shall be referred to and finally resolved
               by arbitration in accordance with the Arbitration and Conciliation Act, 1996 (as amended). The
-              arbitration shall be conducted by a sole arbitrator, in the English language, seated in Bangalore,
-              Karnataka, India. The decision of the arbitrator shall be final and binding on both parties.
+              arbitration shall be conducted by a sole arbitrator, in the English language, seated in India.The decision of the arbitrator shall be final and binding on both parties.
             </p>
           </section>
 
@@ -227,7 +226,7 @@ export default function TermsClient() {
               <p className="mt-3">
                 <strong className="text-on-surface">Legal Team</strong><br />
                 Go4Garage Antigravity Technologies Pvt. Ltd.<br />
-                Bangalore, Karnataka, India
+                🇮🇳 India · Bharat
               </p>
               <p className="mt-2">
                 Email:{' '}

@@ -112,7 +112,7 @@ const Footer: React.FC = () => {
               </a>
               <span className="flex items-center gap-2 text-xs text-on-surface-variant">
                 <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>location_on</span>
-                Bangalore, Karnataka, India
+                🇮🇳 India · Bharat
               </span>
             </div>
           </div>

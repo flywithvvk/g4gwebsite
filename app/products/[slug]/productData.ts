@@ -31,7 +31,7 @@ export const productData: Record<string, ProductData> = {
     color: 'primary',
     description:
       "URGAA is Go4Garage's regulatory intelligence platform for EV charging infrastructure — covering site selection, DISCOM approvals, compliance tracking, and grid integration across all 33 Indian states.",
-    problemsSolved: 48,
+    problemsSolved: 27,
     targetUsers: ['CPO Operators', 'Real Estate Developers', 'Government Bodies', 'Infrastructure Investors'],
     features: [
       { icon: 'gavel', title: 'DISCOM Wizard', desc: 'AI-guided application for electricity connections — reduces 6-month delays to weeks' },
@@ -131,7 +131,7 @@ export const productData: Record<string, ProductData> = {
     color: 'primary',
     description:
       'KAILASH-AI is the intelligence layer powering all Go4Garage products — predictive diagnostics, analytics, anomaly detection, and battery health scoring for the entire EV value chain.',
-    problemsSolved: 2,
+    problemsSolved: 18,
     targetUsers: ['Enterprise Fleet Managers', 'Insurance Companies', 'OEM Analytics Teams', 'Workshop Chains'],
     features: [
       { icon: 'troubleshoot', title: 'Predictive Diagnostics', desc: 'AI models predict component failures 2-4 weeks ahead, reducing emergency breakdowns' },
@@ -156,7 +156,7 @@ export const productData: Record<string, ProductData> = {
     color: 'tertiary',
     description:
       "Eka-AI is Go4Garage's multi-agent conversational AI system — handling regulatory queries, operator automation, knowledge retrieval, and intelligent decision support across the EV ecosystem.",
-    problemsSolved: 0,
+    problemsSolved: 3,
     targetUsers: ['Operations Teams', 'Compliance Officers', 'Customer Support', 'Enterprise Platform Users'],
     features: [
       { icon: 'chat', title: 'Conversational AI', desc: 'Natural language interface for complex regulatory and operational queries in English and Hindi' },

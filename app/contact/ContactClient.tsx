@@ -26,7 +26,7 @@ const contactMethods = [
     icon: 'location_on',
     title: 'Visit Us',
     detail: 'WeWork Galaxy, 43 Residency Road',
-    href: 'https://maps.google.com/?q=WeWork+Galaxy+43+Residency+Road+Bangalore',
+    href: 'https://maps.google.com/?q=WeWork+Galaxy+43+Residency+Road+Bengaluru',
     sub: '🇮🇳 India | Bharat',
     color: 'from-tertiary to-[#00a34a]',
   },
@@ -438,7 +438,7 @@ export default function ContactClient() {
                   </div>
                   <h4 className="font-bold text-base mb-2 font-display">WeWork Galaxy</h4>
                   <p className="text-sm text-on-surface-variant mb-4">43 Residency Road, 🇮🇳 India | Bharat</p>
-                  <motion.a href="https://maps.google.com/?q=WeWork+Galaxy+43+Residency+Road+Bangalore" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-all">
+                  <motion.a href="https://maps.google.com/?q=WeWork+Galaxy+43+Residency+Road+Bengaluru" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-all">
                     <Icon name="open_in_new" size={16} />
                     Open in Maps
                   </motion.a>
