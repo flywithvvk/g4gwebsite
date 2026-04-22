@@ -96,6 +96,7 @@ const INITIAL_FORM: FormData = {
 
 const CAL_DAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 const WEEKEND_INDICES = new Set([0, 6, 7, 13, 14, 20, 21, 27, 28]);
+const MONTH_LABELS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
 export default function ContactClient() {
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM);
@@ -103,6 +104,9 @@ export default function ContactClient() {
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const now = new Date();
+  const currentMonthLabel = `${MONTH_LABELS[now.getMonth()]} ${now.getFullYear()}`;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -132,6 +136,13 @@ export default function ContactClient() {
     const errs = validate();
     if (Object.keys(errs).length > 0) { setErrors(errs); return; }
     setIsLoading(true);
+
+    const subject = encodeURIComponent(`Go4Garage Contact: ${formData.interest || 'General Inquiry'} — ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company || 'Not provided'}\nPhone: ${formData.phone || 'Not provided'}\nProduct Interest: ${formData.interest || 'General'}\n\nMessage:\n${formData.message}`
+    );
+    window.location.href = `mailto:connect@go4garage.in?subject=${subject}&body=${body}`;
+
     setTimeout(() => { setIsLoading(false); setSubmitted(true); }, 800);
   };
 
@@ -325,7 +336,7 @@ export default function ContactClient() {
 
               <div className="w-full max-w-sm bg-surface-container-low rounded-2xl border border-outline-variant/30 p-5">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="font-bold text-sm font-display">July 2025</span>
+                  <span className="font-bold text-sm font-display">{currentMonthLabel}</span>
                   <div className="flex gap-1">
                     <button className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-primary-container/20 transition-colors text-on-surface-variant">
                       <Icon name="chevron_left" size={16} />

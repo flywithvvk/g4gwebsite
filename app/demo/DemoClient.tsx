@@ -115,23 +115,52 @@ export default function DemoClient() {
   const [showModal, setShowModal] = useState(false);
   const [form, setForm] = useState<BookingForm>(initialForm);
   const [submitted, setSubmitted] = useState(false);
+  const [formErrors, setFormErrors] = useState<Partial<BookingForm>>({});
 
   const canBook = selectedDemo !== null && selectedSlot !== null;
 
   const handleFormChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (formErrors[name as keyof BookingForm]) {
+      setFormErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const validateBooking = (): Partial<BookingForm> => {
+    const errs: Partial<BookingForm> = {};
+    if (!form.name.trim() || form.name.trim().length < 2) errs.name = 'Full name is required.';
+    if (!form.email.trim()) {
+      errs.email = 'Email is required.';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      errs.email = 'Please enter a valid email address.';
+    }
+    if (!form.company.trim()) errs.company = 'Company name is required.';
+    if (!form.useCase) errs.useCase = 'Please select your use case.';
+    return errs;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const errs = validateBooking();
+    if (Object.keys(errs).length > 0) { setFormErrors(errs); return; }
+
+    const demoLabel = demoOptions.find((d) => d.id === selectedDemo)?.title ?? selectedDemo;
+    const subject = encodeURIComponent(`Demo Booking: ${demoLabel} — ${form.name} (${form.company})`);
+    const body = encodeURIComponent(
+      `DEMO BOOKING REQUEST\n\nDemo Type: ${demoLabel}\nRequested Slot: ${selectedSlot}\n\nName: ${form.name}\nEmail: ${form.email}\nCompany: ${form.company}\nPhone: ${form.phone || 'Not provided'}\nUse Case: ${form.useCase}`
+    );
+    window.location.href = `mailto:connect@go4garage.in?subject=${subject}&body=${body}`;
+
     setSubmitted(true);
     setTimeout(() => {
       setShowModal(false);
       setSubmitted(false);
       setForm(initialForm);
-    }, 3000);
+      setFormErrors({});
+    }, 5000);
   };
 
   const openModal = () => {
@@ -447,13 +476,13 @@ export default function DemoClient() {
                         <Icon name="check_circle" size={36} className="text-tertiary" />
                       </motion.div>
                       <h3 className="text-xl font-bold mb-2 text-tertiary font-display">
-                        Demo Confirmed!
+                        Booking Request Sent!
                       </h3>
                       <p className="text-on-surface-variant text-sm mb-1">
-                        Check your email for details.
+                        Your request has been sent to our team.
                       </p>
                       <p className="text-on-surface-variant text-sm">
-                        We&apos;ll send a calendar invite to your email within 2 hours.
+                        We&apos;ll confirm your demo slot at <strong>{form.email}</strong> within 2 hours.
                       </p>
                     </motion.div>
                   ) : (
@@ -475,52 +504,52 @@ export default function DemoClient() {
                         </button>
                       </div>
 
-                      <form onSubmit={handleSubmit} className="p-6 space-y-4">
+                      <form onSubmit={handleSubmit} noValidate className="p-6 space-y-4">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div>
                             <label className="block text-xs font-semibold mb-1.5 font-display">
-                              Name *
+                              Name <span className="text-red-500">*</span>
                             </label>
                             <input
                               type="text"
                               name="name"
                               value={form.name}
                               onChange={handleFormChange}
-                              required
                               placeholder="Your full name"
-                              className="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/30 rounded-xl text-on-surface text-sm placeholder-on-surface-variant/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/15 transition-all"
+                              className={`w-full px-4 py-3 bg-surface-container-low border rounded-xl text-on-surface text-sm placeholder-on-surface-variant/50 focus:outline-none focus:ring-2 transition-all ${formErrors.name ? 'border-red-500 focus:border-red-500 focus:ring-red-500/15' : 'border-outline-variant/30 focus:border-primary/50 focus:ring-primary/15'}`}
                             />
+                            {formErrors.name && <p className="text-red-500 text-xs mt-1">{formErrors.name}</p>}
                           </div>
                           <div>
                             <label className="block text-xs font-semibold mb-1.5 font-display">
-                              Email *
+                              Email <span className="text-red-500">*</span>
                             </label>
                             <input
                               type="email"
                               name="email"
                               value={form.email}
                               onChange={handleFormChange}
-                              required
                               placeholder="you@company.com"
-                              className="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/30 rounded-xl text-on-surface text-sm placeholder-on-surface-variant/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/15 transition-all"
+                              className={`w-full px-4 py-3 bg-surface-container-low border rounded-xl text-on-surface text-sm placeholder-on-surface-variant/50 focus:outline-none focus:ring-2 transition-all ${formErrors.email ? 'border-red-500 focus:border-red-500 focus:ring-red-500/15' : 'border-outline-variant/30 focus:border-primary/50 focus:ring-primary/15'}`}
                             />
+                            {formErrors.email && <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>}
                           </div>
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div>
                             <label className="block text-xs font-semibold mb-1.5 font-display">
-                              Company *
+                              Company <span className="text-red-500">*</span>
                             </label>
                             <input
                               type="text"
                               name="company"
                               value={form.company}
                               onChange={handleFormChange}
-                              required
                               placeholder="Your company"
-                              className="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/30 rounded-xl text-on-surface text-sm placeholder-on-surface-variant/50 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/15 transition-all"
+                              className={`w-full px-4 py-3 bg-surface-container-low border rounded-xl text-on-surface text-sm placeholder-on-surface-variant/50 focus:outline-none focus:ring-2 transition-all ${formErrors.company ? 'border-red-500 focus:border-red-500 focus:ring-red-500/15' : 'border-outline-variant/30 focus:border-primary/50 focus:ring-primary/15'}`}
                             />
+                            {formErrors.company && <p className="text-red-500 text-xs mt-1">{formErrors.company}</p>}
                           </div>
                           <div>
                             <label className="block text-xs font-semibold mb-1.5 font-display">
@@ -540,14 +569,13 @@ export default function DemoClient() {
 
                         <div>
                           <label className="block text-xs font-semibold mb-1.5 font-display">
-                            Use Case *
+                            Use Case <span className="text-red-500">*</span>
                           </label>
                           <select
                             name="useCase"
                             value={form.useCase}
                             onChange={handleFormChange}
-                            required
-                            className="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/30 rounded-xl text-on-surface text-sm focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/15 transition-all"
+                            className={`w-full px-4 py-3 bg-surface-container-low border rounded-xl text-on-surface text-sm focus:outline-none focus:ring-2 transition-all ${formErrors.useCase ? 'border-red-500 focus:border-red-500 focus:ring-red-500/15' : 'border-outline-variant/30 focus:border-primary/50 focus:ring-primary/15'}`}
                           >
                             <option value="">Select your use case</option>
                             <option value="ev-workshop">EV Workshop</option>
@@ -556,6 +584,7 @@ export default function DemoClient() {
                             <option value="government-municipal">Government / Municipal</option>
                             <option value="other">Other</option>
                           </select>
+                          {formErrors.useCase && <p className="text-red-500 text-xs mt-1">{formErrors.useCase}</p>}
                         </div>
 
                         <motion.button
