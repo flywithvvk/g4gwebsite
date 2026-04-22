@@ -435,32 +435,6 @@ const stakeholders: Stakeholder[] = [
     ctaHref: '/contact',
   },
   {
-    id: 'investors-type',
-    name: 'Investors',
-    subtitle: 'VCs, PEs & Strategic Investors',
-    icon: 'trending_up',
-    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80',
-    challenges: [
-      'EV market sizing with limited data availability',
-      'Due diligence on EV technology startups',
-      'Portfolio risk assessment in nascent category',
-      'Regulatory impact assessment across states',
-    ],
-    products: [
-      {
-        name: 'KAILASH-AI',
-        description: 'Market intelligence platform — EV sector sizing data, startup due diligence analytics, portfolio risk dashboards, and multi-state regulatory impact tracking.',
-      },
-    ],
-    metrics: [
-      { icon: 'insights', value: 'Deep', label: 'Market Intelligence' },
-      { icon: 'dashboard', value: 'Live', label: 'Risk Dashboard' },
-      { icon: 'policy', value: 'All-state', label: 'Regulatory Tracker' },
-    ],
-    ctaText: 'View Investor Page →',
-    ctaHref: '/investors',
-  },
-  {
     id: 'rsa-partners',
     name: 'RSA Partners',
     subtitle: 'Roadside Assistance & Emergency Services',
@@ -493,7 +467,7 @@ const stakeholders: Stakeholder[] = [
 ];
 
 const primaryUserIds = ['cpo', 'workshops', 'fleet', 'insurance', 'govt', 'training', 'consumers', 'oems'];
-const ecosystemPartnerIds = ['nbfc', 'technicians', 'discoms', 'recyclers', 'parts-suppliers', 'investors-type', 'rsa-partners'];
+const ecosystemPartnerIds = ['nbfc', 'technicians', 'discoms', 'recyclers', 'parts-suppliers', 'rsa-partners'];
 
 const comparisonRows = [
   'India-Specific Compliance',
