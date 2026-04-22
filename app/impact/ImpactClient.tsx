@@ -46,7 +46,7 @@ const afterItems = [
 
 const productMatrix = [
   { product: 'URGAA (ऊर्जा)', layers: ['Regulatory & Compliance', 'Operational Excellence', 'Infrastructure'] as string[] },
-  { product: 'GSTSAAS', layers: ['Financial & GST', 'Operational Excellence', 'Customer Experience'] as string[] },
+  { product: 'GST (Go4Garage Service Tools)', layers: ['Financial & GST', 'Operational Excellence', 'Customer Experience'] as string[] },
   { product: 'Ignition', layers: ['Customer Experience', 'Operational Excellence', 'Market & Growth'] as string[] },
   { product: 'EV VIDYA ARJUN', layers: ['Workforce & Training', 'Technology & AI'] as string[] },
   { product: 'KAILASH-AI', layers: ['Technology & AI', 'Operational Excellence', 'Market & Growth'] as string[] },

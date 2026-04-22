@@ -146,7 +146,7 @@ export const productData: Record<string, ProductData> = {
         metric: 'Weeks \u2192 hours',
       },
     ],
-    integrations: ['KAILASH-AI (predictive analytics)', 'Eka-AI (regulatory Q&A)', 'GSTSAAS (billing)'],
+    integrations: ['KAILASH-AI (predictive analytics)', 'Eka-AI (regulatory Q&A)', 'GST (billing)'],
     metrics: ['89% compliance automation', '30 days avg DISCOM approval', '33 states covered'],
     cta: 'Book a Demo',
     ctaLink: '/contact',
@@ -154,8 +154,8 @@ export const productData: Record<string, ProductData> = {
 
   gstsaas: {
     slug: 'gstsaas',
-    name: 'GSTSAAS',
-    shortName: 'GSTSAAS',
+    name: 'GST (Go4Garage Service Tools)',
+    shortName: 'GST',
     tagline: 'Complete EV Workshop Management Platform',
     icon: 'build',
     color: 'secondary',
@@ -366,7 +366,7 @@ export const productData: Record<string, ProductData> = {
         metric: 'Expert-vetted content',
       },
     ],
-    integrations: ['KAILASH-AI (predictive diagnostics)', 'GSTSAAS (workshop booking)'],
+    integrations: ['KAILASH-AI (predictive diagnostics)', 'GST (workshop booking)'],
     metrics: ['Real-time charging network', 'Service cost transparency', 'Certified service locator'],
     cta: 'Download App',
     ctaLink: '/contact',
@@ -476,7 +476,7 @@ export const productData: Record<string, ProductData> = {
         metric: 'Data-driven training',
       },
     ],
-    integrations: ['KAILASH-AI (real-world case studies)', 'GSTSAAS (practical job card training)'],
+    integrations: ['KAILASH-AI (real-world case studies)', 'GST (practical job card training)'],
     metrics: ['4-6 week certification programs', 'Industry-aligned curriculum', '200+ technicians target'],
     cta: 'Explore Training',
     ctaLink: '/contact',
@@ -605,7 +605,7 @@ export const productData: Record<string, ProductData> = {
       "Operators waste 4+ hours daily answering repetitive compliance and operational queries manually",
       "Critical regulatory updates buried in government PDFs \u2014 operators miss changes causing penalties",
       "Hindi and regional language queries from technicians go unanswered or badly mishandled",
-      "Cross-product workflows require manual coordination between URGAA, GSTSAAS, and KAILASH-AI",
+      "Cross-product workflows require manual coordination between URGAA, GST (Go4Garage Service Tools), and KAILASH-AI",
       "Operators juggle 5+ different tools with no unified AI interface for EV operations",
       "Retrieving answers from 50,000+ regulatory documents takes hours of manual searching per query",
     ],
@@ -620,7 +620,7 @@ export const productData: Record<string, ProductData> = {
       { step: 1, title: 'Ask Anything', desc: 'Type or speak your query in English or Hindi. Eka understands EV regulatory, operational, and technical context.', icon: 'chat' },
       { step: 2, title: 'Intelligent Retrieval', desc: 'Eka searches 50,000+ documents, regulations, and platform data in under 2 seconds. Cites sources.', icon: 'manage_search' },
       { step: 3, title: 'Coordinated Response', desc: 'Multi-agent system routes to specialized agents: compliance, diagnostics, finance, or customer support.', icon: 'hub' },
-      { step: 4, title: 'Automated Action', desc: 'Approve, schedule, or trigger workflows across URGAA, GSTSAAS, and KAILASH-AI with one confirmation.', icon: 'auto_mode' },
+      { step: 4, title: 'Automated Action', desc: 'Approve, schedule, or trigger workflows across URGAA, GST (Go4Garage Service Tools), and KAILASH-AI with one confirmation.', icon: 'auto_mode' },
     ],
     features: [
       {
@@ -686,10 +686,10 @@ export const productData: Record<string, ProductData> = {
       {
         icon: 'integration_instructions',
         title: 'Platform Integration',
-        desc: 'Deeply integrated with URGAA, GSTSAAS, KAILASH-AI for contextual intelligence',
+        desc: 'Deeply integrated with URGAA, GST (Go4Garage Service Tools), KAILASH-AI for contextual intelligence',
         points: [
           'Deep URGAA: compliance Q&A, filing status',
-          'Deep GSTSAAS: job card creation by voice command',
+          'Deep GST (Go4Garage Service Tools): job card creation by voice command',
           'Deep KAILASH-AI: diagnostic explanations in plain language',
           'External: GSTN compliance queries, RTO vehicle data',
         ],

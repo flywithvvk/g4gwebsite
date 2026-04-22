@@ -17,7 +17,7 @@ interface ProductChip {
 
 const PRODUCTS: Record<string, ProductChip> = {
   urgaa:    { name: 'URGAA (ऊर्जा)',    icon: 'electric_bolt',           color: 'bg-[#006e2f]/12', textColor: 'text-[#006e2f]' },
-  gstsaas:  { name: 'GSTSAAS',          icon: 'receipt_long',            color: 'bg-[#904d00]/12', textColor: 'text-[#904d00]' },
+  gstsaas:  { name: 'GST (Go4Garage Service Tools)', icon: 'receipt_long', color: 'bg-[#904d00]/12', textColor: 'text-[#904d00]' },
   ignition: { name: 'Ignition App',     icon: 'garage',                  color: 'bg-[#7b41b3]/12', textColor: 'text-[#7b41b3]' },
   arjun:    { name: 'EV VIDYA ARJUN',   icon: 'school',                  color: 'bg-[#1565C0]/12', textColor: 'text-[#1565C0]' },
   kailash:  { name: 'KAILASH-AI',       icon: 'psychology',              color: 'bg-[#B71C1C]/12', textColor: 'text-[#B71C1C]' },
@@ -45,7 +45,6 @@ const tiers: Tier[] = [
     icon: 'rocket_launch',
     accent: 'primary',
     productKeys: ['urgaa', 'gstsaas'],
-    productNote: 'Choose 1 product to begin',
     features: [
       'Up to 5 charging stations or 1 workshop',
       'Basic analytics & reporting dashboard',
@@ -103,7 +102,7 @@ interface CompRow {
 
 const comparisonRows: CompRow[] = [
   { feature: 'URGAA — Regulatory Intelligence',    starter: '1 state',           professional: 'Up to 5 states',         enterprise: 'All 33 states'       },
-  { feature: 'GSTSAAS — Workshop Engine',          starter: '1 location',        professional: 'Up to 5 locations',      enterprise: 'Unlimited locations' },
+  { feature: 'GST (Go4Garage Service Tools) — Workshop Engine',          starter: '1 location',        professional: 'Up to 5 locations',      enterprise: 'Unlimited locations' },
   { feature: 'Ignition — Fleet Portal',            starter: false,               professional: true,                     enterprise: true                  },
   { feature: 'EV VIDYA ARJUN — Training',          starter: false,               professional: false,                    enterprise: true                  },
   { feature: 'KAILASH-AI — Analytics',             starter: 'Basic',             professional: 'Predictive AI',          enterprise: 'Custom models'       },
@@ -117,7 +116,7 @@ const comparisonRows: CompRow[] = [
 /* ─── FAQ ────────────────────────────────────────────────────────────────── */
 const pricingFaqs = [
   { q: 'How is pricing determined?',        a: 'Pricing is customised to your scale, number of locations, products selected, and contract term. Contact us for a tailored quote that fits your business.' },
-  { q: 'Can I start with a single product?', a: 'Absolutely. Most customers begin with GSTSAAS or URGAA and expand over time as they see results. You only pay for what you use.' },
+  { q: 'Can I start with a single product?', a: 'Absolutely. Most customers begin with GST (Go4Garage Service Tools) or URGAA and expand over time as they see results. You only pay for what you use.' },
   { q: 'Is there a free trial?',             a: 'We offer a 14-day pilot on the Starter plan at no cost. No credit card required. Enterprise pilots are available on request with dedicated support.' },
   { q: 'What payment methods do you accept?', a: 'We accept all major credit/debit cards, UPI, net banking, and NEFT/RTGS for enterprise customers. GST-compliant invoices are always provided.' },
   { q: 'Can I upgrade or change plans?',     a: 'Yes — upgrades take effect immediately; downgrades at the next billing cycle. Our team will guide you through the transition at no extra cost.' },

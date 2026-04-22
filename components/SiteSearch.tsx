@@ -8,7 +8,7 @@ import { trackSearch } from '@/lib/analytics';
 
 const RESULTS = [
   { title: 'URGAA (ऊर्जा) — Regulatory Intelligence', desc: 'End-to-end EV charging compliance across 33 states', href: '/products/urgaa', icon: 'bolt', tag: 'Product' },
-  { title: 'GSTSAAS — Workshop & Commerce Engine', desc: 'Digital job cards, GST billing, inventory management', href: '/products/gstsaas', icon: 'build', tag: 'Product' },
+  { title: 'GST (Go4Garage Service Tools) — Workshop & Commerce Engine', desc: 'Digital job cards, GST billing, inventory management', href: '/products/GST (Go4Garage Service Tools)', icon: 'build', tag: 'Product' },
   { title: 'Ignition App — Consumer Experience', desc: 'EV consumer app for charging, service, and support', href: '/products/ignition', icon: 'smartphone', tag: 'Product' },
   { title: 'EV VIDYA ARJUN — Workforce Skilling', desc: '4-week EV technician certification, 92% placement rate', href: '/products/arjun', icon: 'school', tag: 'Product' },
   { title: 'KAILASH-AI — Predictive Analytics', desc: 'Battery SoH grading, document AI, anomaly detection', href: '/products/kailash-ai', icon: 'analytics', tag: 'Product' },
@@ -27,7 +27,7 @@ const RESULTS = [
   { title: 'Blog', desc: 'EV industry insights, product updates, case studies', href: '/blog', icon: 'article', tag: 'Page' },
   { title: 'Case Studies', desc: 'Real results from Go4Garage deployments', href: '/case-studies', icon: 'psychology', tag: 'Page' },
   { title: '33 States Compliance', desc: 'DISCOM approvals, MNRE subsidies, state EV policy tracking', href: '/products/urgaa', icon: 'gavel', tag: 'Feature' },
-  { title: 'GST Billing & Invoicing', desc: 'Automated GST-compliant billing for workshops', href: '/products/gstsaas', icon: 'receipt', tag: 'Feature' },
+  { title: 'GST Billing & Invoicing', desc: 'Automated GST-compliant billing for workshops', href: '/products/GST (Go4Garage Service Tools)', icon: 'receipt', tag: 'Feature' },
   { title: 'Battery SoH Grading', desc: 'AI-powered battery state-of-health assessment', href: '/products/kailash-ai', icon: 'battery_charging_full', tag: 'Feature' },
 ];
 

@@ -75,7 +75,7 @@ export default function LoginClient() {
                 <div className="flex-1">
                   <h2 className="text-lg font-bold mb-2 font-display">Dashboard Login</h2>
                   <p className="text-sm text-on-surface-variant leading-relaxed">
-                    For existing customers — access your GSTSAAS, URGAA, and platform dashboard.
+                    For existing customers — access your GST (Go4Garage Service Tools), URGAA, and platform dashboard.
                   </p>
                 </div>
                 <a

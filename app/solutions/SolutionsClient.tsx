@@ -79,7 +79,7 @@ const stakeholders: Stakeholder[] = [
     ],
     products: [
       {
-        name: 'GSTSAAS',
+        name: 'GST (Go4Garage Service Tools)',
         description: 'Complete workshop management — GST-compliant invoicing, job cards, inventory, and CRM in one platform.',
       },
       {
@@ -121,7 +121,7 @@ const stakeholders: Stakeholder[] = [
         description: 'Predictive maintenance alerts and TCO optimisation powered by machine learning.',
       },
       {
-        name: 'GSTSAAS',
+        name: 'GST (Go4Garage Service Tools)',
         description: 'Fleet-wide GST compliance, multi-state invoicing, and procurement management.',
       },
     ],
@@ -267,7 +267,7 @@ const stakeholders: Stakeholder[] = [
         description: 'Dealer and technician training at scale with certification tracking and readiness dashboards.',
       },
       {
-        name: 'GSTSAAS',
+        name: 'GST (Go4Garage Service Tools)',
         description: 'Dealer network commerce management with GST-compliant invoicing and inventory control.',
       },
     ],
@@ -332,7 +332,7 @@ const stakeholders: Stakeholder[] = [
         description: 'AI repair assistant — real-time diagnostic guidance, wiring diagrams, and OEM procedure lookup via conversational interface.',
       },
       {
-        name: 'GSTSAAS',
+        name: 'GST (Go4Garage Service Tools)',
         description: 'Workshop billing and job card management with GST-compliant invoicing — ideal for independent EV technicians.',
       },
     ],
@@ -418,7 +418,7 @@ const stakeholders: Stakeholder[] = [
     ],
     products: [
       {
-        name: 'GSTSAAS',
+        name: 'GST (Go4Garage Service Tools)',
         description: 'Multi-location inventory management with GST-compliant invoicing, demand forecasting dashboards, and OEM compatibility cataloguing.',
       },
       {
@@ -452,7 +452,7 @@ const stakeholders: Stakeholder[] = [
         description: 'EV-specific dispatch and coverage management — real-time EV breakdown alerts, routing to nearest partner, and SLA tracking.',
       },
       {
-        name: 'GSTSAAS',
+        name: 'GST (Go4Garage Service Tools)',
         description: 'Service billing, parts inventory, and job management for RSA operations with GST-compliant invoicing across service locations.',
       },
     ],

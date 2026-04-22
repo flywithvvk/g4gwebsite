@@ -49,16 +49,16 @@ const products: Product[] = [
     colorFamily: 'primary',
   },
   {
-    id: 'gstsaas',
-    name: 'GSTSAAS',
+    id: 'GST (Go4Garage Service Tools)',
+    name: 'GST (Go4Garage Service Tools)',
     prdCode: 'PRD-GST-001',
     tagline: 'Workshop & Commerce Engine',
     description:
-      'End-to-end workshop and service-centre operations \u2014 inventory, invoicing, insurance, and RSA dispatch. GSTSAAS turns every garage into a digitally-native, GST-compliant profit centre.',
+      'End-to-end workshop and service-centre operations \u2014 inventory, invoicing, insurance, and RSA dispatch. GST (Go4Garage Service Tools) turns every garage into a digitally-native, GST-compliant profit centre.',
     problemLabel: 'problems',
     problemCount: 17,
     icon: 'build',
-    slug: 'gstsaas',
+    slug: 'GST (Go4Garage Service Tools)',
     setupTime: '1-2 weeks setup',
     features: [
       'Digital Job Cards — real-time status tracking for customers',
@@ -154,7 +154,7 @@ const products: Product[] = [
       'Knowledge Retrieval — instant access to India auto regulations',
       'Operator Automation — AI-triggered compliance & scheduling workflows',
       'Multi-Language Support — Hindi, English & regional languages',
-      'Platform Integration — deep integration with URGAA, GSTSAAS, KAILASH-AI',
+      'Platform Integration — deep integration with URGAA, GST (Go4Garage Service Tools), KAILASH-AI',
     ],
     colorFamily: 'tertiary',
   },
@@ -259,7 +259,7 @@ function TechArchDiagram() {
 
   const appProducts = [
     { icon: 'ev_station', name: 'URGAA', tagline: 'Regulatory & Grid Intelligence', color: 'text-primary' },
-    { icon: 'receipt_long', name: 'GSTSAAS', tagline: 'Workshop & Commerce Engine', color: 'text-secondary' },
+    { icon: 'receipt_long', name: 'GST (Go4Garage Service Tools)', tagline: 'Workshop & Commerce Engine', color: 'text-secondary' },
     { icon: 'electric_car', name: 'Ignition', tagline: 'Consumer Experience App', color: 'text-tertiary' },
     { icon: 'school', name: 'EV VIDYA ARJUN', tagline: 'Workforce Skilling Platform', color: 'text-secondary' },
     { icon: 'psychology', name: 'KAILASH-AI', tagline: 'Predictive Analytics', color: 'text-primary' },

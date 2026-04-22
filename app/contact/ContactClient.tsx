@@ -38,7 +38,7 @@ const contactMethods = [
 const PRODUCT_OPTIONS = [
   { value: '', label: 'Select a product or topic' },
   { value: 'URGAA', label: 'URGAA' },
-  { value: 'GSTSAAS', label: 'GSTSAAS' },
+  { value: 'GST (Go4Garage Service Tools)', label: 'GST (Go4Garage Service Tools)' },
   { value: 'Ignition', label: 'Ignition' },
   { value: 'EV_VIDYA_ARJUN', label: 'EV VIDYA ARJUN' },
   { value: 'KAILASH_AI', label: 'KAILASH-AI' },
@@ -50,7 +50,7 @@ const PRODUCT_OPTIONS = [
 const faqs = [
   {
     q: 'How quickly can we get started?',
-    a: 'Most customers are operational within 1-2 weeks for GSTSAAS and 2-4 weeks for URGAA. Full platform deployment takes 4-5 weeks.',
+    a: 'Most customers are operational within 1-2 weeks for GST (Go4Garage Service Tools) and 2-4 weeks for URGAA. Full platform deployment takes 4-5 weeks.',
   },
   {
     q: 'Do you offer a free trial?',

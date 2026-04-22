@@ -48,8 +48,8 @@ const faqs: FAQItem[] = [
     category: 'Products',
   },
   {
-    q: 'What is GSTSAAS?',
-    a: 'GSTSAAS is our Workshop & Commerce Engine designed for automobile service operations. It covers digital job cards, spare parts inventory, automated billing with GST compliance, customer management, and operational analytics — transforming paper-based workshops into digital-first operations.',
+    q: 'What is GST (Go4Garage Service Tools)?',
+    a: 'GST (Go4Garage Service Tools) is our Workshop & Commerce Engine designed for automobile service operations. It covers digital job cards, spare parts inventory, automated billing with GST compliance, customer management, and operational analytics — transforming paper-based workshops into digital-first operations.',
     category: 'Products',
   },
   {
@@ -80,7 +80,7 @@ const faqs: FAQItem[] = [
   },
   {
     q: 'Can I use only one product?',
-    a: 'Absolutely. Each product — URGAA (ऊर्जा), GSTSAAS, EV VIDYA ARJUN, and others — works independently as a standalone solution. However, products are designed to work better together, sharing data and intelligence for maximum impact.',
+    a: 'Absolutely. Each product — URGAA (ऊर्जा), GST (Go4Garage Service Tools), EV VIDYA ARJUN, and others — works independently as a standalone solution. However, products are designed to work better together, sharing data and intelligence for maximum impact.',
     category: 'Implementation',
   },
   // Pricing

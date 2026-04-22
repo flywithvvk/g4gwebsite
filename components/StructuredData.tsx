@@ -46,7 +46,7 @@ const organizationSchema = {
     name: 'Go4Garage Product Suite',
     itemListElement: [
       { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'URGAA (ऊर्जा)' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'GSTSAAS' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'GST (Go4Garage Service Tools)' } },
       { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'Ignition App' } },
       { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'EV VIDYA ARJUN' } },
       { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'KAILASH-AI' } },

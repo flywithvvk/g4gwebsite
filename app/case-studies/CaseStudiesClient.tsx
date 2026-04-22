@@ -40,7 +40,7 @@ const caseStudies: CaseStudy[] = [
     challenge:
       'Paper job cards, manual inventory tracking, billing errors, and zero visibility into operational efficiency. Revenue leakage was estimated at 15-20%.',
     solution:
-      'GSTSAAS complete workshop digitization — digital job cards, real-time inventory, automated billing with GST compliance, and operational analytics dashboard.',
+      'GST (Go4Garage Service Tools) complete workshop digitization — digital job cards, real-time inventory, automated billing with GST compliance, and operational analytics dashboard.',
     results: [
       { label: 'Throughput Increase', value: '3x' },
       { label: 'Billing Accuracy', value: '95%' },

@@ -70,7 +70,7 @@ export default function PrivacyClient() {
               <ul className="list-disc pl-5 space-y-2">
                 <li>
                   <strong className="text-on-surface">Service Delivery:</strong> To operate, maintain, and
-                  improve our SaaS products including URGAA, GSTSAAS, Ignition App, EV VIDYA ARJUN, KAILASH-AI,
+                  improve our SaaS products including URGAA, GST (Go4Garage Service Tools), Ignition App, EV VIDYA ARJUN, KAILASH-AI,
                   and Eka-AI.
                 </li>
                 <li>

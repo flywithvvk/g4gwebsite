@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   keywords: [
     "EV charging India", "automobile AI platform", "India EV infrastructure",
     "CPO management software", "automotive intelligence", "Go4Garage",
-    "URGAA EV charging", "GSTSAAS GST compliance", "EV VIDYA ARJUN",
+    "URGAA EV charging", "GST (Go4Garage Service Tools) GST compliance", "EV VIDYA ARJUN",
     "KAILASH-AI", "Eka-AI", "EV workshop management India",
     "electric vehicle compliance India", "fleet management EV India",
   ],

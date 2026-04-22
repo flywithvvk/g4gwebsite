@@ -66,7 +66,7 @@ const demoOptions = [
     iconBg: 'bg-primary-container/15',
     iconColor: 'text-primary',
     title: 'Workshop Demo',
-    products: 'GSTSAAS + KAILASH-AI',
+    products: 'GST (Go4Garage Service Tools) + KAILASH-AI',
     description: 'For EV workshop owners wanting to digitize operations',
     duration: '30 min',
   },

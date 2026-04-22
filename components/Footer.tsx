@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
       title: 'Products',
       links: [
         { label: 'URGAA (ऊर्जा)', href: '/products/urgaa' },
-        { label: 'GSTSAAS', href: '/products/gstsaas' },
+        { label: 'GST (Go4Garage Service Tools)', href: '/products/GST (Go4Garage Service Tools)' },
         { label: 'Ignition App', href: '/products/ignition' },
         { label: 'EV VIDYA ARJUN', href: '/products/arjun' },
         { label: 'KAILASH-AI', href: '/products/kailash-ai' },
