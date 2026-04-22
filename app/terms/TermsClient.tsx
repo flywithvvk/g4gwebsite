@@ -39,7 +39,7 @@ export default function TermsClient() {
               These Terms constitute a legally binding agreement between you (and your organisation, if applicable)
               and Go4Garage Antigravity Technologies Pvt. Ltd. (&ldquo;Go4Garage&rdquo;, &ldquo;we&rdquo;,
               &ldquo;our&rdquo;, or &ldquo;us&rdquo;). By accessing our website at{' '}
-              <a href="https://www.go4garage.com" className="text-primary hover:underline">www.go4garage.com</a>{' '}
+              <a href="https://www.go4garage.in" className="text-primary hover:underline">www.go4garage.in</a>{' '}
               or using any of our products or services, you accept these Terms in full. If you are entering into
               these Terms on behalf of an organisation, you represent that you have the authority to bind that
               organisation.

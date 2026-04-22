@@ -233,16 +233,14 @@ export default function BlogClient() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <AnimatePresence mode="popLayout">
               {filtered.map((article, idx) => (
-                <motion.a
+                <motion.div
                   key={article.title}
-                  href={`/blog/${article.slug}`}
                   layout
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ delay: idx * 0.06 }}
-                  whileHover={{ y: -6 }}
-                  className="bg-surface-bright rounded-2xl border border-outline-variant/30 shadow-sm hover:shadow-md transition-all group flex flex-col"
+                  className="bg-surface-bright rounded-2xl border border-outline-variant/30 shadow-sm transition-all flex flex-col"
                 >
                   <div className="p-6 flex-1 flex flex-col">
                     <div className="flex items-center justify-between mb-4">
@@ -254,7 +252,7 @@ export default function BlogClient() {
                     <div className="w-10 h-10 rounded-xl bg-primary-container/15 flex items-center justify-center mb-4">
                       <Icon name={article.icon} size={22} className="text-primary" />
                     </div>
-                    <h3 className="text-lg font-bold mb-3 font-display group-hover:text-primary transition-colors leading-snug">
+                    <h3 className="text-lg font-bold mb-3 font-display leading-snug">
                       {article.title}
                     </h3>
                     <p className="text-sm text-on-surface-variant leading-relaxed flex-1">
@@ -262,12 +260,12 @@ export default function BlogClient() {
                     </p>
                     <div className="flex items-center justify-between mt-5 pt-4 border-t border-outline-variant/20">
                       <span className="text-xs text-on-surface-variant">{article.date}</span>
-                      <span className="inline-flex items-center gap-1 text-primary text-sm font-semibold group-hover:gap-2 transition-all">
-                        Read <Icon name="arrow_forward" size={16} />
+                      <span className="inline-flex items-center gap-1 text-on-surface-variant/50 text-xs italic">
+                        <Icon name="schedule" size={14} /> Coming soon
                       </span>
                     </div>
                   </div>
-                </motion.a>
+                </motion.div>
               ))}
             </AnimatePresence>
           </div>

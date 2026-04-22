@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { Icon } from '@/components/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
@@ -24,7 +24,38 @@ interface BookingForm {
   useCase: string;
 }
 
-// ─── Static data ──────────────────────────────────────────────────────────────
+// ─── Dynamic business day generator ──────────────────────────────────────────
+
+const DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const TIME_SETS = [
+  ['10:00 AM', '11:00 AM', '2:00 PM', '4:00 PM'],
+  ['10:00 AM', '12:00 PM', '3:00 PM', '5:00 PM'],
+  ['11:00 AM', '1:00 PM', '3:00 PM', '6:00 PM'],
+  ['10:00 AM', '2:00 PM', '4:00 PM', '5:00 PM'],
+  ['10:00 AM', '11:00 AM', '3:00 PM', '4:00 PM'],
+];
+
+function getNextBusinessDays(count: number): TimeSlotDay[] {
+  const result: TimeSlotDay[] = [];
+  const date = new Date();
+  date.setHours(0, 0, 0, 0);
+  date.setDate(date.getDate() + 1); // start from tomorrow
+  let setIdx = 0;
+  while (result.length < count) {
+    const dow = date.getDay();
+    if (dow !== 0 && dow !== 6) {
+      result.push({
+        day: DAY_NAMES[dow],
+        date: `${MONTH_NAMES[date.getMonth()]} ${date.getDate()}`,
+        times: TIME_SETS[setIdx % TIME_SETS.length],
+      });
+      setIdx++;
+    }
+    date.setDate(date.getDate() + 1);
+  }
+  return result;
+}
 
 const demoOptions = [
   {
@@ -59,13 +90,6 @@ const demoOptions = [
   },
 ];
 
-const timeSlots: TimeSlotDay[] = [
-  { day: 'Mon', date: 'Jan 27', times: ['10:00 AM', '11:00 AM', '2:00 PM', '4:00 PM'] },
-  { day: 'Tue', date: 'Jan 28', times: ['10:00 AM', '12:00 PM', '3:00 PM', '5:00 PM'] },
-  { day: 'Wed', date: 'Jan 29', times: ['11:00 AM', '1:00 PM', '3:00 PM', '6:00 PM'] },
-  { day: 'Thu', date: 'Jan 30', times: ['10:00 AM', '2:00 PM', '4:00 PM', '5:00 PM'] },
-  { day: 'Fri', date: 'Jan 31', times: ['10:00 AM', '11:00 AM', '3:00 PM', '4:00 PM'] },
-];
 
 const expectItems = [
   'Platform walkthrough tailored to your industry',
@@ -87,6 +111,7 @@ const initialForm: BookingForm = {
 export default function DemoClient() {
   const [selectedDemo, setSelectedDemo] = useState<DemoType>(null);
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
+  const timeSlots = useMemo(() => getNextBusinessDays(5), []);
   const [showModal, setShowModal] = useState(false);
   const [form, setForm] = useState<BookingForm>(initialForm);
   const [submitted, setSubmitted] = useState(false);
