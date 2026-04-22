@@ -40,7 +40,7 @@ const afterItems = [
   '2-3 weeks with AI-assisted processing (Based on pilot customer experience)',
   'Fully digital GST automation (95% cost reduction*)',
   'AI-powered training with certification in 4-6 weeks',
-  'Unified platform with 6 integrated products',
+  'Unified platform with 7 integrated products',
   'Predictive AI maintenance with 99.5% uptime (Architecture target)',
 ];
 
@@ -186,7 +186,7 @@ export default function ImpactClient() {
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
             {[
-              { value: '95',  label: 'Industry Problems Classified', sub: '84 solved by AI',   icon: 'checklist',      color: 'text-primary' },
+              { value: '95',  label: 'Industry Problems Classified', sub: '85 solvable by platform',   icon: 'checklist',      color: 'text-primary' },
               { value: '12',  label: 'AI Industry Branches',          sub: '12 specialist personas', icon: 'account_tree',   color: 'text-secondary' },
               { value: '29',  label: 'Custom ML Models',              sub: 'Designed & planned', icon: 'model_training', color: 'text-tertiary' },
               { value: '7',   label: 'Integrated Products',           sub: 'One platform',       icon: 'widgets',        color: 'text-primary' },

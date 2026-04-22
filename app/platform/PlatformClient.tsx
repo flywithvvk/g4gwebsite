@@ -103,7 +103,7 @@ const techCards = [
   {
     icon: 'hub',
     title: 'Multi-Agent AI',
-    description: 'Orchestrated AI agents across 6 products providing cross-domain intelligence and automated decision support',
+    description: 'Orchestrated AI agents across 7 products providing cross-domain intelligence and automated decision support',
     features: ['Cross-product reasoning', 'Autonomous task execution', 'Human-in-the-loop escalation'],
   },
 ];

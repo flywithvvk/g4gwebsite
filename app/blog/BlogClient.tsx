@@ -113,6 +113,7 @@ export default function BlogClient() {
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
+      window.location.href = `mailto:connect@go4garage.in?subject=Blog Newsletter Subscription&body=Please add me to the Go4Garage blog newsletter.%0AEmail: ${encodeURIComponent(email)}`;
       setSubscribed(true);
       setEmail('');
       setTimeout(() => setSubscribed(false), 4000);

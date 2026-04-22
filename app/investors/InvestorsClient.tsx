@@ -64,7 +64,7 @@ const growthTimeline = [
     title: 'Foundation',
     items: [
       'Core platform architecture built ✓',
-      '6 products developed ✓',
+      '7 products developed ✓',
       'First pilot deployments ✓',
       'Team assembled ✓',
     ],
@@ -114,8 +114,8 @@ const growthTimeline = [
 
 const team = [
   { name: 'Vivek Raj', role: 'CEO & Founder', tag: '10+ years in automotive tech', icon: 'person', bg: 'from-primary to-primary-container', bio: '10+ years in automotive technology. Founded Go4Garage to solve India\'s EV infrastructure challenges at scale.', creds: 'Serial entrepreneur' },
-  { name: '', role: 'Co-Founder & CTO', tag: 'AI researcher, 8+ years', icon: 'psychology', bg: 'from-secondary to-secondary-container', bio: 'Machine learning and LLM systems expertise. Leading the development of India\'s first Automobile LLM.', creds: 'Engineering background • AI researcher' },
-  { name: '', role: 'Advisory Board', tag: 'EV & automotive industry veterans', icon: 'groups', bg: 'from-tertiary to-tertiary-container', bio: 'Industry advisors from leading EV companies and Indian automotive firms. Deep government and regulatory relationships.', creds: '50+ years combined experience' },
+  { name: 'Engineering Team', role: 'Co-Founder & CTO', tag: 'AI researcher, 8+ years', icon: 'psychology', bg: 'from-secondary to-secondary-container', bio: 'Machine learning and LLM systems expertise. Leading the development of India\'s first Automobile LLM.', creds: 'Engineering background • AI researcher' },
+  { name: 'Advisory Circle', role: 'Advisory Board', tag: 'EV & automotive industry veterans', icon: 'groups', bg: 'from-tertiary to-tertiary-container', bio: 'Industry advisors from leading EV companies and Indian automotive firms. Deep government and regulatory relationships.', creds: '50+ years combined experience' },
 ];
 
 
@@ -130,7 +130,7 @@ const competitionAdvantages = [
   { competitor: 'ChargeZone / Statiq', scope: 'CPO charging management only', g4g: 'Full EV ecosystem — CPO + workshop + compliance + AI' },
   { competitor: 'Generic garage tools', scope: 'Single-domain workshop ops', g4g: 'Cross-domain: regulatory, operational, commercial, workforce' },
   { competitor: 'Analytics platforms', scope: 'Data reporting & dashboards', g4g: 'Actionable AI intelligence with Automobile LLM' },
-  { competitor: 'Compliance tools', scope: 'Point-in-time documentation', g4g: 'Real-time regulatory AI across 28+ state policies' },
+  { competitor: 'Compliance tools', scope: 'Point-in-time documentation', g4g: 'Real-time regulatory AI across 33 states — full pan-India coverage' },
 ];
 
 export default function InvestorsClient() {
@@ -416,23 +416,39 @@ export default function InvestorsClient() {
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-surface-bright p-7 rounded-2xl border border-outline-variant/30 shadow-sm">
               <h3 className="font-bold text-lg text-secondary mb-1 font-display">Request Investor Materials</h3>
               <p className="text-sm text-on-surface-variant mb-5">Submit your details and we&apos;ll send our investor materials within 24 hours.</p>
-              <form className="space-y-3" onSubmit={e => e.preventDefault()}>
+              <form className="space-y-3" onSubmit={e => {
+                e.preventDefault();
+                const fd = new FormData(e.currentTarget);
+                const name = fd.get('name') || '';
+                const org = fd.get('org') || '';
+                const email = fd.get('email') || '';
+                const stage = fd.get('stage') || '';
+                const msg = fd.get('message') || '';
+                const subject = encodeURIComponent(`Investor Inquiry — ${org || name}`);
+                const body = encodeURIComponent(`Name: ${name}\nOrganization: ${org}\nEmail: ${email}\nInvestment Stage: ${stage}\n\nMessage:\n${msg}`);
+                window.location.href = `mailto:go4garageofficial@gmail.com?subject=${subject}&body=${body}`;
+              }}>
                 <input
                   type="text"
+                  name="name"
                   placeholder="Your Name"
+                  required
                   className="w-full text-sm px-4 py-2.5 bg-surface-container-low rounded-xl border border-outline-variant/30 focus:outline-none focus:border-primary/50 transition-colors placeholder:text-on-surface-variant/50"
                 />
                 <input
                   type="text"
+                  name="org"
                   placeholder="Fund / Organization"
                   className="w-full text-sm px-4 py-2.5 bg-surface-container-low rounded-xl border border-outline-variant/30 focus:outline-none focus:border-primary/50 transition-colors placeholder:text-on-surface-variant/50"
                 />
                 <input
                   type="email"
+                  name="email"
                   placeholder="Email Address"
+                  required
                   className="w-full text-sm px-4 py-2.5 bg-surface-container-low rounded-xl border border-outline-variant/30 focus:outline-none focus:border-primary/50 transition-colors placeholder:text-on-surface-variant/50"
                 />
-                <select className="w-full text-sm px-4 py-2.5 bg-surface-container-low rounded-xl border border-outline-variant/30 focus:outline-none focus:border-primary/50 transition-colors text-on-surface-variant">
+                <select name="stage" className="w-full text-sm px-4 py-2.5 bg-surface-container-low rounded-xl border border-outline-variant/30 focus:outline-none focus:border-primary/50 transition-colors text-on-surface-variant">
                   <option value="">Investment Stage</option>
                   <option value="angel">Angel</option>
                   <option value="pre-seed">Pre-Seed</option>
@@ -440,6 +456,7 @@ export default function InvestorsClient() {
                   <option value="series-a">Series A</option>
                 </select>
                 <textarea
+                  name="message"
                   placeholder="Message (optional)"
                   rows={2}
                   className="w-full text-sm px-4 py-2.5 bg-surface-container-low rounded-xl border border-outline-variant/30 focus:outline-none focus:border-primary/50 transition-colors resize-none placeholder:text-on-surface-variant/50"

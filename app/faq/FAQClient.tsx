@@ -28,7 +28,7 @@ const faqs: FAQItem[] = [
   // General
   {
     q: 'What is Go4Garage?',
-    a: 'Go4Garage is India\'s first AI-powered automobile intelligence platform. We solve 85 problems across the EV ecosystem with 6 products, 14 AI agents, and 76 features — covering everything from regulatory compliance and workshop operations to workforce training and fleet management.',
+    a: 'Go4Garage is India\'s first AI-powered automobile intelligence platform. We solve 85 problems across the EV ecosystem with 7 products, 12 AI industry branches, and 29+ ML models — covering everything from regulatory compliance and workshop operations to workforce training and fleet management.',
     category: 'General',
   },
   {
@@ -38,7 +38,7 @@ const faqs: FAQItem[] = [
   },
   {
     q: 'How is Go4Garage different from other platforms?',
-    a: 'Go4Garage is the only platform covering the full EV value chain with a proprietary Automobile LLM. While others offer point solutions, we provide an integrated ecosystem of 6 products that share data and intelligence — delivering 89.5% compliance automation and real operational impact across 33 Indian states.',
+    a: 'Go4Garage is the only platform covering the full EV value chain with a proprietary Automobile LLM. While others offer point solutions, we provide an integrated ecosystem of 7 products that share data and intelligence — delivering 89.5% compliance automation and real operational impact across 33 Indian states.',
     category: 'General',
   },
   // Products
@@ -86,7 +86,7 @@ const faqs: FAQItem[] = [
   // Pricing
   {
     q: 'How is Go4Garage priced?',
-    a: 'Go4Garage follows a SaaS model with plans based on usage volume and features required. We offer Starter, Professional, and Enterprise tiers to fit businesses of all sizes. Contact our sales team for a customized quote based on your specific needs.',
+    a: 'Go4Garage follows a SaaS model with plans based on usage volume and features required. We offer a Free tier (no credit card required), plus Starter, Professional, and Enterprise tiers to fit businesses of all sizes. Contact our sales team for a customized quote based on your specific needs.',
     category: 'Pricing',
   },
   {

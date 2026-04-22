@@ -163,7 +163,7 @@ export default function HomePage() {
 
                   {/* Sub-copy */}
                   <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-lg md:text-xl text-on-surface-variant mb-10 max-w-2xl mx-auto leading-relaxed">
-                    95 problems in India&apos;s EV ecosystem. 85 solved by our platform. 76 features. 6 products. Zero friction.
+                    95 problems in India&apos;s EV ecosystem. 85 solved by our platform. 76 features. 7 products. Zero friction.
                   </motion.p>
 
                   {/* CTAs */}
@@ -296,7 +296,7 @@ export default function HomePage() {
             badge="Our Products"
             title="Complete Ecosystem Platform"
             highlight="Ecosystem Platform"
-            subtitle="6 integrated products working as one unified intelligence layer across the entire EV value chain."
+            subtitle="7 integrated products working as one unified intelligence layer across the entire EV value chain."
           />
 
           <motion.div

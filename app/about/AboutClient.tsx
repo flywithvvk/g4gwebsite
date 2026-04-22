@@ -13,7 +13,7 @@ const heroNumbers = [
   { value: 95, label: 'Problems Mapped', icon: 'search' },
   { value: 85, label: 'Solvable Today', icon: 'check_circle' },
   { value: 76, label: 'Features Built', icon: 'widgets' },
-  { value: 6, label: 'Products Launched', icon: 'inventory_2' },
+  { value: 7, label: 'Products Launched', icon: 'inventory_2' },
 ];
 
 const coreValues = [
@@ -42,7 +42,7 @@ const milestones = [
     icon: 'build',
     bullets: [
       'Platform development started',
-      '6 products designed and built — URGAA, GSTSAAS, Ignition, ARJUN, KAILASH-AI, Eka-AI',
+      '7 products designed and built — URGAA, GST (Go4Garage Service Tools), Ignition, EV VIDYA ARJUN, KAILASH-AI, Eka-AI + Eka Brain',
       'First pilot deployments with early customers',
       'KAILASH-AI intelligence engine development',
     ],
@@ -418,7 +418,7 @@ export default function AboutClient() {
             />
             <StatsCard
               icon="inventory_2"
-              value={6}
+              value={7}
               label="Products Launched"
               description="Live in the ecosystem"
             />

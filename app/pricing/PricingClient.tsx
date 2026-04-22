@@ -95,7 +95,7 @@ const tiers: Tier[] = [
     icon: 'corporate_fare',
     accent: 'secondary',
     productKeys: ['urgaa', 'gstsaas', 'ignition', 'arjun', 'kailash', 'ekaai'],
-    productNote: 'All 6 products + white-label options',
+    productNote: 'All 7 products + white-label options',
     features: [
       'Unlimited stations & workshops',
       'White-label deployment for partners',
@@ -339,7 +339,7 @@ export default function PricingClient() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
             {[
               { icon: 'subscriptions',    title: 'SaaS Subscription',         desc: 'Monthly or annual plans per product, tenant, and usage band. Free → Starter → Professional → Enterprise.',      color: 'text-primary',   bg: 'bg-primary-container/10' },
-              { icon: 'build_circle',     title: 'Implementation & Integration', desc: 'Deployment, onboarding, and custom integration fees for URGAA and GST SaaS enterprise rollouts.',          color: 'text-secondary', bg: 'bg-secondary-container/10' },
+              { icon: 'build_circle',     title: 'Implementation & Integration', desc: 'Deployment, onboarding, and custom integration fees for URGAA and GST (Go4Garage Service Tools) enterprise rollouts.',          color: 'text-secondary', bg: 'bg-secondary-container/10' },
               { icon: 'swap_horiz',       title: 'Transaction-Linked Revenue',   desc: 'Per-transaction fees on invoice reconciliation, financing routing, insurance claims, and marketplace orders.', color: 'text-tertiary',  bg: 'bg-tertiary-container/10' },
               { icon: 'auto_awesome',     title: 'Premium Intelligence',         desc: 'Advanced KAILASH-AI and Eka Brain modules — predictive models, custom ML, and deep fleet analytics for Pro/Enterprise.', color: 'text-primary', bg: 'bg-primary-container/10' },
               { icon: 'school',           title: 'Training & Certification',     desc: 'EV VIDYA ARJUN course fees, technician certification programs, and LMS licensing for training centres.',   color: 'text-secondary', bg: 'bg-secondary-container/10' },

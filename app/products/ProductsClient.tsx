@@ -49,7 +49,7 @@ const products: Product[] = [
     colorFamily: 'primary',
   },
   {
-    id: 'GST (Go4Garage Service Tools)',
+    id: 'gstsaas',
     name: 'GST (Go4Garage Service Tools)',
     prdCode: 'PRD-GST-001',
     tagline: 'Workshop & Commerce Engine',
@@ -58,7 +58,7 @@ const products: Product[] = [
     problemLabel: 'problems',
     problemCount: 17,
     icon: 'build',
-    slug: 'GST (Go4Garage Service Tools)',
+    slug: 'gstsaas',
     setupTime: '1-2 weeks setup',
     features: [
       'Digital Job Cards — real-time status tracking for customers',
@@ -327,7 +327,7 @@ function TechArchDiagram() {
             Layer 2 — Application Products
           </p>
           <span className="text-[9px] font-mono text-on-surface-variant/30 border border-outline-variant/20 rounded px-2 py-0.5">
-            6 integrated modules · shared session context
+            7 integrated modules · shared session context
           </span>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
@@ -502,7 +502,7 @@ export default function ProductsClient() {
             >
               <span className="w-2 h-2 rounded-full bg-primary-container animate-pulse" />
               <span className="text-sm font-medium text-primary font-display">
-                6 Products &bull; Complete Ecosystem
+                7 Products &bull; Complete Ecosystem
               </span>
             </motion.div>
 
@@ -524,7 +524,7 @@ export default function ProductsClient() {
       <section className="py-16 bg-gradient-to-r from-primary-container/8 via-surface to-secondary-container/8 border-y border-outline-variant/20">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <StatsCard icon="inventory_2" value={6} label="Products" description="Integrated ecosystem" />
+            <StatsCard icon="inventory_2" value={7} label="Products" description="Integrated ecosystem" />
             <StatsCard icon="featured_play_list" value={76} label="Features" description="Across all products" />
             <StatsCard icon="check_circle" value={85} label="Problems Solved" description="End-to-end coverage" />
             <StatsCard icon="map" value={33} label="States Covered" description="Pan-India compliance" />

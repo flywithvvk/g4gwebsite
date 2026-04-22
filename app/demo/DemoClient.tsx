@@ -86,7 +86,7 @@ const demoOptions = [
     iconBg: 'bg-tertiary-container/15',
     iconColor: 'text-tertiary',
     title: 'Full Platform Demo',
-    products: 'All 6 Products',
+    products: 'All 7 Products',
     description: 'For enterprises looking for end-to-end transformation',
     duration: '45 min',
   },
