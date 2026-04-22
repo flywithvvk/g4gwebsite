@@ -57,9 +57,8 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2 space-y-5">
-            <div className="flex items-center gap-2.5">
-              <Image src="/icon.png" alt="Go4Garage" width={32} height={32} className="rounded-lg" />
-              <Image src="/logo.jpg" alt="Go4Garage" width={120} height={32} className="h-7 w-auto object-contain" />
+            <div className="flex items-center">
+              <Image src="/icon.png" alt="Go4Garage" width={40} height={40} className="rounded-xl" />
             </div>
             <p className="text-sm text-on-surface-variant leading-relaxed max-w-xs">
               India&apos;s AI-powered automobile intelligence platform accelerating EV adoption and charging scale across 33 states.

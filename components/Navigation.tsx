@@ -37,7 +37,7 @@ const Navigation = () => {
     >
       <div className={`absolute inset-0 backdrop-blur-xl border-b transition-all duration-300 ${scrolled ? 'bg-surface-bright shadow-md border-outline-variant/40' : 'bg-surface-bright shadow-sm border-outline-variant/30'}`} />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto pl-2 sm:pl-3 lg:pl-4 pr-4 sm:pr-6 lg:pr-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center group">
