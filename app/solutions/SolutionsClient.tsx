@@ -104,7 +104,7 @@ const stakeholders: Stakeholder[] = [
     name: 'Fleet Owners',
     subtitle: 'Commercial EV Fleet Operators',
     icon: 'local_shipping',
-    image: 'https://images.unsplash.com/photo-1558618047-f4e90bc07a74?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80',
     challenges: [
       'Unpredictable Total Cost of Ownership',
       'Driver training gaps',
@@ -224,7 +224,7 @@ const stakeholders: Stakeholder[] = [
     name: 'EV Buyers / Consumers',
     subtitle: 'Individual EV Owners',
     icon: 'electric_car',
-    image: 'https://images.unsplash.com/photo-1647891522685-8e5b54ab3eea?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80',
     challenges: [
       'Range anxiety & charging access',
       'Maintenance cost uncertainty',
