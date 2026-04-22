@@ -208,7 +208,7 @@ export default function HomePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           THE PROBLEM — 8 Layers
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="py-24 bg-surface-container-low">
+      <section className="py-14 md:py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
           <SectionHeading
             badge="The Challenge"
@@ -236,7 +236,7 @@ export default function HomePage() {
                   <span className="text-xs font-bold text-on-surface-variant/60 font-display">{layer.layer}</span>
                 </div>
                 <h3 className="text-sm font-bold mb-2 group-hover:text-primary transition-colors font-display leading-tight">{layer.title}</h3>
-                <div className="text-3xl font-black gradient-text font-display">
+                <div className="text-2xl sm:text-3xl font-black gradient-text font-display">
                   <AnimatedCounter target={layer.problems} />
                   <span className="text-base font-semibold text-on-surface-variant ml-1">problems</span>
                 </div>
@@ -267,7 +267,7 @@ export default function HomePage() {
       <section className="py-16 relative overflow-hidden border-y border-outline-variant/15">
         <div className="absolute inset-0 bg-gradient-to-r from-primary-container/8 via-secondary-container/5 to-tertiary-container/8" />
         <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             <StatsCard icon="verified" value={89.5} suffix="%" label="Compliance Automation" description="Regulatory filings handled by AI" />
             <StatsCard icon="speed" value={3} suffix="x" label="Faster Operations" description="Compared to manual workflows" />
             <StatsCard icon="savings" value={95} suffix="%" label="Cost Reduction" description="In compliance processing costs" />
@@ -513,7 +513,7 @@ export default function HomePage() {
                     ))}
                   </div>
 
-                  <div className="mt-8 grid grid-cols-3 gap-4 pt-6 border-t border-outline-variant/20">
+                  <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-4 pt-6 border-t border-outline-variant/20">
                     {[
                       { val: 14, label: 'AI Agents', color: 'text-primary' },
                       { val: 76, label: 'Features', color: 'text-secondary' },

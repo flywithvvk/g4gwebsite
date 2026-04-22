@@ -210,7 +210,7 @@ export default function PlatformClient() {
                     <span className="text-sm font-semibold text-primary font-display tracking-wide">Enterprise-Grade Platform</span>
                   </motion.div>
 
-                  <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight font-display">
+                  <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight font-display">
                     Enterprise-Grade AI{' '}
                     <span className="gradient-text">Intelligence Platform</span>
                   </h1>
@@ -341,7 +341,8 @@ export default function PlatformClient() {
           />
 
           <motion.div {...fadeUp} className="max-w-4xl mx-auto">
-            <div className="rounded-2xl overflow-hidden border border-outline-variant/30 shadow-sm">
+            <div className="overflow-x-auto rounded-2xl">
+            <div className="rounded-2xl overflow-hidden border border-outline-variant/30 shadow-sm min-w-[520px]">
               {/* Header */}
               <div className="grid grid-cols-3 text-sm font-bold">
                 <div className="px-6 py-4 text-on-surface-variant font-display bg-surface-container/30">
@@ -380,6 +381,7 @@ export default function PlatformClient() {
                   </div>
                 </motion.div>
               ))}
+            </div>
             </div>
           </motion.div>
         </div>

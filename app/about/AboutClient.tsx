@@ -161,7 +161,7 @@ export default function AboutClient() {
                 <span className="w-2 h-2 rounded-full bg-primary-container animate-pulse" />
                 <span className="text-sm font-medium text-primary font-display">Our Story</span>
               </motion.div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tight font-display">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tight font-display">
                 Born from the Trenches of India&apos;s{' '}
                 <span className="gradient-text">EV Revolution</span>
               </h1>
@@ -185,7 +185,7 @@ export default function AboutClient() {
                   key={item.label}
                   variants={fadeUp}
                   whileHover={{ y: -4, scale: 1.02 }}
-                  className="bg-surface-bright/80 backdrop-blur-sm p-6 rounded-2xl border border-outline-variant/30 shadow-sm hover:shadow-md transition-all group"
+                  className="bg-surface-bright/80 backdrop-blur-sm p-4 md:p-6 rounded-2xl border border-outline-variant/30 shadow-sm hover:shadow-md transition-all group"
                 >
                   <div className="text-3xl md:text-4xl font-black gradient-text mb-1 font-display">
                     <AnimatedCounter target={item.value} />
@@ -211,7 +211,7 @@ export default function AboutClient() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               whileHover={{ y: -4 }}
-              className="bg-surface-bright p-8 rounded-2xl border border-outline-variant/30 border-l-4 border-l-primary shadow-sm hover:shadow-md transition-all"
+              className="bg-surface-bright p-5 md:p-8 rounded-2xl border border-outline-variant/30 border-l-4 border-l-primary shadow-sm hover:shadow-md transition-all"
             >
               <h3 className="text-2xl font-bold mb-4 font-display">Our Mission</h3>
               <p className="text-on-surface-variant leading-relaxed mb-4">

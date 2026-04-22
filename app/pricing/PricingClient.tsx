@@ -208,7 +208,7 @@ export default function PricingClient() {
               <span className="w-2 h-2 rounded-full bg-primary-container animate-pulse" />
               <span className="text-sm font-medium text-primary font-display">Pricing</span>
             </motion.div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight font-display">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight font-display">
               Simple, Transparent <span className="gradient-text">Pricing</span>
             </h1>
             <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto">
@@ -335,7 +335,7 @@ export default function PricingClient() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="w-full text-left border-collapse"
+              className="w-full text-left border-collapse min-w-[520px]"
             >
               <thead>
                 <tr className="border-b-2 border-outline-variant/30">

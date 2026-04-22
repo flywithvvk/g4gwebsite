@@ -49,16 +49,16 @@ const CHALLENGE_WINDOWS = [
   [37, 41],   // Battery
 ] as const;
 
-// Floating card positions — left column (0–3) + center column (4–7)
+// Floating card positions — left column (0–3) + RIGHT column (4–7, no overlap on any screen)
 const CHALLENGE_FLOAT_POSITIONS: React.CSSProperties[] = [
   { top: '8%',  left: '3%'  },
-  { top: '22%', left: '3%'  },
-  { top: '38%', left: '3%'  },
-  { top: '54%', left: '3%'  },
-  { top: '8%',  left: '40%' },
-  { top: '22%', left: '40%' },
-  { top: '38%', left: '40%' },
-  { top: '54%', left: '40%' },
+  { top: '24%', left: '3%'  },
+  { top: '40%', left: '3%'  },
+  { top: '56%', left: '3%'  },
+  { top: '8%',  right: '3%' },
+  { top: '24%', right: '3%' },
+  { top: '40%', right: '3%' },
+  { top: '56%', right: '3%' },
 ];
 
 const ARRIVED_TIME = 41;
@@ -125,7 +125,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
   return (
     <div className="relative h-full overflow-hidden bg-black">
 
-      {/* ═══════════ VIDEO — minimal 2% scale, keeps content intact ═══════════ */}
+      {/* ═══════════ VIDEO — GPU-accelerated, no scale blur ═══════════ */}
       <video
         ref={videoRef}
         autoPlay
@@ -133,7 +133,13 @@ export function EVJourneyVisual({ onComplete }: Props) {
         playsInline
         preload="auto"
         poster="/images/journey-poster.jpg"
-        style={{ transform: 'scale(1.02)', transformOrigin: 'center center' }}
+        style={{
+          transform: 'translateZ(0)',
+          WebkitTransform: 'translateZ(0)',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden',
+          willChange: 'transform',
+        }}
         className="absolute inset-0 w-full h-full object-cover object-center"
       >
         {/* WebM VP9 — best quality/size for Chrome/Firefox/Edge */}
@@ -156,11 +162,11 @@ export function EVJourneyVisual({ onComplete }: Props) {
         style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.2) 0%, transparent 22%)' }}
       />
 
-      {/* ═══════════ WATERMARK KILL COVER — sits behind panel, covers HeyGen logo ═══════════ */}
+      {/* ═══════════ WATERMARK KILL COVER — hidden on mobile (panel is full-width there) ═══════════ */}
       <div
-        className="absolute bottom-0 right-0 z-[28] pointer-events-none"
+        className="absolute bottom-0 right-0 z-[28] pointer-events-none hidden sm:block"
         style={{
-          width: 'min(260px, 42vw)',
+          width: 260,
           height: 150,
           background: 'rgba(0,0,0,0.95)',
           borderRadius: '10px 0 0 0',
@@ -172,9 +178,9 @@ export function EVJourneyVisual({ onComplete }: Props) {
         {started && !showArrived && activeIdx >= 0 && (
           <motion.div
             key={`float-${activeIdx}`}
-            initial={{ opacity: 0, x: -20, scale: 0.92 }}
+            initial={{ opacity: 0, x: activeIdx >= 4 ? 20 : -20, scale: 0.92 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: -12, scale: 0.95 }}
+            exit={{ opacity: 0, x: activeIdx >= 4 ? 12 : -12, scale: 0.95 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
             className="absolute z-[20] pointer-events-none"
             style={CHALLENGE_FLOAT_POSITIONS[activeIdx]}
@@ -253,21 +259,20 @@ export function EVJourneyVisual({ onComplete }: Props) {
         );
       })}
 
-      {/* ═══════════ STAGE UI PANEL — compact, sits above kill cover ═══════════ */}
+      {/* ═══════════ STAGE UI PANEL — full-width mobile, corner on desktop ═══════════ */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: started ? 1 : 0, y: started ? 0 : 16 }}
         transition={{ duration: 0.5, delay: 0.8 }}
-        className="absolute bottom-0 right-0 z-30 pointer-events-none"
+        className="absolute bottom-0 right-0 z-30 pointer-events-none w-full sm:w-auto"
       >
         <div
           style={{
             background: 'rgba(0,0,0,0.88)',
             backdropFilter: 'blur(16px)',
-            borderRadius: '10px 0 0 0',
             padding: '10px 14px 12px 14px',
-            width: 'min(260px, 42vw)',
           }}
+          className="sm:rounded-tl-[10px] w-full sm:w-[260px]"
         >
           {/* Challenge / resolved status row */}
           <AnimatePresence mode="wait">
