@@ -7,6 +7,28 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { Icon } from '@/components/Icon';
 
 /* ─────────────────────────────────────────────
+   Stakeholder Images  (Unsplash CDN)
+   ───────────────────────────────────────────── */
+
+const STAKEHOLDER_IMAGES: Record<string, string> = {
+  cpo:              'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80',
+  workshops:        'https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=800&q=80',
+  fleet:            'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80',
+  insurance:        'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80',
+  govt:             'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=800&q=80',
+  training:         'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80',
+  consumers:        'https://images.unsplash.com/photo-1571068316344-75bc76f77890?auto=format&fit=crop&w=800&q=80',
+  oems:             'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=800&q=80',
+  nbfc:             'https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?auto=format&fit=crop&w=800&q=80',
+  technicians:      'https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=800&q=80',
+  discoms:          'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80',
+  recyclers:        'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=800&q=80',
+  'parts-suppliers':'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',
+  'investors-type': 'https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?auto=format&fit=crop&w=800&q=80',
+  'rsa-partners':   'https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=800&q=80',
+};
+
+/* ─────────────────────────────────────────────
    Stakeholder Data
    ───────────────────────────────────────────── */
 
@@ -26,6 +48,7 @@ interface Stakeholder {
   name: string;
   subtitle: string;
   icon: string;
+  image: string;
   challenges: string[];
   products: StakeholderProduct[];
   metrics: StakeholderMetric[];
@@ -39,6 +62,7 @@ const stakeholders: Stakeholder[] = [
     name: 'CPO Operators',
     subtitle: 'EV Charging Point Operators',
     icon: 'ev_station',
+    image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80',
     challenges: [
       'DISCOM application delays (3-6 months)',
       '33-state compliance complexity',
@@ -68,6 +92,7 @@ const stakeholders: Stakeholder[] = [
     name: 'Workshop Owners',
     subtitle: 'EV Service Centers',
     icon: 'build',
+    image: 'https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=800&q=80',
     challenges: [
       'Paper-based job cards causing errors',
       'GST invoicing complexity',
@@ -101,6 +126,7 @@ const stakeholders: Stakeholder[] = [
     name: 'Fleet Owners',
     subtitle: 'Commercial EV Fleet Operators',
     icon: 'local_shipping',
+    image: 'https://images.unsplash.com/photo-1558618047-f4e90bc07a74?auto=format&fit=crop&w=800&q=80',
     challenges: [
       'Unpredictable Total Cost of Ownership',
       'Driver training gaps',
@@ -134,6 +160,7 @@ const stakeholders: Stakeholder[] = [
     name: 'Insurance Companies',
     subtitle: 'EV Insurance Underwriters & Providers',
     icon: 'verified_user',
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80',
     challenges: [
       'Unknown EV risk pricing models',
       'Battery valuation uncertainty',
@@ -163,6 +190,7 @@ const stakeholders: Stakeholder[] = [
     name: 'Government & Regulators',
     subtitle: 'Policy Makers & Regulatory Bodies',
     icon: 'account_balance',
+    image: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=800&q=80',
     challenges: [
       'Policy enforcement across states',
       'Subsidy tracking & disbursement',
@@ -192,6 +220,7 @@ const stakeholders: Stakeholder[] = [
     name: 'Training Institutions',
     subtitle: 'EV Skill Development Centres',
     icon: 'school',
+    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
     challenges: [
       'No standardised EV curriculum',
       'Growing skill gap in EV sector',
@@ -217,6 +246,7 @@ const stakeholders: Stakeholder[] = [
     name: 'EV Buyers / Consumers',
     subtitle: 'Individual EV Owners',
     icon: 'electric_car',
+    image: 'https://images.unsplash.com/photo-1647891522685-8e5b54ab3eea?auto=format&fit=crop&w=800&q=80',
     challenges: [
       'Range anxiety & charging access',
       'Maintenance cost uncertainty',
@@ -242,6 +272,7 @@ const stakeholders: Stakeholder[] = [
     name: 'OEMs / Manufacturers',
     subtitle: 'EV Original Equipment Manufacturers',
     icon: 'precision_manufacturing',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80',
     challenges: [
       'After-sales quality monitoring',
       'Warranty management complexity',
@@ -276,6 +307,7 @@ const stakeholders: Stakeholder[] = [
     name: 'NBFC / Banks',
     subtitle: 'EV Financing & Lending Institutions',
     icon: 'account_balance',
+    image: 'https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=800&q=80',
     challenges: [
       'EV loan risk assessment with no historical data',
       'Battery residual value uncertainty for loan collateral',
@@ -305,6 +337,7 @@ const stakeholders: Stakeholder[] = [
     name: 'EV Technicians',
     subtitle: 'EV Service Technicians & Mechanics',
     icon: 'engineering',
+    image: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=800&q=80',
     challenges: [
       'High-voltage safety knowledge gaps',
       'No standardised diagnostic tools for EVs',
@@ -338,6 +371,7 @@ const stakeholders: Stakeholder[] = [
     name: 'DISCOMs',
     subtitle: 'Distribution Companies & Grid Operators',
     icon: 'electrical_services',
+    image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80',
     challenges: [
       'Load forecasting for EV charging demand',
       'Transformer health monitoring near charging clusters',
@@ -367,6 +401,7 @@ const stakeholders: Stakeholder[] = [
     name: 'Battery Recyclers',
     subtitle: 'Battery Recyclers & Second-Life Companies',
     icon: 'recycling',
+    image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=800&q=80',
     challenges: [
       'State-of-Health (SoH) assessment accuracy',
       'Collection logistics across India',
@@ -396,6 +431,7 @@ const stakeholders: Stakeholder[] = [
     name: 'Parts Suppliers',
     subtitle: 'EV Component & Parts Distributors',
     icon: 'inventory_2',
+    image: 'https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&w=800&q=80',
     challenges: [
       'Demand forecasting for new EV parts',
       'Counterfeit part identification challenges',
@@ -425,6 +461,7 @@ const stakeholders: Stakeholder[] = [
     name: 'Investors',
     subtitle: 'VCs, PEs & Strategic Investors',
     icon: 'trending_up',
+    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80',
     challenges: [
       'EV market sizing with limited data availability',
       'Due diligence on EV technology startups',
@@ -450,6 +487,7 @@ const stakeholders: Stakeholder[] = [
     name: 'RSA Partners',
     subtitle: 'Roadside Assistance & Emergency Services',
     icon: 'emergency',
+    image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80',
     challenges: [
       'EV-specific tow safety procedures and protocols',
       'Coverage gaps in non-urban and highway areas',
@@ -569,12 +607,12 @@ function StakeholderSection({
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="p-7 rounded-2xl bg-surface-bright border border-outline-variant/30 shadow-sm"
+              className="p-7 rounded-2xl bg-surface-bright border border-outline-variant/30 shadow-sm overflow-hidden flex flex-col"
             >
               <h3 className="text-xs font-semibold text-primary uppercase tracking-widest mb-5 font-display">
                 Key Challenges
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-3 flex-1">
                 {stakeholder.challenges.map((c, i) => (
                   <motion.li
                     key={i}
@@ -589,6 +627,23 @@ function StakeholderSection({
                   </motion.li>
                 ))}
               </ul>
+
+              {/* Stakeholder image — fills blank space at bottom of card */}
+              <div className="relative -mx-7 -mb-7 mt-6 h-44 overflow-hidden">
+                <img
+                  src={stakeholder.image}
+                  alt={stakeholder.name}
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  loading="lazy"
+                />
+                {/* Gradient fade from card bg into image */}
+                <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-surface-bright to-transparent" />
+                {/* Subtle overlay for readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                <span className="absolute bottom-3 right-4 text-[10px] font-semibold text-white/70 uppercase tracking-widest">
+                  {stakeholder.subtitle}
+                </span>
+              </div>
             </motion.div>
 
             <div className="space-y-6">
