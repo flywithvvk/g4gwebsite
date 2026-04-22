@@ -27,6 +27,7 @@ interface Stakeholder {
   subtitle: string;
   icon: string;
   image: string;
+  aiPersona: string;
   challenges: string[];
   products: StakeholderProduct[];
   metrics: StakeholderMetric[];
@@ -41,6 +42,7 @@ const stakeholders: Stakeholder[] = [
     subtitle: 'EV Charging Point Operators',
     icon: 'ev_station',
     image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80',
+    aiPersona: 'EV Ownership Guide',
     challenges: [
       'DISCOM application delays (3-6 months)',
       '33-state compliance complexity',
@@ -71,6 +73,7 @@ const stakeholders: Stakeholder[] = [
     subtitle: 'EV Service Centers',
     icon: 'build',
     image: 'https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=800&q=80',
+    aiPersona: 'Senior Automotive Expert',
     challenges: [
       'Paper-based job cards causing errors',
       'GST invoicing complexity',
@@ -105,6 +108,7 @@ const stakeholders: Stakeholder[] = [
     subtitle: 'Commercial EV Fleet Operators',
     icon: 'local_shipping',
     image: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80',
+    aiPersona: 'Fleet Operations Advisor',
     challenges: [
       'Unpredictable Total Cost of Ownership',
       'Driver training gaps',
@@ -139,6 +143,7 @@ const stakeholders: Stakeholder[] = [
     subtitle: 'EV Insurance Underwriters & Providers',
     icon: 'verified_user',
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80',
+    aiPersona: 'Insurance Domain Analyst',
     challenges: [
       'Unknown EV risk pricing models',
       'Battery valuation uncertainty',
@@ -169,6 +174,7 @@ const stakeholders: Stakeholder[] = [
     subtitle: 'Policy Makers & Regulatory Bodies',
     icon: 'account_balance',
     image: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=800&q=80',
+    aiPersona: 'Policy & Regulatory Advisor',
     challenges: [
       'Policy enforcement across states',
       'Subsidy tracking & disbursement',
@@ -199,6 +205,7 @@ const stakeholders: Stakeholder[] = [
     subtitle: 'EV Skill Development Centres',
     icon: 'school',
     image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
+    aiPersona: 'EV Training Instructor',
     challenges: [
       'No standardised EV curriculum',
       'Growing skill gap in EV sector',
@@ -225,6 +232,7 @@ const stakeholders: Stakeholder[] = [
     subtitle: 'Individual EV Owners',
     icon: 'electric_car',
     image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80',
+    aiPersona: 'EV Ownership Guide',
     challenges: [
       'Range anxiety & charging access',
       'Maintenance cost uncertainty',
@@ -251,6 +259,7 @@ const stakeholders: Stakeholder[] = [
     subtitle: 'EV Original Equipment Manufacturers',
     icon: 'precision_manufacturing',
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80',
+    aiPersona: 'OEM Quality & Warranty Analyst',
     challenges: [
       'After-sales quality monitoring',
       'Warranty management complexity',
@@ -286,6 +295,7 @@ const stakeholders: Stakeholder[] = [
     subtitle: 'EV Financing & Lending Institutions',
     icon: 'account_balance',
     image: 'https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=800&q=80',
+    aiPersona: 'EV Finance Risk Advisor',
     challenges: [
       'EV loan risk assessment with no historical data',
       'Battery residual value uncertainty for loan collateral',
@@ -316,6 +326,7 @@ const stakeholders: Stakeholder[] = [
     subtitle: 'EV Service Technicians & Mechanics',
     icon: 'engineering',
     image: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=800&q=80',
+    aiPersona: 'Senior Automotive Expert',
     challenges: [
       'High-voltage safety knowledge gaps',
       'No standardised diagnostic tools for EVs',
@@ -350,6 +361,7 @@ const stakeholders: Stakeholder[] = [
     subtitle: 'Distribution Companies & Grid Operators',
     icon: 'electrical_services',
     image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80',
+    aiPersona: 'Grid & Energy Specialist',
     challenges: [
       'Load forecasting for EV charging demand',
       'Transformer health monitoring near charging clusters',
@@ -380,6 +392,7 @@ const stakeholders: Stakeholder[] = [
     subtitle: 'Battery Recyclers & Second-Life Companies',
     icon: 'recycling',
     image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=800&q=80',
+    aiPersona: 'Battery Lifecycle Expert',
     challenges: [
       'State-of-Health (SoH) assessment accuracy',
       'Collection logistics across India',
@@ -410,6 +423,7 @@ const stakeholders: Stakeholder[] = [
     subtitle: 'EV Component & Parts Distributors',
     icon: 'inventory_2',
     image: 'https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&w=800&q=80',
+    aiPersona: 'Parts & Supply Chain Advisor',
     challenges: [
       'Demand forecasting for new EV parts',
       'Counterfeit part identification challenges',
@@ -440,6 +454,7 @@ const stakeholders: Stakeholder[] = [
     subtitle: 'Roadside Assistance & Emergency Services',
     icon: 'emergency',
     image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80',
+    aiPersona: 'Senior Automotive Expert',
     challenges: [
       'EV-specific tow safety procedures and protocols',
       'Coverage gaps in non-urban and highway areas',
@@ -538,6 +553,12 @@ function StakeholderSection({
                   {stakeholder.name}
                 </h2>
                 <p className="text-sm text-on-surface-variant font-medium">{stakeholder.subtitle}</p>
+                <div className="flex items-center gap-1.5 mt-1.5">
+                  <span className="material-symbols-outlined text-primary" style={{ fontSize: 13 }}>smart_toy</span>
+                  <span className="text-[11px] font-semibold text-primary font-display tracking-wide">
+                    AI Advisor: {stakeholder.aiPersona}
+                  </span>
+                </div>
               </div>
             </div>
             <Link href={stakeholder.ctaHref}>

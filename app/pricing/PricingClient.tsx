@@ -39,6 +39,22 @@ interface Tier {
 
 const tiers: Tier[] = [
   {
+    name: 'Free',
+    tagline: 'Evaluate before you commit',
+    description: 'Explore the Go4Garage platform at zero cost. Limited daily AI queries — no credit card required.',
+    icon: 'explore',
+    accent: 'primary',
+    productKeys: ['gstsaas', 'ekaai'],
+    productNote: '2 products, limited usage',
+    features: [
+      'Up to 5 Eka-AI queries per day',
+      'GST invoicing (up to 10 invoices/month)',
+      '1 workshop or 1 charging station',
+      'Community support (forum + docs)',
+      'No credit card required',
+    ],
+  },
+  {
     name: 'Starter',
     tagline: 'Individual workshops & small CPOs',
     description: 'Start with the product that matters most to you — digitize compliance or operations in weeks.',
@@ -95,32 +111,34 @@ const tiers: Tier[] = [
 /* ─── Comparison Features ────────────────────────────────────────────────── */
 interface CompRow {
   feature: string;
+  free: string | boolean;
   starter: string | boolean;
   professional: string | boolean;
   enterprise: string | boolean;
 }
 
 const comparisonRows: CompRow[] = [
-  { feature: 'URGAA — Regulatory Intelligence',    starter: '1 state',           professional: 'Up to 5 states',         enterprise: 'All 33 states'       },
-  { feature: 'GST (Go4Garage Service Tools) — Workshop Engine',          starter: '1 location',        professional: 'Up to 5 locations',      enterprise: 'Unlimited locations' },
-  { feature: 'Ignition — Fleet Portal',            starter: false,               professional: true,                     enterprise: true                  },
-  { feature: 'EV VIDYA ARJUN — Training',          starter: false,               professional: false,                    enterprise: true                  },
-  { feature: 'KAILASH-AI — Analytics',             starter: 'Basic',             professional: 'Predictive AI',          enterprise: 'Custom models'       },
-  { feature: 'Eka-AI — Conversational AI',         starter: false,               professional: 'Limited queries',        enterprise: 'Full orchestration'  },
-  { feature: 'White-Label Options',                starter: false,               professional: false,                    enterprise: true                  },
-  { feature: 'API Access',                         starter: false,               professional: true,                     enterprise: true                  },
-  { feature: 'SLA Guarantees',                     starter: false,               professional: false,                    enterprise: true                  },
-  { feature: 'Support',                            starter: 'Email 48hr',        professional: 'Chat + Email 24hr',      enterprise: 'Dedicated 4hr SLA'   },
+  { feature: 'URGAA — Regulatory Intelligence',    free: false,              starter: '1 state',           professional: 'Up to 5 states',         enterprise: 'All 33 states'       },
+  { feature: 'GST (Go4Garage Service Tools) — Workshop Engine', free: '10 invoices/mo', starter: '1 location',        professional: 'Up to 5 locations',      enterprise: 'Unlimited locations' },
+  { feature: 'Ignition — Fleet Portal',            free: false,              starter: false,               professional: true,                     enterprise: true                  },
+  { feature: 'EV VIDYA ARJUN — Training',          free: false,              starter: false,               professional: false,                    enterprise: true                  },
+  { feature: 'KAILASH-AI — Analytics',             free: false,              starter: 'Basic',             professional: 'Predictive AI',          enterprise: 'Custom models'       },
+  { feature: 'Eka-AI — Conversational AI',         free: '5 queries/day',    starter: false,               professional: 'Limited queries',        enterprise: 'Full orchestration'  },
+  { feature: 'White-Label Options',                free: false,              starter: false,               professional: false,                    enterprise: true                  },
+  { feature: 'API Access',                         free: false,              starter: false,               professional: true,                     enterprise: true                  },
+  { feature: 'SLA Guarantees',                     free: false,              starter: false,               professional: false,                    enterprise: true                  },
+  { feature: 'Support',                            free: 'Community',        starter: 'Email 48hr',        professional: 'Chat + Email 24hr',      enterprise: 'Dedicated 4hr SLA'   },
 ];
 
 /* ─── FAQ ────────────────────────────────────────────────────────────────── */
 const pricingFaqs = [
   { q: 'How is pricing determined?',        a: 'Pricing is customised to your scale, number of locations, products selected, and contract term. Contact us for a tailored quote that fits your business.' },
   { q: 'Can I start with a single product?', a: 'Absolutely. Most customers begin with GST (Go4Garage Service Tools) or URGAA and expand over time as they see results. You only pay for what you use.' },
-  { q: 'Is there a free trial?',             a: 'We offer a 14-day pilot on the Starter plan at no cost. No credit card required. Enterprise pilots are available on request with dedicated support.' },
+  { q: 'Is there a free tier?',             a: 'Yes — our Free tier gives you 5 Eka-AI queries per day and up to 10 GST invoices per month with no credit card required. It\'s designed to let you evaluate the platform before committing to a paid plan.' },
+  { q: 'Is there a paid trial?',             a: 'We also offer a 14-day pilot on the Starter plan at no cost. Enterprise pilots are available on request with dedicated support.' },
   { q: 'What payment methods do you accept?', a: 'We accept all major credit/debit cards, UPI, net banking, and NEFT/RTGS for enterprise customers. GST-compliant invoices are always provided.' },
   { q: 'Can I upgrade or change plans?',     a: 'Yes — upgrades take effect immediately; downgrades at the next billing cycle. Our team will guide you through the transition at no extra cost.' },
-  { q: 'Are there setup or onboarding fees?', a: 'No setup fees for Starter or Professional plans. Enterprise plans may include an implementation fee depending on customisation scope and deployment size.' },
+  { q: 'Are there setup or onboarding fees?', a: 'No setup fees for Free, Starter, or Professional plans. Enterprise plans may include an implementation fee depending on customisation scope and deployment size.' },
 ];
 
 /* ─── Helpers ────────────────────────────────────────────────────────────── */
@@ -172,7 +190,7 @@ export default function PricingClient() {
       {/* ─── PRICING TIERS ─── */}
       <section className="py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto items-stretch">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto items-stretch">
             {tiers.map((tier, idx) => (
               <motion.div
                 key={tier.name}
@@ -260,25 +278,27 @@ export default function PricingClient() {
         <div className="container mx-auto px-6">
           <SectionHeading badge="Compare Plans" title="Product" highlight="Coverage" subtitle="See exactly which products and capabilities are included in each plan." />
 
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             {/* Desktop table */}
             <div className="hidden md:block overflow-x-auto">
-              <table className="w-full text-left border-collapse min-w-[600px]">
+              <table className="w-full text-left border-collapse min-w-[700px]">
                 <thead>
                   <tr className="border-b-2 border-outline-variant/30">
-                    <th className="py-4 pr-6 text-sm font-semibold font-display text-on-surface-variant w-2/5">Feature / Product</th>
-                    <th className="py-4 px-4 text-sm font-semibold font-display text-center w-1/5">Starter</th>
-                    <th className="py-4 px-4 text-sm font-semibold font-display text-center text-primary w-1/5">Professional</th>
-                    <th className="py-4 px-4 text-sm font-semibold font-display text-center w-1/5">Enterprise</th>
+                    <th className="py-4 pr-6 text-sm font-semibold font-display text-on-surface-variant w-[38%]">Feature / Product</th>
+                    <th className="py-4 px-3 text-sm font-semibold font-display text-center w-[15%]">Free</th>
+                    <th className="py-4 px-3 text-sm font-semibold font-display text-center w-[15%]">Starter</th>
+                    <th className="py-4 px-3 text-sm font-semibold font-display text-center text-primary w-[16%]">Professional</th>
+                    <th className="py-4 px-3 text-sm font-semibold font-display text-center w-[16%]">Enterprise</th>
                   </tr>
                 </thead>
                 <tbody>
                   {comparisonRows.map((row, idx) => (
                     <tr key={idx} className="border-b border-outline-variant/15 hover:bg-surface-container-lowest/50 transition-colors">
                       <td className="py-3.5 pr-6 text-sm font-medium text-on-surface">{row.feature}</td>
-                      <td className="py-3.5 px-4 text-center"><CellValue v={row.starter} /></td>
-                      <td className="py-3.5 px-4 text-center bg-primary/[0.02]"><CellValue v={row.professional} /></td>
-                      <td className="py-3.5 px-4 text-center"><CellValue v={row.enterprise} /></td>
+                      <td className="py-3.5 px-3 text-center"><CellValue v={row.free} /></td>
+                      <td className="py-3.5 px-3 text-center"><CellValue v={row.starter} /></td>
+                      <td className="py-3.5 px-3 text-center bg-primary/[0.02]"><CellValue v={row.professional} /></td>
+                      <td className="py-3.5 px-3 text-center"><CellValue v={row.enterprise} /></td>
                     </tr>
                   ))}
                 </tbody>
@@ -292,8 +312,9 @@ export default function PricingClient() {
                   className="bg-surface-bright rounded-2xl border border-outline-variant/20 p-4 shadow-sm"
                 >
                   <p className="text-sm font-semibold text-on-surface mb-3">{row.feature}</p>
-                  <div className="grid grid-cols-3 gap-2 text-xs text-center">
+                  <div className="grid grid-cols-2 gap-2 text-xs text-center">
                     {[
+                      { label: 'Free',         v: row.free },
                       { label: 'Starter',      v: row.starter },
                       { label: 'Professional', v: row.professional },
                       { label: 'Enterprise',   v: row.enterprise },
@@ -307,6 +328,33 @@ export default function PricingClient() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── REVENUE STREAMS ─── */}
+      <section className="py-24 bg-surface">
+        <div className="container mx-auto px-6">
+          <SectionHeading badge="Partnership Models" title="6 Ways to" highlight="Partner With Us" subtitle="Go4Garage supports multiple commercial models — from SaaS subscriptions to white-label deployments and data partnerships." />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
+            {[
+              { icon: 'subscriptions',    title: 'SaaS Subscription',         desc: 'Monthly or annual plans per product, tenant, and usage band. Free → Starter → Professional → Enterprise.',      color: 'text-primary',   bg: 'bg-primary-container/10' },
+              { icon: 'build_circle',     title: 'Implementation & Integration', desc: 'Deployment, onboarding, and custom integration fees for URGAA and GST SaaS enterprise rollouts.',          color: 'text-secondary', bg: 'bg-secondary-container/10' },
+              { icon: 'swap_horiz',       title: 'Transaction-Linked Revenue',   desc: 'Per-transaction fees on invoice reconciliation, financing routing, insurance claims, and marketplace orders.', color: 'text-tertiary',  bg: 'bg-tertiary-container/10' },
+              { icon: 'auto_awesome',     title: 'Premium Intelligence',         desc: 'Advanced KAILASH-AI and Eka Brain modules — predictive models, custom ML, and deep fleet analytics for Pro/Enterprise.', color: 'text-primary', bg: 'bg-primary-container/10' },
+              { icon: 'school',           title: 'Training & Certification',     desc: 'EV VIDYA ARJUN course fees, technician certification programs, and LMS licensing for training centres.',   color: 'text-secondary', bg: 'bg-secondary-container/10' },
+              { icon: 'domain',           title: 'White-Label & Enterprise',     desc: 'Fully branded deployments for state agencies, CPO networks, and OEM groups. Dedicated infra + support.',    color: 'text-tertiary',  bg: 'bg-tertiary-container/10' },
+            ].map((stream, idx) => (
+              <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.08 }}
+                className="bg-surface-bright rounded-2xl border border-outline-variant/20 p-6 hover:shadow-lg transition-all hover:-translate-y-1"
+              >
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${stream.bg}`}>
+                  <Icon name={stream.icon} size={24} className={stream.color} />
+                </div>
+                <h3 className="font-bold text-on-surface mb-2 font-display">{stream.title}</h3>
+                <p className="text-sm text-on-surface-variant leading-relaxed">{stream.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

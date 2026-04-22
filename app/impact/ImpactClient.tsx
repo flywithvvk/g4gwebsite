@@ -181,6 +181,28 @@ export default function ImpactClient() {
         </div>
       </section>
 
+      {/* ─── ARCHITECTURE SCALE ─── */}
+      <section className="py-16 bg-surface border-b border-outline-variant/20">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+            {[
+              { value: '95',  label: 'Industry Problems Classified', sub: '84 solved by AI',   icon: 'checklist',      color: 'text-primary' },
+              { value: '12',  label: 'AI Industry Branches',          sub: '12 specialist personas', icon: 'account_tree',   color: 'text-secondary' },
+              { value: '29',  label: 'Custom ML Models',              sub: 'Designed & planned', icon: 'model_training', color: 'text-tertiary' },
+              { value: '7',   label: 'Integrated Products',           sub: 'One platform',       icon: 'widgets',        color: 'text-primary' },
+            ].map((s, idx) => (
+              <motion.div key={idx} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
+                className="p-5 rounded-2xl bg-surface-container-low border border-outline-variant/20"
+              >
+                <div className={`text-3xl font-black font-display mb-1 ${s.color}`}>{s.value}+</div>
+                <div className="text-sm font-semibold text-on-surface mb-1">{s.label}</div>
+                <div className="text-[11px] text-on-surface-variant">{s.sub}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── 3. IMPACT BY LAYER ─── */}
       <section className="py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">

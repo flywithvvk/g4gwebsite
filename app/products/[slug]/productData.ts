@@ -39,6 +39,8 @@ export interface ProductData {
   metrics: string[];
   cta: string;
   ctaLink: string;
+  externalDomain?: string;
+  mobileApp?: { ios?: string; android?: string };
 }
 
 export const productData: Record<string, ProductData> = {
@@ -46,10 +48,10 @@ export const productData: Record<string, ProductData> = {
     slug: 'urgaa',
     name: 'URGAA (\u090A\u0930\u094D\u091C\u093E)',
     shortName: 'URGAA',
-    tagline: 'End-to-End EV Charging Infrastructure Intelligence',
+    tagline: 'Multi-Vertical EV Infrastructure & Regulatory Intelligence Platform',
     icon: 'ev_station',
     color: 'primary',
-    description: "India's first regulatory intelligence platform for EV charging infrastructure \u2014 33 states, one dashboard.",
+    description: "India's first multi-vertical EV infrastructure platform — powering CPOs, fleets, DISCOMs, OEMs, recyclers, and government agencies across 33 states.",
     problemsSolved: 27,
     problems: [
       "DISCOM applications take 4\u20136 months of manual follow-up across 33 different state processes",
@@ -150,6 +152,7 @@ export const productData: Record<string, ProductData> = {
     metrics: ['89% compliance automation', '30 days avg DISCOM approval', '33 states covered'],
     cta: 'Book a Demo',
     ctaLink: '/contact',
+    externalDomain: 'https://urgaa.in',
   },
 
   gstsaas: {
@@ -260,16 +263,17 @@ export const productData: Record<string, ProductData> = {
     metrics: ['3x faster job turnaround', '95% GST automation', '40% better customer retention'],
     cta: 'Book a Demo',
     ctaLink: '/contact',
+    externalDomain: 'https://gstsaas.in',
   },
 
   ignition: {
     slug: 'ignition',
     name: 'Ignition',
     shortName: 'Ignition',
-    tagline: 'Smart EV Ownership Experience App',
+    tagline: 'Multi-Stakeholder EV Mobility App for Owners, Fleets & Workshops',
     icon: 'electric_car',
     color: 'tertiary',
-    description: "The smart EV ownership app \u2014 real-time charging maps, battery health, service booking, and emergency assistance.",
+    description: "The all-in-one EV mobility app — serving EV owners, fleet operators, workshop managers, grid operators, and insurers with real-time intelligence on iOS & Android.",
     problemsSolved: 10,
     problems: [
       "EV owners spend 25+ minutes searching for available chargers, killing adoption confidence",
@@ -370,6 +374,7 @@ export const productData: Record<string, ProductData> = {
     metrics: ['Real-time charging network', 'Service cost transparency', 'Certified service locator'],
     cta: 'Download App',
     ctaLink: '/contact',
+    mobileApp: { ios: '#', android: '#' },
   },
 
   arjun: {
@@ -480,16 +485,17 @@ export const productData: Record<string, ProductData> = {
     metrics: ['4-6 week certification programs', 'Industry-aligned curriculum', '200+ technicians target'],
     cta: 'Explore Training',
     ctaLink: '/contact',
+    externalDomain: 'https://ev-vidya.in',
   },
 
   'kailash-ai': {
     slug: 'kailash-ai',
     name: 'KAILASH-AI',
     shortName: 'KAILASH-AI',
-    tagline: 'Predictive Intelligence Engine for the EV Ecosystem',
+    tagline: 'Central AI Backbone Powering All 12 Industry Verticals',
     icon: 'psychology',
     color: 'primary',
-    description: "The AI intelligence layer for the entire EV ecosystem \u2014 predictive diagnostics, fleet analytics, and battery health scoring.",
+    description: "The central AI backbone of the Go4Garage platform — delivering predictive diagnostics, fleet analytics, battery scoring, and domain intelligence across all 12 industry verticals.",
     problemsSolved: 18,
     problems: [
       "EV fleet breakdowns happen without warning \u2014 predictive maintenance is non-existent in India",
@@ -590,16 +596,17 @@ export const productData: Record<string, ProductData> = {
     metrics: ['Predictive maintenance alerts', 'Cross-platform analytics', 'Battery health scoring'],
     cta: 'Contact Sales',
     ctaLink: '/contact',
+    externalDomain: 'https://kailash-ai.in',
   },
 
   'eka-ai': {
     slug: 'eka-ai',
     name: 'Eka-AI',
     shortName: 'Eka-AI',
-    tagline: 'Conversational AI Agent for EV Operations',
+    tagline: 'Conversational AI Agent for All 12 Industry Verticals',
     icon: 'smart_toy',
     color: 'tertiary',
-    description: "India's first multi-agent AI for EV operations \u2014 answers regulatory queries, automates workflows, speaks Hindi.",
+    description: "India's first multi-vertical conversational AI — answers regulatory queries, automates workflows, speaks Hindi, and serves workshops, fleets, insurers, DISCOMs, recyclers, and more.",
     problemsSolved: 3,
     problems: [
       "Operators waste 4+ hours daily answering repetitive compliance and operational queries manually",
@@ -700,6 +707,7 @@ export const productData: Record<string, ProductData> = {
     metrics: ['Natural language queries', 'Multi-agent coordination', 'Hindi + English support'],
     cta: 'Contact Sales',
     ctaLink: '/contact',
+    externalDomain: 'https://go4garage.com',
   },
 };
 

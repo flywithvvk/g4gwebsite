@@ -226,6 +226,43 @@ export default function ProductDetailClient({ product }: { product: ProductData 
                     {product.cta}
                   </motion.button>
                 </Link>
+                {product.externalDomain && (
+                  <a href={product.externalDomain} target="_blank" rel="noopener noreferrer">
+                    <motion.button
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.97 }}
+                      className="px-8 py-3.5 rounded-2xl font-semibold text-base border-2 border-outline-variant bg-surface-bright text-on-surface hover:bg-surface-container-low transition-colors"
+                    >
+                      Visit {new URL(product.externalDomain).hostname} →
+                    </motion.button>
+                  </a>
+                )}
+                {product.mobileApp && (
+                  <div className="flex gap-3">
+                    {product.mobileApp.ios && (
+                      <a href={product.mobileApp.ios} target="_blank" rel="noopener noreferrer">
+                        <motion.button
+                          whileHover={{ scale: 1.03 }}
+                          whileTap={{ scale: 0.97 }}
+                          className={`px-6 py-3.5 rounded-2xl font-semibold text-base shadow-lg transition-all ${c.ctaBg}`}
+                        >
+                          <span className="flex items-center gap-2"><span className="material-symbols-outlined text-base">smartphone</span> App Store</span>
+                        </motion.button>
+                      </a>
+                    )}
+                    {product.mobileApp.android && (
+                      <a href={product.mobileApp.android} target="_blank" rel="noopener noreferrer">
+                        <motion.button
+                          whileHover={{ scale: 1.03 }}
+                          whileTap={{ scale: 0.97 }}
+                          className="px-6 py-3.5 rounded-2xl font-semibold text-base border-2 border-outline-variant bg-surface-bright text-on-surface hover:bg-surface-container-low transition-colors"
+                        >
+                          <span className="flex items-center gap-2"><span className="material-symbols-outlined text-base">android</span> Google Play</span>
+                        </motion.button>
+                      </a>
+                    )}
+                  </div>
+                )}
                 <Link href="/products">
                   <motion.button
                     whileHover={{ scale: 1.03 }}
@@ -645,7 +682,7 @@ export default function ProductDetailClient({ product }: { product: ProductData 
             <p className="text-lg text-white/70 mb-10 max-w-xl mx-auto leading-relaxed">
               See {product.shortName} in action. Book a personalised walkthrough with our team.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
               <Link href={product.ctaLink}>
                 <motion.button
                   whileHover={{ scale: 1.03 }}
@@ -655,6 +692,43 @@ export default function ProductDetailClient({ product }: { product: ProductData 
                   {product.cta}
                 </motion.button>
               </Link>
+              {product.externalDomain && (
+                <a href={product.externalDomain} target="_blank" rel="noopener noreferrer">
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="px-10 py-4 rounded-2xl font-semibold text-lg border-2 border-white/30 text-white hover:bg-white/10 transition-colors"
+                  >
+                    Visit {new URL(product.externalDomain).hostname} →
+                  </motion.button>
+                </a>
+              )}
+              {product.mobileApp && (
+                <>
+                  {product.mobileApp.ios && (
+                    <a href={product.mobileApp.ios} target="_blank" rel="noopener noreferrer">
+                      <motion.button
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="px-8 py-4 rounded-2xl font-semibold text-lg bg-white shadow-xl hover:shadow-2xl transition-shadow text-on-surface"
+                      >
+                        <span className="flex items-center gap-2"><span className="material-symbols-outlined">smartphone</span> App Store</span>
+                      </motion.button>
+                    </a>
+                  )}
+                  {product.mobileApp.android && (
+                    <a href={product.mobileApp.android} target="_blank" rel="noopener noreferrer">
+                      <motion.button
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="px-8 py-4 rounded-2xl font-semibold text-lg border-2 border-white/30 text-white hover:bg-white/10 transition-colors"
+                      >
+                        <span className="flex items-center gap-2"><span className="material-symbols-outlined">android</span> Google Play</span>
+                      </motion.button>
+                    </a>
+                  )}
+                </>
+              )}
               <Link href="/products">
                 <motion.button
                   whileHover={{ scale: 1.03 }}
