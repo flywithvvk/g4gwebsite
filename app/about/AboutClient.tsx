@@ -125,7 +125,7 @@ const fadeUp = {
 
 export default function AboutClient() {
   return (
-    <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
+    <div className="min-h-screen bg-surface text-on-surface">
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           SECTION 1 — SPLIT HERO

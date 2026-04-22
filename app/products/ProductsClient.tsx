@@ -460,7 +460,7 @@ export default function ProductsClient() {
   const colors = colorMap[selected.colorFamily];
 
   return (
-    <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
+    <div className="min-h-screen bg-surface text-on-surface">
       {/* ━━━ 1 · HERO ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20 pb-12">
         {/* bg blobs */}

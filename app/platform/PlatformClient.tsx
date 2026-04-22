@@ -147,7 +147,7 @@ export default function PlatformClient() {
   }, [heroSlide]);
 
   return (
-    <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
+    <div className="min-h-screen bg-surface text-on-surface">
 
       {/* ─────────────────────── 1 · HERO SLIDER ─────────────────────── */}
       <section className="relative h-[calc(100vh-4rem)] mt-16 overflow-hidden">

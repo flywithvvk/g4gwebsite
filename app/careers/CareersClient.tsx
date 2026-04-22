@@ -110,7 +110,7 @@ const accentMap: Record<string, { bg: string; text: string; iconBg: string }> = 
 
 export default function CareersClient() {
   return (
-    <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
+    <div className="min-h-screen bg-surface text-on-surface">
       {/* ─── HERO ─── */}
       <section className="relative min-h-[65vh] flex items-center justify-center overflow-hidden pt-16">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
@@ -195,7 +195,7 @@ export default function CareersClient() {
       </section>
 
       {/* ─── OPEN POSITIONS ─── */}
-      <section id="positions" className="py-24 bg-surface scroll-mt-20">
+      <section id="positions" className="py-24 bg-surface scroll-mt-32">
         <div className="container mx-auto px-6">
           <SectionHeading
             badge="Open Roles"
@@ -303,7 +303,7 @@ export default function CareersClient() {
               want to make an impact.
             </p>
             <a
-              href="mailto:careers@go4garage.com?subject=General Application"
+              href="mailto:careers@go4garage.in?subject=General Application"
               className="inline-flex items-center gap-2 px-8 py-4 bg-surface-bright text-secondary rounded-full font-semibold hover:shadow-lg transition-all"
             >
               <Icon name="mail" size={20} />

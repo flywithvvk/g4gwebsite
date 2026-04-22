@@ -75,7 +75,7 @@ export default function HomePage() {
   const [heroSlide, setHeroSlide] = useState(0);
 
   return (
-    <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
+    <div className="min-h-screen bg-surface text-on-surface">
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           HERO — Slide 0: EV Journey Video | Slide 1: Platform Message

@@ -107,7 +107,7 @@ function ProgressRing({ percent, color, children }: { percent: number; color: st
 
 export default function ImpactClient() {
   return (
-    <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
+    <div className="min-h-screen bg-surface text-on-surface">
 
       {/* ─── 1. HERO ─── */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-20 pb-12">

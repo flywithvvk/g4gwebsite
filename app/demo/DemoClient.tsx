@@ -115,7 +115,7 @@ export default function DemoClient() {
   };
 
   return (
-    <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
+    <div className="min-h-screen bg-surface text-on-surface">
 
       {/* ─── SECTION 1: HERO ─────────────────────────────────────────────── */}
       <section className="relative min-h-[65vh] flex items-center justify-center overflow-hidden pt-16">

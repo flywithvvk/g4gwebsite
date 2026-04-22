@@ -135,7 +135,7 @@ const competitionAdvantages = [
 
 export default function InvestorsClient() {
   return (
-    <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
+    <div className="min-h-screen bg-surface text-on-surface">
 
       {/* ─── HERO ─── */}
       <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden pt-20">

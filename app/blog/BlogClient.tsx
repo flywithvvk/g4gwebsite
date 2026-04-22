@@ -120,7 +120,7 @@ export default function BlogClient() {
   };
 
   return (
-    <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
+    <div className="min-h-screen bg-surface text-on-surface">
       {/* ─── HERO ─── */}
       <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden pt-16">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
@@ -166,13 +166,11 @@ export default function BlogClient() {
       {/* ─── FEATURED ARTICLE ─── */}
       <section className="py-16 bg-surface-container-low">
         <div className="container mx-auto px-6">
-          <motion.a
-            href="#"
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            whileHover={{ y: -4 }}
-            className="block max-w-5xl mx-auto bg-surface-bright rounded-3xl border border-outline-variant/30 shadow-sm hover:shadow-lg transition-all overflow-hidden group"
+            className="block max-w-5xl mx-auto bg-surface-bright rounded-3xl border border-outline-variant/30 shadow-sm overflow-hidden group"
           >
             <div className="grid md:grid-cols-2 gap-0">
               <div className="bg-gradient-to-br from-primary to-primary-container p-10 md:p-12 flex flex-col justify-center">
@@ -190,18 +188,18 @@ export default function BlogClient() {
                 <span className={`inline-block w-fit px-3 py-1 rounded-full text-xs font-medium mb-4 ${categoryColors[featuredArticle.category]}`}>
                   {featuredArticle.category}
                 </span>
-                <h2 className="text-2xl md:text-3xl font-bold mb-4 font-display group-hover:text-primary transition-colors">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 font-display">
                   {featuredArticle.title}
                 </h2>
                 <p className="text-on-surface-variant leading-relaxed mb-6">
                   {featuredArticle.excerpt}
                 </p>
-                <span className="inline-flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all">
-                  Read Article <Icon name="arrow_forward" size={18} />
+                <span className="inline-flex items-center gap-2 text-primary-container/60 text-sm font-medium italic">
+                  <Icon name="schedule" size={16} /> Full article coming soon
                 </span>
               </div>
             </div>
-          </motion.a>
+          </motion.div>
         </div>
       </section>
 

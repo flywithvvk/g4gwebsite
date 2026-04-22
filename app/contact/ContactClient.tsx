@@ -142,7 +142,7 @@ export default function ContactClient() {
   const inputErr = 'border-red-500 focus:border-red-500 focus:ring-red-500/15';
 
   return (
-    <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
+    <div className="min-h-screen bg-surface text-on-surface">
 
       {/* SPLIT LAYOUT HERO */}
       <section className="relative overflow-hidden pt-20 pb-24">
