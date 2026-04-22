@@ -16,12 +16,12 @@ import { EVJourneyVisual } from '@/components/EVJourneyVisual';
 /* ─── Data ─── */
 
 const products = [
-  { name: 'URGAA (ऊर्जा)', tagline: 'Regulatory & Grid Intelligence', problems: 27, icon: 'bolt', color: 'bg-primary-container/15 border-primary/20', cf: 'primary', href: '/products' },
-  { name: 'GSTSAAS', tagline: 'Workshop & Commerce Engine', problems: 17, icon: 'build', color: 'bg-secondary-container/15 border-secondary/20', cf: 'secondary', href: '/products' },
-  { name: 'Ignition App', tagline: 'Consumer Experience App', problems: 11, icon: 'smartphone', color: 'bg-tertiary-container/15 border-tertiary/20', cf: 'tertiary', href: '/products' },
-  { name: 'EV VIDYA ARJUN', tagline: 'Workforce Skilling Platform', problems: 9, icon: 'school', color: 'bg-secondary-container/15 border-secondary/20', cf: 'secondary', href: '/products' },
-  { name: 'KAILASH-AI', tagline: 'Document AI & Predictive Analytics', problems: 18, icon: 'analytics', color: 'bg-primary-container/15 border-primary/20', cf: 'primary', href: '/products' },
-  { name: 'Eka-AI', tagline: 'Agent Orchestration & Q&A', problems: 3, icon: 'smart_toy', color: 'bg-tertiary-container/15 border-tertiary/20', cf: 'tertiary', href: '/products' },
+  { name: 'URGAA (ऊर्जा)', tagline: 'Regulatory & Grid Intelligence', problems: 27, icon: 'bolt', color: 'bg-primary-container/15 border-primary/20', cf: 'primary', href: '/products/urgaa' },
+  { name: 'GSTSAAS', tagline: 'Workshop & Commerce Engine', problems: 17, icon: 'build', color: 'bg-secondary-container/15 border-secondary/20', cf: 'secondary', href: '/products/gstsaas' },
+  { name: 'Ignition App', tagline: 'Consumer Experience App', problems: 11, icon: 'smartphone', color: 'bg-tertiary-container/15 border-tertiary/20', cf: 'tertiary', href: '/products/ignition' },
+  { name: 'EV VIDYA ARJUN', tagline: 'Workforce Skilling Platform', problems: 9, icon: 'school', color: 'bg-secondary-container/15 border-secondary/20', cf: 'secondary', href: '/products/arjun' },
+  { name: 'KAILASH-AI', tagline: 'Document AI & Predictive Analytics', problems: 18, icon: 'analytics', color: 'bg-primary-container/15 border-primary/20', cf: 'primary', href: '/products/kailash-ai' },
+  { name: 'Eka-AI', tagline: 'Agent Orchestration & Q&A', problems: 3, icon: 'smart_toy', color: 'bg-tertiary-container/15 border-tertiary/20', cf: 'tertiary', href: '/products/eka-ai' },
 ];
 
 type ColorFamily = 'primary' | 'secondary' | 'tertiary';

@@ -22,12 +22,12 @@ const Footer: React.FC = () => {
     {
       title: 'Products',
       links: [
-        { label: 'URGAA (ऊर्जा)', href: '/products' },
-        { label: 'GSTSAAS', href: '/products' },
-        { label: 'Ignition App', href: '/products' },
-        { label: 'EV VIDYA ARJUN', href: '/products' },
-        { label: 'KAILASH-AI', href: '/products' },
-        { label: 'Eka-AI', href: '/products' },
+        { label: 'URGAA (ऊर्जा)', href: '/products/urgaa' },
+        { label: 'GSTSAAS', href: '/products/gstsaas' },
+        { label: 'Ignition App', href: '/products/ignition' },
+        { label: 'EV VIDYA ARJUN', href: '/products/arjun' },
+        { label: 'KAILASH-AI', href: '/products/kailash-ai' },
+        { label: 'Eka-AI', href: '/products/eka-ai' },
       ],
     },
     {
