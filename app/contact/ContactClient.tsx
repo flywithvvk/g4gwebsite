@@ -26,8 +26,8 @@ const contactMethods = [
   {
     icon: 'location_on',
     title: 'Visit Us',
-    detail: 'Bengaluru, Karnataka',
-    href: 'https://maps.google.com/?q=Bengaluru+Karnataka+India',
+    detail: 'India | Bharat',
+    href: 'https://maps.google.com/?q=India',
     sub: 'India | Bharat',
     color: 'from-tertiary to-[#00a34a]',
   },
@@ -404,8 +404,7 @@ export default function ContactClient() {
                   <div className="flex items-start gap-3">
                     <Icon name="location_on" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="text-sm font-medium">Bengaluru, Karnataka</p>
-                      <p className="text-xs text-on-surface-variant mt-0.5 flex items-center gap-1"><IndiaFlag size={14} /> India | Bharat</p>
+                      <p className="text-sm font-medium flex items-center gap-1"><IndiaFlag size={16} /> India | Bharat</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -438,8 +437,8 @@ export default function ContactClient() {
                     <Icon name="map" size={32} className="text-primary" />
                   </div>
                   <h4 className="font-bold text-base mb-2 font-display">Go4Garage HQ</h4>
-                  <p className="text-sm text-on-surface-variant mb-4">Bengaluru, Karnataka &nbsp;<span className="inline-flex items-center gap-1"><IndiaFlag size={14} /> India | Bharat</span></p>
-                  <motion.a href="https://maps.google.com/?q=Bengaluru+Karnataka+India" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-all">
+                  <p className="text-sm text-on-surface-variant mb-4"><span className="inline-flex items-center gap-1"><IndiaFlag size={14} /> India | Bharat</span></p>
+                  <motion.a href="https://maps.google.com/?q=India" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-all">
                     <Icon name="open_in_new" size={16} />
                     Open in Maps
                   </motion.a>
