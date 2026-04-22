@@ -426,24 +426,39 @@ export default function PlatformClient() {
       </section>
 
       {/* ──────────────── 5 · ARCHITECTURE DIAGRAM ──────────────── */}
-      <section className="py-24 bg-surface">
-        <div className="container mx-auto px-6">
-          <SectionHeading
-            badge="Architecture"
-            title="Platform"
-            highlight="Architecture"
-            subtitle="A layered, modular architecture designed for extensibility, security, and scale."
-          />
+      <section className="py-24 relative" style={{ background: '#0D1117' }}>
+        {/* decorative radial glows */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl" style={{ background: 'radial-gradient(circle, #3B82F6 0%, transparent 70%)' }} />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full opacity-10 blur-3xl" style={{ background: 'radial-gradient(circle, #A855F7 0%, transparent 70%)' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-5 blur-3xl" style={{ background: 'radial-gradient(circle, #14B8A6 0%, transparent 70%)' }} />
+        </div>
 
-          <motion.div {...fadeUp} className="max-w-4xl mx-auto">
+        <div className="container mx-auto px-6 relative z-10">
+          {/* heading forced white on dark bg */}
+          <div className="text-center mb-14">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4 border"
+              style={{ background: 'rgba(59,130,246,0.15)', borderColor: 'rgba(59,130,246,0.35)', color: '#93C5FD' }}>
+              <Icon name="architecture" size={14} /> Architecture
+            </span>
+            <h2 className="text-4xl font-extrabold font-display mb-3 text-white">
+              Platform <span style={{ color: '#60A5FA' }}>Architecture</span>
+            </h2>
+            <p className="text-base max-w-xl mx-auto" style={{ color: '#94A3B8' }}>
+              A layered, modular architecture designed for extensibility, security, and scale.
+            </p>
+          </div>
+
+          <motion.div {...fadeUp} className="max-w-4xl mx-auto space-y-0">
 
             {/* ── Applications Layer ── */}
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0 }}
-              className="rounded-2xl border-2 bg-primary-container/15 border-primary/30 p-6"
+            <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0 }}
+              className="rounded-2xl p-6"
+              style={{ background: 'linear-gradient(135deg,#0F1B2D 0%,#0A1628 100%)', border: '1.5px solid rgba(59,130,246,0.45)', boxShadow: '0 0 24px rgba(59,130,246,0.08), inset 0 1px 0 rgba(59,130,246,0.12)' }}
             >
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-xs font-bold uppercase tracking-widest text-primary font-display">Applications Layer</span>
+                <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#3B82F6' }} />
+                <span className="text-xs font-bold uppercase tracking-widest font-display" style={{ color: '#60A5FA' }}>Applications Layer</span>
               </div>
               <div className="flex flex-wrap gap-3">
                 {[
@@ -451,10 +466,11 @@ export default function PlatformClient() {
                   { icon: 'admin_panel_settings', name: 'Admin Console' },
                   { icon: 'group', name: 'Partner Portal' },
                 ].map((item) => (
-                  <motion.div key={item.name} whileHover={{ scale: 1.04 }}
-                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl bg-surface-bright border border-primary/25 text-sm font-semibold text-on-surface shadow-sm hover:shadow-md hover:border-primary/50 transition-all"
+                  <motion.div key={item.name} whileHover={{ scale: 1.04, boxShadow: '0 0 16px rgba(59,130,246,0.3)' }}
+                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-semibold transition-all"
+                    style={{ background: 'rgba(30,50,80,0.8)', border: '1px solid rgba(59,130,246,0.3)', color: '#E2E8F0' }}
                   >
-                    <Icon name={item.icon} size={18} className="text-primary" />
+                    <Icon name={item.icon} size={18} className="text-[#60A5FA]" />
                     <span>{item.name}</span>
                   </motion.div>
                 ))}
@@ -463,30 +479,34 @@ export default function PlatformClient() {
 
             {/* ── Connector ── */}
             <div className="flex justify-center py-1">
-              <div className="flex flex-col items-center">
-                <div className="w-px h-4 bg-outline-variant/50" />
-                <Icon name="swap_vert" size={22} className="text-outline-variant/60" />
-                <div className="w-px h-4 bg-outline-variant/50" />
+              <div className="flex flex-col items-center gap-0">
+                <div className="w-px h-5" style={{ background: 'linear-gradient(to bottom, rgba(59,130,246,0.5), rgba(168,85,247,0.5))' }} />
+                <Icon name="keyboard_double_arrow_down" size={20} className="text-[#6B7280]" />
+                <div className="w-px h-5" style={{ background: 'linear-gradient(to bottom, rgba(168,85,247,0.5), rgba(20,184,166,0.5))' }} />
               </div>
             </div>
 
             {/* ── AI Intelligence Layer ── */}
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.12 }}
-              className="rounded-2xl border-2 bg-secondary-container/15 border-secondary/30 p-6"
+            <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.12 }}
+              className="rounded-2xl p-6"
+              style={{ background: 'linear-gradient(135deg,#1A0F2E 0%,#12082A 100%)', border: '1.5px solid rgba(168,85,247,0.45)', boxShadow: '0 0 24px rgba(168,85,247,0.08), inset 0 1px 0 rgba(168,85,247,0.12)' }}
             >
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
-                <span className="text-xs font-bold uppercase tracking-widest text-secondary font-display">AI Intelligence Layer</span>
+                <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#A855F7' }} />
+                <span className="text-xs font-bold uppercase tracking-widest font-display" style={{ color: '#C084FC' }}>AI Intelligence Layer</span>
               </div>
               <div className="flex flex-wrap gap-3">
                 {[
                   { icon: 'psychology', name: 'KAILASH-AI' },
                   { icon: 'smart_toy', name: 'Eka-AI Agents' },
+                  { icon: 'hub', name: 'Proprietary Inference Engine' },
+                  { icon: 'dataset', name: '100M+ Training Records' },
                 ].map((item) => (
-                  <motion.div key={item.name} whileHover={{ scale: 1.04 }}
-                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl bg-surface-bright border border-secondary/25 text-sm font-semibold text-on-surface shadow-sm hover:shadow-md hover:border-secondary/50 transition-all"
+                  <motion.div key={item.name} whileHover={{ scale: 1.04, boxShadow: '0 0 16px rgba(168,85,247,0.3)' }}
+                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-semibold transition-all"
+                    style={{ background: 'rgba(40,20,70,0.8)', border: '1px solid rgba(168,85,247,0.3)', color: '#E2E8F0' }}
                   >
-                    <Icon name={item.icon} size={18} className="text-secondary" />
+                    <Icon name={item.icon} size={18} className="text-[#C084FC]" />
                     <span>{item.name}</span>
                   </motion.div>
                 ))}
@@ -496,30 +516,33 @@ export default function PlatformClient() {
             {/* ── Connector ── */}
             <div className="flex justify-center py-1">
               <div className="flex flex-col items-center">
-                <div className="w-px h-4 bg-outline-variant/50" />
-                <Icon name="swap_vert" size={22} className="text-outline-variant/60" />
-                <div className="w-px h-4 bg-outline-variant/50" />
+                <div className="w-px h-5" style={{ background: 'linear-gradient(to bottom, rgba(168,85,247,0.5), rgba(20,184,166,0.5))' }} />
+                <Icon name="keyboard_double_arrow_down" size={20} className="text-[#6B7280]" />
+                <div className="w-px h-5" style={{ background: 'linear-gradient(to bottom, rgba(20,184,166,0.5), rgba(245,158,11,0.5))' }} />
               </div>
             </div>
 
             {/* ── Platform Services Layer ── */}
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.24 }}
-              className="rounded-2xl border-2 bg-tertiary-container/15 border-tertiary/30 p-6"
+            <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.24 }}
+              className="rounded-2xl p-6"
+              style={{ background: 'linear-gradient(135deg,#0F2420 0%,#091E1A 100%)', border: '1.5px solid rgba(20,184,166,0.45)', boxShadow: '0 0 24px rgba(20,184,166,0.08), inset 0 1px 0 rgba(20,184,166,0.12)' }}
             >
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-2 h-2 rounded-full bg-tertiary animate-pulse" />
-                <span className="text-xs font-bold uppercase tracking-widest text-tertiary font-display">Platform Services Layer</span>
+                <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#14B8A6' }} />
+                <span className="text-xs font-bold uppercase tracking-widest font-display" style={{ color: '#2DD4BF' }}>Platform Services Layer</span>
               </div>
               <div className="flex flex-wrap gap-3">
                 {[
                   { icon: 'electric_bolt', name: 'URGAA (ऊर्जा)' },
                   { icon: 'receipt_long', name: 'GSTSAAS' },
                   { icon: 'school', name: 'EV VIDYA ARJUN' },
+                  { icon: 'garage', name: 'Ignition' },
                 ].map((item) => (
-                  <motion.div key={item.name} whileHover={{ scale: 1.04 }}
-                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl bg-surface-bright border border-tertiary/25 text-sm font-semibold text-on-surface shadow-sm hover:shadow-md hover:border-tertiary/50 transition-all"
+                  <motion.div key={item.name} whileHover={{ scale: 1.04, boxShadow: '0 0 16px rgba(20,184,166,0.3)' }}
+                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-semibold transition-all"
+                    style={{ background: 'rgba(15,50,44,0.8)', border: '1px solid rgba(20,184,166,0.3)', color: '#E2E8F0' }}
                   >
-                    <Icon name={item.icon} size={18} className="text-tertiary" />
+                    <Icon name={item.icon} size={18} className="text-[#2DD4BF]" />
                     <span>{item.name}</span>
                   </motion.div>
                 ))}
@@ -529,34 +552,56 @@ export default function PlatformClient() {
             {/* ── Connector ── */}
             <div className="flex justify-center py-1">
               <div className="flex flex-col items-center">
-                <div className="w-px h-4 bg-outline-variant/50" />
-                <Icon name="swap_vert" size={22} className="text-outline-variant/60" />
-                <div className="w-px h-4 bg-outline-variant/50" />
+                <div className="w-px h-5" style={{ background: 'linear-gradient(to bottom, rgba(20,184,166,0.5), rgba(245,158,11,0.5))' }} />
+                <Icon name="keyboard_double_arrow_down" size={20} className="text-[#6B7280]" />
+                <div className="w-px h-5" style={{ background: 'linear-gradient(to bottom, rgba(245,158,11,0.5), rgba(100,116,139,0.5))' }} />
               </div>
             </div>
 
             {/* ── Foundation Layer ── */}
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.36 }}
-              className="rounded-2xl border-2 bg-surface-container/30 border-outline-variant/50 p-6"
+            <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.36 }}
+              className="rounded-2xl p-6"
+              style={{ background: 'linear-gradient(135deg,#1E1500 0%,#161000 100%)', border: '1.5px solid rgba(245,158,11,0.45)', boxShadow: '0 0 24px rgba(245,158,11,0.08), inset 0 1px 0 rgba(245,158,11,0.12)' }}
             >
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-2 h-2 rounded-full bg-on-surface-variant animate-pulse" />
-                <span className="text-xs font-bold uppercase tracking-widest text-on-surface-variant font-display">Foundation Layer</span>
+                <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#F59E0B' }} />
+                <span className="text-xs font-bold uppercase tracking-widest font-display" style={{ color: '#FCD34D' }}>Foundation Layer</span>
               </div>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { icon: 'storage', name: 'Data Lake' },
-                  { icon: 'model_training', name: 'ML Pipeline' },
-                  { icon: 'api', name: 'API Gateway' },
+                  { icon: 'storage', name: 'Proprietary Data Lake' },
+                  { icon: 'model_training', name: 'Secure ML Pipeline' },
+                  { icon: 'api', name: 'Unified API Gateway' },
+                  { icon: 'security', name: 'Zero-Trust Security' },
+                  { icon: 'cloud', name: 'Multi-Region Cloud' },
                 ].map((item) => (
-                  <motion.div key={item.name} whileHover={{ scale: 1.04 }}
-                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl bg-surface-bright border border-outline-variant/30 text-sm font-semibold text-on-surface shadow-sm hover:shadow-md hover:border-outline-variant/60 transition-all"
+                  <motion.div key={item.name} whileHover={{ scale: 1.04, boxShadow: '0 0 16px rgba(245,158,11,0.3)' }}
+                    className="flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-semibold transition-all"
+                    style={{ background: 'rgba(40,28,0,0.8)', border: '1px solid rgba(245,158,11,0.3)', color: '#E2E8F0' }}
                   >
-                    <Icon name={item.icon} size={18} className="text-on-surface-variant" />
+                    <Icon name={item.icon} size={18} className="text-[#FCD34D]" />
                     <span>{item.name}</span>
                   </motion.div>
                 ))}
               </div>
+            </motion.div>
+
+            {/* ── Stats bar ── */}
+            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.48 }}
+              className="mt-6 rounded-2xl p-5 flex flex-wrap items-center justify-around gap-4"
+              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
+            >
+              {[
+                { label: 'Uptime SLA', value: '99.9%' },
+                { label: 'Encrypted Records', value: '100M+' },
+                { label: 'API Endpoints', value: '200+' },
+                { label: 'Data Residency', value: 'India-only' },
+              ].map(({ label, value }) => (
+                <div key={label} className="text-center">
+                  <div className="text-2xl font-extrabold font-display" style={{ color: '#F1F5F9' }}>{value}</div>
+                  <div className="text-xs mt-0.5" style={{ color: '#64748B' }}>{label}</div>
+                </div>
+              ))}
             </motion.div>
 
           </motion.div>
