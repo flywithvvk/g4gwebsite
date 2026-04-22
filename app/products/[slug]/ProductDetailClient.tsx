@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { Icon } from '@/components/Icon';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
 import type { ProductData } from './productData';
+import { trackProductView } from '@/lib/analytics';
 
 const colorMap = {
   primary: {
@@ -90,6 +91,10 @@ function parseStatNumber(value: string): { num: number; prefix: string; suffix: 
 export default function ProductDetailClient({ product }: { product: ProductData }) {
   const [activeFeature, setActiveFeature] = useState(0);
   const c = colorMap[product.color];
+
+  useEffect(() => {
+    trackProductView(product.slug, product.shortName);
+  }, [product.slug, product.shortName]);
 
   return (
     <div className="min-h-screen bg-surface text-on-surface">

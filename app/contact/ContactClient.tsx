@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Icon } from '@/components/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 import { IndiaFlag } from '@/components/IndiaFlag';
+import { trackContactFormSubmit } from '@/lib/analytics';
 
 const contactMethods = [
   {
@@ -143,6 +144,7 @@ export default function ContactClient() {
     );
     window.location.href = `mailto:connect@go4garage.in?subject=${subject}&body=${body}`;
 
+    trackContactFormSubmit(formData.interest || 'General');
     setTimeout(() => { setIsLoading(false); setSubmitted(true); }, 800);
   };
 

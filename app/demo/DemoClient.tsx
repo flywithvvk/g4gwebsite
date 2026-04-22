@@ -5,6 +5,7 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { Icon } from '@/components/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
+import { trackDemoBookingStarted, trackDemoBookingCompleted } from '@/lib/analytics';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -147,12 +148,14 @@ export default function DemoClient() {
     const errs = validateBooking();
     if (Object.keys(errs).length > 0) { setFormErrors(errs); return; }
 
-    const demoLabel = demoOptions.find((d) => d.id === selectedDemo)?.title ?? selectedDemo;
+    const demoLabel = demoOptions.find((d) => d.id === selectedDemo)?.title ?? (selectedDemo ?? '');
     const subject = encodeURIComponent(`Demo Booking: ${demoLabel} — ${form.name} (${form.company})`);
     const body = encodeURIComponent(
       `DEMO BOOKING REQUEST\n\nDemo Type: ${demoLabel}\nRequested Slot: ${selectedSlot}\n\nName: ${form.name}\nEmail: ${form.email}\nCompany: ${form.company}\nPhone: ${form.phone || 'Not provided'}\nUse Case: ${form.useCase}`
     );
     window.location.href = `mailto:connect@go4garage.in?subject=${subject}&body=${body}`;
+
+    trackDemoBookingCompleted(demoLabel, selectedSlot ?? '');
 
     setSubmitted(true);
     setTimeout(() => {
@@ -164,6 +167,8 @@ export default function DemoClient() {
   };
 
   const openModal = () => {
+    const demoLabel = demoOptions.find((d) => d.id === selectedDemo)?.title ?? (selectedDemo ?? '');
+    trackDemoBookingStarted(demoLabel);
     setSubmitted(false);
     setShowModal(true);
   };
