@@ -675,13 +675,11 @@ export default function SolutionsClient() {
   const scrollToSection = (id: string) => {
     const el = sectionRefs.current[id];
     if (!el) return;
-    const offset = 128;
-    const top = el.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top, behavior: 'smooth' });
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
-    <div className="min-h-screen bg-surface text-on-surface overflow-x-hidden">
+    <div className="min-h-screen bg-surface text-on-surface">
 
       {/* HERO */}
       <section className="relative min-h-[72vh] flex items-center justify-center overflow-hidden pt-16">
@@ -719,16 +717,16 @@ export default function SolutionsClient() {
             >
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span className="text-sm font-medium text-primary font-display">
-                Tailored for Every Stakeholder
+                15 User Types — Full Ecosystem
               </span>
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight font-display">
-              Solutions for{' '}
-              <span className="gradient-text">Every Role</span>
+              Built for{' '}
+              <span className="gradient-text">Who You Are</span>
               <br />
               <span className="text-3xl md:text-4xl font-semibold text-on-surface-variant">
-                in India&apos;s EV Ecosystem
+                Across India&apos;s EV Ecosystem
               </span>
             </h1>
 

@@ -21,7 +21,7 @@ const Navigation = () => {
   const navLinks = [
     { label: 'Platform', href: '/platform', icon: 'dashboard' },
     { label: 'Products', href: '/products', icon: 'inventory_2' },
-    { label: 'Solutions', href: '/solutions', icon: 'lightbulb' },
+    { label: 'Who We Serve', href: '/solutions', icon: 'lightbulb' },
     { label: 'Impact', href: '/impact', icon: 'trending_up' },
     { label: 'Pricing', href: '/pricing', icon: 'payments' },
     { label: 'About', href: '/about', icon: 'info' },
