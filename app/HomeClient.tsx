@@ -12,6 +12,7 @@ import { StatsCard } from '@/components/StatsCard';
 import { Testimonials } from '@/components/Testimonials';
 import { TrustBar } from '@/components/TrustBar';
 import { EVJourneyVisual } from '@/components/EVJourneyVisual';
+import { SocialProofTicker } from '@/components/SocialProofTicker';
 
 /* ─── Data ─── */
 
@@ -166,7 +167,7 @@ export default function HomePage() {
                   </motion.p>
 
                   {/* CTAs */}
-                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                     <Link href="/contact">
                       <motion.button
                         whileHover={{ scale: 1.04, boxShadow: '0 20px 40px -12px rgba(144,77,0,0.35)' }}
@@ -185,6 +186,16 @@ export default function HomePage() {
                         Explore Platform
                       </motion.button>
                     </Link>
+                  </motion.div>
+
+                  {/* Social proof ticker */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.1 }}
+                    className="flex justify-center"
+                  >
+                    <SocialProofTicker />
                   </motion.div>
                 </motion.div>
 

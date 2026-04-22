@@ -8,6 +8,11 @@ import { GlobalStructuredData } from "@/components/StructuredData";
 import { GoogleTagManager } from "@/components/GoogleTagManager";
 import { FirebaseAppCheck } from "@/components/FirebaseAppCheck";
 import { RemoteConfigInit } from "@/components/RemoteConfigInit";
+import { CookieConsent } from "@/components/CookieConsent";
+import { FloatingCTA } from "@/components/FloatingCTA";
+import { ScrollToTop } from "@/components/ScrollToTop";
+import { ExitIntentModal } from "@/components/ExitIntentModal";
+import { PromoBanner } from "@/components/PromoBanner";
 
 const SITE_URL = "https://www.go4garage.in";
 
@@ -107,12 +112,17 @@ export default function RootLayout({
         <GoogleTagManager />
         <FirebaseAppCheck />
         <RemoteConfigInit />
+        <PromoBanner />
         <ScrollProgress />
         <Navigation />
         <main className="min-h-screen">
           {children}
         </main>
         <Footer />
+        <FloatingCTA />
+        <ScrollToTop />
+        <CookieConsent />
+        <ExitIntentModal />
       </body>
     </html>
   );

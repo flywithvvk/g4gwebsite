@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { SiteSearch } from '@/components/SiteSearch';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -79,6 +80,7 @@ const Navigation = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
+            <SiteSearch />
             <Link
               href="/demo"
               className="px-4 py-2.5 rounded-xl font-semibold text-sm text-primary border border-primary/30 hover:bg-primary-container/10 transition-all duration-200"
