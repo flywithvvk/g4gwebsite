@@ -668,14 +668,20 @@ export default function SolutionsClient() {
   }, []);
 
   useEffect(() => {
-    const btn = selectorRef.current?.querySelector<HTMLElement>(`[data-id="${activeId}"]`);
-    btn?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    const container = selectorRef.current;
+    const btn = container?.querySelector<HTMLElement>(`[data-id="${activeId}"]`);
+    if (!container || !btn) return;
+    // Scroll the tab strip horizontally only — never touch page scroll
+    const targetLeft = btn.offsetLeft - container.offsetWidth / 2 + btn.offsetWidth / 2;
+    container.scrollTo({ left: Math.max(0, targetLeft), behavior: 'smooth' });
   }, [activeId]);
 
   const scrollToSection = (id: string) => {
     const el = sectionRefs.current[id];
     if (!el) return;
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Account for fixed nav (64px) + sticky tab bar (~52px) + breathing room (16px)
+    const top = el.getBoundingClientRect().top + window.scrollY - 132;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
   };
 
   return (
@@ -763,7 +769,7 @@ export default function SolutionsClient() {
           <div
             ref={selectorRef}
             className="flex items-center gap-2 overflow-x-auto pb-0.5"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', overscrollBehaviorX: 'contain', touchAction: 'pan-x' }}
           >
             {/* Primary Users group */}
             <span className="flex-shrink-0 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/50 pr-1 whitespace-nowrap">
