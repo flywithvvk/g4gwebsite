@@ -355,9 +355,6 @@ export default function InvestorsClient() {
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {team.map((m, idx) => (
               <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} whileHover={{ y: -6 }} className="bg-surface-bright p-7 rounded-2xl text-center border border-outline-variant/30 shadow-sm hover:shadow-lg transition-all group">
-                <div className={`w-18 h-18 mx-auto mb-5 bg-gradient-to-br ${m.bg} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform`} style={{ width: 72, height: 72 }}>
-                  <Icon name={m.icon} size={32} className="text-white" />
-                </div>
                 <h3 className="text-lg font-bold mb-1 font-display">{m.role}</h3>
                 <p className="text-primary text-sm font-semibold mb-3">{m.tag}</p>
                 <p className="text-xs text-on-surface-variant mb-4 leading-relaxed">{m.bio}</p>

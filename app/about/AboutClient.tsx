@@ -362,9 +362,6 @@ export default function AboutClient() {
                 whileHover={{ y: -6 }}
                 className="bg-surface-bright p-7 rounded-2xl text-center border border-outline-variant/30 shadow-sm hover:shadow-lg transition-all group"
               >
-                <div className={`w-18 h-18 w-[72px] h-[72px] mx-auto mb-5 bg-gradient-to-br ${member.bg} rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:shadow-xl transition-all`}>
-                  <Icon name={member.icon} size={32} className="text-white" />
-                </div>
                 <p className="text-xs font-semibold text-on-surface-variant/60 uppercase tracking-wider mb-1">{member.name}</p>
                 <h3 className="text-xl font-bold mb-1 font-display">{member.role}</h3>
                 <p className="text-primary text-sm font-semibold mb-5">{member.expertise}</p>
