@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.go4garage.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.go4garage.com/platform</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.go4garage.com/products</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.go4garage.com/solutions</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.go4garage.com/impact</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.go4garage.com/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.go4garage.com/investors</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.go4garage.com/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.go4garage.com/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://www.go4garage.com/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.go4garage.in/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.go4garage.in/platform</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.go4garage.in/products</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.go4garage.in/products/urgaa</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.go4garage.in/products/gstsaas</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.go4garage.in/products/ignition</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.go4garage.in/products/arjun</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.go4garage.in/products/kailash-ai</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.go4garage.in/products/eka-ai</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.go4garage.in/solutions</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.go4garage.in/pricing</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.go4garage.in/impact</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.go4garage.in/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.go4garage.in/investors</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.go4garage.in/blog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.go4garage.in/careers</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.go4garage.in/case-studies</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.go4garage.in/faq</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.go4garage.in/demo</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.go4garage.in/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.go4garage.in/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.go4garage.in/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

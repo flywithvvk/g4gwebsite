@@ -4,7 +4,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { ScrollProgress } from "@/components/ScrollProgress";
 
-const SITE_URL = "https://www.go4garage.com";
+const SITE_URL = "https://www.go4garage.in";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

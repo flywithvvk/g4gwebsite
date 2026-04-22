@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://www.go4garage.com/sitemap.xml
+Disallow: /login
+Sitemap: https://www.go4garage.in/sitemap.xml
