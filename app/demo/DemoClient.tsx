@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Icon } from '@/components/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 import { trackDemoBookingStarted, trackDemoBookingCompleted } from '@/lib/analytics';
+import { trackDemoConversion, trackBeginCheckout, trackPurchase } from '@/lib/gtag';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -156,6 +157,8 @@ export default function DemoClient() {
     window.location.href = `mailto:connect@go4garage.in?subject=${subject}&body=${body}`;
 
     trackDemoBookingCompleted(demoLabel, selectedSlot ?? '');
+    trackDemoConversion();
+    trackPurchase(`demo_${Date.now()}`, demoLabel);
 
     setSubmitted(true);
     setTimeout(() => {
@@ -169,6 +172,7 @@ export default function DemoClient() {
   const openModal = () => {
     const demoLabel = demoOptions.find((d) => d.id === selectedDemo)?.title ?? (selectedDemo ?? '');
     trackDemoBookingStarted(demoLabel);
+    trackBeginCheckout(demoLabel);
     setSubmitted(false);
     setShowModal(true);
   };

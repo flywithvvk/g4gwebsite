@@ -5,6 +5,9 @@ import Footer from "@/components/Footer";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { FirebaseAnalytics } from "@/components/FirebaseAnalytics";
 import { GlobalStructuredData } from "@/components/StructuredData";
+import { GoogleTagManager } from "@/components/GoogleTagManager";
+import { FirebaseAppCheck } from "@/components/FirebaseAppCheck";
+import { RemoteConfigInit } from "@/components/RemoteConfigInit";
 
 const SITE_URL = "https://www.go4garage.in";
 
@@ -70,7 +73,7 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   verification: {
-    google: "go4garage-d66fc",
+    google: process.env.NEXT_PUBLIC_GOOGLE_SEARCH_CONSOLE_ID ?? "go4garage-d66fc",
   },
 };
 
@@ -101,6 +104,9 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased bg-surface text-on-surface">
         <FirebaseAnalytics />
+        <GoogleTagManager />
+        <FirebaseAppCheck />
+        <RemoteConfigInit />
         <ScrollProgress />
         <Navigation />
         <main className="min-h-screen">

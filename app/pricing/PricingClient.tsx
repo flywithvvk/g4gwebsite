@@ -1,10 +1,11 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Icon } from '@/components/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
+import { trackPricingViewConversion } from '@/lib/gtag';
 
 interface Tier {
   name: string;
@@ -174,6 +175,10 @@ function renderCellValue(value: string | boolean) {
 
 export default function PricingClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  useEffect(() => {
+    trackPricingViewConversion();
+  }, []);
 
   return (
     <div className="min-h-screen bg-surface text-on-surface">
