@@ -6,12 +6,13 @@ import { getAnalytics } from 'firebase/analytics';
 import { getPerformance } from 'firebase/performance';
 import { app } from '@/lib/firebase';
 import { trackPageView } from '@/lib/analytics';
+import { reportWebVitals } from '@/lib/webVitals';
 
 export function FirebaseAnalytics() {
   const pathname = usePathname();
   const perfInitialised = useRef(false);
 
-  // Initialise Performance Monitoring once on mount
+  // Initialise Analytics, Performance Monitoring, and Web Vitals once on mount
   useEffect(() => {
     if (perfInitialised.current) return;
     perfInitialised.current = true;
@@ -21,6 +22,8 @@ export function FirebaseAnalytics() {
     } catch {
       // Analytics/Performance unavailable (e.g. ad-blocker) — fail silently
     }
+    // Report Core Web Vitals to Firebase Analytics
+    reportWebVitals().catch(() => {});
   }, []);
 
   // Track page view on every route change

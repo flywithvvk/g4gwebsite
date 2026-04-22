@@ -47,7 +47,8 @@
     "framer-motion": "^12.38.0",
     "next": "^16.2.4",
     "react": "^19.2.5",
-    "react-dom": "^19.2.5"
+    "react-dom": "^19.2.5",
+    "web-vitals": "^5.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",

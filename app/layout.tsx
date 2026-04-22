@@ -9,7 +9,6 @@ import { GoogleTagManager } from "@/components/GoogleTagManager";
 import { FirebaseAppCheck } from "@/components/FirebaseAppCheck";
 import { RemoteConfigInit } from "@/components/RemoteConfigInit";
 import { CookieConsent } from "@/components/CookieConsent";
-import { FloatingCTA } from "@/components/FloatingCTA";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { ExitIntentModal } from "@/components/ExitIntentModal";
 import { PromoBanner } from "@/components/PromoBanner";
@@ -119,7 +118,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <FloatingCTA />
         <ScrollToTop />
         <CookieConsent />
         <ExitIntentModal />
