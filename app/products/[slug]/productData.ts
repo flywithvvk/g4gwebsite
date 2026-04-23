@@ -40,7 +40,7 @@ export interface ProductData {
   cta: string;
   ctaLink: string;
   externalDomain?: string;
-  mobileApp?: { ios?: string; android?: string };
+  mobileApp?: { ios?: string; android?: string; comingSoon?: boolean };
 }
 
 export const productData: Record<string, ProductData> = {
@@ -387,7 +387,7 @@ export const productData: Record<string, ProductData> = {
     metrics: ['Real-time charging network', 'Service cost transparency', 'Certified service locator'],
     cta: 'Download App',
     ctaLink: '/contact',
-    mobileApp: { ios: '#', android: '#' },
+    mobileApp: { ios: '', android: '', comingSoon: true },
   },
 
   arjun: {

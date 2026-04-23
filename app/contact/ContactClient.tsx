@@ -29,8 +29,8 @@ const contactMethods = [
   {
     icon: 'location_on',
     title: 'Visit Us',
-    detail: 'India | Bharat',
-    href: 'https://maps.google.com/?q=India',
+    detail: 'Bangalore, Karnataka',
+    href: 'https://maps.google.com/?q=Bangalore,Karnataka,India',
     sub: 'India | Bharat',
     color: 'from-tertiary to-[#00a34a]',
   },

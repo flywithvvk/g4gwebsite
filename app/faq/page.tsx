@@ -4,7 +4,15 @@ import { FAQStructuredData } from '@/components/StructuredData';
 
 export const metadata: Metadata = {
   title: 'FAQ — Frequently Asked Questions',
-  description: 'Frequently asked questions about Go4Garage — our products, implementation, pricing, and technical capabilities for India\'s EV ecosystem.',
+  description: "Frequently asked questions about Go4Garage — our products, implementation, pricing, and technical capabilities for India's EV ecosystem.",
+  alternates: { canonical: 'https://www.go4garage.in/faq' },
+  openGraph: {
+    title: 'FAQ | Go4Garage',
+    description: 'Answers to common questions about Go4Garage products, implementation, pricing, and technical capabilities.',
+    url: 'https://www.go4garage.in/faq',
+    siteName: 'Go4Garage',
+    images: [{ url: 'https://www.go4garage.in/og-image.png', width: 1200, height: 630 }],
+  },
 };
 
 const faqsForSchema = [
