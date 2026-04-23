@@ -12,6 +12,7 @@ import { CookieConsent } from "@/components/CookieConsent";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { ExitIntentModal } from "@/components/ExitIntentModal";
 import { PromoBanner } from "@/components/PromoBanner";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 const SITE_URL = "https://www.go4garage.in";
 
@@ -97,6 +98,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        {/* Preload LCP image (logo) + critical font */}
+        <link rel="preload" href="/logo.jpg" as="image" type="image/jpeg" />
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style" />
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
@@ -117,7 +121,9 @@ export default function RootLayout({
         <ScrollProgress />
         <Navigation />
         <main className="min-h-screen">
-          {children}
+          <ErrorBoundary>
+            {children}
+          </ErrorBoundary>
         </main>
         <Footer />
         <ScrollToTop />

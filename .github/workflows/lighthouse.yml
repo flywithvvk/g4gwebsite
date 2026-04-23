@@ -1,0 +1,50 @@
+name: Lighthouse CI
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: lighthouse-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lighthouse:
+    name: Lighthouse Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Install serve
+        run: npm install -g serve
+
+      - name: Serve & run Lighthouse CI
+        run: |
+          serve out -l 3000 &
+          sleep 5
+          npx @lhci/cli@0.14.x autorun --upload.target=temporary-public-storage
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Assert thresholds
+        run: |
+          npx @lhci/cli@0.14.x assert \
+            --assert.preset=lighthouse:recommended \
+            --assert.assertions.categories:performance=["error",{"minScore":0.80}] \
+            --assert.assertions.categories:accessibility=["warn",{"minScore":0.90}] \
+            --assert.assertions.categories:best-practices=["warn",{"minScore":0.90}] \
+            --assert.assertions.categories:seo=["error",{"minScore":0.90}]
