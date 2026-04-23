@@ -44,6 +44,7 @@ const Footer: React.FC = () => {
       title: 'Resources',
       links: [
         { label: 'Blog', href: '/blog' },
+        { label: 'News', href: '/news' },
         { label: 'Case Studies', href: '/case-studies' },
         { label: 'FAQ', href: '/faq' },
         { label: 'Pricing', href: '/pricing' },
