@@ -1,17 +1,25 @@
 import type { Metadata } from 'next';
 import FAQClient from './FAQClient';
-import { FAQStructuredData } from '@/components/StructuredData';
+import { FAQStructuredData, WebPageStructuredData, BreadcrumbStructuredData } from '@/components/StructuredData';
+
+const SITE_URL = 'https://www.go4garage.in';
 
 export const metadata: Metadata = {
   title: 'FAQ — Frequently Asked Questions',
   description: "Frequently asked questions about Go4Garage — our products, implementation, pricing, and technical capabilities for India's EV ecosystem.",
-  alternates: { canonical: 'https://www.go4garage.in/faq' },
+  alternates: { canonical: `${SITE_URL}/faq` },
   openGraph: {
     title: 'FAQ | Go4Garage',
     description: 'Answers to common questions about Go4Garage products, implementation, pricing, and technical capabilities.',
-    url: 'https://www.go4garage.in/faq',
+    url: `${SITE_URL}/faq`,
     siteName: 'Go4Garage',
-    images: [{ url: 'https://www.go4garage.in/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: 'Go4Garage FAQ' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'FAQ | Go4Garage',
+    description: 'Answers to common questions about Go4Garage.',
+    images: [{ url: `${SITE_URL}/og-image.png`, alt: 'Go4Garage FAQ' }],
   },
 };
 
@@ -22,11 +30,24 @@ const faqsForSchema = [
   { question: 'How is Go4Garage priced?', answer: 'Go4Garage follows a SaaS model with Starter, Professional, and Enterprise tiers. Contact sales for a customized quote.' },
   { question: 'Is there a free trial?', answer: 'We offer guided pilot programs with proper setup, training, and support so you can evaluate with real results.' },
   { question: 'Is my data secure?', answer: 'Yes. Enterprise-grade security with end-to-end encryption, role-based access controls, regular audits, and compliance with industry standards.' },
+  { question: 'Does Go4Garage cover all 33 Indian states?', answer: 'Yes. URGAA (ऊर्जा) provides regulatory intelligence and compliance workflows for all 33 states, including state-specific DISCOM portals and EV policies.' },
+  { question: 'Can Go4Garage integrate with existing ERP/DMS systems?', answer: 'Yes. Go4Garage provides REST APIs and supports integration with popular DMS, ERP, and fleet management systems.' },
 ];
 
 export default function Page() {
   return (
     <>
+      <WebPageStructuredData
+        name="Go4Garage FAQ — Frequently Asked Questions"
+        description="Frequently asked questions about Go4Garage products, implementation, pricing, and technical capabilities."
+        url={`${SITE_URL}/faq`}
+      />
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: SITE_URL },
+          { name: 'FAQ', url: `${SITE_URL}/faq` },
+        ]}
+      />
       <FAQStructuredData faqs={faqsForSchema} />
       <FAQClient />
     </>

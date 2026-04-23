@@ -11,6 +11,8 @@ export interface Article {
   title: string;
   excerpt: string;
   date: string;
+  datePublished: string;   // ISO 8601 e.g. "2026-04-10"
+  dateModified: string;    // ISO 8601
   category: string;
   readTime: string;
   icon: string;
@@ -26,6 +28,8 @@ export const articleData: Record<string, Article> = {
     excerpt:
       'The EV ecosystem in India is growing at an unprecedented pace. But with growth comes regulatory complexity — across 33 states, multiple ministries, and evolving policies. Learn how AI-powered intelligence is cutting through the chaos to deliver 89.5% compliance automation.',
     date: 'Apr 2026',
+    datePublished: '2026-04-02',
+    dateModified: '2026-04-02',
     category: 'Regulatory',
     readTime: '8 min read',
     icon: 'auto_stories',
@@ -122,6 +126,8 @@ export const articleData: Record<string, Article> = {
     excerpt:
       'A step-by-step walkthrough of DISCOM application processes across all Indian states — timelines, documentation, and common pitfalls to avoid.',
     date: 'Apr 2026',
+    datePublished: '2026-04-05',
+    dateModified: '2026-04-05',
     category: 'Regulatory',
     readTime: '8 min read',
     icon: 'policy',
@@ -239,6 +245,8 @@ export const articleData: Record<string, Article> = {
     excerpt:
       'GST complexity in EV servicing is real — from input credits to workshop billing. Discover how automation reduces compliance burden by 80%.',
     date: 'Apr 2026',
+    datePublished: '2026-04-12',
+    dateModified: '2026-04-12',
     category: 'Workshop',
     readTime: '6 min read',
     icon: 'receipt_long',
@@ -341,6 +349,8 @@ export const articleData: Record<string, Article> = {
     excerpt:
       "Charge Point Operators face a patchwork of state-level rules. This comprehensive guide covers every state's requirements in one place.",
     date: 'Feb 2026',
+    datePublished: '2026-02-20',
+    dateModified: '2026-02-20',
     category: 'Regulatory',
     readTime: '10 min read',
     icon: 'verified',
@@ -442,6 +452,8 @@ export const articleData: Record<string, Article> = {
     excerpt:
       'How AI and IoT sensor data can predict component failures before they happen — reducing downtime and extending battery life for fleet operators.',
     date: 'Feb 2026',
+    datePublished: '2026-02-10',
+    dateModified: '2026-02-10',
     category: 'AI & Tech',
     readTime: '7 min read',
     icon: 'model_training',
@@ -545,6 +557,8 @@ export const articleData: Record<string, Article> = {
     excerpt:
       "India needs 100,000+ certified EV technicians by 2030. Here's why a national certification standard is critical and what it should include.",
     date: 'Jan 2026',
+    datePublished: '2026-01-25',
+    dateModified: '2026-01-25',
     category: 'Workshop',
     readTime: '5 min read',
     icon: 'engineering',
@@ -637,6 +651,8 @@ export const articleData: Record<string, Article> = {
     excerpt:
       "From FAME to state-level incentives — navigating India's EV subsidy ecosystem can unlock significant savings for buyers and operators alike.",
     date: 'Jan 2026',
+    datePublished: '2026-01-15',
+    dateModified: '2026-01-15',
     category: 'Policy',
     readTime: '9 min read',
     icon: 'account_balance',
@@ -743,6 +759,8 @@ export const articleData: Record<string, Article> = {
     excerpt:
       'India crossed 2 million EV registrations in FY2025-26, marking a 67% year-on-year surge. From two-wheelers to commercial fleets, we break down the data — and what it means for CPOs, workshops, and the broader ecosystem.',
     date: 'Apr 2026',
+    datePublished: '2026-04-10',
+    dateModified: '2026-04-10',
     category: 'Policy',
     readTime: '7 min read',
     icon: 'trending_up',
@@ -840,6 +858,8 @@ export const articleData: Record<string, Article> = {
     excerpt:
       "With FAME II concluded and PM e-DRIVE in full swing, CPOs and fleet operators face new subsidy claim procedures. Here's a step-by-step walkthrough of the eligibility criteria, documentation, and disbursement timelines under the ₹10,900 crore scheme.",
     date: 'Mar 2026',
+    datePublished: '2026-03-20',
+    dateModified: '2026-03-20',
     category: 'Policy',
     readTime: '9 min read',
     icon: 'account_balance',
@@ -952,6 +972,8 @@ export const articleData: Record<string, Article> = {
     excerpt:
       "India's Battery Waste Management Rules mandate EPR (Extended Producer Responsibility) compliance for all EV operators. With enforcement stepping up in 2026, here's exactly what your business needs — from registration to collection targets.",
     date: 'Mar 2026',
+    datePublished: '2026-03-15',
+    dateModified: '2026-03-15',
     category: 'Regulatory',
     readTime: '6 min read',
     icon: 'battery_horiz_075',

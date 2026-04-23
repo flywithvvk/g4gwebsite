@@ -2,25 +2,49 @@ const SITE_URL = 'https://www.go4garage.in';
 
 const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': ['Organization', 'Corporation'],
   '@id': `${SITE_URL}/#organization`,
   name: 'Go4Garage',
-  alternateName: 'Go4Garage Technologies',
+  legalName: 'Go4Garage Technologies Private Limited',
+  alternateName: ['Go4Garage Technologies', 'Go4Garage AI'],
   url: SITE_URL,
   logo: {
     '@type': 'ImageObject',
+    '@id': `${SITE_URL}/#logo`,
     url: `${SITE_URL}/icon-512.png`,
     width: 512,
     height: 512,
+    caption: 'Go4Garage — AI-Powered EV Platform',
   },
-  image: `${SITE_URL}/icon-512.png`,
-  description: "India's first AI-powered automobile intelligence platform accelerating EV adoption across 33 states.",
+  image: `${SITE_URL}/og-image.png`,
+  description: "India's first AI-powered automobile intelligence platform — solving 84 problems across EV charging, workshop operations, fleet management, and workforce training across 33 states.",
   foundingDate: '2023',
   foundingLocation: {
     '@type': 'Place',
+    name: 'Bangalore, Karnataka, India',
     addressCountry: 'IN',
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Bangalore',
+    addressRegion: 'Karnataka',
+    addressCountry: 'IN',
+    postalCode: '560001',
+  },
+  areaServed: {
+    '@type': 'Country',
     name: 'India',
   },
+  knowsAbout: [
+    'EV Charging Infrastructure',
+    'Electric Vehicle Compliance',
+    'DISCOM Applications India',
+    'EV Fleet Management',
+    'Automobile Workshop Management',
+    'AI-powered SaaS',
+    'EV Regulatory Intelligence',
+    'Carbon Credits EV India',
+  ],
   contactPoint: [
     {
       '@type': 'ContactPoint',
@@ -34,23 +58,25 @@ const organizationSchema = {
       email: 'partnerships@go4garage.in',
       contactType: 'sales',
       areaServed: 'IN',
+      availableLanguage: ['English'],
     },
   ],
   sameAs: [
     'https://linkedin.com/company/go4garage',
     'https://twitter.com/go4garage',
     'https://github.com/go4garage',
+    'https://www.go4garage.in',
   ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Go4Garage Product Suite',
     itemListElement: [
-      { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'URGAA (ऊर्जा)' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'GST (Go4Garage Service Tools)' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'Ignition App' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'EV VIDYA ARJUN' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'KAILASH-AI' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'Eka-AI' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'URGAA (ऊर्जा)', description: 'Multi-vertical EV infrastructure & regulatory intelligence platform for 33 Indian states' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'GST (Go4Garage Service Tools)', description: 'End-to-end EV workshop and service-centre operations platform' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'Ignition App', description: 'Multi-stakeholder EV mobility app for owners, fleets & workshops' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'EV VIDYA ARJUN', description: 'EV workforce training and certification platform' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'KAILASH-AI', description: 'Central AI backbone for predictive analytics across all 12 EV industry verticals' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'SoftwareApplication', name: 'Eka-AI', description: 'Conversational AI agent for all 12 EV industry verticals' } },
     ],
   },
 };
@@ -132,18 +158,22 @@ export function SoftwareAppStructuredData({
     description,
     url: `${SITE_URL}/products/${slug}`,
     applicationCategory: category,
-    operatingSystem: 'Web',
+    operatingSystem: 'Web, Android, iOS',
     offers: {
       '@type': 'Offer',
       priceCurrency: 'INR',
-      price: '0',
-      priceValidUntil: '2027-12-31',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        description: 'Contact for enterprise pricing',
+      },
       availability: 'https://schema.org/InStock',
       url: `${SITE_URL}/demo`,
     },
     featureList: features.join(', '),
     publisher: { '@id': `${SITE_URL}/#organization` },
+    creator: { '@id': `${SITE_URL}/#organization` },
     inLanguage: 'en-IN',
+    isAccessibleForFree: false,
   };
   return (
     <script
@@ -169,6 +199,145 @@ export function FAQStructuredData({
         text: faq.answer,
       },
     })),
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+// ── Article (BlogPosting) schema ──────────────────────────────────────────────
+export function ArticleStructuredData({
+  slug,
+  title,
+  excerpt,
+  datePublished,
+  dateModified,
+  author,
+  category,
+}: {
+  slug: string;
+  title: string;
+  excerpt: string;
+  datePublished: string;
+  dateModified: string;
+  author: string;
+  category: string;
+}) {
+  const articleUrl = `${SITE_URL}/blog/${slug}`;
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    '@id': `${articleUrl}#article`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': articleUrl,
+    },
+    headline: title,
+    description: excerpt,
+    image: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/og-image.png`,
+      width: 1200,
+      height: 630,
+    },
+    datePublished,
+    dateModified,
+    author: {
+      '@type': 'Organization',
+      name: author,
+      url: SITE_URL,
+    },
+    publisher: {
+      '@id': `${SITE_URL}/#organization`,
+      '@type': 'Organization',
+      name: 'Go4Garage',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/icon-512.png`,
+        width: 512,
+        height: 512,
+      },
+    },
+    url: articleUrl,
+    inLanguage: 'en-IN',
+    articleSection: category,
+    isPartOf: {
+      '@type': 'Blog',
+      '@id': `${SITE_URL}/blog#blog`,
+      name: 'Go4Garage Insights',
+      publisher: { '@id': `${SITE_URL}/#organization` },
+    },
+    about: {
+      '@type': 'Thing',
+      name: 'Electric Vehicles India',
+    },
+    keywords: [
+      'EV India',
+      'Electric Vehicle',
+      category,
+      'Go4Garage',
+      'AI EV Platform',
+    ].join(', '),
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+// ── NewsArticle schema (for /news page) ───────────────────────────────────────
+export function NewsArticleListStructuredData() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${SITE_URL}/news#page`,
+    name: 'Go4Garage Industry News & Updates',
+    description: 'Latest news and regulatory updates on EV, automobile, and AI technology in India, curated by Go4Garage.',
+    url: `${SITE_URL}/news`,
+    inLanguage: 'en-IN',
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    about: [
+      { '@type': 'Thing', name: 'Electric Vehicle Industry India' },
+      { '@type': 'Thing', name: 'EV Policy India' },
+    ],
+    publisher: { '@id': `${SITE_URL}/#organization` },
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+// ── WebPage schema for inner pages ────────────────────────────────────────────
+export function WebPageStructuredData({
+  name,
+  description,
+  url,
+  dateModified,
+}: {
+  name: string;
+  description: string;
+  url: string;
+  dateModified?: string;
+}) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${url}#webpage`,
+    name,
+    description,
+    url,
+    inLanguage: 'en-IN',
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    about: { '@id': `${SITE_URL}/#organization` },
+    ...(dateModified ? { dateModified } : {}),
   };
   return (
     <script
