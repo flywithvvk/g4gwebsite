@@ -139,6 +139,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
           backfaceVisibility: 'hidden',
           WebkitBackfaceVisibility: 'hidden',
           willChange: 'transform',
+          filter: 'contrast(1.08) saturate(1.15) brightness(1.04)',
         }}
         className="absolute inset-0 w-full h-full object-cover object-center"
       >

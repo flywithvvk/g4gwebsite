@@ -147,6 +147,19 @@ export const productData: Record<string, ProductData> = {
         ],
         metric: 'Weeks \u2192 hours',
       },
+    
+      {
+        icon: 'ev_station',
+        title: 'CPO Remote Charger Management',
+        desc: 'OCPP 1.6-J & 2.0.1 native integration — AI auto-resolves 73% of charger faults without a technician visit',
+        points: [
+          'OCPP 1.6-J covers 80% of India installed base; OCPP 2.0.1 for new installs',
+          'OCPI 2.2.1 roaming — charge at partner networks seamlessly',
+          'AI loop: health read -> diagnosis -> auto-fix -> learn (73% resolved remotely)',
+          'Live dashboards: uptime, session KPIs, revenue per charger, fault heatmaps',
+        ],
+        metric: '73% faults resolved remotely',
+      },
     ],
     integrations: ['KAILASH-AI (predictive analytics)', 'Eka-AI (regulatory Q&A)', 'GST (billing)'],
     metrics: ['89% compliance automation', '30 days avg DISCOM approval', '33 states covered'],
