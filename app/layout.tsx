@@ -76,7 +76,12 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png?v=3",
   },
   manifest: "/manifest.json",
-  // google: '',  // Firebase Hosting auto-verifies this site in Google Search Console
+  verification: {
+    google: [
+      "79ae55bd7d3253ab5b7880a6dcb07ee65bad2517",
+      "5VlinGv18IbP9hldtwjXsfiU7SK0-YP9XyKlx4mPINQ",
+    ],
+  },
 };
 
 export default function RootLayout({
