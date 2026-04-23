@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /login
+Disallow: /_next/
+Disallow: /api/
+
+# Sitemap
 Sitemap: https://www.go4garage.in/sitemap.xml
