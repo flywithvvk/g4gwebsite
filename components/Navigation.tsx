@@ -100,6 +100,8 @@ const Navigation = () => {
           <button
             className="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-surface-container-high transition-colors"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isOpen}
           >
             <motion.span
               className="w-5 h-0.5 bg-on-surface rounded-full"
