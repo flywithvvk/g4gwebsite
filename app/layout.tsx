@@ -105,6 +105,8 @@ export default function RootLayout({
         <meta name="color-scheme" content="light" />
         <meta name="format-detection" content="telephone=no" />
         <GlobalStructuredData />
+        {/* Register service worker for offline caching */}
+        <script dangerouslySetInnerHTML={{ __html: `if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});})}` }} />
       </head>
       <body className="font-sans antialiased bg-surface text-on-surface">
         <FirebaseAnalytics />

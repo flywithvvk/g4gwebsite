@@ -153,13 +153,13 @@ export function EVJourneyVisual({ onComplete }: Props) {
       {/* Very light top fade */}
       <div
         className="absolute top-0 left-0 right-0 h-16 pointer-events-none z-10"
-        style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 100%)' }}
+        style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, transparent 100%)' }}
       />
 
       {/* Subtle left vignette */}
       <div
         className="absolute inset-0 pointer-events-none z-10"
-        style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.2) 0%, transparent 22%)' }}
+        style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.08) 0%, transparent 22%)' }}
       />
 
       {/* ═══════════ WATERMARK KILL COVER — hidden on mobile (panel is full-width there) ═══════════ */}

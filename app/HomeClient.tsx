@@ -13,6 +13,7 @@ import { Testimonials } from '@/components/Testimonials';
 import { TrustBar } from '@/components/TrustBar';
 import { EVJourneyVisual } from '@/components/EVJourneyVisual';
 import { SocialProofTicker } from '@/components/SocialProofTicker';
+import { trackCTAClick } from '@/lib/analytics';
 
 /* ─── Data ─── */
 
@@ -168,7 +169,7 @@ export default function HomePage() {
 
                   {/* CTAs */}
                   <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                    <Link href="/contact">
+                    <Link href="/contact" onClick={() => trackCTAClick('hero_schedule_demo', '/contact')}>
                       <motion.button
                         whileHover={{ scale: 1.04, boxShadow: '0 20px 40px -12px rgba(144,77,0,0.35)' }}
                         whileTap={{ scale: 0.98 }}
@@ -177,7 +178,7 @@ export default function HomePage() {
                         Schedule Demo
                       </motion.button>
                     </Link>
-                    <Link href="/platform">
+                    <Link href="/platform" onClick={() => trackCTAClick('hero_explore_platform', '/platform')}>
                       <motion.button
                         whileHover={{ scale: 1.04 }}
                         whileTap={{ scale: 0.98 }}

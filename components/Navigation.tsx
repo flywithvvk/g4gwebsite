@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { trackCTAClick } from '@/lib/analytics';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,12 +82,14 @@ const Navigation = () => {
           >
             <Link
               href="/demo"
+              onClick={() => trackCTAClick('nav_book_demo', '/demo')}
               className="px-4 py-2.5 rounded-xl font-semibold text-sm text-primary border border-primary/30 hover:bg-primary-container/10 transition-all duration-200"
             >
               Book Demo
             </Link>
             <Link
               href="/contact"
+              onClick={() => trackCTAClick('nav_contact_us', '/contact')}
               className="px-5 py-2.5 rounded-xl font-semibold text-sm text-primary-on bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg transition-all duration-200"
             >
               Contact Us
@@ -145,14 +148,14 @@ const Navigation = () => {
               })}
               <Link
                 href="/demo"
-                onClick={() => setIsOpen(false)}
+                onClick={() => { setIsOpen(false); trackCTAClick('nav_mobile_book_demo', '/demo'); }}
                 className="block w-full text-center mt-1 px-4 py-3 rounded-xl font-semibold text-sm text-primary border border-primary/30 hover:bg-primary-container/10"
               >
                 Book Demo
               </Link>
               <Link
                 href="/contact"
-                onClick={() => setIsOpen(false)}
+                onClick={() => { setIsOpen(false); trackCTAClick('nav_mobile_contact_us', '/contact'); }}
                 className="block w-full text-center mt-2 px-4 py-3 rounded-xl font-semibold text-sm text-primary-on bg-primary"
               >
                 Contact Us

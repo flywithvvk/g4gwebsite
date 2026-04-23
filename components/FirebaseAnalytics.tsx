@@ -5,12 +5,13 @@ import { usePathname } from 'next/navigation';
 import { getAnalytics } from 'firebase/analytics';
 import { getPerformance } from 'firebase/performance';
 import { app } from '@/lib/firebase';
-import { trackPageView } from '@/lib/analytics';
+import { trackPageView, trackScrollDepth } from '@/lib/analytics';
 import { reportWebVitals } from '@/lib/webVitals';
 
 export function FirebaseAnalytics() {
   const pathname = usePathname();
   const perfInitialised = useRef(false);
+  const scrollMilestonesRef = useRef<Set<number>>(new Set());
 
   // Initialise Analytics, Performance Monitoring, and Web Vitals once on mount
   useEffect(() => {
@@ -34,6 +35,28 @@ export function FirebaseAnalytics() {
     } catch {
       // fail silently
     }
+  }, [pathname]);
+
+  // Track scroll depth milestones (25%, 50%, 75%, 90%)
+  useEffect(() => {
+    scrollMilestonesRef.current = new Set();
+    const milestones = [25, 50, 75, 90];
+    const handleScroll = () => {
+      try {
+        const scrolled = window.scrollY;
+        const total = document.body.scrollHeight - window.innerHeight;
+        if (total <= 0) return;
+        const pct = Math.round((scrolled / total) * 100);
+        for (const m of milestones) {
+          if (pct >= m && !scrollMilestonesRef.current.has(m)) {
+            scrollMilestonesRef.current.add(m);
+            trackScrollDepth(m, pathname);
+          }
+        }
+      } catch { /* fail silently */ }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [pathname]);
 
   return null;
