@@ -113,13 +113,12 @@ export default function BlogClient() {
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      // Save to Firestore (non-blocking)
-      saveNewsletterSubscriber({ email, source: 'blog_newsletter' });
-      setSubscribed(true);
-      setEmail('');
-      setTimeout(() => setSubscribed(false), 4000);
-    }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+    // Save to Firestore (non-blocking)
+    saveNewsletterSubscriber({ email, source: 'blog_newsletter' });
+    setSubscribed(true);
+    setEmail('');
+    setTimeout(() => setSubscribed(false), 4000);
   };
 
   return (

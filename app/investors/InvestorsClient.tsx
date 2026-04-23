@@ -1,7 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { useState } from 'react';
 import { Icon } from '@/components/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 import { saveInvestorLead } from '@/lib/firestore';
@@ -135,6 +136,28 @@ const competitionAdvantages = [
 ];
 
 export default function InvestorsClient() {
+  const [investorFormState, setInvestorFormState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [investorEmailError, setInvestorEmailError] = useState('');
+
+  const handleInvestorSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const name = String(fd.get('name') || '');
+    const org = String(fd.get('org') || '');
+    const email = String(fd.get('email') || '');
+    const stage = String(fd.get('stage') || '');
+    const msg = String(fd.get('message') || '');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setInvestorEmailError('Please enter a valid email address.');
+      return;
+    }
+    setInvestorEmailError('');
+    setInvestorFormState('loading');
+    await saveInvestorLead({ name, organization: org || undefined, email, investmentStage: stage || undefined, message: msg || undefined, source: 'investor_form' });
+    setInvestorFormState('success');
+    (e.currentTarget as HTMLFormElement).reset();
+    setTimeout(() => setInvestorFormState('idle'), 5000);
+  };
   return (
     <div className="min-h-screen bg-surface text-on-surface">
 
@@ -417,25 +440,23 @@ export default function InvestorsClient() {
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-surface-bright p-7 rounded-2xl border border-outline-variant/30 shadow-sm">
               <h3 className="font-bold text-lg text-secondary mb-1 font-display">Request Investor Materials</h3>
               <p className="text-sm text-on-surface-variant mb-5">Submit your details and we&apos;ll send our investor materials within 24 hours.</p>
-              <form className="space-y-3" onSubmit={e => {
-                e.preventDefault();
-                const fd = new FormData(e.currentTarget);
-                const name = String(fd.get('name') || '');
-                const org = String(fd.get('org') || '');
-                const email = String(fd.get('email') || '');
-                const stage = String(fd.get('stage') || '');
-                const msg = String(fd.get('message') || '');
-                // Save to Firestore (non-blocking)
-                saveInvestorLead({
-                  name,
-                  organization: org || undefined,
-                  email,
-                  investmentStage: stage || undefined,
-                  message: msg || undefined,
-                  source: 'investor_form',
-                });
-                (e.currentTarget as HTMLFormElement).reset();
-              }}>
+              <AnimatePresence mode="wait">
+                {investorFormState === 'success' ? (
+                  <motion.div
+                    key="success"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="py-8 text-center"
+                  >
+                    <div className="w-14 h-14 rounded-full bg-tertiary-container/20 flex items-center justify-center mx-auto mb-3">
+                      <Icon name="check_circle" size={32} className="text-tertiary" />
+                    </div>
+                    <p className="font-semibold text-on-surface mb-1">Request Received!</p>
+                    <p className="text-sm text-on-surface-variant">We&apos;ll send investor materials to your email within 24 hours.</p>
+                  </motion.div>
+                ) : (
+                  <motion.form key="form" className="space-y-3" onSubmit={handleInvestorSubmit}>
                 <input
                   type="text"
                   name="name"
@@ -449,13 +470,17 @@ export default function InvestorsClient() {
                   placeholder="Fund / Organization"
                   className="w-full text-sm px-4 py-2.5 bg-surface-container-low rounded-xl border border-outline-variant/30 focus:outline-none focus:border-primary/50 transition-colors placeholder:text-on-surface-variant/50"
                 />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email Address"
-                  required
-                  className="w-full text-sm px-4 py-2.5 bg-surface-container-low rounded-xl border border-outline-variant/30 focus:outline-none focus:border-primary/50 transition-colors placeholder:text-on-surface-variant/50"
-                />
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    required
+                    onChange={() => investorEmailError && setInvestorEmailError('')}
+                    className={`w-full text-sm px-4 py-2.5 bg-surface-container-low rounded-xl border focus:outline-none focus:border-primary/50 transition-colors placeholder:text-on-surface-variant/50 ${investorEmailError ? 'border-red-500' : 'border-outline-variant/30'}`}
+                  />
+                  {investorEmailError && <p className="text-red-500 text-xs mt-1">{investorEmailError}</p>}
+                </div>
                 <select name="stage" className="w-full text-sm px-4 py-2.5 bg-surface-container-low rounded-xl border border-outline-variant/30 focus:outline-none focus:border-primary/50 transition-colors text-on-surface-variant">
                   <option value="">Investment Stage</option>
                   <option value="angel">Angel</option>
@@ -471,14 +496,19 @@ export default function InvestorsClient() {
                 />
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-2.5 bg-secondary text-white rounded-xl font-semibold text-sm hover:shadow-md transition-all"
+                  disabled={investorFormState === 'loading'}
+                  whileHover={investorFormState !== 'loading' ? { scale: 1.02 } : {}}
+                  whileTap={investorFormState !== 'loading' ? { scale: 0.98 } : {}}
+                  className="w-full py-2.5 bg-secondary text-white rounded-xl font-semibold text-sm hover:shadow-md transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  Request Materials
+                  {investorFormState === 'loading' ? (
+                    <><span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Sending...</>
+                  ) : 'Request Materials'}
                 </motion.button>
                 <p className="text-[11px] text-center text-on-surface-variant/50">Materials subject to NDA</p>
-              </form>
+                  </motion.form>
+                )}
+              </AnimatePresence>
             </motion.div>
           </div>
         </div>
