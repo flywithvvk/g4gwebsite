@@ -44,13 +44,21 @@ export function GoogleTagManager() {
           __html: `
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  analytics_storage: 'denied',
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  functionality_storage: 'denied',
+  wait_for_update: 500
+});
 gtag('js', new Date());
 gtag('config', '${GA_MEASUREMENT_ID}', {
   page_path: window.location.pathname,
   send_page_view: false,
   anonymize_ip: true,
-  allow_google_signals: true,
-  allow_ad_personalization_signals: true
+  allow_google_signals: false,
+  allow_ad_personalization_signals: false
 });
 ${configSnippet}
           `.trim(),

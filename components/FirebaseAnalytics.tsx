@@ -7,31 +7,52 @@ import { getPerformance } from 'firebase/performance';
 import { app } from '@/lib/firebase';
 import { trackPageView, trackScrollDepth } from '@/lib/analytics';
 import { reportWebVitals } from '@/lib/webVitals';
+import { hasFullConsent } from '@/lib/cookieConsent';
 
 export function FirebaseAnalytics() {
   const pathname = usePathname();
   const perfInitialised = useRef(false);
   const scrollMilestonesRef = useRef<Set<number>>(new Set());
 
-  // Initialise Analytics, Performance Monitoring, and Web Vitals once on mount
+  // Initialise Analytics + Performance only when consent is granted
   useEffect(() => {
-    if (perfInitialised.current) return;
-    perfInitialised.current = true;
-    try {
-      getAnalytics(app);
-      getPerformance(app);
-    } catch {
-      // Analytics/Performance unavailable (e.g. ad-blocker) — fail silently
+    function initFirebase() {
+      if (perfInitialised.current) return;
+      perfInitialised.current = true;
+      try {
+        getAnalytics(app);
+        getPerformance(app);
+      } catch {
+        // Analytics/Performance unavailable (e.g. ad-blocker) — fail silently
+      }
+      reportWebVitals().catch(() => {});
     }
-    // Report Core Web Vitals to Firebase Analytics
-    reportWebVitals().catch(() => {});
+
+    if (hasFullConsent()) {
+      initFirebase();
+    }
+
+    // React to consent being granted in this tab (from CookieConsent banner)
+    const onConsentChanged = (e: Event) => {
+      if ((e as CustomEvent).detail?.level === 'all') initFirebase();
+    };
+    // React to consent being granted in another tab
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === 'g4g_consent' && e.newValue === 'all') initFirebase();
+    };
+
+    window.addEventListener('g4g:consent-changed', onConsentChanged);
+    window.addEventListener('storage', onStorage);
+    return () => {
+      window.removeEventListener('g4g:consent-changed', onConsentChanged);
+      window.removeEventListener('storage', onStorage);
+    };
   }, []);
 
-  // Track page view on every route change
+  // Track page view on every route change (Analytics SDK respects consent state internally)
   useEffect(() => {
     try {
-      const title = document.title;
-      trackPageView(pathname, title);
+      trackPageView(pathname, document.title);
     } catch {
       // fail silently
     }
