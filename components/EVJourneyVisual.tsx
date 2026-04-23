@@ -131,7 +131,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
         autoPlay
         muted
         playsInline
-        preload="auto"
+        preload="none"
         poster="/images/journey-poster.jpg"
         style={{
           transform: 'translateZ(0)',
