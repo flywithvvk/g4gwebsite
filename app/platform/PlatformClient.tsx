@@ -78,15 +78,15 @@ const comparisonRows = [
   { icon: 'electric_bolt', dimension: 'EV Diagnostics', traditional: 'Generic OBD tools, manual interpretation', g4g: 'AI fault analysis with predictive maintenance' },
   { icon: 'school', dimension: 'Technician Training', traditional: 'Classroom-only, no certification tracking', g4g: 'AI-personalized learning paths with certification' },
   { icon: 'insights', dimension: 'Analytics & Insights', traditional: 'Excel spreadsheets, monthly reports', g4g: 'Real-time AI dashboards with anomaly detection' },
-  { icon: 'hub', dimension: 'Platform Coverage', traditional: 'Single point solution per problem', g4g: '6 integrated products on unified data layer' },
+  { icon: 'hub', dimension: 'Platform Coverage', traditional: 'Single point solution per problem', g4g: '7 integrated products on unified AI data layer' },
 ];
 
 const techCards = [
   {
     icon: 'psychology',
     title: 'Proprietary Automotive AI Engine',
-    description: 'Proprietary Automotive AI Engine — powered by domain-tuned models and a multi-LLM routing system that selects the optimal AI model across 10 dimensions for each task. Includes fine-tuned models for Indian automotive regulations and a RAG-powered knowledge base of 55+ regulatory documents.',
-    features: ['Multi-LLM routing across 10 dimensions', 'RAG knowledge base: 55+ regulatory documents', 'Fine-tuned for Indian automotive regulations'],
+    description: 'Proprietary Automotive AI Engine — powered by 32 domain-specific ML models and a multi-LLM routing system that selects the optimal AI model across 10 dimensions for each task. Includes 12 industry branch contexts, fine-tuned models for Indian automotive regulations, and a RAG-powered knowledge base of 500+ domain articles.',
+    features: ['Multi-LLM routing across 10 dimensions', '500+ domain knowledge base articles', '32 custom ML models • 12 AI branches', 'Fine-tuned for Indian automotive regulations'],
   },
   {
     icon: 'verified',
@@ -103,8 +103,8 @@ const techCards = [
   {
     icon: 'hub',
     title: 'Multi-Agent AI',
-    description: 'Orchestrated AI agents across 7 products providing cross-domain intelligence and automated decision support',
-    features: ['Cross-product reasoning', 'Autonomous task execution', 'Human-in-the-loop escalation'],
+    description: 'Orchestrated AI agents across 12 specialized industry branches serving 15 user types — providing cross-domain intelligence and automated decision support for every stakeholder in the EV ecosystem.',
+    features: ['12 AI branches • 15 user types', 'Cross-product reasoning', 'Autonomous task execution', 'Human-in-the-loop escalation'],
   },
 ];
 
@@ -115,6 +115,9 @@ const enterpriseFeatures = [
   { icon: 'support_agent', title: 'Support', description: '24/7 dedicated support with SLA-backed response times and named account managers' },
   { icon: 'apartment', title: 'Multi-tenancy', description: 'Complete tenant isolation with configurable branding, permissions, and data sovereignty' },
   { icon: 'palette', title: 'White-label', description: 'White-label ready architecture for partner deployments' },
+  { icon: 'policy', title: 'DPDP Act 2023 Ready', description: 'Compliant with India\'s Digital Personal Data Protection Act 2023 & Rules 2025 — consent management, data principal rights, and breach notification built-in' },
+  { icon: 'shield', title: 'CERT-In Compliant', description: 'Meets CERT-In cybersecurity directions — 6-hour incident reporting, 180-day log retention, and NTP-synchronized audit trails' },
+  { icon: 'electrical_services', title: 'OCPP/OCPI Certified', description: 'Full OCPP 1.6-J and 2.0.1 support covering 80%+ of India\'s installed charger base, plus OCPI 2.2.1 for inter-network roaming' },
 ];
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -227,8 +230,8 @@ export default function PlatformClient() {
                   >
                     {[
                       { icon: 'bug_report', value: 95, label: 'Problems Mapped' },
-                      { icon: 'check_circle', value: 85, label: 'Solvable' },
-                      { icon: 'widgets', value: 76, label: 'Features' },
+                      { icon: 'check_circle', value: 84, label: 'AI-Solvable' },
+                      { icon: 'model_training', value: 32, label: 'ML Models' },
                       { icon: 'inventory_2', value: 7, label: 'Products' },
                     ].map((s, i) => (
                       <StatsCard key={i} icon={s.icon} value={s.value} label={s.label} />
@@ -423,6 +426,130 @@ export default function PlatformClient() {
                 </ul>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ──────────────── 5 · CPO REMOTE CHARGER MANAGEMENT — #1 USP ──────────────── */}
+      <section className="py-24 bg-surface relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-container/6 via-surface to-transparent" />
+        <motion.div
+          animate={{ scale: [1, 1.15, 1], opacity: [0.06, 0.12, 0.06] }}
+          transition={{ duration: 18, repeat: Infinity }}
+          className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary-container/15 rounded-full blur-[150px]"
+        />
+        <div className="container mx-auto px-6 relative z-10">
+
+          <div className="flex flex-col lg:flex-row gap-12 items-center">
+
+            {/* Left — messaging */}
+            <motion.div
+              initial={{ opacity: 0, x: -32 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="flex-1"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full border border-primary/25 bg-primary-container/10">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <span className="text-xs font-bold text-primary font-display tracking-widest uppercase">#1 Platform USP</span>
+              </div>
+
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 font-display leading-tight">
+                AI-Powered Charger Management —<br />
+                <span className="gradient-text">Self-Healing EV Infrastructure</span>
+              </h2>
+
+              <p className="text-on-surface-variant leading-relaxed mb-8 max-w-xl">
+                Every competitor shows you charger location and availability. Only Go4Garage closes the loop — our AI reads health telemetry, diagnoses the root cause, auto-issues remote fix commands, and learns from every incident. <strong className="text-on-surface">Chargers heal before customers notice they&apos;re broken.</strong>
+              </p>
+
+              <div className="grid sm:grid-cols-2 gap-4 mb-8">
+                {[
+                  { icon: 'wifi', label: 'OCPP 1.6-J & 2.0.1', desc: 'Covers 80%+ of India\'s installed charger base via persistent WebSocket' },
+                  { icon: 'sync_alt', label: 'OCPI 2.2.1 Roaming', desc: 'Multi-CPO network interoperability for seamless cross-network sessions' },
+                  { icon: 'psychology', label: 'AI Diagnostics Engine', desc: 'Root cause analysis for every fault — stuck transactions, connector errors, grid issues' },
+                  { icon: 'auto_fix_high', label: 'Remote Auto-Fix', desc: 'Automated Reset, RemoteStop, TriggerMessage — resolves 73% of faults without a technician' },
+                  { icon: 'monitor_heart', label: 'Real-time Health Score', desc: 'Per-charger composite health score updated every 30 seconds' },
+                  { icon: 'bolt', label: '3 ML Models', desc: 'Fault Predictor + Uptime Forecaster + Grid Load Optimizer trained on charger telemetry' },
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.07 }}
+                    className="flex items-start gap-3 p-4 rounded-xl bg-surface-bright border border-outline-variant/25 hover:border-primary/20 hover:shadow-sm transition-all"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-primary-container/15 flex items-center justify-center shrink-0 mt-0.5">
+                      <Icon name={item.icon} size={16} className="text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-on-surface font-display">{item.label}</p>
+                      <p className="text-xs text-on-surface-variant leading-relaxed mt-0.5">{item.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <Link href="/products/urgaa">
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
+                >
+                  <Icon name="ev_station" size={18} />
+                  Explore URGAA — CPO Platform
+                </motion.button>
+              </Link>
+            </motion.div>
+
+            {/* Right — flow diagram */}
+            <motion.div
+              initial={{ opacity: 0, x: 32 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="flex-1 max-w-lg"
+            >
+              <div className="p-8 rounded-2xl bg-surface-bright border border-primary/15 shadow-lg">
+                <p className="text-xs font-bold text-primary uppercase tracking-widest mb-6 font-display">AI Self-Healing Flow</p>
+                {[
+                  { step: '01', icon: 'sensors', color: 'bg-blue-500/10 border-blue-500/20 text-blue-600', label: 'Charger Telemetry', desc: 'OCPP messages every 30s — status, energy, meter values, errors' },
+                  { step: '02', icon: 'psychology', color: 'bg-primary-container/20 border-primary/20 text-primary', label: 'AI Diagnosis', desc: 'Root cause analysis using fault predictor + knowledge base' },
+                  { step: '03', icon: 'auto_fix_high', color: 'bg-orange-500/10 border-orange-500/20 text-orange-600', label: 'Remote Auto-Fix', desc: 'RemoteStop / Reset commands issued without human intervention' },
+                  { step: '04', icon: 'school', color: 'bg-green-500/10 border-green-500/20 text-green-600', label: 'Continuous Learning', desc: 'Every fix improves the fault predictor model for all chargers' },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-4 mb-6 last:mb-0">
+                    <div className={`w-10 h-10 rounded-xl ${item.color} border flex items-center justify-center shrink-0`}>
+                      <Icon name={item.icon} size={18} />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-[10px] font-black text-on-surface-variant/50 font-mono">{item.step}</span>
+                        <span className="text-sm font-bold text-on-surface font-display">{item.label}</span>
+                      </div>
+                      <p className="text-xs text-on-surface-variant leading-relaxed">{item.desc}</p>
+                    </div>
+                    {i < 3 && <div className="absolute ml-5 mt-10 w-px h-5 bg-outline-variant/30" />}
+                  </div>
+                ))}
+                <div className="mt-6 pt-5 border-t border-outline-variant/20 flex items-center justify-between">
+                  <div className="text-center">
+                    <p className="text-2xl font-black gradient-text font-display">73%</p>
+                    <p className="text-[11px] text-on-surface-variant font-medium">Auto-resolved</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-2xl font-black gradient-text font-display">30s</p>
+                    <p className="text-[11px] text-on-surface-variant font-medium">Health refresh</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-2xl font-black gradient-text font-display">33</p>
+                    <p className="text-[11px] text-on-surface-variant font-medium">States covered</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

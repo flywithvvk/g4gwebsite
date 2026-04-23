@@ -406,15 +406,15 @@ export default function AboutClient() {
             />
             <StatsCard
               icon="check_circle"
-              value={85}
-              label="Solvable Today"
+              value={84}
+              label="AI-Solvable"
               description="Problems the platform solves"
             />
             <StatsCard
-              icon="widgets"
-              value={76}
-              label="Features Built"
-              description="Across all products"
+              icon="model_training"
+              value={32}
+              label="ML Models"
+              description="Domain-specific trained models"
             />
             <StatsCard
               icon="inventory_2"
@@ -429,6 +429,32 @@ export default function AboutClient() {
               description="Pan-India regulatory coverage"
             />
           </div>
+
+          {/* Compliance & Standards Badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="mt-12 flex flex-wrap justify-center gap-3 max-w-3xl mx-auto"
+          >
+            {[
+              { icon: 'policy', label: 'DPDP Act 2023 Ready' },
+              { icon: 'security', label: 'CERT-In Compliant' },
+              { icon: 'verified_user', label: 'ISO 27001 Ready' },
+              { icon: 'electrical_services', label: 'OCPP 1.6 & 2.0.1' },
+              { icon: 'sync_alt', label: 'OCPI 2.2.1' },
+              { icon: 'gavel', label: 'GST Compliant' },
+            ].map((badge) => (
+              <div
+                key={badge.label}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold bg-surface-bright border border-outline-variant/40 text-on-surface-variant shadow-sm"
+              >
+                <span className="material-symbols-outlined text-primary" style={{ fontSize: 14 }}>{badge.icon}</span>
+                {badge.label}
+              </div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
