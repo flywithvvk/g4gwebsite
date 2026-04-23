@@ -7,7 +7,11 @@ const organizationSchema = {
   name: 'Go4Garage',
   legalName: 'Go4Garage Technologies Private Limited',
   alternateName: ['Go4Garage Technologies', 'Go4Garage AI'],
+  description: "India's first AI-powered automobile intelligence platform — a SaaS technology company solving 84 problems across the EV ecosystem with 7 AI products. Not an auto repair shop.",
   url: SITE_URL,
+  email: 'connect@go4garage.in',
+  industry: 'Software as a Service (SaaS)',
+  naics: '511210',
   logo: {
     '@type': 'ImageObject',
     '@id': `${SITE_URL}/#logo`,
@@ -17,7 +21,6 @@ const organizationSchema = {
     caption: 'Go4Garage — AI-Powered EV Platform',
   },
   image: `${SITE_URL}/og-image.png`,
-  description: "India's first AI-powered automobile intelligence platform — solving 84 problems across EV charging, workshop operations, fleet management, and workforce training across 33 states.",
   foundingDate: '2023',
   foundingLocation: {
     '@type': 'Place',

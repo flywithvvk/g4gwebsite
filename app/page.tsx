@@ -5,7 +5,9 @@ import { WebPageStructuredData } from '@/components/StructuredData';
 const SITE_URL = 'https://www.go4garage.in';
 
 export const metadata: Metadata = {
-  title: "AI Platform Powering India's Automobile Future",
+  title: {
+    absolute: "Go4Garage — AI Platform Powering India's Automobile Future",
+  },
   description: "Go4Garage is the AI-first platform unifying regulatory compliance, operations, and workforce development across India's automobile ecosystem with 7 products solving 84 problems.",
   alternates: { canonical: SITE_URL },
   openGraph: {
@@ -33,7 +35,7 @@ export default function Page() {
         name="Go4Garage — AI Platform Powering India's Automobile Future"
         description="India's first AI-powered automobile intelligence platform — 7 products solving 84 problems across EV charging, workshop operations, fleet management, and workforce training."
         url={SITE_URL}
-        dateModified="2026-04-16"
+        dateModified="2026-04-23"
       />
       <HomePage />
     </>
