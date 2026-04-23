@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -330,7 +330,7 @@ export default function ProductDetailClient({ product }: { product: ProductData 
               Before <span className="gradient-text">{product.shortName}</span>...
             </h2>
             <p className="mt-3 text-on-surface-variant">
-              Real challenges faced by {product.targetUsers[0]}s and teams like yours.
+              Real challenges faced by {product.targetUsers[0]} and teams like yours.
             </p>
           </motion.div>
 

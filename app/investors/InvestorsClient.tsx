@@ -57,7 +57,7 @@ const tractionMetrics = [
   { label: 'MRR Growth', display: '35%', icon: 'trending_up', color: 'text-tertiary' },
   { label: 'Retention Rate', display: '98%', icon: 'verified', color: 'text-tertiary' },
   { label: 'NPS Score', display: '85+', icon: 'star', color: 'text-secondary' },
-  { label: 'Products Live', display: '6', icon: 'apps', color: 'text-secondary' },
+  { label: 'Products Live', display: '7', icon: 'apps', color: 'text-secondary' },
 ];
 
 const growthTimeline = [

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const faqsForSchema = [
-  { question: 'What is Go4Garage?', answer: "Go4Garage is India's first AI-powered automobile intelligence platform with 7 products solving 85 problems across the EV ecosystem." },
+  { question: 'What is Go4Garage?', answer: "Go4Garage is India's first AI-powered automobile intelligence platform with 7 products solving 84 industry problems across the EV ecosystem." },
   { question: 'Who is Go4Garage for?', answer: 'Go4Garage serves CPO operators, automobile workshops, fleet operators, EV technicians, government agencies, and OEMs.' },
   { question: 'How long does implementation take?', answer: 'Typical implementation takes 4 weeks from kickoff to go-live, including setup, data migration, training, and supervised launch.' },
   { question: 'How is Go4Garage priced?', answer: 'Go4Garage follows a SaaS model with Starter, Professional, and Enterprise tiers. Contact sales for a customized quote.' },

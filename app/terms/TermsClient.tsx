@@ -57,7 +57,7 @@ export default function TermsClient() {
               <ul className="list-disc pl-5 space-y-1.5">
                 <li><strong className="text-on-surface">URGAA (ऊर्जा):</strong> EV charging network management and CPO operations platform.</li>
                 <li><strong className="text-on-surface">GST (Go4Garage Service Tools):</strong> GST compliance and regulatory management for automotive businesses.</li>
-                <li><strong className="text-on-surface">Ignition App:</strong> Workshop operations management and service workflow tool.</li>
+                <li><strong className="text-on-surface">Ignition App:</strong> Multi-stakeholder EV mobility app for EV owners, fleet operators, and workshop managers on iOS &amp; Android.</li>
                 <li><strong className="text-on-surface">EV VIDYA ARJUN:</strong> EV technician training and certification platform.</li>
                 <li><strong className="text-on-surface">KAILASH-AI:</strong> Predictive maintenance and AI diagnostics for EV fleets.</li>
                 <li><strong className="text-on-surface">Eka-AI:</strong> AI-powered business intelligence and reporting for automobile sector stakeholders.</li>

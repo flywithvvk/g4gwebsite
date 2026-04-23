@@ -186,9 +186,9 @@ export default function ImpactClient() {
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
             {[
-              { value: '95',  label: 'Industry Problems Classified', sub: '85 solvable by platform',   icon: 'checklist',      color: 'text-primary' },
+              { value: '95',  label: 'Industry Problems Classified', sub: '84 solvable by platform',   icon: 'checklist',      color: 'text-primary' },
               { value: '12',  label: 'AI Industry Branches',          sub: '12 specialist personas', icon: 'account_tree',   color: 'text-secondary' },
-              { value: '29',  label: 'Custom ML Models',              sub: 'Designed & planned', icon: 'model_training', color: 'text-tertiary' },
+              { value: '32',  label: 'Custom ML Models',              sub: 'Designed & planned', icon: 'model_training', color: 'text-tertiary' },
               { value: '7',   label: 'Integrated Products',           sub: 'One platform',       icon: 'widgets',        color: 'text-primary' },
             ].map((s, idx) => (
               <motion.div key={idx} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}

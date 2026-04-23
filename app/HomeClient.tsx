@@ -164,7 +164,7 @@ export default function HomePage() {
 
                   {/* Sub-copy */}
                   <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-lg md:text-xl text-on-surface-variant mb-10 max-w-2xl mx-auto leading-relaxed">
-                    95 problems in India&apos;s EV ecosystem. 85 solved by our platform. 76 features. 7 products. Zero friction.
+                    95 problems in India&apos;s EV ecosystem. 84 solved by our platform. 76 features. 7 products. Zero friction.
                   </motion.p>
 
                   {/* CTAs */}
@@ -264,7 +264,7 @@ export default function HomePage() {
             className="text-center mt-12 flex flex-wrap items-center justify-center gap-3"
           >
             <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary-container/15 border border-primary/20">
-              <span className="text-sm font-semibold text-primary"><span className="text-lg font-bold">85</span> Solvable by Go4Garage</span>
+              <span className="text-sm font-semibold text-primary"><span className="text-lg font-bold">84</span> Solvable by Go4Garage</span>
             </span>
             <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-surface-container border border-outline-variant/30">
               <span className="text-sm text-on-surface-variant"><span className="text-lg font-bold">10</span> Macro / Systemic</span>

@@ -42,7 +42,7 @@ const milestones = [
     icon: 'build',
     bullets: [
       'Platform development started',
-      '7 products designed and built — URGAA, GST (Go4Garage Service Tools), Ignition, EV VIDYA ARJUN, KAILASH-AI, Eka-AI + Eka Brain',
+      '7 products designed and built — URGAA, GST (Go4Garage Service Tools), Ignition, EV VIDYA ARJUN, KAILASH-AI, Eka-AI, and Go4Garage Platform',
       'First pilot deployments with early customers',
       'KAILASH-AI intelligence engine development',
     ],
