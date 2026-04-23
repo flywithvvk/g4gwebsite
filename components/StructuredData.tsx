@@ -21,15 +21,12 @@ const organizationSchema = {
   foundingDate: '2023',
   foundingLocation: {
     '@type': 'Place',
-    name: 'Bangalore, Karnataka, India',
+    name: 'India',
     addressCountry: 'IN',
   },
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Bangalore',
-    addressRegion: 'Karnataka',
     addressCountry: 'IN',
-    postalCode: '560001',
   },
   areaServed: {
     '@type': 'Country',
