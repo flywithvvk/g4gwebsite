@@ -7,6 +7,7 @@ import { Icon } from '@/components/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 import { trackDemoBookingStarted, trackDemoBookingCompleted } from '@/lib/analytics';
 import { trackDemoConversion, trackBeginCheckout, trackPurchase } from '@/lib/gtag';
+import { saveDemoBooking } from '@/lib/firestore';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -150,11 +151,18 @@ export default function DemoClient() {
     if (Object.keys(errs).length > 0) { setFormErrors(errs); return; }
 
     const demoLabel = demoOptions.find((d) => d.id === selectedDemo)?.title ?? (selectedDemo ?? '');
-    const subject = encodeURIComponent(`Demo Booking: ${demoLabel} — ${form.name} (${form.company})`);
-    const body = encodeURIComponent(
-      `DEMO BOOKING REQUEST\n\nDemo Type: ${demoLabel}\nRequested Slot: ${selectedSlot}\n\nName: ${form.name}\nEmail: ${form.email}\nCompany: ${form.company}\nPhone: ${form.phone || 'Not provided'}\nUse Case: ${form.useCase}`
-    );
-    window.location.href = `mailto:connect@go4garage.in?subject=${subject}&body=${body}`;
+
+    // Save to Firestore (non-blocking)
+    saveDemoBooking({
+      name: form.name,
+      email: form.email,
+      company: form.company,
+      phone: form.phone,
+      useCase: form.useCase,
+      demoType: demoLabel,
+      slot: selectedSlot ?? '',
+      source: 'demo_form',
+    });
 
     trackDemoBookingCompleted(demoLabel, selectedSlot ?? '');
     trackDemoConversion();

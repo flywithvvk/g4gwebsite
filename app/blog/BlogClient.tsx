@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Icon } from '@/components/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
+import { saveNewsletterSubscriber } from '@/lib/firestore';
 
 const categories = ['All', 'Regulatory', 'Workshop', 'Charging', 'AI & Tech', 'Policy'] as const;
 
@@ -113,7 +114,8 @@ export default function BlogClient() {
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      window.location.href = `mailto:connect@go4garage.in?subject=Blog Newsletter Subscription&body=Please add me to the Go4Garage blog newsletter.%0AEmail: ${encodeURIComponent(email)}`;
+      // Save to Firestore (non-blocking)
+      saveNewsletterSubscriber({ email, source: 'blog_newsletter' });
       setSubscribed(true);
       setEmail('');
       setTimeout(() => setSubscribed(false), 4000);

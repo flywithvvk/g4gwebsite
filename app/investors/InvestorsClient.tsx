@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Icon } from '@/components/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
+import { saveInvestorLead } from '@/lib/firestore';
 
 
 const thesis = [
@@ -419,14 +420,21 @@ export default function InvestorsClient() {
               <form className="space-y-3" onSubmit={e => {
                 e.preventDefault();
                 const fd = new FormData(e.currentTarget);
-                const name = fd.get('name') || '';
-                const org = fd.get('org') || '';
-                const email = fd.get('email') || '';
-                const stage = fd.get('stage') || '';
-                const msg = fd.get('message') || '';
-                const subject = encodeURIComponent(`Investor Inquiry — ${org || name}`);
-                const body = encodeURIComponent(`Name: ${name}\nOrganization: ${org}\nEmail: ${email}\nInvestment Stage: ${stage}\n\nMessage:\n${msg}`);
-                window.location.href = `mailto:go4garageofficial@gmail.com?subject=${subject}&body=${body}`;
+                const name = String(fd.get('name') || '');
+                const org = String(fd.get('org') || '');
+                const email = String(fd.get('email') || '');
+                const stage = String(fd.get('stage') || '');
+                const msg = String(fd.get('message') || '');
+                // Save to Firestore (non-blocking)
+                saveInvestorLead({
+                  name,
+                  organization: org || undefined,
+                  email,
+                  investmentStage: stage || undefined,
+                  message: msg || undefined,
+                  source: 'investor_form',
+                });
+                (e.currentTarget as HTMLFormElement).reset();
               }}>
                 <input
                   type="text"

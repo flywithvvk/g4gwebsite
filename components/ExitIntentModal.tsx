@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Icon } from '@/components/Icon';
 import { trackContactFormSubmit } from '@/lib/analytics';
 import { trackLeadConversion } from '@/lib/gtag';
+import { saveNewsletterSubscriber } from '@/lib/firestore';
 
 /**
  * Exit Intent Newsletter / Lead Capture Modal.
@@ -70,11 +71,12 @@ export function ExitIntentModal() {
     }
     setError('');
 
-    const subject = encodeURIComponent('Newsletter / Early Access — Go4Garage');
-    const body = encodeURIComponent(
-      `Early Access Request\n\nEmail: ${email}\nInterest: ${interest || 'Not specified'}\n\nSigned up via website exit-intent modal.`
-    );
-    window.location.href = `mailto:connect@go4garage.in?subject=${subject}&body=${body}`;
+    // Save to Firestore (non-blocking)
+    saveNewsletterSubscriber({
+      email,
+      interest: interest || undefined,
+      source: 'exit_intent',
+    });
 
     trackContactFormSubmit(interest || 'newsletter');
     trackLeadConversion(50);

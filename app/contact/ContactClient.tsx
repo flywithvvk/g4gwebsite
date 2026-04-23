@@ -7,6 +7,7 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { IndiaFlag } from '@/components/IndiaFlag';
 import { trackContactFormSubmit } from '@/lib/analytics';
 import { trackLeadConversion } from '@/lib/gtag';
+import { saveContactLead } from '@/lib/firestore';
 
 const contactMethods = [
   {
@@ -139,11 +140,16 @@ export default function ContactClient() {
     if (Object.keys(errs).length > 0) { setErrors(errs); return; }
     setIsLoading(true);
 
-    const subject = encodeURIComponent(`Go4Garage Contact: ${formData.interest || 'General Inquiry'} — ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company || 'Not provided'}\nPhone: ${formData.phone || 'Not provided'}\nProduct Interest: ${formData.interest || 'General'}\n\nMessage:\n${formData.message}`
-    );
-    window.location.href = `mailto:connect@go4garage.in?subject=${subject}&body=${body}`;
+    // Save to Firestore first (non-blocking)
+    saveContactLead({
+      name: formData.name,
+      email: formData.email,
+      company: formData.company,
+      phone: formData.phone,
+      interest: formData.interest,
+      message: formData.message,
+      source: 'contact_form',
+    });
 
     trackContactFormSubmit(formData.interest || 'General');
     trackLeadConversion();
