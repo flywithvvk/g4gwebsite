@@ -1,17 +1,16 @@
 'use client';
 
 import { useEffect } from 'react';
-import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check';
 import { app } from '@/lib/firebase';
 
 /**
  * Firebase App Check — prevents abuse of Firebase (Firestore, Remote Config).
- * Enforcement mode: UNENFORCED (monitors) until NEXT_PUBLIC_RECAPTCHA_SITE_KEY is set,
- * then flip Firestore to ENFORCED in Firebase Console → App Check → APIs.
+ * Uses reCAPTCHA Enterprise (SCORE type) — site key: 6LdIq8UsAAAAADrnHJWFMO_o5ek0w4N6o1LIJTL_
+ * Registered domains: go4garage.in, go4garage-d66fc.web.app, go4garage-d66fc.firebaseapp.com, localhost
  *
  * Production (go4garage.in):
- *   NEXT_PUBLIC_RECAPTCHA_SITE_KEY=<reCAPTCHA v3 site key>
- *   Get from: Firebase Console → App Check → web app "website" → reCAPTCHA v3 → site key
+ *   NEXT_PUBLIC_RECAPTCHA_SITE_KEY=6LdIq8UsAAAAADrnHJWFMO_o5ek0w4N6o1LIJTL_
  *
  * Development / CI:
  *   NEXT_PUBLIC_APPCHECK_DEBUG_TOKEN=<UUID4 shown when you created the debug token>
@@ -47,8 +46,8 @@ export function FirebaseAppCheck() {
     try {
       initializeAppCheck(app, {
         provider: RECAPTCHA_SITE_KEY
-          ? new ReCaptchaV3Provider(RECAPTCHA_SITE_KEY)
-          : new ReCaptchaV3Provider('placeholder-replaced-by-debug-mode'),
+          ? new ReCaptchaEnterpriseProvider(RECAPTCHA_SITE_KEY)
+          : new ReCaptchaEnterpriseProvider('placeholder-replaced-by-debug-mode'),
         isTokenAutoRefreshEnabled: true,
       });
     } catch {
