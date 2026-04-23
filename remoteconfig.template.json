@@ -1,0 +1,81 @@
+{
+  "parameters": {},
+  "parameterGroups": {
+    "Hero & CTAs": {
+      "description": "Controls the homepage hero copy and call-to-action buttons. Change values here for A/B tests without redeploying.",
+      "parameters": {
+        "hero_cta_primary_text": {
+          "defaultValue": { "value": "Book a Live Demo" },
+          "description": "Primary CTA button text on the hero section.",
+          "valueType": "STRING"
+        },
+        "hero_cta_secondary_text": {
+          "defaultValue": { "value": "Explore Products" },
+          "description": "Secondary CTA button text on the hero section.",
+          "valueType": "STRING"
+        },
+        "hero_headline_suffix": {
+          "defaultValue": { "value": "India's Automobile Future" },
+          "description": "Suffix appended to the main hero headline: 'AI Platform Powering {suffix}'.",
+          "valueType": "STRING"
+        },
+        "demo_urgency_label": {
+          "defaultValue": { "value": "Only a few slots left this week" },
+          "description": "Urgency nudge displayed near the demo booking CTA.",
+          "valueType": "STRING"
+        }
+      }
+    },
+    "Feature Flags": {
+      "description": "Toggle major site sections on/off without a code redeploy.",
+      "parameters": {
+        "pricing_visible": {
+          "defaultValue": { "value": "true" },
+          "description": "Set to false to hide the Pricing page link and section (e.g. during fundraising or pricing refresh).",
+          "valueType": "BOOLEAN"
+        },
+        "show_investor_cta": {
+          "defaultValue": { "value": "true" },
+          "description": "Toggle visibility of the Investor CTA button in the navigation and home page.",
+          "valueType": "BOOLEAN"
+        },
+        "show_blog_section": {
+          "defaultValue": { "value": "true" },
+          "description": "Toggle visibility of the Blog preview section on the home page.",
+          "valueType": "BOOLEAN"
+        }
+      }
+    },
+    "Promotional Banner": {
+      "description": "Top-of-page promotional strip. Enable and set text here — no deploy needed.",
+      "parameters": {
+        "promotional_banner_enabled": {
+          "defaultValue": { "value": "false" },
+          "description": "Set to true to show the promotional banner. Pair with promotional_banner_text.",
+          "valueType": "BOOLEAN"
+        },
+        "promotional_banner_text": {
+          "defaultValue": { "value": "" },
+          "description": "Message shown in the promo banner. E.g. 'Early-access pricing ends May 1 — Book a demo now!'",
+          "valueType": "STRING"
+        }
+      }
+    },
+    "Messaging & Performance": {
+      "description": "Response promises shown to users, and Remote Config fetch tuning.",
+      "parameters": {
+        "contact_response_promise": {
+          "defaultValue": { "value": "We respond within 2 hours" },
+          "description": "Response time promise displayed on the contact and demo pages.",
+          "valueType": "STRING"
+        },
+        "min_fetch_interval_ms": {
+          "defaultValue": { "value": "3600000" },
+          "description": "Minimum interval (ms) between Remote Config fetches. Default 3600000 = 1 hour. Lower for faster flag propagation.",
+          "valueType": "NUMBER"
+        }
+      }
+    }
+  },
+  "version": {}
+}
