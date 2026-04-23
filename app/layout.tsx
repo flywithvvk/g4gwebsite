@@ -76,9 +76,7 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png?v=3",
   },
   manifest: "/manifest.json",
-  verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SEARCH_CONSOLE_ID ?? "go4garage-d66fc",
-  },
+  // google: '',  // Firebase Hosting auto-verifies this site in Google Search Console
 };
 
 export default function RootLayout({
