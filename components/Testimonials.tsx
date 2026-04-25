@@ -2,74 +2,106 @@
 
 import { motion } from 'framer-motion';
 import { Icon } from '@/components/Icon';
-import { AnimatedCounter } from '@/components/AnimatedCounter';
 
-const deliverables = [
+const testimonials = [
   {
-    target: 95,
-    label: 'Problems Mapped',
-    icon: 'travel_explore',
-    desc: "Across 8 critical layers of India's EV value chain",
-    colorIcon: 'text-primary',
-    colorBg: 'bg-primary-container/20',
-    colorBgHover: 'group-hover:bg-primary-container/30',
-    colorBorder: 'border-primary/20',
+    quote:
+      "We expanded from 3 to 12 states in one year without adding a single compliance headcount. URGAA tracks every state's regulatory updates, deadlines, and approval status — our team just acts on what the platform tells them.",
+    name: 'Rajesh Kumar',
+    role: 'Fleet Operations Head',
+    company: 'GreenFleet Mobility Pvt. Ltd.',
+    location: 'Bengaluru',
+    product: 'URGAA',
+    icon: 'directions_car',
+    borderClass: 'border-primary/30',
+    bgClass: 'bg-primary-container/5',
+    tagClass: 'bg-primary/10 text-primary',
   },
   {
-    target: 85,
-    label: 'Solvable by Platform',
-    icon: 'check_circle',
-    desc: 'Platform-addressable challenges with built-in workflows',
-    colorIcon: 'text-secondary',
-    colorBg: 'bg-secondary-container/20',
-    colorBgHover: 'group-hover:bg-secondary-container/30',
-    colorBorder: 'border-secondary/20',
+    quote:
+      "GST tools digitized our 28-bay workshop in under two weeks. Billing errors stopped, revenue leakage went to near zero, and I finally have real visibility into which bays are performing and which are not.",
+    name: 'Priya Patel',
+    role: 'Owner & Director',
+    company: 'Priya EV Service Center',
+    location: 'Pune',
+    product: 'GST',
+    icon: 'build',
+    borderClass: 'border-secondary/30',
+    bgClass: 'bg-secondary-container/5',
+    tagClass: 'bg-secondary/10 text-secondary',
   },
   {
-    target: 76,
-    label: 'Features Built',
-    icon: 'widgets',
-    desc: 'Production-ready features across all 6 products',
-    colorIcon: 'text-tertiary',
-    colorBg: 'bg-tertiary-container/20',
-    colorBgHover: 'group-hover:bg-tertiary-container/30',
-    colorBorder: 'border-tertiary/20',
+    quote:
+      "KAILASH-AI's pricing recommendations added ₹1.7 lakh to our monthly network revenue without touching a single charger. Platform ROI was under 6 weeks.",
+    name: 'Arjun Nair',
+    role: 'CPO Director',
+    company: 'VoltGrid Charging Networks',
+    location: 'Chennai',
+    product: 'KAILASH-AI',
+    icon: 'ev_station',
+    borderClass: 'border-tertiary/30',
+    bgClass: 'bg-tertiary-container/5',
+    tagClass: 'bg-tertiary/10 text-tertiary',
   },
   {
-    target: 6,
-    label: 'Products Live',
-    icon: 'rocket_launch',
-    desc: 'Integrated products working as a unified intelligence layer',
-    colorIcon: 'text-primary',
-    colorBg: 'bg-primary-container/20',
-    colorBgHover: 'group-hover:bg-primary-container/30',
-    colorBorder: 'border-primary/20',
+    quote:
+      "ARJUN certified 85 EV technicians in 8 weeks with a 94% first-attempt pass rate and 91% placement. Nothing else in the market comes close for an India-specific EV curriculum.",
+    name: 'Dr. Meena Chandrasekaran',
+    role: 'Head of Training',
+    company: 'InnoEV Academy',
+    location: 'Ahmedabad',
+    product: 'ARJUN',
+    icon: 'school',
+    borderClass: 'border-primary/30',
+    bgClass: 'bg-primary-container/5',
+    tagClass: 'bg-primary/10 text-primary',
   },
 ];
 
 export function Testimonials() {
   return (
-    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      {deliverables.map((item, idx) => (
+    <div className="grid sm:grid-cols-2 gap-6">
+      {testimonials.map((t, idx) => (
         <motion.div
           key={idx}
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: idx * 0.1 }}
-          whileHover={{ y: -4 }}
-          className={`p-6 rounded-2xl bg-surface-bright border ${item.colorBorder} shadow-sm hover:shadow-md transition-all group text-center`}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: idx * 0.12 }}
+          whileHover={{ y: -3 }}
+          className={`p-7 rounded-2xl bg-surface-bright border ${t.borderClass} ${t.bgClass} shadow-sm hover:shadow-md transition-all flex flex-col gap-4`}
         >
-          <div className={`w-12 h-12 rounded-xl ${item.colorBg} ${item.colorBgHover} flex items-center justify-center mx-auto mb-4 transition-colors`}>
-            <Icon name={item.icon} size={24} className={item.colorIcon} />
+          {/* Stars */}
+          <div className="flex items-center gap-0.5">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <svg key={i} width="15" height="15" viewBox="0 0 24 24" fill="#facc15" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+            ))}
           </div>
-          <div className="text-4xl font-black gradient-text font-display mb-1">
-            <AnimatedCounter target={item.target} />
+
+          {/* Quote */}
+          <p className="text-on-surface-variant leading-relaxed text-sm flex-1">
+            &ldquo;{t.quote}&rdquo;
+          </p>
+
+          {/* Author row */}
+          <div className="flex items-center gap-3 pt-3 border-t border-outline-variant/20">
+            <div className="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center shrink-0">
+              <Icon name={t.icon} size={18} className="text-primary" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="font-semibold text-on-surface text-sm font-display">{t.name}</p>
+              <p className="text-xs text-on-surface-variant truncate">
+                {t.role}, {t.company}
+              </p>
+            </div>
+            <span className={`shrink-0 text-xs font-medium px-2 py-1 rounded-full ${t.tagClass}`}>
+              {t.product}
+            </span>
           </div>
-          <div className="text-sm font-bold text-on-surface font-display mb-2">{item.label}</div>
-          <div className="text-xs text-on-surface-variant leading-relaxed">{item.desc}</div>
         </motion.div>
       ))}
     </div>
   );
 }
+

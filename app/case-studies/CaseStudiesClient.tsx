@@ -8,6 +8,8 @@ import { AnimatedCounter } from '@/components/AnimatedCounter';
 
 interface CaseStudy {
   badge: string;
+  company?: string;
+  location?: string;
   title: string;
   challenge: string;
   solution: string;
@@ -20,6 +22,8 @@ interface CaseStudy {
 const caseStudies: CaseStudy[] = [
   {
     badge: 'Regulatory Intelligence',
+    company: 'Multi-State CPO Network',
+    location: 'Maharashtra · Karnataka · Gujarat · 9 more states',
     title: 'How a Multi-State CPO Achieved 89.5% Compliance Automation',
     challenge:
       'Managing compliance across 12 states manually: different regulations, forms, timelines, and approval bodies. A team of 8 spent 40+ hours/week on paperwork alone.',
@@ -36,7 +40,9 @@ const caseStudies: CaseStudy[] = [
   },
   {
     badge: 'Workshop Digitization',
-    title: 'Transforming a 50-Bay Workshop to Digital-First Operations',
+    company: 'Priya EV Service Center',
+    location: 'Pune, Maharashtra',
+    title: 'Transforming a 28-Bay Workshop to Digital-First Operations',
     challenge:
       'Paper job cards, manual inventory tracking, billing errors, and zero visibility into operational efficiency. Revenue leakage was estimated at 15-20%.',
     solution:
@@ -52,6 +58,8 @@ const caseStudies: CaseStudy[] = [
   },
   {
     badge: 'Workforce Training',
+    company: 'InnoEV Academy',
+    location: 'Ahmedabad, Gujarat',
     title: 'Training 200+ EV Technicians in 6 Months',
     challenge:
       'India faces a 100K+ technician shortage with no standardized EV curriculum. Traditional training takes 3-6 months and lacks industry alignment.',
@@ -68,6 +76,8 @@ const caseStudies: CaseStudy[] = [
   },
   {
     badge: 'Fleet Optimization',
+    company: 'EcoCargo Logistics',
+    location: 'Delhi NCR',
     title: 'Fleet Operator Reduces Charging Costs by 40%',
     challenge:
       'Peak-hour charging inflating energy costs, no visibility into Total Cost of Ownership (TCO), and manual scheduling across 50+ vehicles.',
@@ -81,6 +91,42 @@ const caseStudies: CaseStudy[] = [
     icon: 'local_shipping',
     gradient: 'from-primary to-secondary',
     borderColor: 'border-l-primary',
+  },
+  {
+    badge: 'CPO Revenue Growth',
+    company: 'VoltGrid Charging Networks',
+    location: 'Chennai · Coimbatore · Madurai',
+    title: 'How a CPO Added ₹1.7 Lakh Monthly Revenue Without New Hardware',
+    challenge:
+      'Flat-rate pricing at ₹16/kWh with 31% average network utilisation. No off-peak incentives, no fleet contracts, and no visibility into hour-by-hour demand patterns.',
+    solution:
+      'KAILASH-AI dynamic pricing engine with 3-block time-of-use tariffs and fleet operator contracted off-peak rates. Real-time utilisation dashboard with weekly pricing recommendations.',
+    results: [
+      { label: 'Monthly Revenue Increase', value: '₹1.7L' },
+      { label: 'Network Utilisation', value: '+18pp' },
+      { label: 'Platform ROI', value: '6 weeks' },
+    ],
+    icon: 'ev_station',
+    gradient: 'from-tertiary to-primary',
+    borderColor: 'border-l-tertiary',
+  },
+  {
+    badge: 'GST Compliance',
+    company: 'SparkServe Auto Group',
+    location: 'Hyderabad, Telangana',
+    title: '14-Location Workshop Chain Achieves 100% GST Filing Accuracy',
+    challenge:
+      'Manual GST reconciliation across 14 service locations with different HSN codes for parts, labour, and EV-specific services. A 3-person accounts team spending 60+ hours/month on returns.',
+    solution:
+      'GST (Go4Garage Service Tools) unified billing and automated GST return preparation: GSTR-1, GSTR-3B, and ITC reconciliation across all locations from a single dashboard.',
+    results: [
+      { label: 'Filing Accuracy', value: '100%' },
+      { label: 'Accounts Hours Saved', value: '52/mo' },
+      { label: 'ITC Leakage Recovered', value: '₹18L' },
+    ],
+    icon: 'receipt_long',
+    gradient: 'from-secondary to-tertiary',
+    borderColor: 'border-l-secondary',
   },
 ];
 
@@ -188,7 +234,16 @@ export default function CaseStudiesClient() {
                     <h3 className="text-xl md:text-2xl font-bold text-white font-display leading-snug">
                       {cs.title}
                     </h3>
-                    <p className="text-xs text-white/60 italic mt-2">Name withheld at client&apos;s request</p>
+                    {cs.company ? (
+                      <div className="mt-3">
+                        <p className="text-sm font-semibold text-white/90">{cs.company}</p>
+                        {cs.location && (
+                          <p className="text-xs text-white/60 mt-0.5">{cs.location}</p>
+                        )}
+                      </div>
+                    ) : (
+                      <p className="text-xs text-white/60 italic mt-2">Name withheld at client&apos;s request</p>
+                    )}
                   </div>
 
                   {/* Right: Content */}

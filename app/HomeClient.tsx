@@ -571,10 +571,10 @@ export default function HomePage() {
       <section className="py-12 md:py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
           <SectionHeading
-            badge="Platform Impact"
-            title="What Our Platform Delivers"
-            highlight="Platform Delivers"
-            subtitle="Real numbers from a platform purpose-built for India's EV ecosystem."
+            badge="Early Access Feedback"
+            title="What Our Users"
+            highlight="Are Saying"
+            subtitle="Businesses across India's EV ecosystem share their experience with Go4Garage."
           />
           <div className="mt-16">
             <Testimonials />
