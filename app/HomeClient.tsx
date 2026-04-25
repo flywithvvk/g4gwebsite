@@ -165,7 +165,7 @@ export default function HomePage() {
 
                   {/* Sub-copy */}
                   <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-lg md:text-xl text-on-surface-variant mb-10 max-w-2xl mx-auto leading-relaxed">
-                    95 problems in India&apos;s EV ecosystem. 84 solved by our platform. 76 features. 7 products. Zero friction.
+                    95 problems identified across India&apos;s EV ecosystem. 85 solved. 7 products. Zero friction.
                   </motion.p>
 
                   {/* CTAs */}
@@ -230,9 +230,9 @@ export default function HomePage() {
         <div className="container mx-auto px-6">
           <SectionHeading
             badge="The Challenge"
-            title="95 Problems Across India's EV Ecosystem"
-            highlight="95 Problems"
-            subtitle="We've mapped every challenge across 8 critical layers, and built solutions for 85 of them."
+            title="8 Critical Layers of India's EV Challenge"
+            highlight="8 Critical Layers"
+            subtitle="95 problems mapped across the full EV value chain. Our platform addresses 85 of them."
           />
 
           <motion.div
@@ -300,10 +300,10 @@ export default function HomePage() {
       <section className="py-12 md:py-24 bg-surface">
         <div className="container mx-auto px-6">
           <SectionHeading
-            badge="Our Products"
-            title="Complete Ecosystem Platform"
-            highlight="Ecosystem Platform"
-            subtitle="7 integrated products working as one unified intelligence layer across the entire EV value chain."
+            badge="Platform Suite"
+            title="7 Products, One Intelligence Layer"
+            highlight="One Intelligence Layer"
+            subtitle="Each product solves a distinct slice of the EV value chain. Together, they cover 85 problems end to end."
           />
 
           <motion.div

@@ -502,13 +502,13 @@ export default function ProductsClient() {
             >
               <span className="w-2 h-2 rounded-full bg-primary-container animate-pulse" />
               <span className="text-sm font-medium text-primary font-display">
-                7 Products &bull; Complete Ecosystem
+                7 Products &bull; One Platform
               </span>
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight font-display">
-              Complete Ecosystem{' '}
-              <span className="gradient-text">Platform</span>
+              India&apos;s Most{' '}
+              <span className="gradient-text">Complete EV Platform</span>
             </h1>
 
             <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
