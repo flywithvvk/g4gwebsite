@@ -194,12 +194,12 @@ export default function DemoClient() {
         <motion.div
           animate={{ scale: [1, 1.15, 1] }}
           transition={{ duration: 12, repeat: Infinity }}
-          className="absolute top-1/4 left-1/4 w-[550px] h-[550px] bg-primary-container/10 rounded-full blur-[180px]"
+          className="absolute top-1/4 left-1/4 hidden md:block w-[550px] h-[550px] bg-primary-container/10 rounded-full blur-[180px]"
         />
         <motion.div
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 15, repeat: Infinity, delay: 4 }}
-          className="absolute bottom-1/4 right-1/4 w-[380px] h-[380px] bg-secondary-container/8 rounded-full blur-[150px]"
+          className="absolute bottom-1/4 right-1/4 hidden md:block w-[380px] h-[380px] bg-secondary-container/8 rounded-full blur-[150px]"
         />
         <div
           className="absolute inset-0 opacity-[0.03]"

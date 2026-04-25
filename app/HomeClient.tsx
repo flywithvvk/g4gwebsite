@@ -11,6 +11,7 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { StatsCard } from '@/components/StatsCard';
 import { Testimonials } from '@/components/Testimonials';
 import { TrustBar } from '@/components/TrustBar';
+import FiveYearsBanner from '@/components/FiveYearsBanner';
 import { EVJourneyVisual } from '@/components/EVJourneyVisual';
 import { SocialProofTicker } from '@/components/SocialProofTicker';
 import { trackCTAClick } from '@/lib/analytics';
@@ -114,12 +115,12 @@ export default function HomePage() {
                 <motion.div
                   animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.14, 0.08] }}
                   transition={{ duration: 12, repeat: Infinity }}
-                  className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]"
+                  className="absolute top-1/4 left-1/4 hidden sm:block w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]"
                 />
                 <motion.div
                   animate={{ scale: [1.2, 1, 1.2], opacity: [0.06, 0.12, 0.06] }}
                   transition={{ duration: 14, repeat: Infinity }}
-                  className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-container/8 rounded-full blur-[150px]"
+                  className="absolute bottom-1/4 right-1/4 w-[250px] h-[250px] md:w-[400px] md:h-[400px] bg-secondary-container/8 rounded-full blur-[150px]"
                 />
               </div>
 
@@ -145,7 +146,7 @@ export default function HomePage() {
                   </motion.div>
 
                   {/* Headline */}
-                  <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-on-surface mb-6 leading-[1.05] tracking-tight font-display">
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-on-surface mb-6 leading-[1.05] tracking-tight font-display">
                     The AI Platform{' '}
                     <br className="hidden md:block" />
                     Powering{' '}
@@ -216,6 +217,11 @@ export default function HomePage() {
           TRUST BAR
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <TrustBar />
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          5-YEAR ANNIVERSARY BANNER
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <FiveYearsBanner />
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           THE PROBLEM: 8 Layers
@@ -291,7 +297,7 @@ export default function HomePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           PRODUCT ECOSYSTEM
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="py-24 bg-surface">
+      <section className="py-12 md:py-24 bg-surface">
         <div className="container mx-auto px-6">
           <SectionHeading
             badge="Our Products"
@@ -363,8 +369,8 @@ export default function HomePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           HOW IT WORKS
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="py-24 bg-surface-container-low relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-secondary-container/5 rounded-full blur-[200px] -translate-x-1/3" />
+      <section className="py-12 md:py-24 bg-surface-container-low relative overflow-hidden">
+        <div className="absolute top-0 left-0 hidden md:block w-[400px] h-[400px] bg-secondary-container/5 rounded-full blur-[200px] -translate-x-1/3" />
 
         <div className="container mx-auto px-6 relative z-10">
           <SectionHeading
@@ -425,7 +431,7 @@ export default function HomePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           WHO WE SERVE
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="py-24 bg-surface">
+      <section className="py-12 md:py-24 bg-surface">
         <div className="container mx-auto px-6">
           <SectionHeading
             badge="Solutions"
@@ -471,8 +477,8 @@ export default function HomePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           AI DIFFERENTIATOR: Why Go4Garage
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="py-24 bg-surface-container-low relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-container/5 rounded-full blur-[200px] -translate-y-1/2 translate-x-1/3" />
+      <section className="py-12 md:py-24 bg-surface-container-low relative overflow-hidden">
+        <div className="absolute top-0 right-0 hidden md:block w-[400px] h-[400px] bg-primary-container/5 rounded-full blur-[200px] -translate-y-1/2 translate-x-1/3" />
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-5xl mx-auto">
@@ -553,7 +559,7 @@ export default function HomePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           TESTIMONIALS
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="py-24 bg-surface-container-low">
+      <section className="py-12 md:py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
           <SectionHeading
             badge="Platform Impact"
@@ -570,7 +576,7 @@ export default function HomePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           FINAL CTA
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="py-28 relative overflow-hidden">
+      <section className="py-16 md:py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/10 via-surface to-secondary-container/10" />
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
 

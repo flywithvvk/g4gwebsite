@@ -727,12 +727,12 @@ export default function SolutionsClient() {
         <motion.div
           animate={{ scale: [1, 1.15, 1], x: [0, 30, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]"
+          className="absolute top-1/4 left-1/4 hidden md:block w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]"
         />
         <motion.div
           animate={{ scale: [1, 1.2, 1], x: [0, -20, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-container/10 rounded-full blur-[130px]"
+          className="absolute bottom-1/4 right-1/4 hidden md:block w-[400px] h-[400px] bg-secondary-container/10 rounded-full blur-[130px]"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
 
@@ -910,7 +910,7 @@ export default function SolutionsClient() {
         <motion.div
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-container/8 rounded-full blur-[180px]"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block w-[600px] h-[600px] bg-primary-container/8 rounded-full blur-[180px]"
         />
 
         <div className="container mx-auto px-6 relative z-10 text-center">

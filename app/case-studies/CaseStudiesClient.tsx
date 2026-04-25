@@ -100,7 +100,7 @@ export default function CaseStudiesClient() {
         <motion.div
           animate={{ scale: [1, 1.15, 1] }}
           transition={{ duration: 10, repeat: Infinity }}
-          className="absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-tertiary-container/10 rounded-full blur-[150px]"
+          className="absolute top-1/3 left-1/3 hidden md:block w-[500px] h-[500px] bg-tertiary-container/10 rounded-full blur-[150px]"
         />
         <div
           className="absolute inset-0 opacity-[0.04]"

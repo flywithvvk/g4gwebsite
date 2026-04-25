@@ -115,12 +115,12 @@ export default function ImpactClient() {
         <motion.div
           animate={{ scale: [1, 1.18, 1] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/4 left-1/4 w-[420px] h-[420px] bg-primary-container/12 rounded-full blur-[160px]"
+          className="absolute top-1/4 left-1/4 hidden md:block w-[420px] h-[420px] bg-primary-container/12 rounded-full blur-[160px]"
         />
         <motion.div
           animate={{ scale: [1, 1.12, 1] }}
           transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
-          className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-secondary-container/10 rounded-full blur-[140px]"
+          className="absolute bottom-1/4 right-1/4 hidden md:block w-[350px] h-[350px] bg-secondary-container/10 rounded-full blur-[140px]"
         />
         <div
           className="absolute inset-0 opacity-[0.04]"
@@ -207,7 +207,7 @@ export default function ImpactClient() {
       <section className="py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
           <SectionHeading badge="8 Problem Layers" title="Impact Across" highlight="Every Layer" align="center" />
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto mt-14">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto mt-14">
             {layers.map((layer, idx) => {
               const pct = Math.round((layer.solved / layer.total) * 100);
               return (
@@ -449,7 +449,7 @@ export default function ImpactClient() {
         <motion.div
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 10, repeat: Infinity }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary-container/8 rounded-full blur-[180px]"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block w-[500px] h-[500px] bg-primary-container/8 rounded-full blur-[180px]"
         />
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>

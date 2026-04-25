@@ -468,12 +468,12 @@ export default function ProductsClient() {
         <motion.div
           animate={{ scale: [1, 1.2, 1], x: [0, 30, 0] }}
           transition={{ duration: 12, repeat: Infinity }}
-          className="absolute top-1/4 left-1/4 w-[520px] h-[520px] bg-primary-container/10 rounded-full blur-[160px]"
+          className="absolute top-1/4 left-1/4 hidden md:block w-[520px] h-[520px] bg-primary-container/10 rounded-full blur-[160px]"
         />
         <motion.div
           animate={{ scale: [1, 1.15, 1], x: [0, -20, 0] }}
           transition={{ duration: 14, repeat: Infinity }}
-          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-container/10 rounded-full blur-[140px]"
+          className="absolute bottom-1/4 right-1/4 hidden md:block w-[400px] h-[400px] bg-secondary-container/10 rounded-full blur-[140px]"
         />
         {/* dot grid */}
         <div
@@ -851,7 +851,7 @@ export default function ProductsClient() {
         <motion.div
           animate={{ scale: [1, 1.15, 1] }}
           transition={{ duration: 10, repeat: Infinity }}
-          className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-tertiary-container/8 rounded-full blur-[140px]"
+          className="absolute top-1/3 right-1/4 hidden md:block w-[400px] h-[400px] bg-tertiary-container/8 rounded-full blur-[140px]"
         />
 
         <div className="container mx-auto px-6 relative z-10 text-center">

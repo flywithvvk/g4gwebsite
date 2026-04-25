@@ -159,7 +159,7 @@ export default function BlogClient() {
         <motion.div
           animate={{ scale: [1, 1.15, 1] }}
           transition={{ duration: 10, repeat: Infinity }}
-          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]"
+          className="absolute top-1/4 left-1/4 hidden md:block w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]"
         />
         <div
           className="absolute inset-0 opacity-[0.04]"
@@ -268,7 +268,7 @@ export default function BlogClient() {
           </div>
 
           {/* ─── BLOG GRID ─── */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <AnimatePresence mode="popLayout">
               {filtered.map((article, idx) => (
                 <motion.div

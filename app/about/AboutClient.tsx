@@ -136,12 +136,12 @@ export default function AboutClient() {
         <motion.div
           animate={{ scale: [1, 1.18, 1], opacity: [0.6, 1, 0.6] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]"
+          className="absolute top-1/4 left-1/4 hidden md:block w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]"
         />
         <motion.div
           animate={{ scale: [1, 1.12, 1], opacity: [0.4, 0.8, 0.4] }}
           transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
-          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-container/10 rounded-full blur-[130px]"
+          className="absolute bottom-1/4 right-1/4 hidden md:block w-[400px] h-[400px] bg-secondary-container/10 rounded-full blur-[130px]"
         />
         <div
           className="absolute inset-0 opacity-[0.04]"
@@ -466,7 +466,7 @@ export default function AboutClient() {
         <motion.div
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-container/8 rounded-full blur-[180px]"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block w-[600px] h-[600px] bg-primary-container/8 rounded-full blur-[180px]"
         />
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.div

@@ -125,7 +125,7 @@ export default function FAQClient() {
         <motion.div
           animate={{ scale: [1, 1.15, 1] }}
           transition={{ duration: 10, repeat: Infinity }}
-          className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-primary-container/10 rounded-full blur-[150px]"
+          className="absolute top-1/4 left-1/4 hidden md:block w-[400px] h-[400px] bg-primary-container/10 rounded-full blur-[150px]"
         />
         <div
           className="absolute inset-0 opacity-[0.04]"

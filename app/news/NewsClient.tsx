@@ -222,7 +222,7 @@ export default function NewsClient() {
         <motion.div
           animate={{ scale: [1, 1.12, 1] }}
           transition={{ duration: 12, repeat: Infinity }}
-          className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-secondary-container/10 rounded-full blur-[130px]"
+          className="absolute top-1/3 right-1/4 hidden md:block w-[400px] h-[400px] bg-secondary-container/10 rounded-full blur-[130px]"
         />
         <div
           className="absolute inset-0 opacity-[0.04]"
@@ -279,7 +279,7 @@ export default function NewsClient() {
           </div>
 
           {/* News Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <AnimatePresence mode="popLayout">
               {filtered.map((item, idx) => (
                 <motion.div

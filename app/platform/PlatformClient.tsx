@@ -187,12 +187,12 @@ export default function PlatformClient() {
                 <motion.div
                   animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
                   transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]"
+                  className="absolute top-1/4 left-1/4 hidden md:block w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]"
                 />
                 <motion.div
                   animate={{ scale: [1.2, 1, 1.2], opacity: [1, 0.6, 1] }}
                   transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-container/8 rounded-full blur-[150px]"
+                  className="absolute bottom-1/4 right-1/4 hidden md:block w-[400px] h-[400px] bg-secondary-container/8 rounded-full blur-[150px]"
                 />
               </div>
               {/* Dot grid */}
@@ -436,7 +436,7 @@ export default function PlatformClient() {
         <motion.div
           animate={{ scale: [1, 1.15, 1], opacity: [0.06, 0.12, 0.06] }}
           transition={{ duration: 18, repeat: Infinity }}
-          className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary-container/15 rounded-full blur-[150px]"
+          className="absolute top-1/2 left-0 -translate-y-1/2 hidden md:block w-[500px] h-[500px] bg-primary-container/15 rounded-full blur-[150px]"
         />
         <div className="container mx-auto px-6 relative z-10">
 
@@ -592,7 +592,7 @@ export default function PlatformClient() {
         <motion.div
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-container/6 rounded-full blur-[180px]"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block w-[600px] h-[600px] bg-primary-container/6 rounded-full blur-[180px]"
         />
 
         <div className="container mx-auto px-6 relative z-10 text-center">

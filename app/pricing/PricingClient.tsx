@@ -164,7 +164,7 @@ export default function PricingClient() {
         <motion.div
           animate={{ scale: [1, 1.15, 1] }}
           transition={{ duration: 10, repeat: Infinity }}
-          className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]"
+          className="absolute top-1/4 right-1/4 hidden md:block w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[150px]"
         />
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 

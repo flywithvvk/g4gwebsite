@@ -161,7 +161,7 @@ export default function ROIClient() {
         <motion.div
           animate={{ scale: [1, 1.15, 1] }}
           transition={{ duration: 12, repeat: Infinity }}
-          className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-container/8 rounded-full blur-[150px]"
+          className="absolute top-0 right-0 hidden md:block w-[500px] h-[500px] bg-primary-container/8 rounded-full blur-[150px]"
         />
         <div className="relative max-w-4xl mx-auto px-6 text-center">
           <motion.div

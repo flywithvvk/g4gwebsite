@@ -164,8 +164,8 @@ export default function InvestorsClient() {
       {/* ─── HERO ─── */}
       <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden pt-20">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
-        <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 12, repeat: Infinity }} className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary-container/10 rounded-full blur-[180px]" />
-        <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 15, repeat: Infinity, delay: 3 }} className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-container/8 rounded-full blur-[150px]" />
+        <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 12, repeat: Infinity }} className="absolute top-1/4 left-1/4 hidden md:block w-[600px] h-[600px] bg-primary-container/10 rounded-full blur-[180px]" />
+        <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 15, repeat: Infinity, delay: 3 }} className="absolute bottom-1/4 right-1/4 hidden md:block w-[400px] h-[400px] bg-secondary-container/8 rounded-full blur-[150px]" />
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
         <div className="container mx-auto px-6 relative z-10">
