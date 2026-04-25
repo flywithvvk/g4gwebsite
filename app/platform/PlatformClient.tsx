@@ -230,7 +230,7 @@ export default function PlatformClient() {
                   >
                     {[
                       { icon: 'bug_report', value: 95, label: 'Problems Mapped' },
-                      { icon: 'check_circle', value: 84, label: 'AI-Solvable' },
+                      { icon: 'check_circle', value: 85, label: 'AI-Solvable' },
                       { icon: 'model_training', value: 32, label: 'ML Models' },
                       { icon: 'inventory_2', value: 7, label: 'Products' },
                     ].map((s, i) => (

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/about` },
   openGraph: {
     title: 'About Go4Garage | AI-Powered EV Platform',
-    description: "Learn how Go4Garage is solving 84 problems across India's EV ecosystem with 7 AI-powered products.",
+    description: "Learn how Go4Garage is solving 85 problems across India's EV ecosystem with 7 AI-powered products.",
     url: `${SITE_URL}/about`,
     siteName: 'Go4Garage',
     images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: 'About Go4Garage' }],
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'About Go4Garage | AI-Powered EV Platform',
-    description: "Learn how Go4Garage is solving 84 problems across India's EV ecosystem.",
+    description: "Learn how Go4Garage is solving 85 problems across India's EV ecosystem.",
     images: [{ url: `${SITE_URL}/og-image.png`, alt: 'About Go4Garage' }],
   },
 };

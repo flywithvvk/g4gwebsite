@@ -1432,4 +1432,372 @@ export const articleData: Record<string, Article> = {
       },
     ],
   },
+  'fame-3-subsidy-guide-ev-operators-india': {
+    slug: 'fame-3-subsidy-guide-ev-operators-india',
+    title: 'FAME III Subsidy Scheme: A Practical Guide for EV Operators and Fleet Owners',
+    excerpt:
+      'FAME III, the third phase of the Faster Adoption and Manufacturing of Electric Vehicles scheme, expands subsidy coverage to Charge Point Operators, commercial fleet operators, and state transport undertakings alongside individual vehicle buyers. The scheme introduces revised eligibility criteria with stricter localisation requirements and higher documentation standards compared to FAME II. CPOs and fleet operators must complete VAHAN registration verification and submit operational data to the FAME III portal before applying for subsidy disbursement.',
+    date: 'Apr 2026',
+    datePublished: '2026-04-20',
+    dateModified: '2026-04-25',
+    category: 'Policy',
+    readTime: '7 min read',
+    icon: 'account_balance',
+    author: 'Go4Garage Research',
+    authorRole: 'Policy & Compliance Team',
+    sections: [
+      {
+        type: 'stat-row',
+        stats: [
+          { value: '₹28,000 Cr', label: 'FAME III total outlay FY2025-28' },
+          { value: '3 phases', label: 'FAME scheme history since 2015' },
+          { value: '8,000', label: 'Electric buses targeted under FAME III' },
+        ],
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'What is FAME III and How It Differs from FAME II',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'FAME III builds on the first two phases but shifts a larger share of the outlay toward commercial use cases and charging infrastructure. FAME I (2015-2019) focused on hybrid and electric two-wheelers with modest demand incentives. FAME II (2019-2024) allocated ₹10,000 crore primarily to electric buses and public charging stations, with subsidy amounts tied to battery capacity in kWh. FAME III, approved with an expanded outlay of ₹28,000 crore for FY2025-28, introduces category-specific subsidy slabs, mandatory VAHAN integration for disbursement, and a compliance reporting requirement for CPOs. The key operational difference is that FAME III ties subsidy eligibility to post-deployment performance data: CPOs must report charger uptime, session counts, and energy throughput to the FAME III portal to maintain subsidy access.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Eligible Vehicle Categories and Subsidy Amounts',
+      },
+      {
+        type: 'list',
+        items: [
+          'Electric buses (above 9 metres): Subsidy of ₹30-50 lakh per bus depending on battery capacity, capped at 40% of ex-factory price, available to state transport undertakings and private bus operators with route permits',
+          'L-category electric vehicles (e-auto, e-rickshaw, cargo tricycles): ₹15,000-₹50,000 per vehicle, linked to AIS-156 battery certification and localisation above 50%',
+          'Electric two-wheelers (registered commercial operators and fleet companies): ₹5,000-₹10,000 per vehicle for registered fleet operators; individual consumer subsidy is handled separately via PM e-DRIVE',
+          'Electric three-wheelers (commercial): ₹25,000 per vehicle for fleet operators with more than 10 registered units on VAHAN',
+          'EV charging infrastructure: Capital subsidy of up to ₹2 lakh per DC fast charger location for CPOs meeting BEE energy efficiency standards and OCPP 2.0 readiness',
+        ],
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Who Qualifies: CPOs, Fleet Operators, and State Transport Undertakings',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Eligibility under FAME III is divided into three operator categories. Charge Point Operators must hold a valid CPO registration with the Ministry of Power, have DISCOM-approved grid connections at each site, and maintain at least 85% monthly charger uptime to qualify for infrastructure subsidies. Fleet operators with a minimum of 10 registered EVs on VAHAN qualify for per-vehicle subsidies; operators with 50 or more vehicles are subject to quarterly telematics data reporting requirements. State Transport Undertakings applying for electric bus subsidies must provide approved route schedules and a maintenance plan certified by a BEE-empanelled auditor. Operators with pending GST returns or open DISCOM compliance notices are ineligible until those matters are resolved.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Registration and Documentation Checklist',
+      },
+      {
+        type: 'list',
+        items: [
+          'FAME III portal registration at fame3.heavyindustries.gov.in using entity PAN and GSTIN',
+          'CPO registration certificate from the Ministry of Power (for infrastructure subsidy applicants)',
+          'DISCOM sanction letter and load approval for each charging site',
+          'VAHAN registration copies for all vehicles in the fleet (for vehicle subsidy applicants)',
+          'AIS-156 battery certification documents for each vehicle model in the fleet',
+          'Localisation declaration signed by the OEM, confirming the 50% local content requirement is met',
+          'GST return filing acknowledgements for the previous two quarters (GSTR-3B)',
+          'Bank account details linked to entity PAN for direct benefit transfer',
+          'Telematics consent form for real-time data access by the Ministry of Heavy Industries',
+        ],
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Subsidy Disbursement Process and Timelines',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Disbursement under FAME III follows a three-stage process. In stage one, the applicant submits documents through the FAME III portal; the system runs automated checks against VAHAN, the GST Network, and the DISCOM database. Stage one verification typically completes within 10 working days. In stage two, field verification is conducted for first-time applicants or applications above ₹10 lakh; this stage takes 15-30 working days depending on the state. In stage three, approved amounts are disbursed directly to the registered bank account via PFMS (Public Financial Management System). Total cycle time for a clean application is 30-45 working days. Applications with documentation gaps or VAHAN mismatches enter a clarification queue and typically resolve in 60-90 days.',
+      },
+      {
+        type: 'callout',
+        content:
+          'FAME III subsidy disbursement is conditional on post-deployment reporting. CPOs must upload monthly energy throughput data and charger uptime logs to the FAME III portal. Failure to submit three consecutive monthly reports triggers subsidy recovery proceedings.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Common Rejection Reasons and How to Avoid Them',
+      },
+      {
+        type: 'list',
+        items: [
+          'Localisation shortfall: OEM certificate shows less than 50% local content; verify with the vehicle OEM before filing',
+          'VAHAN mismatch: Vehicle registration details on the application do not match the VAHAN database; run a VAHAN API check before submission',
+          'GST non-compliance: Pending GSTR-3B returns or an active GST demand notice on the entity; file all pending returns and obtain a clearance before applying',
+          'Expired DISCOM sanction: Load sanction letter is older than 12 months at the time of application; obtain a fresh letter from the DISCOM before submission',
+          'Missing AIS-156 certification: Vehicle BMS is not certified under the applicable standard; confirm with the OEM certification team before filing',
+          'Bank account PAN mismatch: Registered bank account is not linked to the applicant PAN; update bank KYC and verify the link before submitting disbursement details',
+        ],
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'How Go4Garage Automates FAME III Eligibility Tracking',
+      },
+      {
+        type: 'paragraph',
+        content:
+          "Go4Garage's URGAA platform includes a dedicated FAME III eligibility module that checks each vehicle and charging site in the operator's portfolio against current subsidy criteria. The module pulls real-time data from VAHAN, the GST portal, and DISCOM databases to flag eligibility gaps before the operator submits an application. For CPOs, URGAA auto-generates the monthly energy throughput and uptime reports required by the FAME III portal, reducing manual data entry and the risk of report submission failures that trigger recovery proceedings. Fleet operators can use URGAA's batch application tool to file for multiple vehicles in a single submission, with the system managing document version control and tracking application status across all three disbursement stages.",
+      },
+    ],
+  },
+  'ev-workshop-gst-compliance-india-2026': {
+    slug: 'ev-workshop-gst-compliance-india-2026',
+    title: 'GST Compliance for EV Workshops and Service Centers: What Changed in 2026',
+    excerpt:
+      'GST regulations for EV workshops and service centres saw two significant clarifications in 2026, covering the tax treatment of battery replacement and the applicable rates for EV-specific repair services. Workshops that misclassify battery swap transactions as a pure service rather than a mixed supply face a risk of differential tax demand plus interest. Understanding the correct HSN codes for EV parts and the applicable service accounting codes is the baseline for maintaining Input Tax Credit eligibility and avoiding penalty assessments.',
+    date: 'Apr 2026',
+    datePublished: '2026-04-18',
+    dateModified: '2026-04-25',
+    category: 'Compliance',
+    readTime: '6 min read',
+    icon: 'receipt_long',
+    author: 'Go4Garage Research',
+    authorRole: 'Tax & Compliance Team',
+    sections: [
+      {
+        type: 'stat-row',
+        stats: [
+          { value: '18%', label: 'GST on EV repair services (SAC 998713)' },
+          { value: '5%', label: 'GST on EV vehicles and EV chargers' },
+          { value: '28%', label: 'GST on tyres and certain battery components' },
+        ],
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'GST Rate Structure for EV Parts and Services',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'EV parts and workshop services attract different GST rates, and applying the wrong rate is a leading cause of audit notices for EV service centres. Electric motor components, battery cells, and power electronics attract 18% GST under Chapter 85 of the HSN code list. Tyres and tubes for EVs attract 28%. EV repair and maintenance services are taxable at 18% under SAC 998713 (maintenance and repair of motor vehicles). The critical distinction is between composite supply and mixed supply: if a workshop replaces a battery as part of an annual maintenance contract, the entire contract value is taxed at the highest rate applicable to any constituent supply, which may be 18% or 28% depending on the parts included. Treating an annual maintenance contract as a pure service at 18% when it includes 28% GST parts is one of the most common classification errors among EV service centres.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: '2026 Clarifications on Battery Replacement Transactions',
+      },
+      {
+        type: 'paragraph',
+        content:
+          "The CBIC circular issued in February 2026 (Circular No. 217/2026) provided specific guidance on battery replacement in EVs. Where a workshop supplies a new battery and installs it, the transaction is classified as a composite supply where the dominant element is the goods (battery), and GST is charged at the battery's applicable HSN rate: 18% for lithium-ion battery packs under HSN 8507. The installation labour is incidental and does not attract a separate service tax charge. However, where the battery is owned by the customer and sent for repair only, the transaction is a pure service taxable at 18% under SAC 998713. Battery swap transactions at swapping stations, where ownership of the battery remains with the operator, are treated as a service at 18%. Workshops that previously treated all battery replacements as pure services are now exposed to reclassification risk for FY2025-26 transactions.",
+      },
+      {
+        type: 'callout',
+        content:
+          'The February 2026 CBIC circular clarified that battery swap transactions are taxable as services at 18%, not as goods, provided the battery ownership does not transfer to the customer. Workshops and CPOs running battery swap operations must update their billing systems to use SAC 998713 rather than HSN 8507 for swap transactions.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Input Tax Credit Eligibility for EV Workshop Equipment',
+      },
+      {
+        type: 'list',
+        items: [
+          'Diagnostic tools and EV scan tools: ITC available if used exclusively for business purposes; not eligible if used for personal purposes or for vehicles not belonging to registered customers',
+          'Battery testing equipment: ITC available under capital goods, claimable in equal instalments over 5 years',
+          'EV chargers installed at the workshop premises: ITC available as plant and machinery if the charger is used as a business tool such as post-repair charging tests; not available if used primarily to charge employee personal EVs',
+          'Vehicle lifts and service bays: ITC available as capital goods under Section 16 of the CGST Act',
+          'Civil construction or renovation of workshop space: ITC not available under Section 17(5)(c) of the CGST Act',
+          'Air conditioning and general office equipment: ITC blocked under Section 17(5)(g) of the CGST Act',
+        ],
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'GSTIN Registration Requirements for Multi-Location Service Chains',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'EV workshop chains operating across more than one state must maintain a separate GSTIN for each state of operation, as GST registration is state-specific. A workshop chain with outlets in Maharashtra, Karnataka, and Tamil Nadu requires three separate GSTINs, three sets of GSTR-1 and GSTR-3B filings, and separate ITC ledgers for each state entity. Inter-state supply of spare parts from a central warehouse to state workshops is treated as a stock transfer and requires an e-Way bill plus a tax invoice from the head office GSTIN to the branch GSTIN. Centralised billing from a single GSTIN for services delivered in another state is not permitted and constitutes a compliance violation that attracts penalty under Section 122 of the CGST Act.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Filing Frequency and Return Types for Workshop Operators',
+      },
+      {
+        type: 'list',
+        items: [
+          'GSTR-1 (outward supply details): Monthly filing by the 11th for businesses with annual turnover above ₹1.5 crore; quarterly filing under the QRMP scheme for businesses below ₹1.5 crore',
+          'GSTR-3B (monthly summary and tax payment): Monthly by the 20th for regular filers; quarterly with monthly tax payment for QRMP filers',
+          'GSTR-9 (annual return): Filed by December 31 for businesses with turnover above ₹2 crore',
+          'GSTR-9C (reconciliation statement): Required for businesses with annual turnover above ₹5 crore, certified by a chartered accountant or cost accountant',
+          'E-Way bills: Required for all goods movements above ₹50,000 in value, including inter-branch spare parts transfers',
+        ],
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Penalty Structure for Non-Compliance and Common Audit Triggers',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Penalties for GST non-compliance in EV workshops follow the standard CGST Act structure, with additional exposure from EV-specific classification disputes. Late filing of GSTR-3B attracts ₹20 per day for nil returns and ₹50 per day for other returns, plus 18% interest on unpaid tax from the due date. Incorrect HSN code usage that results in a tax shortfall attracts a penalty equal to the shortfall plus 100% of the shortfall amount under Section 122. Common audit triggers for EV workshops include: ITC claims on purchases not matched in GSTR-2B, high-value capital goods ITC claimed without depreciation adjustment, sudden spikes in credit notes as a percentage of turnover, and mismatches between GSTR-1 and GSTR-3B values in consecutive quarters.',
+      },
+      {
+        type: 'list',
+        items: [
+          'Late GSTR-3B filing: ₹20/day for nil returns, ₹50/day for other returns, plus 18% interest on unpaid tax from the due date',
+          'Wrong HSN code resulting in a tax shortfall: penalty equal to the shortfall amount plus 100% of the shortfall under Section 122 CGST Act',
+          'ITC reversal demand: 18% interest charged from the date of ITC claim if the supplier has not filed their GSTR-1',
+          'Failure to issue e-Way bill for inter-state stock transfer: penalty of ₹10,000 or the tax evaded, whichever is higher',
+        ],
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'How Go4Garage Service Tools Automate ITC Matching and Filing',
+      },
+      {
+        type: 'paragraph',
+        content:
+          "Go4Garage's GST module for EV workshops connects to the GST Network via its licensed GSTN ASP/GSP interface to automate three compliance tasks. First, it reconciles the workshop's purchase invoices against the GSTR-2B data from the GSTN, flagging mismatches where a supplier has not filed their GSTR-1, and auto-generating the reversal entries required to prevent ITC disallowance. Second, it classifies each invoice line at the time of creation using an HSN code lookup linked to the EV parts catalogue, reducing manual classification errors and the audit risk that follows. Third, it generates draft GSTR-1 and GSTR-3B returns in the GSTN-compatible JSON format, allowing the operator to review and file without manual data entry. For workshop chains, it consolidates data across all state GSTINs into a single dashboard while maintaining separate filing queues for each registration.",
+      },
+    ],
+  },
+  'cpo-revenue-optimization-dynamic-pricing-india': {
+    slug: 'cpo-revenue-optimization-dynamic-pricing-india',
+    title: 'How CPOs Can Increase Revenue 35% with Dynamic Pricing and Session Analytics',
+    excerpt:
+      'Indian EV Charge Point Operators running on flat per-unit pricing are leaving significant revenue on the table, as charging demand follows predictable peak patterns that dynamic pricing can capture. CPOs who have implemented time-of-use and demand-based pricing report revenue increases of 25-40% compared to flat-rate models, without additional hardware costs. Session analytics data on utilisation rates, session duration, and peak hours is the foundation for a pricing strategy that increases revenue while staying within CERC and SERC tariff guidelines.',
+    date: 'Apr 2026',
+    datePublished: '2026-04-15',
+    dateModified: '2026-04-25',
+    category: 'Operations',
+    readTime: '8 min read',
+    icon: 'trending_up',
+    author: 'Go4Garage Research',
+    authorRole: 'Product & Operations Team',
+    sections: [
+      {
+        type: 'stat-row',
+        stats: [
+          { value: '35%', label: 'Avg utilisation on flat-rate Indian CPOs' },
+          { value: '48%', label: 'Avg utilisation on dynamic-pricing CPOs' },
+          { value: '₹22', label: 'Typical peak-hour rate ceiling in metros (per kWh)' },
+        ],
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Why Flat-Rate Pricing Limits CPO Revenue',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'The majority of public EV charging stations in India operate on flat per-unit rates, typically between ₹12 and ₹22 per kWh depending on the operator and city. This pricing model is simple to administer but ignores two important economic realities: EV drivers show strong, predictable demand concentration during evening hours (6-10 PM) and morning commute windows, and a significant portion of charging sessions occur during off-peak hours when chargers sit idle. A CPO running 10 DC fast chargers at ₹16/kWh with a 35% utilisation rate earns approximately ₹1.4 lakh per month. The same network with dynamic pricing adjusting rates to ₹20/kWh during peak hours (7-10 PM) and ₹11/kWh during off-peak hours (11 PM to 6 AM) can achieve 45-55% utilisation and monthly revenue of ₹1.8-2.1 lakh, a 30-50% improvement with no new capital spending.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Dynamic Pricing Models for Indian CPOs',
+      },
+      {
+        type: 'list',
+        items: [
+          'Time-of-use pricing: Different rates by time block, typically 3-4 blocks per day. Example: ₹11/kWh from 11 PM to 6 AM, ₹15/kWh from 6 AM to 6 PM, ₹20/kWh from 6 PM to 11 PM. This is the most common dynamic model and the easiest to configure on OCPP 2.0 chargers',
+          'Demand-based pricing: Rate adjusts in real time based on current station occupancy. When fewer than 30% of chargers are occupied, the rate drops to a base level; when occupancy exceeds 70%, the rate steps up by ₹3-5/kWh. This requires OCPP 2.0 and a central management system',
+          'User-tier pricing: Registered members or fleet operators receive contracted rates while walk-in users pay a standard rate. Common among corporate campus CPOs and fleet depot operators. Requires a customer account system integrated with the charging management platform',
+        ],
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Session Analytics: Utilisation, Duration, and Peak Hour Mapping',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Session analytics is the prerequisite for any pricing strategy. Without granular data on when chargers are used, for how long, and at what power levels, pricing decisions are based on guesswork rather than actual demand patterns. Key metrics every CPO should track on a weekly basis:',
+      },
+      {
+        type: 'list',
+        items: [
+          'Utilisation rate: Total energy delivered divided by theoretical maximum energy at rated power. Target is above 40% for DC fast chargers; below 25% indicates pricing or location issues that need investigation',
+          'Average session duration: Median time a vehicle is connected per session. Duration above 90 minutes on a 60 kW charger indicates price-insensitive users comfortable with long dwell times, a segment that can absorb higher rates',
+          'Peak hour demand distribution: Percentage of sessions starting in each hour block. This drives time-of-use pricing decisions and helps identify understaffed or undersupplied windows',
+          'Session abandonment rate: Percentage of sessions where a user initiates but disconnects within 5 minutes. High abandonment during peak hours indicates pricing friction or connector type mismatch',
+          'Revenue per charger per day: Target benchmark for a 60 kW DC fast charger in a metro location is ₹2,000-₹3,500 per day at 40-55% utilisation',
+        ],
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Revenue per Charger Benchmarks for Indian CPOs in 2026',
+      },
+      {
+        type: 'stat-row',
+        stats: [
+          { value: '₹2,800', label: 'Avg revenue per charger per day: metro DC fast chargers' },
+          { value: '₹480', label: 'Avg revenue per charger per day: Tier-2 AC chargers' },
+          { value: '₹1.8L', label: 'Monthly revenue increase: 20-charger network with dynamic pricing' },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Revenue benchmarks vary significantly by charger type, location tier, and pricing model. DC fast chargers (60-120 kW) in metro locations with good utilisation generate ₹2,000-₹3,500 per charger per day; in Tier-2 cities, the range is ₹800-₹1,500. AC Type 2 chargers (7-22 kW) typically generate ₹300-₹600 per charger per day in most markets. Highway corridor chargers show strong weekend peaks and weekday troughs, making time-of-use pricing particularly effective. CPOs who have implemented session analytics report that their top 30% of chargers generate 60% of total revenue, while their bottom 20% often operate below the electricity cost threshold. Identifying and repricing or relocating underperforming assets is as important as optimising high-demand sites.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Setting Up Dynamic Pricing Within CERC and SERC Tariff Guidelines',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Dynamic pricing does not give CPOs unlimited freedom to set rates. CERC and the relevant SERC in each state set tariff frameworks that cap the retail rate CPOs can charge consumers for electricity. Most states specify a maximum CPO retail tariff in the range of ₹22-₹28 per kWh for FY2026. Within this ceiling, CPOs are free to apply time-of-use or demand-based pricing. The practical steps for compliant dynamic pricing are:',
+      },
+      {
+        type: 'list',
+        items: [
+          'Confirm the maximum retail tariff ceiling with your DISCOM or SERC for your state and category of service connection',
+          'Set your peak rates below the ceiling, typically leaving a ₹2-₹3 buffer to allow for mid-year tariff revisions',
+          'Publish your pricing schedule on the charging station display and in the app, as required by the Ministry of Power Consumer Interface Guidelines',
+          'Log every rate change event with a timestamp in the charging management system; DISCOM inspectors may request rate change records during compliance audits',
+          'For multi-state networks, maintain a separate rate configuration for each state to reflect different SERC tariff ceilings',
+        ],
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'ROI Case Study: 20-Charger Network Increasing Revenue by ₹1.8 Lakh Per Month',
+      },
+      {
+        type: 'callout',
+        content:
+          'A CPO operating 20 DC fast chargers (60 kW) across four corporate campus locations in Bengaluru ran flat-rate pricing at ₹16/kWh with an average utilisation of 32%. After implementing 3-block time-of-use pricing (₹12/kWh off-peak, ₹16/kWh standard, ₹21/kWh peak) and offering fleet operators a contracted off-peak rate of ₹11/kWh, utilisation rose to 49% within two months. Monthly revenue increased from ₹4.1 lakh to ₹5.9 lakh, an increase of ₹1.8 lakh, without adding chargers or changing the hardware.',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'The case illustrates three principles that apply broadly to Indian CPO networks. First, attracting fleet operators with contracted off-peak rates fills dead hours without reducing peak-hour revenue from standard users. Second, corporate campus locations have two distinct peak windows, morning (8-10 AM) and evening (5-9 PM), which both support premium rates. Third, session data from the first month of dynamic pricing reveals which specific chargers are underperforming and allows targeted actions such as marketing to nearby businesses, app notification campaigns, or further rate adjustments.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'How URGAA and KAILASH-AI Implement Automated Dynamic Pricing',
+      },
+      {
+        type: 'paragraph',
+        content:
+          "Go4Garage's URGAA platform includes a pricing engine that connects to the operator's charging management system via OCPP 2.0 and updates tariff schedules automatically based on configurable rules. Operators define their pricing tiers, time blocks, and occupancy thresholds once; the system applies them across all connected chargers and logs every rate change event for compliance audit purposes. KAILASH-AI, Go4Garage's revenue analytics module, analyses session data to generate weekly pricing recommendations, identifying peak hours where the current rate may be below the demand-justified ceiling and off-peak windows where lower rates would attract incremental volume. The combined system has been deployed at 14 CPO networks across India, with operators reporting an average 28% revenue increase in the first quarter after deployment.",
+      },
+    ],
+  },
 };

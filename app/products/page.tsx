@@ -3,7 +3,7 @@ import ProductsClient from './ProductsClient';
 
 export const metadata: Metadata = {
   title: 'Products',
-  description: 'Discover Go4Garage\'s 7-product suite (URGAA (ऊर्जा), GST (Go4Garage Service Tools), Ignition, EV VIDYA ARJUN, KAILASH-AI, and Eka-AI), solving 84 problems across India\'s entire EV value chain.',
+  description: 'Discover Go4Garage\'s 7-product suite (URGAA (ऊर्जा), GST (Go4Garage Service Tools), Ignition, EV VIDYA ARJUN, KAILASH-AI, and Eka-AI), solving 85 problems across India\'s entire EV value chain.',
 };
 
 export default function Page() {

@@ -28,7 +28,7 @@ const faqs: FAQItem[] = [
   // General
   {
     q: 'What is Go4Garage?',
-    a: 'Go4Garage is India\'s first AI-powered automobile intelligence platform. We solve 84 problems across the EV ecosystem with 7 products, 12 AI industry branches, and 32+ ML models, covering everything from regulatory compliance and workshop operations to workforce training and fleet management.',
+    a: 'Go4Garage is India\'s first AI-powered automobile intelligence platform. We solve 85 problems across the EV ecosystem with 7 products, 12 AI industry branches, and 32+ ML models, covering everything from regulatory compliance and workshop operations to workforce training and fleet management.',
     category: 'General',
   },
   {

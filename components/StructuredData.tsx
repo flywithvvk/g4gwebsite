@@ -7,7 +7,7 @@ const organizationSchema = {
   name: 'Go4Garage',
   legalName: 'Go4Garage Private Limited',
   alternateName: ['Go4Garage Technologies', 'Go4Garage Technologies Private Limited', 'Go4Garage AI'],
-  description: "India's first AI-powered automobile intelligence platform: a SaaS technology company solving 84 problems across the EV ecosystem with 7 AI products. Not an auto repair shop.",
+  description: "India's first AI-powered automobile intelligence platform: a SaaS technology company solving 85 problems across the EV ecosystem with 7 AI products. Not an auto repair shop.",
   url: SITE_URL,
   email: 'connect@go4garage.in',
   industry: 'Software as a Service (SaaS)',

@@ -143,7 +143,7 @@ export default function FiveYearsBanner() {
                   </span>
                   {/* Connector dot */}
                   <div className={`absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full ${m.dotColor} border-2 border-white/20 hidden md:block`} />
-                  <h4 className="text-white font-bold text-sm mb-1 font-display">{m.title}</h4>
+                  <h3 className="text-white font-bold text-sm mb-1 font-display">{m.title}</h3>
                   <p className="text-white/60 text-xs leading-relaxed">{m.desc}</p>
                 </motion.div>
               ))}

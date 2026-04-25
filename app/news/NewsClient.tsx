@@ -204,6 +204,51 @@ const newsItems: NewsItem[] = [
       'Tata Motors announced cumulative EV sales of 3,00,412 units as of March 2026, making it the largest EV passenger vehicle manufacturer in India. The Nexon EV retained its top position for 24 consecutive months. The company announced Nexon EV Gen 3 with a 68 kWh battery and 550 km certified range, scheduled for launch in Q2 FY2027, alongside a new ₹12.5 lakh entry-level Tiago EV variant.',
     source: 'Tata Motors',
   },
+  {
+    id: '20',
+    category: 'Policy',
+    date: 'Apr 2026',
+    headline: 'BEE Mandates Energy Audit for All EV Charging Stations Above 50 kW Capacity',
+    summary:
+      'The Bureau of Energy Efficiency has notified that all public EV charging stations with a total installed capacity above 50 kW must undergo a mandatory annual energy audit by a BEE-certified energy auditor effective from October 2026. The audit covers charger efficiency losses, idle power consumption, and transformer utilisation. Non-compliant stations face suspension of grid connection approval from their respective DISCOM.',
+    source: 'Bureau of Energy Efficiency',
+  },
+  {
+    id: '21',
+    category: 'Industry',
+    date: 'Apr 2026',
+    headline: 'Hero MotoCorp Enters EV Charging Business with 2,000-Point Network Plan by 2027',
+    summary:
+      "Hero MotoCorp has announced a partnership with Jio-bp to deploy 2,000 AC charging points co-located with Hero dealerships across 600 cities by March 2027. The network targets two-wheeler and three-wheeler charging gaps in Tier-2 and Tier-3 markets where existing public infrastructure covers fewer than 5% of registered EVs. Points will support Hero's Vida V2 and V2 Pro models as well as third-party two-wheelers.",
+    source: 'Hero MotoCorp',
+  },
+  {
+    id: '22',
+    category: 'Go4Garage',
+    date: 'Apr 2026',
+    headline: "Go4Garage Launches EkaAI: India's First Multilingual EV Technical Assistant in 11 Languages",
+    summary:
+      "Go4Garage's EkaAI assistant now supports 11 Indian languages including Hindi, Tamil, Telugu, Kannada, Malayalam, Bengali, Marathi, Gujarati, Punjabi, Odia, and English. The assistant answers workshop technician queries on EV diagnostics, BMS fault codes, and service procedures using voice or text input. Over 3,200 technicians have used EkaAI in pilot deployments across 8 states, with a 94% query resolution rate reported in field testing.",
+    source: 'Go4Garage',
+  },
+  {
+    id: '23',
+    category: 'Technology',
+    date: 'Apr 2026',
+    headline: 'CDAC Releases Open-Source EV Charging Management Stack for Indian DISCOM Integration',
+    summary:
+      'The Centre for Development of Advanced Computing has released an open-source EVCS management stack under the National EV Stack initiative, designed to integrate directly with DISCOM billing systems using the Indian OCPP adaptation. The stack supports real-time metering data push, tariff calculation with time-of-use rates, and subsidy pass-through for FAME III and state schemes. It is available on GitHub under an Apache 2.0 licence.',
+    source: 'CDAC / MeitY',
+  },
+  {
+    id: '24',
+    category: 'Funding',
+    date: 'Apr 2026',
+    headline: 'Convergence Energy Services Raises ₹1,200 Crore from ADB for EV Charging Infrastructure',
+    summary:
+      "Convergence Energy Services Limited (CESL) secured a ₹1,200 crore loan from the Asian Development Bank for its national EV charging roll-out program, including 15,000 charging points on national highways and in underserved districts. The ADB facility is structured as a green loan with performance-linked disbursements tied to operational uptime, OCPP compliance metrics, and renewable energy sourcing targets.",
+    source: 'CESL / ADB',
+  },
 ];
 
 export default function NewsClient() {
