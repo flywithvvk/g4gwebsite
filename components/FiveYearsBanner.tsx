@@ -8,8 +8,8 @@ const milestones = [
   { year: '2021', title: 'Company Founded', desc: 'URGAA v1 Launched, India\u2019s first EV regulatory AI', color: 'border-primary bg-primary/10', textColor: 'text-primary', dotColor: 'bg-primary' },
   { year: '2022', title: 'GST & EV VIDYA ARJUN Live', desc: 'Workshop digitisation + workforce skilling platform launched', color: 'border-secondary bg-secondary/10', textColor: 'text-secondary', dotColor: 'bg-secondary' },
   { year: '2023', title: 'KAILASH-AI & EkaAI Launched', desc: '500+ operators onboarded, document AI + agent orchestration', color: 'border-tertiary bg-tertiary/10', textColor: 'text-tertiary', dotColor: 'bg-tertiary' },
-  { year: '2024\u201325', title: 'Ignition App & 7 Products', desc: '84 Problems Solved, consumer app + full product suite complete', color: 'border-primary bg-primary/10', textColor: 'text-primary', dotColor: 'bg-primary' },
-  { year: '2026', title: '5 Years \u2014 1 Lakh+ Apps', desc: '1 Lakh+ DISCOM Applications Processed, 5 years of innovation', color: 'border-secondary bg-secondary/10', textColor: 'text-secondary', dotColor: 'bg-secondary' },
+  { year: '2024-25', title: 'Ignition App & 7 Products', desc: '85 Problems Solved, consumer app and full product suite complete', color: 'border-primary bg-primary/10', textColor: 'text-primary', dotColor: 'bg-primary' },
+  { year: '2026', title: '5 Years: 1 Lakh+ Apps', desc: '1 Lakh+ DISCOM Applications Processed, 5 years of innovation', color: 'border-secondary bg-secondary/10', textColor: 'text-secondary', dotColor: 'bg-secondary' },
 ];
 
 // Hardcoded particle positions to avoid hydration mismatch (no Math.random())
@@ -64,7 +64,7 @@ export default function FiveYearsBanner() {
           className="flex justify-center mb-8"
         >
           <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-300 text-sm font-semibold">
-            🎉 5-Year Anniversary — April 14, 2021 → 2026
+            🎉 5-Year Anniversary: April 14, 2021 to 2026
           </span>
         </motion.div>
 
@@ -163,7 +163,7 @@ export default function FiveYearsBanner() {
         >
           {[
             { value: 5, suffix: '+', label: 'Years', color: 'text-amber-400' },
-            { value: 84, suffix: '', label: 'Problems Solved', color: 'text-primary-container' },
+            { value: 85, suffix: '', label: 'Problems Solved', color: 'text-primary-container' },
             { value: 7, suffix: '', label: 'Products Built', color: 'text-secondary-container' },
             { value: 100000, suffix: '+', label: 'DISCOM Apps Processed', color: 'text-tertiary-container' },
           ].map((stat, idx) => (

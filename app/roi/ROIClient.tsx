@@ -253,7 +253,7 @@ export default function ROIClient() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
-                  className="text-5xl font-black gradient-text mb-1"
+                  className="text-3xl sm:text-4xl md:text-5xl font-black gradient-text mb-1"
                 >
                   {fmt(result.totalAnnualSavings)}
                 </motion.p>

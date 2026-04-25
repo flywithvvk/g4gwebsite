@@ -25,7 +25,7 @@ export default function NotFound() {
         </div>
 
         {/* Heading */}
-        <h1 className="text-8xl font-black gradient-text mb-3 font-display leading-none">404</h1>
+        <h1 className="text-6xl sm:text-7xl md:text-8xl font-black gradient-text mb-3 font-display leading-none">404</h1>
         <h2 className="text-2xl font-bold text-on-surface mb-3 font-display">This page doesn&apos;t exist</h2>
         <p className="text-sm text-on-surface-variant mb-10 leading-relaxed max-w-md mx-auto">
           Looks like this URL took a wrong turn. Here are some helpful destinations:
