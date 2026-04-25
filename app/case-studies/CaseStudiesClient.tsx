@@ -22,7 +22,7 @@ const caseStudies: CaseStudy[] = [
     badge: 'Regulatory Intelligence',
     title: 'How a Multi-State CPO Achieved 89.5% Compliance Automation',
     challenge:
-      'Managing compliance across 12 states manually — different regulations, forms, timelines, and approval bodies. A team of 8 spent 40+ hours/week on paperwork alone.',
+      'Managing compliance across 12 states manually: different regulations, forms, timelines, and approval bodies. A team of 8 spent 40+ hours/week on paperwork alone.',
     solution:
       'URGAA (ऊर्जा) Regulatory Intelligence Engine automated compliance tracking, form generation, deadline management, and status monitoring across all 12 states simultaneously.',
     results: [
@@ -40,7 +40,7 @@ const caseStudies: CaseStudy[] = [
     challenge:
       'Paper job cards, manual inventory tracking, billing errors, and zero visibility into operational efficiency. Revenue leakage was estimated at 15-20%.',
     solution:
-      'GST (Go4Garage Service Tools) complete workshop digitization — digital job cards, real-time inventory, automated billing with GST compliance, and operational analytics dashboard.',
+      'GST (Go4Garage Service Tools) complete workshop digitization: digital job cards, real-time inventory, automated billing with GST compliance, and operational analytics dashboard.',
     results: [
       { label: 'Throughput Increase', value: '3x' },
       { label: 'Billing Accuracy', value: '95%' },
@@ -72,7 +72,7 @@ const caseStudies: CaseStudy[] = [
     challenge:
       'Peak-hour charging inflating energy costs, no visibility into Total Cost of Ownership (TCO), and manual scheduling across 50+ vehicles.',
     solution:
-      'Ignition Fleet Portal + URGAA (ऊर्जा) Smart Charging — AI-optimized charging schedules based on grid pricing, route planning, and real-time TCO analytics.',
+      'Ignition Fleet Portal + URGAA (ऊर्जा) Smart Charging: AI-optimized charging schedules based on grid pricing, route planning, and real-time TCO analytics.',
     results: [
       { label: 'Cost Reduction', value: '40%' },
       { label: 'TCO Visibility', value: 'Real-time' },
@@ -166,7 +166,7 @@ export default function CaseStudiesClient() {
             badge="Success Stories"
             title="Proven"
             highlight="Results"
-            subtitle="From compliance automation to workforce training — real stories from real businesses."
+            subtitle="From compliance automation to workforce training: real stories from real businesses."
           />
           <div className="space-y-10 max-w-5xl mx-auto">
             {caseStudies.map((cs, idx) => (
@@ -179,7 +179,7 @@ export default function CaseStudiesClient() {
                 className={`bg-surface-bright rounded-3xl border border-outline-variant/30 border-l-4 ${cs.borderColor} shadow-sm hover:shadow-lg transition-all overflow-hidden`}
               >
                 <div className="grid md:grid-cols-3 gap-0">
-                  {/* Left — Header */}
+                  {/* Left: Header */}
                   <div className={`bg-gradient-to-br ${cs.gradient} p-8 md:p-10 flex flex-col justify-center`}>
                     <span className="text-white/70 text-xs font-medium uppercase tracking-widest mb-3 font-display">
                       {cs.badge}
@@ -190,7 +190,7 @@ export default function CaseStudiesClient() {
                     </h3>
                   </div>
 
-                  {/* Right — Content */}
+                  {/* Right: Content */}
                   <div className="md:col-span-2 p-8 md:p-10">
                     <div className="space-y-5 mb-8">
                       <div>

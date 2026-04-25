@@ -17,9 +17,9 @@ const heroNumbers = [
 ];
 
 const coreValues = [
-  { icon: 'smart_toy', title: 'AI-First Innovation', desc: 'Every solution starts with AI — our proprietary Automobile LLM powers every feature, every decision.', color: 'border-l-primary' },
+  { icon: 'smart_toy', title: 'AI-First Innovation', desc: 'Every solution starts with AI: our proprietary Automobile LLM powers every feature, every decision.', color: 'border-l-primary' },
   { icon: 'public', title: 'India-Focused Design', desc: 'Built ground-up for Indian regulations, operational realities, and workforce dynamics.', color: 'border-l-secondary' },
-  { icon: 'hub', title: 'Ecosystem Thinking', desc: 'A unified platform that connects every stakeholder — not disconnected point solutions.', color: 'border-l-tertiary' },
+  { icon: 'hub', title: 'Ecosystem Thinking', desc: 'A unified platform that connects every stakeholder, not disconnected point solutions.', color: 'border-l-tertiary' },
   { icon: 'speed', title: 'Speed to Value', desc: 'From assessment to live in 4 weeks. Immediate, measurable ROI from day one.', color: 'border-l-primary' },
 ];
 
@@ -42,7 +42,7 @@ const milestones = [
     icon: 'build',
     bullets: [
       'Platform development started',
-      '7 products designed and built — URGAA, GST (Go4Garage Service Tools), Ignition, EV VIDYA ARJUN, KAILASH-AI, Eka-AI, and Go4Garage Platform',
+      '7 products designed and built: URGAA, GST (Go4Garage Service Tools), Ignition, EV VIDYA ARJUN, KAILASH-AI, Eka-AI, and Go4Garage Platform',
       'First pilot deployments with early customers',
       'KAILASH-AI intelligence engine development',
     ],
@@ -128,7 +128,7 @@ export default function AboutClient() {
     <div className="min-h-screen bg-surface text-on-surface">
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          SECTION 1 — SPLIT HERO
+          SECTION 1: SPLIT HERO
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="relative min-h-[80vh] flex items-center overflow-hidden pt-20 pb-16">
         {/* Background effects */}
@@ -150,7 +150,7 @@ export default function AboutClient() {
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left — Story */}
+            {/* Left: Story */}
             <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -166,14 +166,14 @@ export default function AboutClient() {
                 <span className="gradient-text">EV Revolution</span>
               </h1>
               <p className="text-lg text-on-surface-variant leading-relaxed max-w-lg">
-                We didn&apos;t start with a pitch deck — we started with pain.
+                We didn&apos;t start with a pitch deck; we started with pain.
                 After years inside India&apos;s fragmented automobile ecosystem, we saw 95 problems
-                that no one was solving holistically. So we built Go4Garage: the AI-powered intelligence
+                that no one was solving end to end. So we built Go4Garage: the AI-powered intelligence
                 backbone that connects, automates, and transforms the entire value chain.
               </p>
             </motion.div>
 
-            {/* Right — Key Number Cards */}
+            {/* Right: Key Number Cards */}
             <motion.div
               variants={staggerContainer}
               initial="hidden"
@@ -199,7 +199,7 @@ export default function AboutClient() {
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          SECTION 2 — MISSION & VISION
+          SECTION 2: MISSION & VISION
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
@@ -233,7 +233,7 @@ export default function AboutClient() {
             >
               <h3 className="text-2xl font-bold mb-4 font-display">Our Vision</h3>
               <p className="text-on-surface-variant leading-relaxed mb-4">
-                To be the intelligence backbone of India&apos;s $50B+ automobile transformation — powering
+                To be the intelligence backbone of India&apos;s $50B+ automobile transformation, powering
                 every operator, technician, and stakeholder with AI-driven insights and automation.
               </p>
               <div className="flex items-center gap-2 pt-3 border-t border-outline-variant/20">
@@ -245,7 +245,7 @@ export default function AboutClient() {
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          SECTION 3 — CORE VALUES
+          SECTION 3: CORE VALUES
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 bg-surface">
         <div className="container mx-auto px-6">
@@ -276,7 +276,7 @@ export default function AboutClient() {
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          SECTION 4 — JOURNEY TIMELINE
+          SECTION 4: JOURNEY TIMELINE
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
@@ -343,7 +343,7 @@ export default function AboutClient() {
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          SECTION 5 — TEAM
+          SECTION 5: TEAM
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 bg-surface">
         <div className="container mx-auto px-6">
@@ -392,7 +392,7 @@ export default function AboutClient() {
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          SECTION 6 — NUMBERS THAT MATTER
+          SECTION 6: NUMBERS THAT MATTER
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
@@ -459,7 +459,7 @@ export default function AboutClient() {
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          SECTION 7 — CTA
+          SECTION 7: CTA
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/12 via-surface to-secondary-container/12" />
@@ -481,7 +481,7 @@ export default function AboutClient() {
             </h2>
             <p className="text-lg md:text-xl text-on-surface-variant mb-12 max-w-2xl mx-auto leading-relaxed">
               Whether you&apos;re an operator looking to transform operations, an investor seeking
-              the next big opportunity, or a partner who shares our vision — let&apos;s talk.
+              the next big opportunity, or a partner who shares our vision: let&apos;s talk.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">

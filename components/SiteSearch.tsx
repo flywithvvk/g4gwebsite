@@ -7,13 +7,13 @@ import { Icon } from '@/components/Icon';
 import { trackSearch } from '@/lib/analytics';
 
 const RESULTS = [
-  { title: 'URGAA (ऊर्जा) — Regulatory Intelligence', desc: 'End-to-end EV charging compliance across 33 states', href: '/products/urgaa', icon: 'bolt', tag: 'Product' },
-  { title: 'GST (Go4Garage Service Tools) — Workshop & Commerce Engine', desc: 'Digital job cards, GST billing, inventory management', href: '/products/gstsaas', icon: 'build', tag: 'Product' },
-  { title: 'Ignition App — Consumer Experience', desc: 'EV consumer app for charging, service, and support', href: '/products/ignition', icon: 'smartphone', tag: 'Product' },
-  { title: 'EV VIDYA ARJUN — Workforce Skilling', desc: '4-week EV technician certification, 92% placement rate', href: '/products/arjun', icon: 'school', tag: 'Product' },
-  { title: 'KAILASH-AI — Predictive Analytics', desc: 'Battery SoH grading, document AI, anomaly detection', href: '/products/kailash-ai', icon: 'analytics', tag: 'Product' },
-  { title: 'Eka-AI — Agent Orchestration', desc: 'Conversational AI for guided operations and Q&A', href: '/products/eka-ai', icon: 'smart_toy', tag: 'Product' },
-  { title: 'Book a Live Demo', desc: 'Schedule a demo — workshop, charging, or full platform tour', href: '/demo', icon: 'event', tag: 'Action' },
+  { title: 'URGAA (ऊर्जा): Regulatory Intelligence', desc: 'End-to-end EV charging compliance across 33 states', href: '/products/urgaa', icon: 'bolt', tag: 'Product' },
+  { title: 'GST (Go4Garage Service Tools): Workshop & Commerce Engine', desc: 'Digital job cards, GST billing, inventory management', href: '/products/gstsaas', icon: 'build', tag: 'Product' },
+  { title: 'Ignition App: Consumer Experience', desc: 'EV consumer app for charging, service, and support', href: '/products/ignition', icon: 'smartphone', tag: 'Product' },
+  { title: 'EV VIDYA ARJUN: Workforce Skilling', desc: '4-week EV technician certification, 92% placement rate', href: '/products/arjun', icon: 'school', tag: 'Product' },
+  { title: 'KAILASH-AI: Predictive Analytics', desc: 'Battery SoH grading, document AI, anomaly detection', href: '/products/kailash-ai', icon: 'analytics', tag: 'Product' },
+  { title: 'Eka-AI: Agent Orchestration', desc: 'Conversational AI for guided operations and Q&A', href: '/products/eka-ai', icon: 'smart_toy', tag: 'Product' },
+  { title: 'Book a Live Demo', desc: 'Schedule a demo: workshop, charging, or full platform tour', href: '/demo', icon: 'event', tag: 'Action' },
   { title: 'Pricing', desc: 'Starter, Professional, and Enterprise plans', href: '/pricing', icon: 'payments', tag: 'Page' },
   { title: 'Platform Overview', desc: 'How all 7 products work together', href: '/platform', icon: 'dashboard', tag: 'Page' },
   { title: 'Who We Serve', desc: 'CPO operators, workshops, fleets, government, OEMs', href: '/solutions', icon: 'lightbulb', tag: 'Page' },
@@ -98,7 +98,7 @@ export function SiteSearch() {
 
   return (
     <>
-      {/* Search trigger button — in nav or wherever mounted */}
+      {/* Search trigger button: in nav or wherever mounted */}
       <button
         onClick={openSearch}
         className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/30 text-on-surface-variant text-sm hover:bg-surface-container-high transition-colors"

@@ -11,14 +11,14 @@ import { Icon } from '@/components/Icon';
 
 // 8 real challenge layers from Go4Garage's 95-problem matrix
 const STEP_LABELS = [
-  'Regulatory',   // L8 — 15 problems
-  'DISCOM',        // L7 — grid & energy
-  'Site Setup',    // L1 — supply chain
-  'Financing',     // L3 — economics
-  'Operations',    // L4 — after-sales
-  'Consumers',     // L2 — adoption
-  'Workforce',     // L5 — skilled talent
-  'Battery',       // L6 — lifecycle & safety
+  'Regulatory',   // L8: 15 problems
+  'DISCOM',        // L7: grid & energy
+  'Site Setup',    // L1: supply chain
+  'Financing',     // L3: economics
+  'Operations',    // L4: after-sales
+  'Consumers',     // L2: adoption
+  'Workforce',     // L5: skilled talent
+  'Battery',       // L6: lifecycle & safety
 ];
 
 const STEP_SUBTITLES = [
@@ -49,7 +49,7 @@ const CHALLENGE_WINDOWS = [
   [37, 41],   // Battery
 ] as const;
 
-// Floating card positions — left column (0–3) + RIGHT column (4–7, no overlap on any screen)
+// Floating card positions: left column (0-3) + RIGHT column (4-7, no overlap on any screen)
 const CHALLENGE_FLOAT_POSITIONS: React.CSSProperties[] = [
   { top: '8%',  left: '3%'  },
   { top: '24%', left: '3%'  },
@@ -125,7 +125,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
   return (
     <div className="relative h-full overflow-hidden bg-black">
 
-      {/* ═══════════ VIDEO — GPU-accelerated, no scale blur ═══════════ */}
+      {/* ═══════════ VIDEO: GPU-accelerated, no scale blur ═══════════ */}
       <video
         ref={videoRef}
         autoPlay
@@ -143,13 +143,13 @@ export function EVJourneyVisual({ onComplete }: Props) {
         }}
         className="absolute inset-0 w-full h-full object-cover object-center"
       >
-        {/* WebM VP9 — best quality/size for Chrome/Firefox/Edge */}
+        {/* WebM VP9: best quality/size for Chrome/Firefox/Edge */}
         <source src="/videos/ev-journey-bg.webm" type="video/webm" />
-        {/* MP4 H.264 — faststart-optimised fallback for Safari */}
+        {/* MP4 H.264: faststart-optimised fallback for Safari */}
         <source src="/videos/ev-journey-bg.mp4" type="video/mp4" />
       </video>
 
-      {/* ═══════════ MINIMAL OVERLAYS — readability only, no dark shadows ═══════════ */}
+      {/* ═══════════ MINIMAL OVERLAYS: readability only, no dark shadows ═══════════ */}
 
       {/* Very light top fade */}
       <div
@@ -163,7 +163,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
         style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.08) 0%, transparent 22%)' }}
       />
 
-      {/* ═══════════ WATERMARK KILL COVER — hidden on mobile (panel is full-width there) ═══════════ */}
+      {/* ═══════════ WATERMARK KILL COVER: hidden on mobile (panel is full-width there) ═══════════ */}
       <div
         className="absolute bottom-0 right-0 z-[28] pointer-events-none hidden sm:block"
         style={{
@@ -174,7 +174,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
         }}
       />
 
-      {/* ═══════════ FLOATING CHALLENGE CARDS — all 8 visible on video ═══════════ */}
+      {/* ═══════════ FLOATING CHALLENGE CARDS: all 8 visible on video ═══════════ */}
       <AnimatePresence>
         {started && !showArrived && activeIdx >= 0 && (
           <motion.div
@@ -226,7 +226,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
         )}
       </AnimatePresence>
 
-      {/* ═══════════ COMPLETED CHALLENGE BADGES — stay visible after resolved ═══════════ */}
+      {/* ═══════════ COMPLETED CHALLENGE BADGES: stay visible after resolved ═══════════ */}
       {started && !showArrived && STEP_LABELS.map((label, i) => {
         const done = time >= CHALLENGE_WINDOWS[i][1];
         const active = activeIdx === i;
@@ -260,7 +260,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
         );
       })}
 
-      {/* ═══════════ STAGE UI PANEL — full-width mobile, corner on desktop ═══════════ */}
+      {/* ═══════════ STAGE UI PANEL: full-width mobile, corner on desktop ═══════════ */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: started ? 1 : 0, y: started ? 0 : 16 }}
@@ -313,7 +313,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
             )}
           </AnimatePresence>
 
-          {/* Step grid — 2 rows × 4 = all 8 visible */}
+          {/* Step grid: 2 rows x 4 = all 8 visible */}
           <div className="grid grid-cols-4 gap-x-1.5 gap-y-1 mb-2.5">
             {STEP_LABELS.map((label, i) => {
               const done = time >= CHALLENGE_WINDOWS[i][1];
@@ -427,7 +427,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
                 className="text-sm text-white/60 mb-6 leading-relaxed"
                 style={{ textShadow: '0 1px 4px rgba(0,0,0,0.8)' }}
               >
-                Every regulatory and operational challenge — resolved by Go4Garage in real-time.
+                Every regulatory and operational challenge, resolved by Go4Garage in real-time.
               </p>
 
               {/* Stats row */}

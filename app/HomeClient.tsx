@@ -53,7 +53,7 @@ const personas = [
 
 const howItWorks = [
   { step: '01', title: 'Assessment', desc: 'We analyze your current operations, compliance gaps, and workflow bottlenecks across the EV value chain.', icon: 'search' },
-  { step: '02', title: 'Integration', desc: 'Seamless platform setup with your existing systems — no disruption, no downtime, fully guided onboarding.', icon: 'integration_instructions' },
+  { step: '02', title: 'Integration', desc: 'Platform setup with your existing systems: no disruption, no downtime, fully guided onboarding.', icon: 'integration_instructions' },
   { step: '03', title: 'Automation', desc: 'AI takes over compliance filings, document processing, workforce scheduling, and operational workflows.', icon: 'auto_fix_high' },
   { step: '04', title: 'Scale', desc: 'Grow with real-time intelligence, predictive analytics, and AI agents working 24/7 across all 33 states.', icon: 'trending_up' },
 ];
@@ -80,7 +80,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-surface text-on-surface">
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          HERO — Slide 0: EV Journey Video | Slide 1: Platform Message
+          HERO: Slide 0: EV Journey Video | Slide 1: Platform Message
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="relative h-[calc(100vh-4rem)] mt-16 overflow-hidden">
         <AnimatePresence mode="wait">
@@ -218,7 +218,7 @@ export default function HomePage() {
       <TrustBar />
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          THE PROBLEM — 8 Layers
+          THE PROBLEM: 8 Layers
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-14 md:py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
@@ -226,7 +226,7 @@ export default function HomePage() {
             badge="The Challenge"
             title="95 Problems Across India's EV Ecosystem"
             highlight="95 Problems"
-            subtitle="We've mapped every challenge across 8 critical layers — and built solutions for 85 of them."
+            subtitle="We've mapped every challenge across 8 critical layers, and built solutions for 85 of them."
           />
 
           <motion.div
@@ -469,7 +469,7 @@ export default function HomePage() {
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          AI DIFFERENTIATOR — Why Go4Garage
+          AI DIFFERENTIATOR: Why Go4Garage
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="py-24 bg-surface-container-low relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary-container/5 rounded-full blur-[200px] -translate-y-1/2 translate-x-1/3" />
@@ -483,7 +483,7 @@ export default function HomePage() {
                   The <span className="gradient-text">Intelligence</span> Behind India&apos;s Auto Industry
                 </h2>
                 <p className="text-on-surface-variant mb-8 leading-relaxed">
-                  We&apos;re not building tools — we&apos;re building intelligence. Our proprietary Automobile LLM
+                  We&apos;re not building tools; we&apos;re building intelligence. Our proprietary Automobile LLM
                   understands every regulation, workflow, and edge case in India&apos;s EV ecosystem.
                 </p>
 
@@ -495,7 +495,7 @@ export default function HomePage() {
                     'End-to-end CPO operations + service + workforce',
                   ].map((item, idx) => (
                     <motion.div key={idx} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 + idx * 0.1 }} className="flex items-start gap-3">
-                      <span className="text-on-surface-variant flex-shrink-0 mt-0.5">—</span>
+                      <span className="text-on-surface-variant flex-shrink-0 mt-0.5">•</span>
                       <span className="text-on-surface-variant text-sm">{item}</span>
                     </motion.div>
                   ))}

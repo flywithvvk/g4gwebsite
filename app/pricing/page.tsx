@@ -6,7 +6,7 @@ const SITE_URL = 'https://www.go4garage.in';
 
 export const metadata: Metadata = {
   title: 'Pricing',
-  description: 'Simple, transparent pricing for Go4Garage — from individual workshops to enterprise CPOs. Contact sales for a custom quote.',
+  description: 'Simple, transparent pricing for Go4Garage: from individual workshops to enterprise CPOs. Contact sales for a custom quote.',
   alternates: { canonical: `${SITE_URL}/pricing` },
   openGraph: {
     title: 'Pricing | Go4Garage',
@@ -28,7 +28,7 @@ export default function Page() {
     <>
       <WebPageStructuredData
         name="Go4Garage Pricing"
-        description="Simple, transparent pricing for Go4Garage — from individual workshops to enterprise CPOs."
+        description="Simple, transparent pricing for Go4Garage: from individual workshops to enterprise CPOs."
         url={`${SITE_URL}/pricing`}
       />
       <BreadcrumbStructuredData

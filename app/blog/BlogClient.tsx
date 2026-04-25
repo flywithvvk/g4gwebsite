@@ -24,7 +24,7 @@ interface Article {
 const featuredArticle = {
   title: "India's EV Revolution: How AI is Transforming Compliance",
   excerpt:
-    'The EV ecosystem in India is growing at an unprecedented pace. But with growth comes regulatory complexity — across 33 states, multiple ministries, and evolving policies. Learn how AI-powered intelligence is cutting through the chaos to deliver 89.5% compliance automation.',
+    'The EV ecosystem in India is growing at an unprecedented pace. But with growth comes regulatory complexity, across 33 states, multiple ministries, and evolving policies. Learn how AI-powered intelligence is cutting through the chaos to deliver 89.5% compliance automation.',
   date: 'Apr 2026',
   category: 'Regulatory' as const,
   readTime: '8 min read',
@@ -34,7 +34,7 @@ const articles: Article[] = [
   {
     title: "India EV Sales FY2026: Record Numbers and What's Driving Unprecedented Growth",
     excerpt:
-      'India crossed 2 million EV registrations in FY2025-26, marking a 67% year-on-year surge. From two-wheelers to commercial fleets, we break down the data — and what it means for CPOs, workshops, and the broader ecosystem.',
+      'India crossed 2 million EV registrations in FY2025-26, marking a 67% year-on-year surge. From two-wheelers to commercial fleets, we break down the data, and what it means for CPOs, workshops, and the broader ecosystem.',
     date: 'Apr 2026',
     category: 'Policy',
     readTime: '7 min read',
@@ -54,7 +54,7 @@ const articles: Article[] = [
   {
     title: 'Battery Waste Management Rules 2022: What EV Operators Must Do in 2026',
     excerpt:
-      "India's Battery Waste Management Rules mandate EPR (Extended Producer Responsibility) compliance for all EV operators. With enforcement stepping up in 2026, here's exactly what your business needs — from registration to collection targets.",
+      "India's Battery Waste Management Rules mandate EPR (Extended Producer Responsibility) compliance for all EV operators. With enforcement stepping up in 2026, here's exactly what your business needs: from registration to collection targets.",
     date: 'Mar 2026',
     category: 'Regulatory',
     readTime: '6 min read',
@@ -64,7 +64,7 @@ const articles: Article[] = [
   {
     title: 'Complete Guide to DISCOM Applications for EV Charging Stations in India',
     excerpt:
-      'A step-by-step walkthrough of DISCOM application processes across all Indian states — timelines, documentation, and common pitfalls to avoid.',
+      'A step-by-step walkthrough of DISCOM application processes across all Indian states: timelines, documentation, and common pitfalls to avoid.',
     date: 'Apr 2026',
     category: 'Regulatory',
     readTime: '8 min read',
@@ -74,7 +74,7 @@ const articles: Article[] = [
   {
     title: 'How Indian EV Workshops Can Automate GST Compliance in 2026',
     excerpt:
-      'GST complexity in EV servicing is real — from input credits to workshop billing. Discover how automation reduces compliance burden by 80%.',
+      'GST complexity in EV servicing is real: from input credits to workshop billing. Discover how automation reduces compliance burden by 80%.',
     date: 'Apr 2026',
     category: 'Workshop',
     readTime: '6 min read',
@@ -94,7 +94,7 @@ const articles: Article[] = [
   {
     title: 'Predictive Maintenance for EV Fleets: AI-Powered Approach',
     excerpt:
-      'How AI and IoT sensor data can predict component failures before they happen — reducing downtime and extending battery life for fleet operators.',
+      'How AI and IoT sensor data can predict component failures before they happen, reducing downtime and extending battery life for fleet operators.',
     date: 'Feb 2026',
     category: 'AI & Tech',
     readTime: '7 min read',
@@ -114,7 +114,7 @@ const articles: Article[] = [
   {
     title: "Understanding India's EV Subsidy Landscape: State vs Central Schemes",
     excerpt:
-      'From FAME to state-level incentives — navigating India\'s EV subsidy ecosystem can unlock significant savings for buyers and operators alike.',
+      'From FAME to state-level incentives: navigating India\'s EV subsidy ecosystem can open up significant savings for buyers and operators alike.',
     date: 'Jan 2026',
     category: 'Policy',
     readTime: '9 min read',
@@ -188,7 +188,7 @@ export default function BlogClient() {
               Insights &amp; <span className="gradient-text">Updates</span>
             </h1>
             <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto">
-              Deep dives into India&apos;s EV ecosystem — regulatory intelligence, AI-powered
+              Deep dives into India&apos;s EV ecosystem: regulatory intelligence, AI-powered
               operations, and the future of mobility.
             </p>
           </motion.div>
@@ -227,7 +227,7 @@ export default function BlogClient() {
                   {featuredArticle.excerpt}
                 </p>
                 <p className="text-on-surface-variant text-sm leading-relaxed mb-5 italic">
-                  From DISCOM automation to AI-driven tariff monitoring, India&apos;s forward-thinking CPOs are already operating with 89.5% compliance automation — and the gap between automated and manual operators is only widening.
+                  From DISCOM automation to AI-driven tariff monitoring, India&apos;s forward-thinking CPOs are already operating with 89.5% compliance automation, and the gap between automated and manual operators is only widening.
                 </p>
                 <Link
                   href="/blog/india-ev-revolution-ai-compliance"

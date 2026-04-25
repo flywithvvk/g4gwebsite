@@ -123,16 +123,16 @@ const team = [
 
 const whyNow = [
   { icon: 'policy', title: 'FAME-III Funding', desc: 'FAME-III: ₹10,000 Cr allocation for EV ecosystem development, creating massive demand for intelligent platforms.', source: 'Source: MHI, 2024' },
-  { icon: 'account_balance', title: 'EV Sales Surge', desc: 'EV Sales: 1.67M units in FY2025, 40% YoY growth. The ecosystem infrastructure must scale 10x in 3 years — we\'re the picks and shovels.', source: 'Source: SMEV' },
+  { icon: 'account_balance', title: 'EV Sales Surge', desc: 'EV Sales: 1.67M units in FY2025, 40% YoY growth. The ecosystem infrastructure must scale 10x in 3 years; we\'re the picks and shovels.', source: 'Source: SMEV' },
   { icon: 'engineering', title: '100K+ Technician Shortage', desc: 'India faces a critical shortage of 100,000+ trained EV technicians needed by 2027. Our AI fills this gap with intelligent diagnostics and guided repairs.', source: 'Source: NSDC' },
   { icon: 'ev_station', title: 'Charging Infrastructure Gap', desc: '2.5M charging points needed by 2030. Massive infrastructure buildout requires intelligent CPO management and compliance platforms.', source: 'Source: NITI Aayog' },
 ];
 
 const competitionAdvantages = [
-  { competitor: 'ChargeZone / Statiq', scope: 'CPO charging management only', g4g: 'Full EV ecosystem — CPO + workshop + compliance + AI' },
+  { competitor: 'ChargeZone / Statiq', scope: 'CPO charging management only', g4g: 'Full EV ecosystem: CPO + workshop + compliance + AI' },
   { competitor: 'Generic garage tools', scope: 'Single-domain workshop ops', g4g: 'Cross-domain: regulatory, operational, commercial, workforce' },
   { competitor: 'Analytics platforms', scope: 'Data reporting & dashboards', g4g: 'Actionable AI intelligence with Automobile LLM' },
-  { competitor: 'Compliance tools', scope: 'Point-in-time documentation', g4g: 'Real-time regulatory AI across 33 states — full pan-India coverage' },
+  { competitor: 'Compliance tools', scope: 'Point-in-time documentation', g4g: 'Real-time regulatory AI across 33 states: full pan-India coverage' },
 ];
 
 export default function InvestorsClient() {
@@ -172,7 +172,7 @@ export default function InvestorsClient() {
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="text-center max-w-4xl mx-auto">
             <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-5 py-2.5 mb-8 rounded-full border border-primary/20 bg-primary-container/10">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm font-semibold text-primary font-display">Series A — Actively Raising</span>
+              <span className="text-sm font-semibold text-primary font-display">Series A: Actively Raising</span>
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight font-display">
@@ -344,11 +344,11 @@ export default function InvestorsClient() {
       {/* ─── COMPETITION ─── */}
       <section className="py-24 bg-surface-container-low">
         <div className="container mx-auto px-6">
-          <SectionHeading badge="Competitive Landscape" title="First-Mover in Integrated" highlight="EV Intelligence" subtitle="Point solutions exist. No one has integrated the full stack — until now." />
+          <SectionHeading badge="Competitive Landscape" title="First-Mover in Integrated" highlight="EV Intelligence" subtitle="Point solutions exist. No one has integrated the full stack, until now." />
           <div className="max-w-4xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-surface-bright p-8 rounded-2xl border border-outline-variant/30 shadow-sm mb-8">
               <p className="text-sm text-on-surface-variant leading-relaxed">
-                Point solutions exist — ChargeZone and Statiq for CPO management, garage management tools for workshops, generic analytics platforms. No single platform integrates regulatory compliance, workshop operations, consumer experience, AI diagnostics, and workforce training into one intelligent system. That&apos;s Go4Garage&apos;s unique position.
+                Point solutions exist: ChargeZone and Statiq for CPO management, garage management tools for workshops, generic analytics platforms. No single platform integrates regulatory compliance, workshop operations, consumer experience, AI diagnostics, and workforce training into one intelligent system. That&apos;s Go4Garage&apos;s unique position.
               </p>
             </motion.div>
             <div className="space-y-3">

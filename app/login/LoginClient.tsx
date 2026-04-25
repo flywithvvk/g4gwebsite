@@ -61,7 +61,7 @@ export default function LoginClient() {
 
             {/* ─── TWO CARDS ─── */}
             <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-10">
-              {/* Card 1 — Dashboard Login */}
+              {/* Card 1: Dashboard Login */}
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -75,7 +75,7 @@ export default function LoginClient() {
                 <div className="flex-1">
                   <h2 className="text-lg font-bold mb-2 font-display">Dashboard Login</h2>
                   <p className="text-sm text-on-surface-variant leading-relaxed">
-                    For existing customers — access your GST (Go4Garage Service Tools), URGAA, and platform dashboard.
+                    For existing customers: access your GST (Go4Garage Service Tools), URGAA, and platform dashboard.
                   </p>
                 </div>
                 <a
@@ -89,7 +89,7 @@ export default function LoginClient() {
                 </a>
               </motion.div>
 
-              {/* Card 2 — Request Access */}
+              {/* Card 2: Request Access */}
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}

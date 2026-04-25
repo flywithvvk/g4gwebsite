@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Icon } from '@/components/Icon';
 
 /**
- * Promotional Banner — appears at top of page (above Navigation).
+ * Promotional Banner: appears at top of page (above Navigation).
  * Controlled by Firebase Remote Config:
  *   promotional_banner_enabled  : true/false
  *   promotional_banner_text     : the message
@@ -35,7 +35,7 @@ export function PromoBanner() {
           setVisible(true);
         }
       } catch {
-        // Remote Config not available — banner stays hidden
+        // Remote Config not available: banner stays hidden
       }
     };
 

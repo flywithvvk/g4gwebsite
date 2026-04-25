@@ -7,11 +7,11 @@ const SITE_URL = 'https://www.go4garage.in';
 export const metadata: Metadata = {
   title: 'Industry News & Updates',
   description:
-    "Latest news from India's EV ecosystem — policy updates, industry developments, technology announcements, and Go4Garage platform updates.",
+    "Latest news from India's EV ecosystem: policy updates, industry developments, technology announcements, and Go4Garage platform updates.",
   alternates: { canonical: `${SITE_URL}/news` },
   openGraph: {
     title: 'Industry News & Updates | Go4Garage',
-    description: "Latest news from India's EV ecosystem — policy, funding, technology, and Go4Garage platform updates.",
+    description: "Latest news from India's EV ecosystem: policy, funding, technology, and Go4Garage platform updates.",
     url: `${SITE_URL}/news`,
     siteName: 'Go4Garage',
     images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: 'Go4Garage Industry News' }],
@@ -29,7 +29,7 @@ export default function Page() {
     <>
       <WebPageStructuredData
         name="Industry News & Updates"
-        description="Latest news from India's EV ecosystem — policy updates, industry developments, technology announcements."
+        description="Latest news from India's EV ecosystem: policy updates, industry developments, technology announcements."
         url={`${SITE_URL}/news`}
         dateModified="2026-04-16"
       />

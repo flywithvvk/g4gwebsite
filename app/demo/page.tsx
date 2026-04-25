@@ -7,7 +7,7 @@ const SITE_URL = 'https://www.go4garage.in';
 export const metadata: Metadata = {
   title: 'Book a Demo',
   description:
-    'Schedule a personalized 30-minute demo of Go4Garage — GST (Go4Garage Service Tools), URGAA, KAILASH-AI and more.',
+    'Schedule a personalized 30-minute demo of Go4Garage: GST (Go4Garage Service Tools), URGAA, KAILASH-AI and more.',
   alternates: { canonical: `${SITE_URL}/demo` },
   openGraph: {
     title: 'Book a Demo | Go4Garage',
@@ -28,7 +28,7 @@ export default function Page() {
   return (
     <>
       <WebPageStructuredData
-        name="Book a Demo — Go4Garage"
+        name="Book a Demo: Go4Garage"
         description="Schedule a personalized 30-minute demo of Go4Garage's full AI platform for the EV industry."
         url={`${SITE_URL}/demo`}
       />

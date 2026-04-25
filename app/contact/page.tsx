@@ -6,7 +6,7 @@ const SITE_URL = 'https://www.go4garage.in';
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Get in touch with Go4Garage — schedule a demo, ask questions, or explore partnership opportunities. We respond within 2 business hours.',
+  description: 'Get in touch with Go4Garage: schedule a demo, ask questions, or explore partnership opportunities. We respond within 2 business hours.',
   alternates: { canonical: `${SITE_URL}/contact` },
   openGraph: {
     title: 'Contact Go4Garage',
@@ -28,7 +28,7 @@ export default function Page() {
     <>
       <WebPageStructuredData
         name="Contact Go4Garage"
-        description="Get in touch with Go4Garage — schedule a demo, ask questions, or explore partnership opportunities."
+        description="Get in touch with Go4Garage: schedule a demo, ask questions, or explore partnership opportunities."
         url={`${SITE_URL}/contact`}
       />
       <BreadcrumbStructuredData

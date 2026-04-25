@@ -85,7 +85,7 @@ const techCards = [
   {
     icon: 'psychology',
     title: 'Proprietary Automotive AI Engine',
-    description: 'Proprietary Automotive AI Engine — powered by 32 domain-specific ML models and a multi-LLM routing system that selects the optimal AI model across 10 dimensions for each task. Includes 12 industry branch contexts, fine-tuned models for Indian automotive regulations, and a RAG-powered knowledge base of 500+ domain articles.',
+    description: 'Proprietary Automotive AI Engine: powered by 32 domain-specific ML models and a multi-LLM routing system that selects the optimal AI model across 10 dimensions for each task. Includes 12 industry branch contexts, fine-tuned models for Indian automotive regulations, and a RAG-powered knowledge base of 500+ domain articles.',
     features: ['Multi-LLM routing across 10 dimensions', '500+ domain knowledge base articles', '32 custom ML models • 12 AI branches', 'Fine-tuned for Indian automotive regulations'],
   },
   {
@@ -103,7 +103,7 @@ const techCards = [
   {
     icon: 'hub',
     title: 'Multi-Agent AI',
-    description: 'Orchestrated AI agents across 12 specialized industry branches serving 15 user types — providing cross-domain intelligence and automated decision support for every stakeholder in the EV ecosystem.',
+    description: 'Orchestrated AI agents across 12 specialized industry branches serving 15 user types, providing cross-domain intelligence and automated decision support for every stakeholder in the EV ecosystem.',
     features: ['12 AI branches • 15 user types', 'Cross-product reasoning', 'Autonomous task execution', 'Human-in-the-loop escalation'],
   },
 ];
@@ -115,8 +115,8 @@ const enterpriseFeatures = [
   { icon: 'support_agent', title: 'Support', description: '24/7 dedicated support with SLA-backed response times and named account managers' },
   { icon: 'apartment', title: 'Multi-tenancy', description: 'Complete tenant isolation with configurable branding, permissions, and data sovereignty' },
   { icon: 'palette', title: 'White-label', description: 'White-label ready architecture for partner deployments' },
-  { icon: 'policy', title: 'DPDP Act 2023 Ready', description: 'Compliant with India\'s Digital Personal Data Protection Act 2023 & Rules 2025 — consent management, data principal rights, and breach notification built-in' },
-  { icon: 'shield', title: 'CERT-In Compliant', description: 'Meets CERT-In cybersecurity directions — 6-hour incident reporting, 180-day log retention, and NTP-synchronized audit trails' },
+  { icon: 'policy', title: 'DPDP Act 2023 Ready', description: 'Compliant with India\'s Digital Personal Data Protection Act 2023 & Rules 2025: consent management, data principal rights, and breach notification built-in' },
+  { icon: 'shield', title: 'CERT-In Compliant', description: 'Meets CERT-In cybersecurity directions: 6-hour incident reporting, 180-day log retention, and NTP-synchronized audit trails' },
   { icon: 'electrical_services', title: 'OCPP/OCPI Certified', description: 'Full OCPP 1.6-J and 2.0.1 support covering 80%+ of India\'s installed charger base, plus OCPI 2.2.1 for inter-network roaming' },
 ];
 
@@ -396,7 +396,7 @@ export default function PlatformClient() {
           <SectionHeading
             badge="Technology"
             title="Built on"
-            highlight="Cutting-Edge AI"
+            highlight="Advanced AI"
             subtitle="Four foundational technologies power every product in the Go4Garage ecosystem."
           />
 
@@ -430,7 +430,7 @@ export default function PlatformClient() {
         </div>
       </section>
 
-      {/* ──────────────── 5 · CPO REMOTE CHARGER MANAGEMENT — #1 USP ──────────────── */}
+      {/* ──────────────── 5 · CPO REMOTE CHARGER MANAGEMENT: #1 USP ──────────────── */}
       <section className="py-24 bg-surface relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/6 via-surface to-transparent" />
         <motion.div
@@ -442,7 +442,7 @@ export default function PlatformClient() {
 
           <div className="flex flex-col lg:flex-row gap-12 items-center">
 
-            {/* Left — messaging */}
+            {/* Left: messaging */}
             <motion.div
               initial={{ opacity: 0, x: -32 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -456,20 +456,20 @@ export default function PlatformClient() {
               </div>
 
               <h2 className="text-3xl md:text-4xl font-bold mb-4 font-display leading-tight">
-                AI-Powered Charger Management —<br />
+                AI-Powered Charger Management:<br />
                 <span className="gradient-text">Self-Healing EV Infrastructure</span>
               </h2>
 
               <p className="text-on-surface-variant leading-relaxed mb-8 max-w-xl">
-                Every competitor shows you charger location and availability. Only Go4Garage closes the loop — our AI reads health telemetry, diagnoses the root cause, auto-issues remote fix commands, and learns from every incident. <strong className="text-on-surface">Chargers heal before customers notice they&apos;re broken.</strong>
+                Every competitor shows you charger location and availability. Only Go4Garage closes the loop: our AI reads health telemetry, diagnoses the root cause, auto-issues remote fix commands, and learns from every incident. <strong className="text-on-surface">Chargers heal before customers notice they&apos;re broken.</strong>
               </p>
 
               <div className="grid sm:grid-cols-2 gap-4 mb-8">
                 {[
                   { icon: 'wifi', label: 'OCPP 1.6-J & 2.0.1', desc: 'Covers 80%+ of India\'s installed charger base via persistent WebSocket' },
-                  { icon: 'sync_alt', label: 'OCPI 2.2.1 Roaming', desc: 'Multi-CPO network interoperability for seamless cross-network sessions' },
-                  { icon: 'psychology', label: 'AI Diagnostics Engine', desc: 'Root cause analysis for every fault — stuck transactions, connector errors, grid issues' },
-                  { icon: 'auto_fix_high', label: 'Remote Auto-Fix', desc: 'Automated Reset, RemoteStop, TriggerMessage — resolves 73% of faults without a technician' },
+                  { icon: 'sync_alt', label: 'OCPI 2.2.1 Roaming', desc: 'Multi-CPO network interoperability for cross-network sessions' },
+                  { icon: 'psychology', label: 'AI Diagnostics Engine', desc: 'Root cause analysis for every fault: stuck transactions, connector errors, grid issues' },
+                  { icon: 'auto_fix_high', label: 'Remote Auto-Fix', desc: 'Automated Reset, RemoteStop, TriggerMessage: resolves 73% of faults without a technician' },
                   { icon: 'monitor_heart', label: 'Real-time Health Score', desc: 'Per-charger composite health score updated every 30 seconds' },
                   { icon: 'bolt', label: '3 ML Models', desc: 'Fault Predictor + Uptime Forecaster + Grid Load Optimizer trained on charger telemetry' },
                 ].map((item, i) => (
@@ -499,12 +499,12 @@ export default function PlatformClient() {
                   className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
                 >
                   <Icon name="ev_station" size={18} />
-                  Explore URGAA — CPO Platform
+                  Explore URGAA: CPO Platform
                 </motion.button>
               </Link>
             </motion.div>
 
-            {/* Right — flow diagram */}
+            {/* Right: flow diagram */}
             <motion.div
               initial={{ opacity: 0, x: 32 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -515,7 +515,7 @@ export default function PlatformClient() {
               <div className="p-8 rounded-2xl bg-surface-bright border border-primary/15 shadow-lg">
                 <p className="text-xs font-bold text-primary uppercase tracking-widest mb-6 font-display">AI Self-Healing Flow</p>
                 {[
-                  { step: '01', icon: 'sensors', color: 'bg-blue-500/10 border-blue-500/20 text-blue-600', label: 'Charger Telemetry', desc: 'OCPP messages every 30s — status, energy, meter values, errors' },
+                  { step: '01', icon: 'sensors', color: 'bg-blue-500/10 border-blue-500/20 text-blue-600', label: 'Charger Telemetry', desc: 'OCPP messages every 30s: status, energy, meter values, errors' },
                   { step: '02', icon: 'psychology', color: 'bg-primary-container/20 border-primary/20 text-primary', label: 'AI Diagnosis', desc: 'Root cause analysis using fault predictor + knowledge base' },
                   { step: '03', icon: 'auto_fix_high', color: 'bg-orange-500/10 border-orange-500/20 text-orange-600', label: 'Remote Auto-Fix', desc: 'RemoteStop / Reset commands issued without human intervention' },
                   { step: '04', icon: 'school', color: 'bg-green-500/10 border-green-500/20 text-green-600', label: 'Continuous Learning', desc: 'Every fix improves the fault predictor model for all chargers' },

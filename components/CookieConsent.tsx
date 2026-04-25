@@ -77,7 +77,7 @@ export function CookieConsent() {
                     <div className="grid grid-cols-1 gap-2 mb-4 pt-2">
                       {[
                         { name: 'Necessary', desc: 'Site functionality, security. Always on.', locked: true, icon: 'lock' },
-                        { name: 'Analytics', desc: 'Firebase Analytics + GA4 — helps us improve.', locked: false, icon: 'bar_chart' },
+                        { name: 'Analytics', desc: 'Firebase Analytics + GA4: helps us improve.', locked: false, icon: 'bar_chart' },
                         { name: 'Marketing', desc: 'Google Ads conversions & retargeting.', locked: false, icon: 'campaign' },
                         { name: 'Performance', desc: 'Firebase Performance Monitoring.', locked: false, icon: 'speed' },
                       ].map((item) => (

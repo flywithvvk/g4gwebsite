@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Icon } from '@/components/Icon';
 
 /**
- * Social Proof Ticker — displays rotating proof points with urgency signals.
+ * Social Proof Ticker: displays rotating proof points with urgency signals.
  * Appears as a subtle notification/ticker in the page (typically above fold).
  */
 
@@ -13,10 +13,10 @@ const PROOFS = [
   { icon: 'schedule', text: '3 demos booked in the last 24 hours', color: 'text-primary', bg: 'bg-primary-container/10' },
   { icon: 'business', text: '500+ EV businesses on our waitlist', color: 'text-secondary', bg: 'bg-secondary-container/10' },
   { icon: 'map', text: 'Active in 33 states across India 🇮🇳', color: 'text-tertiary', bg: 'bg-tertiary-container/10' },
-  { icon: 'verified', text: '89.5% compliance automation — verified by customers', color: 'text-primary', bg: 'bg-primary-container/10' },
+  { icon: 'verified', text: '89.5% compliance automation: verified by customers', color: 'text-primary', bg: 'bg-primary-container/10' },
   { icon: 'bolt', text: 'Average go-live in 4 weeks, zero downtime', color: 'text-secondary', bg: 'bg-secondary-container/10' },
   { icon: 'school', text: '1,200+ EV technicians certified via ARJUN', color: 'text-tertiary', bg: 'bg-tertiary-container/10' },
-  { icon: 'star', text: 'Early access pricing — limited slots remaining', color: 'text-primary', bg: 'bg-primary-container/10' },
+  { icon: 'star', text: 'Early access pricing: limited slots remaining', color: 'text-primary', bg: 'bg-primary-container/10' },
 ];
 
 interface Props {

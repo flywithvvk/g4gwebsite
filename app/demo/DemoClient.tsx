@@ -405,7 +405,7 @@ export default function DemoClient() {
             badge="What's Included"
             title="What to"
             highlight="Expect"
-            subtitle="Every demo is personalized — not a generic sales pitch."
+            subtitle="Every demo is personalized, not a generic sales pitch."
           />
           <div className="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
             {expectItems.map((item, idx) => (

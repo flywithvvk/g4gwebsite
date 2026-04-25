@@ -121,7 +121,7 @@ export function ExitIntentModal() {
                       <Icon name="rocket_launch" size={28} className="text-primary" />
                     </div>
                     <h2 className="text-2xl font-bold text-on-surface mb-2 font-display">
-                      Wait — Before You Go 🇮🇳
+                      Wait: Before You Go 🇮🇳
                     </h2>
                     <p className="text-sm text-on-surface-variant leading-relaxed">
                       Join <strong className="text-primary">500+ EV businesses</strong> already on our early-access waitlist.

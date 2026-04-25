@@ -67,7 +67,7 @@ const matrixColumns = [
 const whyChoose = [
   { title: 'Proven ROI', icon: 'insights', desc: '95% cost reduction and 3x operational improvement within 6 months' },
   { title: 'Zero Risk Deployment', icon: 'shield', desc: 'Start with a pilot, scale when you see results. No lock-in contracts.' },
-  { title: 'Seamless Integration', icon: 'hub', desc: 'Works with your existing systems. API-first architecture for easy connectivity.' },
+  { title: 'Simple Integration', icon: 'hub', desc: 'Works with your existing systems. API-first architecture for easy connectivity.' },
   { title: '24/7 Support', icon: 'support_agent', desc: 'Round-the-clock expert support from automobile industry specialists' },
   { title: 'Continuous Innovation', icon: 'rocket_launch', desc: 'Monthly updates, new AI capabilities, and regulatory compliance kept current' },
   { title: 'Enterprise Scalability', icon: 'trending_up', desc: 'From single location to pan-India operations. Built to scale.' },
@@ -276,7 +276,7 @@ export default function ImpactClient() {
                     transition={{ delay: 0.1 + i * 0.06 }}
                     className="flex items-start gap-2.5 text-sm text-on-surface-variant"
                   >
-                    <span className="text-red-400 flex-shrink-0 mt-0.5">—</span>
+                    <span className="text-red-400 flex-shrink-0 mt-0.5">•</span>
                     {item}
                   </motion.li>
                 ))}
@@ -328,7 +328,7 @@ export default function ImpactClient() {
                     transition={{ delay: 0.1 + i * 0.06 }}
                     className="flex items-start gap-2.5 text-sm text-on-surface-variant"
                   >
-                    <span className="text-tertiary flex-shrink-0 mt-0.5">—</span>
+                    <span className="text-tertiary flex-shrink-0 mt-0.5">•</span>
                     {item}
                   </motion.li>
                 ))}
@@ -381,7 +381,7 @@ export default function ImpactClient() {
                               <Icon name="check" size={16} className="text-primary" />
                             </span>
                           ) : (
-                            <span className="text-outline-variant/30">—</span>
+                            <span className="text-outline-variant/30">–</span>
                           )}
                         </td>
                       );

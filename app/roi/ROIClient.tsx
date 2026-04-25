@@ -197,7 +197,7 @@ export default function ROIClient() {
       <section className="max-w-6xl mx-auto px-6 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
 
-          {/* INPUTS — 3/5 */}
+          {/* INPUTS: 3/5 */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -229,7 +229,7 @@ export default function ROIClient() {
                 <h2 className="font-bold text-on-surface">Current Monthly Costs</h2>
               </div>
               <div className="space-y-6">
-                <Slider label="Compliance & Legal Costs" sublabel="Per month — consultants, filings, licences" value={inputs.monthlyComplianceCost} min={5000} max={500000} step={5000} unit="₹" onChange={set('monthlyComplianceCost')} />
+                <Slider label="Compliance & Legal Costs" sublabel="Per month: consultants, filings, licences" value={inputs.monthlyComplianceCost} min={5000} max={500000} step={5000} unit="₹" onChange={set('monthlyComplianceCost')} />
                 <Slider label="Admin Hours" sublabel="Hours/month on manual tasks" value={inputs.monthlyAdminHours} min={10} max={500} step={10} unit="hrs" onChange={set('monthlyAdminHours')} />
                 <Slider label="Hourly Cost Rate" sublabel="Staff cost per hour (fully loaded)" value={inputs.avgHourlyRate} min={150} max={2000} step={50} unit="₹" onChange={set('avgHourlyRate')} />
                 <Slider label="Annual Fines & Penalties" sublabel="Missed compliance deadlines, errors" value={inputs.annualFines} min={0} max={1000000} step={10000} unit="₹" onChange={set('annualFines')} />
@@ -237,7 +237,7 @@ export default function ROIClient() {
             </div>
           </motion.div>
 
-          {/* RESULTS — 2/5 */}
+          {/* RESULTS: 2/5 */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -323,7 +323,7 @@ export default function ROIClient() {
               className="block w-full py-3.5 bg-primary text-white rounded-xl font-bold text-sm text-center hover:bg-primary/90 transition-all active:scale-98 flex items-center justify-center gap-2"
             >
               <Icon name="event" size={18} className="text-white" />
-              Book a Demo — Verify Your Numbers
+              Book a Demo: Verify Your Numbers
             </Link>
             <p className="text-[11px] text-center text-on-surface-variant">
               * Estimates based on average Go4Garage customer outcomes. Actual results vary by business size and current processes.

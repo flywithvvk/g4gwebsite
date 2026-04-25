@@ -5,8 +5,8 @@ import { FAQStructuredData, WebPageStructuredData, BreadcrumbStructuredData } fr
 const SITE_URL = 'https://www.go4garage.in';
 
 export const metadata: Metadata = {
-  title: 'FAQ — Frequently Asked Questions',
-  description: "Frequently asked questions about Go4Garage — our products, implementation, pricing, and technical capabilities for India's EV ecosystem.",
+  title: 'FAQ: Frequently Asked Questions',
+  description: "Frequently asked questions about Go4Garage: our products, implementation, pricing, and technical capabilities for India's EV ecosystem.",
   alternates: { canonical: `${SITE_URL}/faq` },
   openGraph: {
     title: 'FAQ | Go4Garage',
@@ -38,7 +38,7 @@ export default function Page() {
   return (
     <>
       <WebPageStructuredData
-        name="Go4Garage FAQ — Frequently Asked Questions"
+        name="Go4Garage FAQ: Frequently Asked Questions"
         description="Frequently asked questions about Go4Garage products, implementation, pricing, and technical capabilities."
         url={`${SITE_URL}/faq`}
       />

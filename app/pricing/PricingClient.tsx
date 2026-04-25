@@ -41,7 +41,7 @@ const tiers: Tier[] = [
   {
     name: 'Free',
     tagline: 'Evaluate before you commit',
-    description: 'Explore the Go4Garage platform at zero cost. Limited daily AI queries — no credit card required.',
+    description: 'Explore the Go4Garage platform at zero cost. Limited daily AI queries; no credit card required.',
     icon: 'explore',
     accent: 'primary',
     productKeys: ['gstsaas', 'ekaai'],
@@ -57,7 +57,7 @@ const tiers: Tier[] = [
   {
     name: 'Starter',
     tagline: 'Individual workshops & small CPOs',
-    description: 'Start with the product that matters most to you — digitize compliance or operations in weeks.',
+    description: 'Start with the product that matters most to you: digitize compliance or operations in weeks.',
     icon: 'rocket_launch',
     accent: 'primary',
     productKeys: ['urgaa', 'gstsaas'],
@@ -72,7 +72,7 @@ const tiers: Tier[] = [
   {
     name: 'Professional',
     tagline: 'Growing businesses scaling fast',
-    description: 'Full platform access — every product working together to automate and grow your EV business.',
+    description: 'Full platform access: every product working together to automate and grow your EV business.',
     icon: 'star',
     recommended: true,
     accent: 'primary',
@@ -118,12 +118,12 @@ interface CompRow {
 }
 
 const comparisonRows: CompRow[] = [
-  { feature: 'URGAA — Regulatory Intelligence',    free: false,              starter: '1 state',           professional: 'Up to 5 states',         enterprise: 'All 33 states'       },
-  { feature: 'GST (Go4Garage Service Tools) — Workshop Engine', free: '10 invoices/mo', starter: '1 location',        professional: 'Up to 5 locations',      enterprise: 'Unlimited locations' },
-  { feature: 'Ignition — Fleet Portal',            free: false,              starter: false,               professional: true,                     enterprise: true                  },
-  { feature: 'EV VIDYA ARJUN — Training',          free: false,              starter: false,               professional: false,                    enterprise: true                  },
-  { feature: 'KAILASH-AI — Analytics',             free: false,              starter: 'Basic',             professional: 'Predictive AI',          enterprise: 'Custom models'       },
-  { feature: 'Eka-AI — Conversational AI',         free: '5 queries/day',    starter: false,               professional: 'Limited queries',        enterprise: 'Full orchestration'  },
+  { feature: 'URGAA: Regulatory Intelligence',    free: false,              starter: '1 state',           professional: 'Up to 5 states',         enterprise: 'All 33 states'       },
+  { feature: 'GST (Go4Garage Service Tools): Workshop Engine', free: '10 invoices/mo', starter: '1 location',        professional: 'Up to 5 locations',      enterprise: 'Unlimited locations' },
+  { feature: 'Ignition: Fleet Portal',            free: false,              starter: false,               professional: true,                     enterprise: true                  },
+  { feature: 'EV VIDYA ARJUN: Training',          free: false,              starter: false,               professional: false,                    enterprise: true                  },
+  { feature: 'KAILASH-AI: Analytics',             free: false,              starter: 'Basic',             professional: 'Predictive AI',          enterprise: 'Custom models'       },
+  { feature: 'Eka-AI: Conversational AI',         free: '5 queries/day',    starter: false,               professional: 'Limited queries',        enterprise: 'Full orchestration'  },
   { feature: 'White-Label Options',                free: false,              starter: false,               professional: false,                    enterprise: true                  },
   { feature: 'API Access',                         free: false,              starter: false,               professional: true,                     enterprise: true                  },
   { feature: 'SLA Guarantees',                     free: false,              starter: false,               professional: false,                    enterprise: true                  },
@@ -134,10 +134,10 @@ const comparisonRows: CompRow[] = [
 const pricingFaqs = [
   { q: 'How is pricing determined?',        a: 'Pricing is customised to your scale, number of locations, products selected, and contract term. Contact us for a tailored quote that fits your business.' },
   { q: 'Can I start with a single product?', a: 'Absolutely. Most customers begin with GST (Go4Garage Service Tools) or URGAA and expand over time as they see results. You only pay for what you use.' },
-  { q: 'Is there a free tier?',             a: 'Yes — our Free tier gives you 5 Eka-AI queries per day and up to 10 GST invoices per month with no credit card required. It\'s designed to let you evaluate the platform before committing to a paid plan.' },
+  { q: 'Is there a free tier?',             a: 'Yes: our Free tier gives you 5 Eka-AI queries per day and up to 10 GST invoices per month with no credit card required. It\'s designed to let you evaluate the platform before committing to a paid plan.' },
   { q: 'Is there a paid trial?',             a: 'We also offer a 14-day pilot on the Starter plan at no cost. Enterprise pilots are available on request with dedicated support.' },
   { q: 'What payment methods do you accept?', a: 'We accept all major credit/debit cards, UPI, net banking, and NEFT/RTGS for enterprise customers. GST-compliant invoices are always provided.' },
-  { q: 'Can I upgrade or change plans?',     a: 'Yes — upgrades take effect immediately; downgrades at the next billing cycle. Our team will guide you through the transition at no extra cost.' },
+  { q: 'Can I upgrade or change plans?',     a: 'Yes: upgrades take effect immediately; downgrades at the next billing cycle. Our team will guide you through the transition at no extra cost.' },
   { q: 'Are there setup or onboarding fees?', a: 'No setup fees for Free, Starter, or Professional plans. Enterprise plans may include an implementation fee depending on customisation scope and deployment size.' },
 ];
 
@@ -273,7 +273,7 @@ export default function PricingClient() {
         </div>
       </section>
 
-      {/* ─── FEATURE COMPARISON — responsive stacked on mobile ─── */}
+      {/* ─── FEATURE COMPARISON: responsive stacked on mobile ─── */}
       <section className="py-24 bg-surface">
         <div className="container mx-auto px-6">
           <SectionHeading badge="Compare Plans" title="Product" highlight="Coverage" subtitle="See exactly which products and capabilities are included in each plan." />
@@ -335,13 +335,13 @@ export default function PricingClient() {
       {/* ─── REVENUE STREAMS ─── */}
       <section className="py-24 bg-surface">
         <div className="container mx-auto px-6">
-          <SectionHeading badge="Partnership Models" title="6 Ways to" highlight="Partner With Us" subtitle="Go4Garage supports multiple commercial models — from SaaS subscriptions to white-label deployments and data partnerships." />
+          <SectionHeading badge="Partnership Models" title="6 Ways to" highlight="Partner With Us" subtitle="Go4Garage supports multiple commercial models: from SaaS subscriptions to white-label deployments and data partnerships." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
             {[
               { icon: 'subscriptions',    title: 'SaaS Subscription',         desc: 'Monthly or annual plans per product, tenant, and usage band. Free → Starter → Professional → Enterprise.',      color: 'text-primary',   bg: 'bg-primary-container/10' },
               { icon: 'build_circle',     title: 'Implementation & Integration', desc: 'Deployment, onboarding, and custom integration fees for URGAA and GST (Go4Garage Service Tools) enterprise rollouts.',          color: 'text-secondary', bg: 'bg-secondary-container/10' },
               { icon: 'swap_horiz',       title: 'Transaction-Linked Revenue',   desc: 'Per-transaction fees on invoice reconciliation, financing routing, insurance claims, and marketplace orders.', color: 'text-tertiary',  bg: 'bg-tertiary-container/10' },
-              { icon: 'auto_awesome',     title: 'Premium Intelligence',         desc: 'Advanced KAILASH-AI and Eka Brain modules — predictive models, custom ML, and deep fleet analytics for Pro/Enterprise.', color: 'text-primary', bg: 'bg-primary-container/10' },
+              { icon: 'auto_awesome',     title: 'Premium Intelligence',         desc: 'Advanced KAILASH-AI and Eka Brain modules: predictive models, custom ML, and deep fleet analytics for Pro/Enterprise.', color: 'text-primary', bg: 'bg-primary-container/10' },
               { icon: 'school',           title: 'Training & Certification',     desc: 'EV VIDYA ARJUN course fees, technician certification programs, and LMS licensing for training centres.',   color: 'text-secondary', bg: 'bg-secondary-container/10' },
               { icon: 'domain',           title: 'White-Label & Enterprise',     desc: 'Fully branded deployments for state agencies, CPO networks, and OEM groups. Dedicated infra + support.',    color: 'text-tertiary',  bg: 'bg-tertiary-container/10' },
             ].map((stream, idx) => (
@@ -403,7 +403,7 @@ export default function PricingClient() {
               Let&apos;s Build Your Custom Plan
             </h2>
             <p className="text-primary-on/80 mb-8 max-w-xl mx-auto">
-              Tell us your scale, products, and goals — we&apos;ll put together a quote tailored exactly to your business.
+              Tell us your scale, products, and goals, and we&apos;ll put together a quote tailored exactly to your business.
             </p>
             <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-surface-bright text-primary rounded-full font-semibold hover:shadow-lg transition-all">
               <Icon name="calendar_month" size={20} />

@@ -39,12 +39,12 @@ const products: Product[] = [
     slug: 'urgaa',
     setupTime: '2-3 weeks (regulatory setup required)',
     features: [
-      'DISCOM Application Wizard — reduces 6-month delays to weeks',
-      'Site Scoring Engine — 12 parameters including grid & footfall',
-      'Tariff Management — real-time updates across 33 states',
-      'Compliance Tracker — deadline alerts & document management',
-      'Carbon Credit Tracking — automated calculation & trading',
-      'Grid Capacity Estimator — AI-powered upgrade analysis',
+      'DISCOM Application Wizard: reduces 6-month delays to weeks',
+      'Site Scoring Engine: 12 parameters including grid & footfall',
+      'Tariff Management: real-time updates across 33 states',
+      'Compliance Tracker: deadline alerts & document management',
+      'Carbon Credit Tracking: automated calculation & trading',
+      'Grid Capacity Estimator: AI-powered upgrade analysis',
     ],
     colorFamily: 'primary',
   },
@@ -61,12 +61,12 @@ const products: Product[] = [
     slug: 'gstsaas',
     setupTime: '1-2 weeks setup',
     features: [
-      'Digital Job Cards — real-time status tracking for customers',
-      'GST Invoicing — automated calculation & filing-ready exports',
-      'Inventory Management — auto-reorder alerts & OEM integration',
-      'Market Price Engine — AI-powered spare parts pricing',
-      'Customer Management — 360° profiles with service reminders',
-      'Service History — digital history shareable for resale proof',
+      'Digital Job Cards: real-time status tracking for customers',
+      'GST Invoicing: automated calculation & filing-ready exports',
+      'Inventory Management: auto-reorder alerts & OEM integration',
+      'Market Price Engine: AI-powered spare parts pricing',
+      'Customer Management: 360° profiles with service reminders',
+      'Service History: digital history shareable for resale proof',
     ],
     colorFamily: 'secondary',
   },
@@ -83,12 +83,12 @@ const products: Product[] = [
     slug: 'ignition',
     setupTime: '1 week setup',
     features: [
-      'Real-Time Charging Map — live availability, pricing & wait times',
-      'Vehicle Health Monitor — battery health & range prediction',
-      'Service Booking — certified centers with transparent pricing',
-      'Cost Calculator — TCO & optimised charging schedules',
-      'Roadside Assistance — one-tap emergency + technician dispatch',
-      'EV Learning Hub — tips & guides to maximise range',
+      'Real-Time Charging Map: live availability, pricing & wait times',
+      'Vehicle Health Monitor: battery health & range prediction',
+      'Service Booking: certified centers with transparent pricing',
+      'Cost Calculator: TCO & optimised charging schedules',
+      'Roadside Assistance: one-tap emergency + technician dispatch',
+      'EV Learning Hub: tips & guides to maximise range',
     ],
     colorFamily: 'tertiary',
   },
@@ -105,12 +105,12 @@ const products: Product[] = [
     slug: 'arjun',
     setupTime: '2 weeks curriculum setup',
     features: [
-      'Curriculum Builder — battery, motor & power electronics',
-      'Assessment Engine — practical & theoretical with auto-grading',
-      'Certification System — QR-verified credentials & digital badges',
-      'Hands-On Modules — simulation-based battery & safety training',
-      'Placement Tracking — industry connections for certified techs',
-      'Progress Analytics — cohort-level insights for institutions',
+      'Curriculum Builder: battery, motor & power electronics',
+      'Assessment Engine: practical & theoretical with auto-grading',
+      'Certification System: QR-verified credentials & digital badges',
+      'Hands-On Modules: simulation-based battery & safety training',
+      'Placement Tracking: industry connections for certified techs',
+      'Progress Analytics: cohort-level insights for institutions',
     ],
     colorFamily: 'secondary',
   },
@@ -127,12 +127,12 @@ const products: Product[] = [
     slug: 'kailash-ai',
     setupTime: 'Included with any product',
     features: [
-      'Predictive Diagnostics — predict failures 2-4 weeks ahead',
-      'Analytics Dashboard — real-time intelligence across products',
-      'Anomaly Detection — unusual patterns in energy & compliance',
-      'Battery Health Scoring — degradation models for fleet & insurance',
-      'Revenue Forecasting — AI demand forecasting for CPOs & workshops',
-      'Intelligence API — REST API for third-party integration',
+      'Predictive Diagnostics: predict failures 2-4 weeks ahead',
+      'Analytics Dashboard: real-time intelligence across products',
+      'Anomaly Detection: unusual patterns in energy & compliance',
+      'Battery Health Scoring: degradation models for fleet & insurance',
+      'Revenue Forecasting: AI demand forecasting for CPOs & workshops',
+      'Intelligence API: REST API for third-party integration',
     ],
     colorFamily: 'primary',
   },
@@ -149,12 +149,12 @@ const products: Product[] = [
     slug: 'eka-ai',
     setupTime: 'Included with Professional/Enterprise plans',
     features: [
-      'Conversational AI — English & Hindi natural language interface',
-      'Multi-Agent Orchestration — compliance, diagnostics & finance agents',
-      'Knowledge Retrieval — instant access to India auto regulations',
-      'Operator Automation — AI-triggered compliance & scheduling workflows',
-      'Multi-Language Support — Hindi, English & regional languages',
-      'Platform Integration — deep integration with URGAA, GST (Go4Garage Service Tools), KAILASH-AI',
+      'Conversational AI: English & Hindi natural language interface',
+      'Multi-Agent Orchestration: compliance, diagnostics & finance agents',
+      'Knowledge Retrieval: instant access to India auto regulations',
+      'Operator Automation: AI-triggered compliance & scheduling workflows',
+      'Multi-Language Support: Hindi, English & regional languages',
+      'Platform Integration: deep integration with URGAA, GST (Go4Garage Service Tools), KAILASH-AI',
     ],
     colorFamily: 'tertiary',
   },
@@ -289,11 +289,11 @@ function TechArchDiagram() {
 
   return (
     <div className="w-full max-w-5xl mx-auto mt-16">
-      {/* LAYER 1 — USER INTERFACES */}
+      {/* LAYER 1: USER INTERFACES */}
       <div className="rounded-t-xl border border-outline-variant/30 bg-surface-variant/10 p-4">
         <div className="flex items-center justify-between mb-3">
           <p className="font-mono text-[10px] text-on-surface-variant/50 uppercase tracking-widest">
-            Layer 1 — User Interfaces
+            Layer 1: User Interfaces
           </p>
           <span className="text-[9px] font-mono text-on-surface-variant/30 border border-outline-variant/20 rounded px-2 py-0.5">
             REST · WebSocket · Mobile SDK
@@ -320,11 +320,11 @@ function TechArchDiagram() {
         </span>
       </div>
 
-      {/* LAYER 2 — APPLICATION LAYER */}
+      {/* LAYER 2: APPLICATION LAYER */}
       <div className="border border-outline-variant/30 bg-primary-container/5 p-4">
         <div className="flex items-center justify-between mb-3">
           <p className="font-mono text-[10px] text-on-surface-variant/50 uppercase tracking-widest">
-            Layer 2 — Application Products
+            Layer 2: Application Products
           </p>
           <span className="text-[9px] font-mono text-on-surface-variant/30 border border-outline-variant/20 rounded px-2 py-0.5">
             7 integrated modules · shared session context
@@ -354,11 +354,11 @@ function TechArchDiagram() {
         </span>
       </div>
 
-      {/* LAYER 3 — EKA INTELLIGENCE PLATFORM */}
+      {/* LAYER 3: EKA INTELLIGENCE PLATFORM */}
       <div className="border border-outline-variant/30 bg-secondary-container/5 p-4">
         <div className="flex items-center justify-between mb-3">
           <p className="font-mono text-[10px] text-on-surface-variant/50 uppercase tracking-widest">
-            Layer 3 — EKA Intelligence Platform
+            Layer 3: EKA Intelligence Platform
           </p>
           <span className="text-[9px] font-mono text-tertiary/60 border border-tertiary/20 rounded px-2 py-0.5 bg-tertiary-container/10">
             Proprietary · AI Core
@@ -377,7 +377,7 @@ function TechArchDiagram() {
               </div>
             ))}
           </div>
-          {/* Center column — highlighted */}
+          {/* Center column: highlighted */}
           <div className="space-y-2">
             {intelligenceCenter.map((c) => (
               <div key={c.name} className="border border-secondary/30 rounded-lg p-3 bg-secondary-container/10">
@@ -412,11 +412,11 @@ function TechArchDiagram() {
         </span>
       </div>
 
-      {/* LAYER 4 — DATA & INFRASTRUCTURE */}
+      {/* LAYER 4: DATA & INFRASTRUCTURE */}
       <div className="rounded-b-xl border border-outline-variant/30 bg-surface-bright/20 p-4">
         <div className="flex items-center justify-between mb-3">
           <p className="font-mono text-[10px] text-on-surface-variant/50 uppercase tracking-widest">
-            Layer 4 — Data & Infrastructure
+            Layer 4: Data & Infrastructure
           </p>
           <span className="text-[9px] font-mono text-on-surface-variant/30 border border-outline-variant/20 rounded px-2 py-0.5">
             data sovereignty · encrypted at rest & in transit
@@ -866,8 +866,8 @@ export default function ProductsClient() {
               <span className="gradient-text">Operations?</span>
             </h2>
             <p className="text-lg text-on-surface-variant mb-10 max-w-2xl mx-auto leading-relaxed">
-              Schedule a personalised demo and see how the complete Go4Garage ecosystem can streamline
-              your workflows, cut costs, and unlock AI-powered growth.
+              Schedule a personalised demo and see how the complete Go4Garage platform can simplify
+              your workflows, cut costs, and drive AI-powered growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">

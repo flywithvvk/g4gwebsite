@@ -9,19 +9,19 @@ const benefits = [
   {
     icon: 'target',
     title: 'Mission-Driven Work',
-    desc: 'Solving 95 real EV industry problems that matter — from regulatory compliance to workshop digitization.',
+    desc: 'Solving 95 real EV industry problems that matter: from regulatory compliance to workshop digitization.',
     color: 'border-l-primary',
   },
   {
     icon: 'smart_toy',
-    title: 'Cutting-Edge AI',
+    title: 'Advanced AI',
     desc: 'Work with LLMs, multi-agent systems, and production AI powering KAILASH-AI and Eka-AI.',
     color: 'border-l-secondary',
   },
   {
     icon: 'public',
     title: 'Pan-India Impact',
-    desc: 'Platform deployed across all 33 Indian states — real scale, real users, real infrastructure.',
+    desc: 'Platform deployed across all 33 Indian states: real scale, real users, real infrastructure.',
     color: 'border-l-tertiary',
   },
   {
@@ -91,7 +91,7 @@ const culturePillars = [
   {
     icon: 'shield',
     title: 'Ownership',
-    desc: 'You own what you build — end to end. No silos. Make decisions, take responsibility, and see impact immediately.',
+    desc: 'You own what you build, end to end. No silos. Make decisions, take responsibility, and see impact immediately.',
     gradient: 'from-secondary to-secondary-container',
   },
   {
@@ -170,7 +170,7 @@ export default function CareersClient() {
             badge="Why Go4Garage"
             title="Why Join"
             highlight="Us?"
-            subtitle="We're building something that hasn't existed before — and we need extraordinary people to do it."
+            subtitle="We're building something that hasn't existed before, and we need extraordinary people to do it."
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
             {benefits.map((b, idx) => (

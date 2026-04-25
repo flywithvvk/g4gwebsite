@@ -52,7 +52,7 @@ const stakeholders: Stakeholder[] = [
     products: [
       {
         name: 'URGAA (ऊर्जा)',
-        description: 'Regulatory & Grid Intelligence — automate 48 compliance checkpoints with AI-driven approval workflows across all 33 states.',
+        description: 'Regulatory & Grid Intelligence: automate 48 compliance checkpoints with AI-driven approval workflows across all 33 states.',
       },
       {
         name: 'KAILASH-AI',
@@ -83,7 +83,7 @@ const stakeholders: Stakeholder[] = [
     products: [
       {
         name: 'GST (Go4Garage Service Tools)',
-        description: 'Complete workshop management — GST-compliant invoicing, job cards, inventory, and CRM in one platform.',
+        description: 'Complete workshop management: GST-compliant invoicing, job cards, inventory, and CRM in one platform.',
       },
       {
         name: 'KAILASH-AI',
@@ -91,7 +91,7 @@ const stakeholders: Stakeholder[] = [
       },
       {
         name: 'Eka-AI',
-        description: 'Conversational AI assistant for technicians — instant answers and guided repair workflows.',
+        description: 'Conversational AI assistant for technicians: instant answers and guided repair workflows.',
       },
     ],
     metrics: [
@@ -188,7 +188,7 @@ const stakeholders: Stakeholder[] = [
       },
       {
         name: 'KAILASH-AI',
-        description: 'Ecosystem intelligence — monitoring EV adoption trends, infrastructure gaps, and compliance health across all 33 states.',
+        description: 'Ecosystem intelligence: monitoring EV adoption trends, infrastructure gaps, and compliance health across all 33 states.',
       },
     ],
     metrics: [
@@ -242,7 +242,7 @@ const stakeholders: Stakeholder[] = [
     products: [
       {
         name: 'Ignition App',
-        description: "India's EV companion — real-time charging network map, service cost estimator, certified workshop locator, and resale value insights.",
+        description: "India's EV companion: real-time charging network map, service cost estimator, certified workshop locator, and resale value insights.",
       },
     ],
     metrics: [
@@ -269,7 +269,7 @@ const stakeholders: Stakeholder[] = [
     products: [
       {
         name: 'KAILASH-AI',
-        description: 'Field intelligence platform — warranty analytics, failure pattern detection, and dealer readiness scoring.',
+        description: 'Field intelligence platform: warranty analytics, failure pattern detection, and dealer readiness scoring.',
       },
       {
         name: 'EV VIDYA ARJUN',
@@ -305,11 +305,11 @@ const stakeholders: Stakeholder[] = [
     products: [
       {
         name: 'KAILASH-AI',
-        description: 'AI-powered EV loan risk engine — battery residual value modelling, default prediction, and EV-specific credit scoring for informed lending decisions.',
+        description: 'AI-powered EV loan risk engine: battery residual value modelling, default prediction, and EV-specific credit scoring for informed lending decisions.',
       },
       {
         name: 'Eka-AI',
-        description: 'Conversational AI for loan officers — instant EV market insights, borrower query handling, and automated document verification workflows.',
+        description: 'Conversational AI for loan officers: instant EV market insights, borrower query handling, and automated document verification workflows.',
       },
     ],
     metrics: [
@@ -340,11 +340,11 @@ const stakeholders: Stakeholder[] = [
       },
       {
         name: 'Eka-AI',
-        description: 'AI repair assistant — real-time diagnostic guidance, wiring diagrams, and OEM procedure lookup via conversational interface.',
+        description: 'AI repair assistant: real-time diagnostic guidance, wiring diagrams, and OEM procedure lookup via conversational interface.',
       },
       {
         name: 'GST (Go4Garage Service Tools)',
-        description: 'Workshop billing and job card management with GST-compliant invoicing — ideal for independent EV technicians.',
+        description: 'Workshop billing and job card management with GST-compliant invoicing: ideal for independent EV technicians.',
       },
     ],
     metrics: [
@@ -371,7 +371,7 @@ const stakeholders: Stakeholder[] = [
     products: [
       {
         name: 'URGAA (ऊर्जा)',
-        description: 'Regulatory intelligence for grid operators — EV charging load mapping, compliance workflows, and V2G integration framework across 33 states.',
+        description: 'Regulatory intelligence for grid operators: EV charging load mapping, compliance workflows, and V2G integration framework across 33 states.',
       },
       {
         name: 'KAILASH-AI',
@@ -402,7 +402,7 @@ const stakeholders: Stakeholder[] = [
     products: [
       {
         name: 'KAILASH-AI',
-        description: 'Battery State-of-Health assessment engine — precise SoH grading, second-life certification scoring, and failure pattern analysis for recycling operations.',
+        description: 'Battery State-of-Health assessment engine: precise SoH grading, second-life certification scoring, and failure pattern analysis for recycling operations.',
       },
       {
         name: 'URGAA (ऊर्जा)',
@@ -464,7 +464,7 @@ const stakeholders: Stakeholder[] = [
     products: [
       {
         name: 'Ignition',
-        description: 'EV-specific dispatch and coverage management — real-time EV breakdown alerts, routing to nearest partner, and SLA tracking.',
+        description: 'EV-specific dispatch and coverage management: real-time EV breakdown alerts, routing to nearest partner, and SLA tracking.',
       },
       {
         name: 'GST (Go4Garage Service Tools)',
@@ -595,13 +595,13 @@ function StakeholderSection({
                     transition={{ delay: 0.12 + i * 0.07 }}
                     className="flex items-start gap-3 text-sm text-on-surface-variant leading-relaxed"
                   >
-                    <span className="text-on-surface-variant flex-shrink-0 mt-0.5">—</span>
+                    <span className="text-on-surface-variant flex-shrink-0 mt-0.5">•</span>
                     {c}
                   </motion.li>
                 ))}
               </ul>
 
-              {/* Stakeholder image — fills blank space at bottom of card */}
+              {/* Stakeholder image: fills blank space at bottom of card */}
               <div className="relative -mx-7 -mb-7 mt-6 h-44 overflow-hidden">
                 <img
                   src={stakeholder.image}
@@ -699,7 +699,7 @@ export default function SolutionsClient() {
     const container = selectorRef.current;
     const btn = container?.querySelector<HTMLElement>(`[data-id="${activeId}"]`);
     if (!container || !btn) return;
-    // Scroll the tab strip horizontally only — never touch page scroll
+    // Scroll the tab strip horizontally only: never touch page scroll
     const targetLeft = btn.offsetLeft - container.offsetWidth / 2 + btn.offsetWidth / 2;
     container.scrollTo({ left: Math.max(0, targetLeft), behavior: 'smooth' });
   }, [activeId]);
@@ -751,7 +751,7 @@ export default function SolutionsClient() {
             >
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span className="text-sm font-medium text-primary font-display">
-                15 User Types — Full Ecosystem
+                15 User Types: Full Ecosystem
               </span>
             </motion.div>
 
@@ -765,7 +765,7 @@ export default function SolutionsClient() {
             </h1>
 
             <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto mb-10">
-              Fifteen specialised solutions — built for every stakeholder across
+              Fifteen specialised solutions, built for every stakeholder across
               India&apos;s EV ecosystem, from operators and workshops to financiers,
               recyclers, and beyond.
             </p>

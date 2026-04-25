@@ -59,7 +59,7 @@ const faqs = [
   },
   {
     q: 'What industries do you serve?',
-    a: "We focus exclusively on India's EV and automobile ecosystem — EV charging operators, service workshops, fleet operators, training institutions, and OEMs.",
+    a: "We focus exclusively on India's EV and automobile ecosystem: EV charging operators, service workshops, fleet operators, training institutions, and OEMs.",
   },
   {
     q: 'Is my data secure?',
@@ -340,7 +340,7 @@ export default function ContactClient() {
             <div className="w-full flex flex-col items-center justify-center gap-5 py-10 px-6">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-xs font-bold text-primary uppercase tracking-widest font-display">Calendar Booking Widget — Powered by Calendly</span>
+                <span className="text-xs font-bold text-primary uppercase tracking-widest font-display">Calendar Booking Widget: Powered by Calendly</span>
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               </div>
 

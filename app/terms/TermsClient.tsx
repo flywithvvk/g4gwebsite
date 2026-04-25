@@ -111,9 +111,9 @@ export default function TermsClient() {
           <section>
             <h2 className="text-xl font-bold text-on-surface mb-3">5. Intellectual Property</h2>
             <p className="text-base text-on-surface-variant leading-relaxed">
-              All intellectual property in and relating to the Go4Garage platform — including but not limited to
+              All intellectual property in and relating to the Go4Garage platform (including but not limited to
               software, source code, algorithms, AI models (including our proprietary Automobile LLM), designs,
-              trademarks, logos, and documentation — is and remains the exclusive property of Go4Garage Antigravity
+              trademarks, logos, and documentation) is and remains the exclusive property of Go4Garage Antigravity
               Technologies Pvt. Ltd. These Terms do not grant you any ownership rights. Your subscription grants
               you a limited, non-exclusive, non-transferable, revocable licence to access and use the platform
               solely for your internal business purposes. Any feedback or suggestions you provide may be used by

@@ -28,33 +28,33 @@ const faqs: FAQItem[] = [
   // General
   {
     q: 'What is Go4Garage?',
-    a: 'Go4Garage is India\'s first AI-powered automobile intelligence platform. We solve 84 problems across the EV ecosystem with 7 products, 12 AI industry branches, and 32+ ML models — covering everything from regulatory compliance and workshop operations to workforce training and fleet management.',
+    a: 'Go4Garage is India\'s first AI-powered automobile intelligence platform. We solve 84 problems across the EV ecosystem with 7 products, 12 AI industry branches, and 32+ ML models, covering everything from regulatory compliance and workshop operations to workforce training and fleet management.',
     category: 'General',
   },
   {
     q: 'Who is Go4Garage for?',
-    a: 'Go4Garage serves CPO (Charge Point Operator) operators, automobile workshops and service centers, fleet operators, EV technicians seeking certification, government agencies overseeing EV infrastructure, and OEMs looking to streamline their value chain.',
+    a: 'Go4Garage serves CPO (Charge Point Operator) operators, automobile workshops and service centers, fleet operators, EV technicians seeking certification, government agencies overseeing EV infrastructure, and OEMs looking to simplify their value chain.',
     category: 'General',
   },
   {
     q: 'How is Go4Garage different from other platforms?',
-    a: 'Go4Garage is the only platform covering the full EV value chain with a proprietary Automobile LLM. While others offer point solutions, we provide an integrated ecosystem of 7 products that share data and intelligence — delivering 89.5% compliance automation and real operational impact across 33 Indian states.',
+    a: 'Go4Garage is the only platform covering the full EV value chain with a proprietary Automobile LLM. While others offer point solutions, we provide an integrated ecosystem of 7 products that share data and intelligence, delivering 89.5% compliance automation and real operational impact across 33 Indian states.',
     category: 'General',
   },
   // Products
   {
     q: 'What is URGAA (ऊर्जा)?',
-    a: 'URGAA (ऊर्जा) is our Regulatory & Grid Intelligence platform. It handles 48 compliance problems across 33 states — automating DISCOM approvals, MNRE subsidies, state EV policy tracking, grid connectivity, and more. It reduces compliance overhead by up to 89.5%.',
+    a: 'URGAA (ऊर्जा) is our Regulatory & Grid Intelligence platform. It handles 48 compliance problems across 33 states: automating DISCOM approvals, MNRE subsidies, state EV policy tracking, grid connectivity, and more. It reduces compliance overhead by up to 89.5%.',
     category: 'Products',
   },
   {
     q: 'What is GST (Go4Garage Service Tools)?',
-    a: 'GST (Go4Garage Service Tools) is our Workshop & Commerce Engine designed for automobile service operations. It covers digital job cards, spare parts inventory, automated billing with GST compliance, customer management, and operational analytics — transforming paper-based workshops into digital-first operations.',
+    a: 'GST (Go4Garage Service Tools) is our Workshop & Commerce Engine designed for automobile service operations. It covers digital job cards, spare parts inventory, automated billing with GST compliance, customer management, and operational analytics, transforming paper-based workshops into digital-first operations.',
     category: 'Products',
   },
   {
     q: 'What is EV VIDYA ARJUN?',
-    a: 'EV VIDYA ARJUN is our Workforce Skilling platform for EV technician training and certification. It provides structured learning modules, hands-on assessments, and industry-aligned certification — helping close India\'s 100K+ EV technician gap with a 4-week certification cycle and 92% placement rate.',
+    a: 'EV VIDYA ARJUN is our Workforce Skilling platform for EV technician training and certification. It provides structured learning modules, hands-on assessments, and industry-aligned certification, helping close India\'s 100K+ EV technician gap with a 4-week certification cycle and 92% placement rate.',
     category: 'Products',
   },
   {
@@ -64,7 +64,7 @@ const faqs: FAQItem[] = [
   },
   {
     q: 'What is Eka-AI?',
-    a: 'Eka-AI is our conversational AI assistant available across the platform. It handles natural language Q&A, guided actions, contextual help, and intelligent recommendations — making the platform accessible to users of all technical levels.',
+    a: 'Eka-AI is our conversational AI assistant available across the platform. It handles natural language Q&A, guided actions, contextual help, and intelligent recommendations, making the platform accessible to users of all technical levels.',
     category: 'Products',
   },
   // Implementation
@@ -80,7 +80,7 @@ const faqs: FAQItem[] = [
   },
   {
     q: 'Can I use only one product?',
-    a: 'Absolutely. Each product — URGAA (ऊर्जा), GST (Go4Garage Service Tools), EV VIDYA ARJUN, and others — works independently as a standalone solution. However, products are designed to work better together, sharing data and intelligence for maximum impact.',
+    a: 'Absolutely. Each product (URGAA (ऊर्जा), GST (Go4Garage Service Tools), EV VIDYA ARJUN, and others) works independently as a standalone solution. However, products are designed to work better together, sharing data and intelligence for maximum impact.',
     category: 'Implementation',
   },
   // Pricing
@@ -91,7 +91,7 @@ const faqs: FAQItem[] = [
   },
   {
     q: 'Is there a free trial?',
-    a: 'We offer guided pilot programs rather than self-serve free trials. This ensures you get the full experience with proper setup, training, and support — so you can evaluate the platform with real results, not just a sandbox.',
+    a: 'We offer guided pilot programs rather than self-serve free trials. This ensures you get the full experience with proper setup, training, and support, so you can evaluate the platform with real results, not just a sandbox.',
     category: 'Pricing',
   },
   // Technical
