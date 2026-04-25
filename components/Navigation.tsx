@@ -102,7 +102,13 @@ const Navigation = () => {
               <button className="px-3.5 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center gap-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container-high/60">
                 <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>menu_book</span>
                 Resources
-                <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>{resourcesOpen ? 'expand_less' : 'expand_more'}</span>
+                <svg
+                  width="14" height="14" viewBox="0 0 14 14" fill="none"
+                  className={`transition-transform duration-200 ${resourcesOpen ? 'rotate-180' : ''}`}
+                  aria-hidden="true"
+                >
+                  <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </button>
               <AnimatePresence>
                 {resourcesOpen && (
@@ -111,17 +117,16 @@ const Navigation = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-0 mt-1 w-48 bg-surface-bright rounded-xl border border-outline-variant/30 shadow-lg py-1 z-50"
+                    className="absolute top-full left-0 mt-1 w-44 bg-surface-bright rounded-xl border border-outline-variant/30 shadow-lg py-1 z-50"
                   >
                     {[
-                      { label: 'Blog', href: '/blog', icon: 'article' },
-                      { label: 'News', href: '/news', icon: 'newspaper' },
-                      { label: 'Case Studies', href: '/case-studies', icon: 'cases' },
-                      { label: 'FAQ', href: '/faq', icon: 'help' },
+                      { label: 'Blog', href: '/blog' },
+                      { label: 'News', href: '/news' },
+                      { label: 'Case Studies', href: '/case-studies' },
+                      { label: 'FAQ', href: '/faq' },
                     ].map(item => (
                       <Link key={item.href} href={item.href} onClick={() => setResourcesOpen(false)}
-                        className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-high/60 transition-colors">
-                        <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>{item.icon}</span>
+                        className="block px-4 py-2.5 text-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-high/60 transition-colors">
                         {item.label}
                       </Link>
                     ))}
