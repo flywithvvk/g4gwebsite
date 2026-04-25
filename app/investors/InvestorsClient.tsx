@@ -33,7 +33,7 @@ const thesis = [
     icon: 'monitoring',
     title: 'Proven Unit Economics',
     subtitle: '$500K+ ARR, 35% MRR Growth',
-    desc: 'Enterprise customers see significant cost reduction and measurable operational improvement. Rapid ROI for customers with payback driven by automation savings. High gross margin SaaS model.',
+    desc: 'Enterprise customers see significant cost reduction and measurable operational improvement, with automation savings delivering rapid payback periods.',
     color: 'from-tertiary to-[#00a34a]',
     points: [
       '$500K+ annual recurring revenue',

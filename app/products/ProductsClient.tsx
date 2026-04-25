@@ -149,11 +149,11 @@ const products: Product[] = [
     slug: 'eka-ai',
     setupTime: 'Included with Professional/Enterprise plans',
     features: [
-      'Conversational AI: English & Hindi natural language interface',
+      'Conversational AI: English, Hindi & regional language natural language interface',
       'Multi-Agent Orchestration: compliance, diagnostics & finance agents',
       'Knowledge Retrieval: instant access to India auto regulations',
       'Operator Automation: AI-triggered compliance & scheduling workflows',
-      'Multi-Language Support: Hindi, English & regional languages',
+      'Guided Actions: step-by-step AI-guided workflows for any task',
       'Platform Integration: deep integration with URGAA, GST (Go4Garage Service Tools), KAILASH-AI',
     ],
     colorFamily: 'tertiary',

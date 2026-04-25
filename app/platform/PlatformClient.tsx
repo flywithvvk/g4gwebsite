@@ -85,7 +85,7 @@ const techCards = [
   {
     icon: 'psychology',
     title: 'Proprietary Automotive AI Engine',
-    description: 'Proprietary Automotive AI Engine: powered by 32 domain-specific ML models and a multi-LLM routing system that selects the optimal AI model across 10 dimensions for each task. Includes 12 industry branch contexts, fine-tuned models for Indian automotive regulations, and a RAG-powered knowledge base of 500+ domain articles.',
+    description: 'Powered by 32 domain-specific ML models and a multi-LLM routing system that selects the optimal AI model across 10 dimensions for each task. Includes 12 industry branch contexts, fine-tuned models for Indian automotive regulations, and a RAG-powered knowledge base of 500+ domain articles.',
     features: ['Multi-LLM routing across 10 dimensions', '500+ domain knowledge base articles', '32 custom ML models • 12 AI branches', 'Fine-tuned for Indian automotive regulations'],
   },
   {

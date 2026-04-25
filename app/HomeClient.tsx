@@ -490,7 +490,7 @@ export default function HomePage() {
                 <div className="space-y-4">
                   {[
                     'First AI platform trained on Indian automobile regulations',
-                    '89.5% reduction in manual compliance work',
+                    'Automated compliance filings free your team to focus on growth, not paperwork',
                     'Real-time updates across all 33 states',
                     'End-to-end CPO operations + service + workforce',
                   ].map((item, idx) => (
