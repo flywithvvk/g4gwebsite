@@ -20,8 +20,15 @@ export function FirebaseAnalytics() {
       if (perfInitialised.current) return;
       perfInitialised.current = true;
       try {
-        getAnalytics(app);
+        const a = getAnalytics(app);
         getPerformance(app);
+        // Set user properties for segmentation in GA4
+        const { setUserProperties } = require('firebase/analytics') as typeof import('firebase/analytics');
+        setUserProperties(a, {
+          platform: 'web',
+          user_type: 'visitor',
+          site_version: '1.0',
+        });
       } catch {
         // Analytics/Performance unavailable (e.g. ad-blocker) — fail silently
       }

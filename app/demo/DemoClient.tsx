@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useMemo } from 'react';
+import { useRCString } from '@/lib/useRemoteConfig';
 import Link from 'next/link';
 import { Icon } from '@/components/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
@@ -113,6 +114,7 @@ const initialForm: BookingForm = {
 
 export default function DemoClient() {
   const [selectedDemo, setSelectedDemo] = useState<DemoType>(null);
+  const responsePromise = useRCString('contact_response_promise');
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
   const timeSlots = useMemo(() => getNextBusinessDays(5), []);
   const [showModal, setShowModal] = useState(false);
@@ -499,7 +501,7 @@ export default function DemoClient() {
                         Your request has been sent to our team.
                       </p>
                       <p className="text-on-surface-variant text-sm">
-                        We&apos;ll confirm your demo slot at <strong>{form.email}</strong> within 2 hours.
+                        We&apos;ll confirm your demo slot at <strong>{form.email}</strong>. {responsePromise}.
                       </p>
                     </motion.div>
                   ) : (

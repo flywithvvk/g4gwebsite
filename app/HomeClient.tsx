@@ -14,6 +14,7 @@ import { TrustBar } from '@/components/TrustBar';
 import { EVJourneyVisual } from '@/components/EVJourneyVisual';
 import { SocialProofTicker } from '@/components/SocialProofTicker';
 import { trackCTAClick } from '@/lib/analytics';
+import { useRCString, useRCBoolean } from '@/lib/useRemoteConfig';
 
 /* ─── Data ─── */
 
@@ -75,6 +76,9 @@ const stagger = {
 
 export default function HomePage() {
   const [heroSlide, setHeroSlide] = useState(0);
+  const heroCTAPrimary = useRCString('hero_cta_primary_text');
+  const heroCTASecondary = useRCString('hero_cta_secondary_text');
+  const showInvestorCTA = useRCBoolean('show_investor_cta');
 
   useEffect(() => {
     const timeout = setTimeout(() => setHeroSlide(1), 8000);
@@ -189,7 +193,7 @@ export default function HomePage() {
                         whileTap={{ scale: 0.98 }}
                         className="px-8 py-4 bg-primary text-primary-on rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-shadow"
                       >
-                        Schedule Demo
+                        {heroCTAPrimary}
                       </motion.button>
                     </Link>
                     <Link href="/platform" onClick={() => trackCTAClick('hero_explore_platform', '/platform')}>
@@ -198,7 +202,7 @@ export default function HomePage() {
                         whileTap={{ scale: 0.98 }}
                         className="px-8 py-4 rounded-2xl font-semibold text-lg border-2 border-outline-variant bg-surface-bright/80 backdrop-blur-sm text-on-surface hover:border-primary/40 hover:bg-surface-container-low transition-all"
                       >
-                        Explore Platform
+                        {heroCTASecondary}
                       </motion.button>
                     </Link>
                   </motion.div>
@@ -609,6 +613,7 @@ export default function HomePage() {
                   Schedule Demo
                 </motion.button>
               </Link>
+              {showInvestorCTA && (
               <Link href="/investors">
                 <motion.button
                   whileHover={{ scale: 1.04 }}
@@ -618,6 +623,7 @@ export default function HomePage() {
                   For Investors
                 </motion.button>
               </Link>
+              )}
             </div>
 
             {/* Trust indicators */}

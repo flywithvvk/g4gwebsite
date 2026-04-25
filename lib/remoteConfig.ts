@@ -20,8 +20,8 @@ import { app } from './firebase';
 // These values are used when Remote Config can't be reached (offline, ad-blocker, etc.)
 
 export const REMOTE_CONFIG_DEFAULTS: Record<string, string | number | boolean> = {
-  hero_cta_primary_text: 'Book a Live Demo',
-  hero_cta_secondary_text: 'Explore Products',
+  hero_cta_primary_text: 'Schedule Demo',
+  hero_cta_secondary_text: 'Explore Platform',
   hero_headline_suffix: "India's Automobile Future",
   pricing_visible: true,
   promotional_banner_enabled: false,
@@ -29,7 +29,7 @@ export const REMOTE_CONFIG_DEFAULTS: Record<string, string | number | boolean> =
   demo_urgency_label: 'Only a few slots left this week',
   show_investor_cta: true,
   show_blog_section: true,
-  contact_response_promise: 'We respond within 2 hours',
+  contact_response_promise: 'We respond within 2 business hours',
   min_fetch_interval_ms: 3600000, // 1 hour
 };
 

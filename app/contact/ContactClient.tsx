@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+import { useRCString } from '@/lib/useRemoteConfig';
 import { Icon } from '@/components/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 import { IndiaFlag } from '@/components/IndiaFlag';
@@ -98,6 +99,7 @@ const INITIAL_FORM: FormData = {
 };
 
 export default function ContactClient() {
+  const responsePromise = useRCString('contact_response_promise');
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM);
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
@@ -179,7 +181,7 @@ export default function ContactClient() {
                 Get in <span className="gradient-text">Touch</span>
               </h1>
               <p className="text-lg text-on-surface-variant mb-10 max-w-md">
-                Schedule a demo, explore partnership opportunities, or just say hello. Our team responds within 2 business hours.
+                Schedule a demo, explore partnership opportunities, or just say hello. {responsePromise}.
               </p>
 
               <div className="space-y-4">
@@ -221,7 +223,7 @@ export default function ContactClient() {
                         <Icon name="check_circle" size={36} className="text-green-500" />
                       </motion.div>
                       <h3 className="text-xl font-bold mb-2 text-green-600 font-display">Thank you!</h3>
-                      <p className="text-on-surface-variant text-sm mb-6">We&apos;ll get back to you within 2 business hours.</p>
+                      <p className="text-on-surface-variant text-sm mb-6">{responsePromise}.</p>
                       <motion.button onClick={handleReset} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="px-5 py-2.5 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-all">
                         Send Another Message
                       </motion.button>

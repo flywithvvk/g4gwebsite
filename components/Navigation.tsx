@@ -6,12 +6,15 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { trackCTAClick } from '@/lib/analytics';
+import { useRCBoolean } from '@/lib/useRemoteConfig';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const pathname = usePathname();
+  const pricingVisible = useRCBoolean('pricing_visible');
+  const showInvestorCTA = useRCBoolean('show_investor_cta');
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -29,6 +32,12 @@ const Navigation = () => {
     { label: 'About', href: '/about', icon: 'info' },
     { label: 'Investors', href: '/investors', icon: 'account_balance' },
   ];
+
+  const visibleNavLinks = navLinks.filter(link => {
+    if (link.href === '/pricing' && !pricingVisible) return false;
+    if (link.href === '/investors' && !showInvestorCTA) return false;
+    return true;
+  });
 
   return (
     <motion.nav
@@ -77,7 +86,7 @@ const Navigation = () => {
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-0.5">
-            {navLinks.map((link) => {
+            {visibleNavLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
@@ -194,7 +203,7 @@ const Navigation = () => {
             transition={{ duration: 0.2 }}
           >
             <div className="max-w-7xl mx-auto px-4 py-3 space-y-1">
-              {navLinks.map((link) => {
+              {visibleNavLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
                   <Link

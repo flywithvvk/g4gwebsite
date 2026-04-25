@@ -2,11 +2,35 @@
  * Firestore form submission helpers.
  * All leads, demo bookings, newsletter subscribers, and investor inquiries
  * are written to Firestore so every submission is captured.
+ *
+ * Offline persistence: uses IndexedDB cache so form submissions queue
+ * when the user is offline and sync automatically when connectivity resumes.
  */
-import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import {
+  getFirestore,
+  initializeFirestore,
+  persistentLocalCache,
+  CACHE_SIZE_UNLIMITED,
+  collection,
+  addDoc,
+  serverTimestamp,
+} from 'firebase/firestore';
 import { app } from './firebase';
 
-const db = getFirestore(app);
+// Enable persistent IndexedDB cache in the browser so submissions survive
+// brief connectivity drops. Fall back to in-memory cache during SSR/build.
+let db: ReturnType<typeof getFirestore>;
+if (typeof window !== 'undefined') {
+  try {
+    db = initializeFirestore(app, {
+      localCache: persistentLocalCache({ cacheSizeBytes: CACHE_SIZE_UNLIMITED }),
+    });
+  } catch {
+    db = getFirestore(app); // Already initialized elsewhere — use existing instance
+  }
+} else {
+  db = getFirestore(app);
+}
 
 export interface ContactLead {
   name: string;
