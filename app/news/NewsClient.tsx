@@ -159,6 +159,51 @@ const newsItems: NewsItem[] = [
       "NITI Aayog's EV Charging Dashboard records 25,614 operational public charging points as of January 2026, up 85% year-on-year. However, distribution remains highly uneven: over 68% of points are concentrated in 10 cities, while 347 districts across Tier-2 and Tier-3 cities have fewer than 5 public chargers. Analysts cite DISCOM application bottlenecks and grid upgrade delays as the leading causes of geographic concentration.",
     source: 'NITI Aayog / Industry',
   },
+  {
+    id: '15',
+    category: 'Policy',
+    date: 'Apr 2026',
+    headline: 'NITI Aayog Releases India EV Ecosystem Action Plan for FY2026-27: 30 Lakh Target',
+    summary:
+      'NITI Aayog released a 47-page action plan targeting 3 million EV registrations in FY2026-27, with specific mandates for DISCOM grid upgrades at 10,000 new charging locations, accelerated state EV policy harmonisation, and a unified national EV registry. The plan includes FAME III design principles with an expanded ₹28,000 crore outlay focusing on commercial vehicles and charging infrastructure.',
+    source: 'NITI Aayog',
+  },
+  {
+    id: '16',
+    category: 'Industry',
+    date: 'Apr 2026',
+    headline: 'Ola Electric Reports First Operating Profit: ₹44 Crore EBITDA in Q4 FY2026',
+    summary:
+      'Ola Electric posted its first-ever positive EBITDA of ₹44 crore in Q4 FY2025-26, driven by a 28% improvement in gross margins following in-house cell manufacturing at the Gigafactory Phase 1. Monthly production crossed 55,000 units in March 2026. The company revised its FY2027 sales guidance upward by 15%, projecting 800,000 units and break-even at PAT level by Q3 FY2027.',
+    source: 'Ola Electric',
+  },
+  {
+    id: '17',
+    category: 'Go4Garage',
+    date: 'Apr 2026',
+    headline: 'Go4Garage Platform Processes 1 Lakh DISCOM Applications, Saving CPOs ₹18 Crore in Filing Costs',
+    summary:
+      "Go4Garage's URGAA platform has crossed the milestone of processing 1,00,000 DISCOM applications across 28 states since launch, with an average processing time reduction from 23 days to under 4 days. The platform's auto-fill and compliance verification features have saved operators a cumulative ₹18.3 crore in consultant and compliance filing costs. Error rejection rates dropped from 31% to 2.7% for URGAA users.",
+    source: 'Go4Garage',
+  },
+  {
+    id: '18',
+    category: 'Funding',
+    date: 'Apr 2026',
+    headline: 'PM e-DRIVE Phase 2 Announced: ₹18,000 Crore for EV Buses, L-Category Vehicles and Charging',
+    summary:
+      'The Cabinet Committee on Economic Affairs approved PM e-DRIVE Phase 2 with a ₹18,000 crore allocation, expanding coverage to electric buses (8,000 new units for state transport undertakings), L-category vehicles (e-auto, e-rickshaw, cargo tricycle), and 25,000 new public fast chargers. Subsidy disbursement will be linked to VAHAN registration verification and real-time telematics reporting.',
+    source: 'Cabinet Secretariat',
+  },
+  {
+    id: '19',
+    category: 'Industry',
+    date: 'Apr 2026',
+    headline: 'Tata Motors EV Crosses 3 Lakh Cumulative Sales; Nexon EV Remains Best-Selling EV SUV for 24 Months',
+    summary:
+      'Tata Motors announced cumulative EV sales of 3,00,412 units as of March 2026, making it the largest EV passenger vehicle manufacturer in India. The Nexon EV retained its top position for 24 consecutive months. The company announced Nexon EV Gen 3 with a 68 kWh battery and 550 km certified range, scheduled for launch in Q2 FY2027, alongside a new ₹12.5 lakh entry-level Tiago EV variant.',
+    source: 'Tata Motors',
+  },
 ];
 
 export default function NewsClient() {
