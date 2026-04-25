@@ -314,7 +314,7 @@ export function EVJourneyVisual({ onComplete }: Props) {
           </AnimatePresence>
 
           {/* Step grid: 2 rows x 4 = all 8 visible */}
-          <div className="grid grid-cols-4 gap-x-1.5 gap-y-1 mb-2.5">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-1.5 gap-y-1 mb-2.5">
             {STEP_LABELS.map((label, i) => {
               const done = time >= CHALLENGE_WINDOWS[i][1];
               const active = activeIdx === i;

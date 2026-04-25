@@ -344,7 +344,7 @@ export default function ContactClient() {
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               </div>
 
-              <div className="w-full max-w-sm bg-surface-container-low rounded-2xl border border-outline-variant/30 p-5">
+              <div className="w-full max-w-sm bg-surface-container-low rounded-2xl border border-outline-variant/30 p-5 overflow-hidden">
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-bold text-sm font-display">{currentMonthLabel}</span>
                   <div className="flex gap-1">

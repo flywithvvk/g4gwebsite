@@ -208,7 +208,7 @@ export default function CaseStudiesClient() {
                     </div>
 
                     {/* Results */}
-                    <div className="grid grid-cols-3 gap-4 pt-6 border-t border-outline-variant/20">
+                    <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-6 border-t border-outline-variant/20">
                       {cs.results.map((r, rIdx) => (
                         <div key={rIdx} className="text-center">
                           <div className="text-xl md:text-2xl font-bold font-display text-primary">

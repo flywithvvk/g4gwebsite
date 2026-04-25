@@ -240,7 +240,7 @@ export default function PricingClient() {
                 </div>
 
                 {/* CTA */}
-                <div className="px-8 pb-6">
+                <div className="px-4 sm:px-8 pb-6">
                   <Link
                     href="/contact"
                     className={`w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold transition-all shadow-sm hover:shadow-md ${
@@ -255,7 +255,7 @@ export default function PricingClient() {
                 </div>
 
                 {/* Features list */}
-                <div className="px-8 pb-8 pt-0 flex-1">
+                <div className="px-4 sm:px-8 pb-8 pt-0 flex-1">
                   <div className="h-px bg-outline-variant/20 mb-5" />
                   <p className="text-[11px] font-bold text-on-surface-variant uppercase tracking-widest mb-4 font-display">What&apos;s included</p>
                   <ul className="space-y-3">

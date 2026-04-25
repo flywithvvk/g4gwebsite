@@ -258,7 +258,7 @@ export default function InvestorsClient() {
                   </motion.div>
                 ))}
               </div>
-              <div className="mt-8 grid grid-cols-3 gap-4">
+              <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {[
                   { label: 'CAGR', value: '40%', icon: 'speed' },
                   { label: 'By Year', value: '2030', icon: 'calendar_today' },
@@ -351,6 +351,7 @@ export default function InvestorsClient() {
                 Point solutions exist: ChargeZone and Statiq for CPO management, garage management tools for workshops, generic analytics platforms. No single platform integrates regulatory compliance, workshop operations, consumer experience, AI diagnostics, and workforce training into one intelligent system. That&apos;s Go4Garage&apos;s unique position.
               </p>
             </motion.div>
+            <div className="overflow-x-auto">
             <div className="space-y-3">
               <div className="grid grid-cols-3 gap-3 text-xs font-bold text-on-surface-variant uppercase tracking-wider px-4 pb-1 border-b border-outline-variant/20">
                 <span>Competitor</span>
@@ -368,6 +369,7 @@ export default function InvestorsClient() {
                 </motion.div>
               ))}
             </div>
+            </div>{/* overflow-x-auto */}
           </div>
         </div>
       </section>

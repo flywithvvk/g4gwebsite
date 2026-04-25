@@ -19,12 +19,12 @@ export default function LoginClient() {
         <motion.div
           animate={{ scale: [1, 1.15, 1] }}
           transition={{ duration: 12, repeat: Infinity }}
-          className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary-container/10 rounded-full blur-[180px]"
+          className="hidden sm:block absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary-container/10 rounded-full blur-[180px]"
         />
         <motion.div
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ duration: 16, repeat: Infinity, delay: 5 }}
-          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-container/8 rounded-full blur-[150px]"
+          className="hidden sm:block absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-container/8 rounded-full blur-[150px]"
         />
         <div
           className="absolute inset-0 opacity-[0.03]"

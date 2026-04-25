@@ -655,7 +655,7 @@ function StakeholderSection({
                 <h3 className="text-xs font-semibold text-primary uppercase tracking-widest mb-4 font-display px-1">
                   Impact Metrics
                 </h3>
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {stakeholder.metrics.map((m, i) => (
                     <MetricCard key={i} metric={m} />
                   ))}
@@ -870,11 +870,12 @@ export default function SolutionsClient() {
             highlight="Go4Garage"
           />
 
+          <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto bg-surface-bright rounded-2xl overflow-hidden border border-outline-variant/30 shadow-sm"
+            className="max-w-3xl mx-auto bg-surface-bright rounded-2xl overflow-hidden border border-outline-variant/30 shadow-sm min-w-[480px]"
           >
             <div className="grid grid-cols-3 text-sm font-semibold border-b border-outline-variant/20">
               <div className="px-6 py-4 text-on-surface font-display">Capability</div>
@@ -901,6 +902,7 @@ export default function SolutionsClient() {
               </motion.div>
             ))}
           </motion.div>
+          </div>{/* overflow-x-auto */}
         </div>
       </section>
 

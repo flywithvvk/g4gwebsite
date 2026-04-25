@@ -344,7 +344,7 @@ export default function PlatformClient() {
           />
 
           <motion.div {...fadeUp} className="max-w-4xl mx-auto">
-            <div className="overflow-x-auto rounded-2xl">
+            <div className="overflow-x-auto rounded-2xl -mx-4 sm:mx-0 px-4 sm:px-0">
             <div className="rounded-2xl overflow-hidden border border-outline-variant/30 shadow-sm min-w-[520px]">
               {/* Header */}
               <div className="grid grid-cols-3 text-sm font-bold">
