@@ -374,7 +374,7 @@ export default function ProductDetailClient({ product }: { product: ProductData 
             <h2 className="text-4xl md:text-5xl font-bold font-display">
               What <span className="gradient-text">{product.shortName}</span> Does
             </h2>
-            <p className="mt-4 text-on-surface-variant text-lg">Six powerful modules, built for India&apos;s EV ecosystem.</p>
+            <p className="mt-4 text-on-surface-variant text-lg">{product.features.length} powerful modules, built for India&apos;s EV ecosystem.</p>
           </motion.div>
 
           {/* Desktop: tab layout */}

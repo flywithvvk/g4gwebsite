@@ -188,6 +188,7 @@ export default function CaseStudiesClient() {
                     <h3 className="text-xl md:text-2xl font-bold text-white font-display leading-snug">
                       {cs.title}
                     </h3>
+                    <p className="text-xs text-white/60 italic mt-2">Name withheld at client&apos;s request</p>
                   </div>
 
                   {/* Right: Content */}

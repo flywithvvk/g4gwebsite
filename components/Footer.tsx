@@ -33,11 +33,11 @@ const Footer: React.FC = () => {
     {
       title: 'Solutions',
       links: [
-        { label: 'Charge Point Operators', href: '/solutions' },
-        { label: 'Fleet Operators', href: '/solutions' },
-        { label: 'EV Drivers', href: '/solutions' },
-        { label: 'Workshops', href: '/solutions' },
-        { label: 'Government', href: '/solutions' },
+        { label: 'Charge Point Operators', href: '/solutions#cpo' },
+        { label: 'Fleet Operators', href: '/solutions#fleet' },
+        { label: 'EV Drivers', href: '/solutions#consumers' },
+        { label: 'Workshops', href: '/solutions#workshops' },
+        { label: 'Government', href: '/solutions#govt' },
       ],
     },
     {
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
           {/* Brand */}
           <div className="lg:col-span-2 space-y-5">
             <div className="flex items-center">
-              <Image src="/icon.png" alt="Go4Garage" width={40} height={40} className="rounded-xl" />
+      <Image src="/logo.jpg" alt="Go4Garage" width={150} height={40} className="h-8 w-auto object-contain" />
             </div>
             <p className="text-sm text-on-surface-variant leading-relaxed max-w-xs">
               India&apos;s AI-powered automobile intelligence platform accelerating EV adoption and charging scale across 33 states.
@@ -103,17 +103,13 @@ const Footer: React.FC = () => {
             </div>
 
             <div className="space-y-2 pt-2 border-t border-outline-variant/30">
-              <a href="mailto:go4garageofficial@gmail.com" className="flex items-center gap-2 text-xs text-on-surface-variant hover:text-primary transition-colors">
-                <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>mail</span>
-                go4garageofficial@gmail.com
-              </a>
               <a href="mailto:connect@go4garage.in" className="flex items-center gap-2 text-xs text-on-surface-variant hover:text-primary transition-colors">
                 <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>mail</span>
                 connect@go4garage.in
               </a>
               <span className="flex items-center gap-2 text-xs text-on-surface-variant">
                 <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>location_on</span>
-                <IndiaFlag size={16} /> India · Bharat
+                <IndiaFlag size={16} /> Bengaluru, Karnataka
               </span>
             </div>
           </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Icon } from '@/components/Icon';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
@@ -76,6 +76,11 @@ const stagger = {
 export default function HomePage() {
   const [heroSlide, setHeroSlide] = useState(0);
 
+  useEffect(() => {
+    const timeout = setTimeout(() => setHeroSlide(1), 8000);
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
     <div className="min-h-screen bg-surface text-on-surface">
 
@@ -98,6 +103,12 @@ export default function HomePage() {
               transition={{ duration: 0.7 }}
             >
               <EVJourneyVisual onComplete={() => { setTimeout(() => setHeroSlide(1), 2000); }} />
+              <button
+                onClick={() => setHeroSlide(1)}
+                className="absolute bottom-6 right-6 z-20 flex items-center gap-1.5 px-4 py-2 rounded-full bg-black/40 backdrop-blur-sm text-white/80 text-sm font-medium hover:bg-black/60 hover:text-white transition-all border border-white/20"
+              >
+                Skip <span className="material-symbols-outlined text-base" style={{fontSize:'16px'}}>arrow_forward</span>
+              </button>
             </motion.div>
           ) : (
             /* ── SLIDE 1: Headline + CTAs ── */
@@ -167,7 +178,7 @@ export default function HomePage() {
 
                   {/* Sub-copy */}
                   <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-lg md:text-xl text-on-surface-variant mb-10 max-w-2xl mx-auto leading-relaxed">
-                    95 problems identified across India&apos;s EV ecosystem. 85 solved. 7 products. Zero friction.
+                    95 problems identified across India&apos;s EV ecosystem. 85 addressable. 6 products. Zero friction.
                   </motion.p>
 
                   {/* CTAs */}
@@ -299,7 +310,7 @@ export default function HomePage() {
         <div className="container mx-auto px-6">
           <SectionHeading
             badge="Platform Suite"
-            title="7 Products, One Intelligence Layer"
+            title="6 Products, One Intelligence Layer"
             highlight="One Intelligence Layer"
             subtitle="Each product solves a distinct slice of the EV value chain. Together, they cover 85 problems end to end."
           />

@@ -29,8 +29,8 @@ const contactMethods = [
   {
     icon: 'location_on',
     title: 'Visit Us',
-    detail: 'India | Bharat',
-    href: 'https://maps.google.com/?q=India',
+    detail: 'Bengaluru, Karnataka, India',
+    href: 'https://maps.google.com/?q=Bengaluru,Karnataka,India',
     sub: 'Proudly built for Bharat 🇮🇳',
     color: 'from-tertiary to-[#00a34a]',
   },
@@ -97,19 +97,12 @@ const INITIAL_FORM: FormData = {
   website: '',
 };
 
-const CAL_DAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-const WEEKEND_INDICES = new Set([0, 6, 7, 13, 14, 20, 21, 27, 28]);
-const MONTH_LABELS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-
 export default function ContactClient() {
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM);
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-  const now = new Date();
-  const currentMonthLabel = `${MONTH_LABELS[now.getMonth()]} ${now.getFullYear()}`;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -228,7 +221,7 @@ export default function ContactClient() {
                         <Icon name="check_circle" size={36} className="text-green-500" />
                       </motion.div>
                       <h3 className="text-xl font-bold mb-2 text-green-600 font-display">Thank you!</h3>
-                      <p className="text-on-surface-variant text-sm mb-6">We&apos;ll get back to you within 24 hours.</p>
+                      <p className="text-on-surface-variant text-sm mb-6">We&apos;ll get back to you within 2 business hours.</p>
                       <motion.button onClick={handleReset} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="px-5 py-2.5 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-all">
                         Send Another Message
                       </motion.button>
@@ -320,66 +313,20 @@ export default function ContactClient() {
             highlight="Discovery Call"
             subtitle="Talk to our team about your specific needs and how Go4Garage can help."
           />
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-surface-bright rounded-2xl border border-outline-variant/30 shadow-lg overflow-hidden">
-            <div className="p-6 border-b border-outline-variant/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-primary-container/15 rounded-xl flex items-center justify-center">
-                  <Icon name="calendar_month" size={28} className="text-primary" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold font-display">Book a 30-Minute Discovery Call</h3>
-                  <p className="text-sm text-on-surface-variant">Pick a time that works for you</p>
-                </div>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex justify-center">
+            <div className="w-full max-w-sm bg-surface-container-low rounded-2xl border border-outline-variant/30 p-8 flex flex-col items-center justify-center gap-4 text-center">
+              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <Icon name="calendar_month" size={28} className="text-primary" />
               </div>
-              <motion.a href="https://calendly.com/go4garage" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-all flex-shrink-0">
-                <Icon name="open_in_new" size={16} />
-                Open Calendar
-              </motion.a>
-            </div>
-
-            <div className="w-full flex flex-col items-center justify-center gap-5 py-10 px-6">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-xs font-bold text-primary uppercase tracking-widest font-display">Calendar Booking Widget: Powered by Calendly</span>
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              <div>
+                <p className="font-bold text-base font-display mb-1">Schedule a Discovery Call</p>
+                <p className="text-sm text-on-surface-variant">30-minute session with our EV solutions team</p>
               </div>
-
-              <div className="w-full max-w-sm bg-surface-container-low rounded-2xl border border-outline-variant/30 p-5 overflow-hidden">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="font-bold text-sm font-display">{currentMonthLabel}</span>
-                  <div className="flex gap-1">
-                    <button aria-label="Previous month" className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-primary-container/20 transition-colors text-on-surface-variant">
-                      <Icon name="chevron_left" size={16} />
-                    </button>
-                    <button aria-label="Next month" className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-primary-container/20 transition-colors text-on-surface-variant">
-                      <Icon name="chevron_right" size={16} />
-                    </button>
-                  </div>
-                </div>
-                <div className="grid grid-cols-7 gap-1 mb-2">
-                  {CAL_DAYS.map((d, i) => (
-                    <div key={i} className="h-8 flex items-center justify-center text-xs font-bold text-on-surface-variant">{d}</div>
-                  ))}
-                </div>
-                <div className="grid grid-cols-7 gap-1">
-                  {Array.from({ length: 31 }, (_, i) => (
-                    <motion.div
-                      key={i}
-                      whileHover={!WEEKEND_INDICES.has(i) ? { scale: 1.15 } : {}}
-                      className={`h-8 flex items-center justify-center rounded-lg text-xs transition-colors cursor-pointer ${WEEKEND_INDICES.has(i) ? 'text-on-surface-variant/30 cursor-default' : i === 14 ? 'bg-primary text-primary-on font-bold' : 'hover:bg-primary-container/25 text-on-surface'}`}
-                    >
-                      {i + 1}
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              <p className="text-sm text-on-surface-variant">Select a date to see available time slots</p>
-
-              <motion.a href="https://calendly.com/go4garage" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-all">
-                <Icon name="calendar_month" size={18} />
-                Schedule Your Free Call
-              </motion.a>
+              <a href="https://calendly.com/go4garage" target="_blank" rel="noopener noreferrer"
+                className="w-full px-6 py-3 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg hover:bg-primary/90 transition-all text-center block">
+                Open Calendly →
+              </a>
+              <p className="text-xs text-on-surface-variant/60">No credit card required</p>
             </div>
           </motion.div>
         </div>
@@ -420,12 +367,12 @@ export default function ContactClient() {
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-6">
               <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-surface-bright p-7 rounded-2xl border border-outline-variant/30 shadow-sm">
-                <h3 className="text-lg font-bold mb-4 font-display flex items-center gap-2"><IndiaFlag size={20} /> India | Bharat <span className="gradient-text">Headquarters</span></h3>
+                <h3 className="text-lg font-bold mb-4 font-display flex items-center gap-2"><IndiaFlag size={20} /> Bengaluru, Karnataka <span className="gradient-text">Headquarters</span></h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
                     <Icon name="location_on" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="text-sm font-medium flex items-center gap-1"><IndiaFlag size={16} /> India | Bharat</p>
+                      <p className="text-sm font-medium flex items-center gap-1"><IndiaFlag size={16} /> Bengaluru, Karnataka, India</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -458,8 +405,8 @@ export default function ContactClient() {
                     <Icon name="map" size={32} className="text-primary" />
                   </div>
                   <h4 className="font-bold text-base mb-2 font-display">Go4Garage HQ</h4>
-                  <p className="text-sm text-on-surface-variant mb-4"><span className="inline-flex items-center gap-1"><IndiaFlag size={14} /> India | Bharat</span></p>
-                  <motion.a href="https://maps.google.com/?q=India" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-all">
+                  <p className="text-sm text-on-surface-variant mb-4"><span className="inline-flex items-center gap-1"><IndiaFlag size={14} /> Bengaluru, Karnataka, India</span></p>
+                  <motion.a href="https://maps.google.com/?q=Bengaluru,Karnataka,India" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-all">
                     <Icon name="open_in_new" size={16} />
                     Open in Maps
                   </motion.a>

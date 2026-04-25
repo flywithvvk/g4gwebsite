@@ -10,6 +10,7 @@ import { trackCTAClick } from '@/lib/analytics';
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -42,13 +43,9 @@ const Navigation = () => {
           <div className="g4g-ticker flex whitespace-nowrap">
             {[0, 1].map((i) => (
               <span key={i} aria-hidden={i === 1} className="text-white text-xs font-medium px-10 inline-flex items-center gap-3">
-                🎉 Go4Garage Celebrates 5 Years of Innovation (2021-2026)
+                🎉 Go4Garage: 5 Years of Innovation (2021–2026)
                 <span className="text-white/40">•</span>
-                🚀 India&apos;s First AI-Powered EV Intelligence Platform
-                <span className="text-white/40">•</span>
-                ✅ 95 Problems Mapped, 85 Solved
-                <span className="text-white/40">•</span>
-                ⚡ 7 Products. One Platform. Zero Friction.
+                ⚡ India&apos;s First AI-Powered EV Intelligence Platform
                 <span className="text-white/40">•</span>
                 📊 1 Lakh+ DISCOM Applications Processed
                 <span className="text-white/40">•</span>
@@ -97,6 +94,41 @@ const Navigation = () => {
                 </Link>
               );
             })}
+          </div>
+
+          {/* Resources dropdown */}
+          <div className="hidden md:flex items-center">
+            <div className="relative" onMouseEnter={() => setResourcesOpen(true)} onMouseLeave={() => setResourcesOpen(false)}>
+              <button className="px-3.5 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center gap-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container-high/60">
+                <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>menu_book</span>
+                Resources
+                <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>{resourcesOpen ? 'expand_less' : 'expand_more'}</span>
+              </button>
+              <AnimatePresence>
+                {resourcesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full left-0 mt-1 w-48 bg-surface-bright rounded-xl border border-outline-variant/30 shadow-lg py-1 z-50"
+                  >
+                    {[
+                      { label: 'Blog', href: '/blog', icon: 'article' },
+                      { label: 'News', href: '/news', icon: 'newspaper' },
+                      { label: 'Case Studies', href: '/case-studies', icon: 'cases' },
+                      { label: 'FAQ', href: '/faq', icon: 'help' },
+                    ].map(item => (
+                      <Link key={item.href} href={item.href} onClick={() => setResourcesOpen(false)}
+                        className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-high/60 transition-colors">
+                        <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>{item.icon}</span>
+                        {item.label}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* CTAs */}
@@ -175,6 +207,19 @@ const Navigation = () => {
                   </Link>
                 );
               })}
+              {/* Mobile Resources links */}
+              {[
+                { label: 'Blog', href: '/blog', icon: 'article' },
+                { label: 'News', href: '/news', icon: 'newspaper' },
+                { label: 'Case Studies', href: '/case-studies', icon: 'cases' },
+                { label: 'FAQ', href: '/faq', icon: 'help' },
+              ].map(link => (
+                <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-on-surface-variant hover:text-primary hover:bg-surface-container-high/60">
+                  <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>{link.icon}</span>
+                  {link.label}
+                </Link>
+              ))}
               <Link
                 href="/demo"
                 onClick={() => { setIsOpen(false); trackCTAClick('nav_mobile_book_demo', '/demo'); }}

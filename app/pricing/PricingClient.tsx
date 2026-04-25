@@ -29,6 +29,8 @@ interface Tier {
   name: string;
   tagline: string;
   description: string;
+  price?: string;
+  priceNote?: string;
   icon: string;
   recommended?: boolean;
   accent: 'primary' | 'secondary';
@@ -42,6 +44,8 @@ const tiers: Tier[] = [
     name: 'Free',
     tagline: 'Evaluate before you commit',
     description: 'Explore the Go4Garage platform at zero cost. Limited daily AI queries; no credit card required.',
+    price: '₹0 / month',
+    priceNote: 'Free Forever',
     icon: 'explore',
     accent: 'primary',
     productKeys: ['gstsaas', 'ekaai'],
@@ -58,6 +62,8 @@ const tiers: Tier[] = [
     name: 'Starter',
     tagline: 'Individual workshops & small CPOs',
     description: 'Start with the product that matters most to you: digitize compliance or operations in weeks.',
+    price: 'From ₹2,999 / month',
+    priceNote: 'billed annually',
     icon: 'rocket_launch',
     accent: 'primary',
     productKeys: ['urgaa', 'gstsaas'],
@@ -73,6 +79,7 @@ const tiers: Tier[] = [
     name: 'Professional',
     tagline: 'Growing businesses scaling fast',
     description: 'Full platform access: every product working together to automate and grow your EV business.',
+    price: 'Custom Pricing',
     icon: 'star',
     recommended: true,
     accent: 'primary',
@@ -92,6 +99,7 @@ const tiers: Tier[] = [
     name: 'Enterprise',
     tagline: 'Large CPOs, OEMs & Government',
     description: 'Unlimited scale with white-label options, custom AI models, and a dedicated success team.',
+    price: 'Custom Quote',
     icon: 'corporate_fare',
     accent: 'secondary',
     productKeys: ['urgaa', 'gstsaas', 'ignition', 'arjun', 'kailash', 'ekaai'],
@@ -217,6 +225,12 @@ export default function PricingClient() {
                     <Icon name={tier.icon} size={28} className={tier.recommended ? 'text-white' : tier.accent === 'secondary' ? 'text-secondary' : 'text-primary'} />
                   </div>
                   <h3 className="text-2xl font-bold font-display mb-1">{tier.name}</h3>
+                  {tier.price && (
+                    <div className="mb-2">
+                      <span className="text-lg font-bold text-primary">{tier.price}</span>
+                      {tier.priceNote && <span className="text-xs text-on-surface-variant ml-2">{tier.priceNote}</span>}
+                    </div>
+                  )}
                   <p className="text-sm text-on-surface-variant mb-3">{tier.tagline}</p>
                   <p className="text-sm text-on-surface-variant leading-relaxed mb-6">{tier.description}</p>
 
