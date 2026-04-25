@@ -348,10 +348,10 @@ export default function ContactClient() {
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-bold text-sm font-display">{currentMonthLabel}</span>
                   <div className="flex gap-1">
-                    <button className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-primary-container/20 transition-colors text-on-surface-variant">
+                    <button aria-label="Previous month" className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-primary-container/20 transition-colors text-on-surface-variant">
                       <Icon name="chevron_left" size={16} />
                     </button>
-                    <button className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-primary-container/20 transition-colors text-on-surface-variant">
+                    <button aria-label="Next month" className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-primary-container/20 transition-colors text-on-surface-variant">
                       <Icon name="chevron_right" size={16} />
                     </button>
                   </div>

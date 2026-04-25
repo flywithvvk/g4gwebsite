@@ -205,7 +205,7 @@ export default function ArticleClient({ article }: { article: Article }) {
             </h2>
             <p className="text-primary-on/80 mb-8 max-w-xl mx-auto leading-relaxed">
               See how Go4Garage&apos;s AI platform handles compliance, maintenance, and operations
-              — end to end, across all 33 states.
+              end to end, across all 33 states.
             </p>
             <Link
               href="/demo"

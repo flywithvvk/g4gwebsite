@@ -20,7 +20,7 @@ const capabilityTabs = [
     color: 'primary' as const,
     title: '33-State Policy Engine',
     description:
-      'Navigate India\u2019s fragmented regulatory landscape with an AI engine that tracks, interprets, and automates compliance across every state, authority, and policy domain \u2014 from DISCOM approvals to pollution board permits.',
+      'Navigate India\u2019s fragmented regulatory environment with an AI engine that tracks, interprets, and automates compliance across every state, authority, and policy domain: from DISCOM approvals to pollution board permits.',
     features: [
       { icon: 'bolt', name: 'DISCOM Automation', desc: 'Automated application wizard for connection requests, load sanctioning, and meter installation across all DISCOMs' },
       { icon: 'currency_rupee', name: 'Subsidy Tracking', desc: 'Real-time tracking of FAME-II, state-level incentives, and subsidy disbursement workflows' },
@@ -267,7 +267,7 @@ export default function PlatformClient() {
             badge="Core Capabilities"
             title="Four Pillars of"
             highlight="Platform Excellence"
-            subtitle="A comprehensive AI-powered solution designed for every layer of India&apos;s automobile value chain."
+            subtitle="An AI-powered solution built for every layer of India&apos;s automobile value chain."
           />
 
           {/* Tab bar */}

@@ -24,7 +24,7 @@ interface Article {
 const featuredArticle = {
   title: "India's EV Revolution: How AI is Transforming Compliance",
   excerpt:
-    'The EV ecosystem in India is growing at an unprecedented pace. But with growth comes regulatory complexity, across 33 states, multiple ministries, and evolving policies. Learn how AI-powered intelligence is cutting through the chaos to deliver 89.5% compliance automation.',
+    'The EV ecosystem in India is growing at a rapid pace. But with growth comes regulatory complexity, across 33 states, multiple ministries, and evolving policies. Learn how AI-powered intelligence is cutting through the chaos to deliver 89.5% compliance automation.',
   date: 'Apr 2026',
   category: 'Regulatory' as const,
   readTime: '8 min read',
@@ -84,7 +84,7 @@ const articles: Article[] = [
   {
     title: '33-State EV Charging Regulations: What CPOs Need to Know',
     excerpt:
-      'Charge Point Operators face a patchwork of state-level rules. This comprehensive guide covers every state\'s requirements in one place.',
+      'Charge Point Operators face a patchwork of state-level rules. This guide covers every state\'s requirements in one place.',
     date: 'Feb 2026',
     category: 'Regulatory',
     readTime: '10 min read',

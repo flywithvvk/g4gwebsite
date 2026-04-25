@@ -83,7 +83,7 @@ const team = [
     details: [
       'Deep expertise in automobile regulations and EV operations across India',
       'Built Go4Garage after mapping 95 pain points across the EV ecosystem',
-      'Passionate about transforming India\'s automobile intelligence landscape',
+      'Passionate about transforming India\'s automobile intelligence sector',
     ],
   },
   {

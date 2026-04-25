@@ -75,7 +75,7 @@ const faqs: FAQItem[] = [
   },
   {
     q: 'Do you provide training?',
-    a: 'Yes, we provide comprehensive onboarding including hands-on training sessions for all user roles, documentation, video tutorials, and ongoing support. Every customer gets a dedicated onboarding specialist during the initial period.',
+    a: 'Yes, we provide structured onboarding including hands-on training sessions for all user roles, documentation, video tutorials, and ongoing support. Every customer gets a dedicated onboarding specialist during the initial period.',
     category: 'Implementation',
   },
   {

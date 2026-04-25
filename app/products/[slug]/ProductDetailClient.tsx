@@ -242,7 +242,7 @@ export default function ProductDetailClient({ product }: { product: ProductData 
                     {product.mobileApp.comingSoon ? (
                       <div className="flex items-center gap-2 px-5 py-3 rounded-2xl border-2 border-dashed border-outline-variant/50 text-on-surface-variant text-sm font-medium">
                         <span className="material-symbols-outlined text-base">schedule</span>
-                        App Store &amp; Google Play — Coming Soon
+                        App Store &amp; Google Play: Coming Soon
                       </div>
                     ) : (
                       <>
@@ -553,7 +553,7 @@ export default function ProductDetailClient({ product }: { product: ProductData 
               How It <span className="gradient-text">Works</span>
             </h2>
             <p className="mt-3 text-on-surface-variant">
-              Step-by-step — from onboarding to impact in {product.workflowSteps.length} key stages.
+              Step-by-step: from onboarding to impact in {product.workflowSteps.length} key stages.
             </p>
           </motion.div>
 
@@ -631,7 +631,7 @@ export default function ProductDetailClient({ product }: { product: ProductData 
               Part of a <span className="gradient-text">Bigger Picture</span>
             </h2>
             <p className="mt-3 text-on-surface-variant">
-              {product.shortName} connects seamlessly with the Go4Garage ecosystem.
+              {product.shortName} integrates directly with the Go4Garage ecosystem.
             </p>
           </motion.div>
 
@@ -717,7 +717,7 @@ export default function ProductDetailClient({ product }: { product: ProductData 
                   {product.mobileApp.comingSoon ? (
                     <div className="flex items-center gap-2 px-6 py-4 rounded-2xl border-2 border-dashed border-white/30 text-white/80 text-base font-medium">
                       <span className="material-symbols-outlined">schedule</span>
-                      App Store &amp; Google Play — Coming Soon
+                      App Store &amp; Google Play: Coming Soon
                     </div>
                   ) : (
                     <>
