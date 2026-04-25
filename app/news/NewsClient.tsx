@@ -111,7 +111,7 @@ const newsItems: NewsItem[] = [
     date: 'Mar 2026',
     headline: 'CPCB Issues Final Notice to 847 EV Operators for EPR Non-Compliance Under Battery Waste Rules',
     summary:
-      'The Central Pollution Control Board has issued compliance notices to 847 EV operators — including fleet companies, CPOs, and workshops — for failure to register on the EPR portal and non-submission of battery collection targets. Operators must submit registration and FY2025-26 collection data by June 30, 2026. Penalties under the Environment Protection Act can reach ₹1 lakh per day per violation.',
+      'The Central Pollution Control Board has issued compliance notices to 847 EV operators (including fleet companies, CPOs, and workshops) for failure to register on the EPR portal and non-submission of battery collection targets. Operators must submit registration and FY2025-26 collection data by June 30, 2026. Penalties under the Environment Protection Act can reach ₹1 lakh per day per violation.',
     source: 'CPCB',
   },
   {
