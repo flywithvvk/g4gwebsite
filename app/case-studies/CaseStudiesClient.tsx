@@ -95,7 +95,7 @@ export default function CaseStudiesClient() {
   return (
     <div className="min-h-screen bg-surface text-on-surface">
       {/* ─── HERO ─── */}
-      <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden pt-16">
+      <section className="relative min-h-[55vh] flex items-center justify-center overflow-hidden pt-[6.25rem]">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-tertiary-container/8" />
         <motion.div
           animate={{ scale: [1, 1.15, 1] }}

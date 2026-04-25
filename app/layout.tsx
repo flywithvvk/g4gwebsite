@@ -11,7 +11,6 @@ import { RemoteConfigInit } from "@/components/RemoteConfigInit";
 import { CookieConsent } from "@/components/CookieConsent";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { ExitIntentModal } from "@/components/ExitIntentModal";
-import { PromoBanner } from "@/components/PromoBanner";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 const SITE_URL = "https://www.go4garage.in";
@@ -119,7 +118,6 @@ export default function RootLayout({
         <GoogleTagManager />
         <FirebaseAppCheck />
         <RemoteConfigInit />
-        <PromoBanner />
         <ScrollProgress />
         <Navigation />
         <main className="min-h-screen">

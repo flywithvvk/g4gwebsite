@@ -110,7 +110,7 @@ export default function ImpactClient() {
     <div className="min-h-screen bg-surface text-on-surface">
 
       {/* ─── 1. HERO ─── */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-20 pb-12">
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-[7.25rem] pb-12">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
         <motion.div
           animate={{ scale: [1, 1.18, 1] }}

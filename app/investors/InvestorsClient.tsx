@@ -162,7 +162,7 @@ export default function InvestorsClient() {
     <div className="min-h-screen bg-surface text-on-surface">
 
       {/* ─── HERO ─── */}
-      <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden pt-[7.25rem]">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
         <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 12, repeat: Infinity }} className="absolute top-1/4 left-1/4 hidden md:block w-[600px] h-[600px] bg-primary-container/10 rounded-full blur-[180px]" />
         <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 15, repeat: Infinity, delay: 3 }} className="absolute bottom-1/4 right-1/4 hidden md:block w-[400px] h-[400px] bg-secondary-container/8 rounded-full blur-[150px]" />

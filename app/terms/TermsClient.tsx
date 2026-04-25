@@ -5,7 +5,7 @@ import { IndiaFlag } from '@/components/IndiaFlag';
 
 export default function TermsClient() {
   return (
-    <div className="min-h-screen bg-surface text-on-surface pt-24 pb-20">
+    <div className="min-h-screen bg-surface text-on-surface pt-[8.25rem] pb-20">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Back navigation */}

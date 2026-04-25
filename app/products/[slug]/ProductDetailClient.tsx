@@ -100,7 +100,7 @@ export default function ProductDetailClient({ product }: { product: ProductData 
     <div className="min-h-screen bg-surface text-on-surface">
 
       {/* ━━━ SECTION 1: HERO ━━━ */}
-      <section className={`relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-24 pb-16 bg-gradient-to-br ${c.heroBg}`}>
+      <section className={`relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-[8.25rem] pb-16 bg-gradient-to-br ${c.heroBg}`}>
         <motion.div
           animate={{ scale: [1, 1.2, 1], x: [0, 30, 0] }}
           transition={{ duration: 12, repeat: Infinity }}

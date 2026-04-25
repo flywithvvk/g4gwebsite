@@ -166,7 +166,7 @@ export default function ContactClient() {
     <div className="min-h-screen bg-surface text-on-surface">
 
       {/* SPLIT LAYOUT HERO */}
-      <section className="relative overflow-hidden pt-20 pb-24">
+      <section className="relative overflow-hidden pt-[7.25rem] pb-24">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
         <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 12, repeat: Infinity }} className="absolute top-1/4 left-1/6 hidden md:block w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[180px]" />
         <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 15, repeat: Infinity, delay: 4 }} className="absolute bottom-1/4 right-1/6 hidden md:block w-[350px] h-[350px] bg-secondary-container/8 rounded-full blur-[150px]" />

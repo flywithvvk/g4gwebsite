@@ -156,7 +156,7 @@ export default function ROIClient() {
     <div className="min-h-screen bg-surface text-on-surface">
 
       {/* ─── HERO ─── */}
-      <section className="relative pt-24 pb-12 overflow-hidden">
+      <section className="relative pt-[8.25rem] pb-12 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/6" />
         <motion.div
           animate={{ scale: [1, 1.15, 1] }}

@@ -143,3 +143,13 @@ main, .page-wrapper {
     min-height: 44px;
   }
 }
+
+/* Announcement ticker — right-to-left continuous scroll */
+@keyframes g4g-ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.g4g-ticker {
+  animation: g4g-ticker 35s linear infinite;
+  will-change: transform;
+}

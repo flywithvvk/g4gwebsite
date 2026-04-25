@@ -716,7 +716,7 @@ export default function SolutionsClient() {
     <div className="min-h-screen bg-surface text-on-surface">
 
       {/* HERO */}
-      <section className="relative min-h-[72vh] flex items-center justify-center overflow-hidden pt-16">
+      <section className="relative min-h-[72vh] flex items-center justify-center overflow-hidden pt-[6.25rem]">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{

@@ -11,7 +11,6 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { StatsCard } from '@/components/StatsCard';
 import { Testimonials } from '@/components/Testimonials';
 import { TrustBar } from '@/components/TrustBar';
-import FiveYearsBanner from '@/components/FiveYearsBanner';
 import { EVJourneyVisual } from '@/components/EVJourneyVisual';
 import { SocialProofTicker } from '@/components/SocialProofTicker';
 import { trackCTAClick } from '@/lib/analytics';
@@ -84,7 +83,7 @@ export default function HomePage() {
           HERO: Slide 0: EV Journey Video | Slide 1: Platform Message
           + 5-YEAR ANNIVERSARY BANNER (same section)
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative mt-16">
+      <section className="relative mt-[6.25rem]">
         {/* ── Slides (full viewport height) ── */}
         <div className="relative h-[calc(100vh-4rem)] overflow-hidden">
         <AnimatePresence mode="wait">
@@ -132,18 +131,6 @@ export default function HomePage() {
 
               <div className="container mx-auto px-6 relative z-10">
                 <motion.div initial={{ y: 30 }} animate={{ y: 0 }} transition={{ duration: 0.7 }} className="text-center max-w-5xl mx-auto">
-
-                  {/* Anniversary badge — 5 Years */}
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1, duration: 0.5 }}
-                    className="flex justify-center mb-3"
-                  >
-                    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-400 text-xs font-semibold tracking-wide">
-                      🎉 Celebrating 5 Years of Innovation: 2021 to 2026
-                    </span>
-                  </motion.div>
 
                   {/* Animated badge */}
                   <motion.div
@@ -227,9 +214,6 @@ export default function HomePage() {
           )}
         </AnimatePresence>
         </div>
-
-        {/* ── 5-Year Anniversary Banner — inside hero section ── */}
-        <FiveYearsBanner />
       </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

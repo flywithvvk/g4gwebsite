@@ -130,7 +130,7 @@ export default function AboutClient() {
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           SECTION 1: SPLIT HERO
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden pt-20 pb-16">
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden pt-[7.25rem] pb-16">
         {/* Background effects */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
         <motion.div

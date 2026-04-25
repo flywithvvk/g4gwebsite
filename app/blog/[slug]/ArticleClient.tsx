@@ -119,7 +119,7 @@ export default function ArticleClient({ article }: { article: Article }) {
   return (
     <div className="min-h-screen bg-surface text-on-surface">
       {/* ─── HERO ─── */}
-      <section className="relative overflow-hidden pt-24 pb-12">
+      <section className="relative overflow-hidden pt-[8.25rem] pb-12">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/6" />
         <div
           className="absolute inset-0 opacity-[0.04]"

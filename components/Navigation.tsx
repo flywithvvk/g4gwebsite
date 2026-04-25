@@ -36,6 +36,30 @@ const Navigation = () => {
       transition={{ duration: 0.5 }}
       className="fixed top-0 left-0 right-0 z-50"
     >
+      {/* ── Announcement Ticker ── */}
+      <div className="w-full bg-black overflow-hidden border-b border-white/10">
+        <div className="flex items-center h-9 overflow-hidden">
+          <div className="g4g-ticker flex whitespace-nowrap">
+            {[0, 1].map((i) => (
+              <span key={i} aria-hidden={i === 1} className="text-white text-xs font-medium px-10 inline-flex items-center gap-3">
+                🎉 Go4Garage Celebrates 5 Years of Innovation (2021-2026)
+                <span className="text-white/40">•</span>
+                🚀 India&apos;s First AI-Powered EV Intelligence Platform
+                <span className="text-white/40">•</span>
+                ✅ 95 Problems Mapped, 85 Solved
+                <span className="text-white/40">•</span>
+                ⚡ 7 Products. One Platform. Zero Friction.
+                <span className="text-white/40">•</span>
+                📊 1 Lakh+ DISCOM Applications Processed
+                <span className="text-white/40">•</span>
+                🗓 Book Your Demo Today →
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className={`absolute inset-0 backdrop-blur-xl border-b transition-all duration-300 ${scrolled ? 'bg-surface-bright shadow-md border-outline-variant/40' : 'bg-surface-bright shadow-sm border-outline-variant/30'}`} />
 
       <div className="relative max-w-7xl mx-auto pl-2 sm:pl-3 lg:pl-4 pr-4 sm:pr-6 lg:pr-8">
@@ -123,7 +147,7 @@ const Navigation = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="md:hidden absolute top-16 left-0 right-0 bg-surface-bright/95 backdrop-blur-xl border-b border-outline-variant/30 shadow-lg"
+            className="md:hidden absolute top-[6.25rem] left-0 right-0 bg-surface-bright/95 backdrop-blur-xl border-b border-outline-variant/30 shadow-lg"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}

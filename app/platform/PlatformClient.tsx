@@ -153,7 +153,7 @@ export default function PlatformClient() {
     <div className="min-h-screen bg-surface text-on-surface">
 
       {/* ─────────────────────── 1 · HERO SLIDER ─────────────────────── */}
-      <section className="relative h-[calc(100vh-4rem)] mt-16 overflow-hidden">
+      <section className="relative h-[calc(100vh-6.25rem)] mt-[6.25rem] overflow-hidden">
         <AnimatePresence mode="wait">
           {heroSlide === 0 ? (
             /* ── SLIDE 0: EV Journey Video ── */
