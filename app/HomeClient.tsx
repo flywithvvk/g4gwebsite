@@ -82,8 +82,11 @@ export default function HomePage() {
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           HERO: Slide 0: EV Journey Video | Slide 1: Platform Message
+          + 5-YEAR ANNIVERSARY BANNER (same section)
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative h-[calc(100vh-4rem)] mt-16 overflow-hidden">
+      <section className="relative mt-16">
+        {/* ── Slides (full viewport height) ── */}
+        <div className="relative h-[calc(100vh-4rem)] overflow-hidden">
         <AnimatePresence mode="wait">
           {heroSlide === 0 ? (
             /* ── SLIDE 0: Full-screen EV Journey Video ── */
@@ -211,12 +214,11 @@ export default function HomePage() {
             </motion.div>
           )}
         </AnimatePresence>
-      </section>
+        </div>
 
-      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          5-YEAR ANNIVERSARY BANNER — right after video
-      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <FiveYearsBanner />
+        {/* ── 5-Year Anniversary Banner — inside hero section ── */}
+        <FiveYearsBanner />
+      </section>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           TRUST BAR
