@@ -49,6 +49,22 @@ next-env.d.ts
 .qodo/
 .snapshots/
 
+# Editor & AI tool configs
+.vscode/
+.cursor/
+.codex/
+
+# MCP configs (may contain API keys)
+mcp.json
+.mcp.json
+
+# Local app config
+config.toml
+
+# Firebase local cache / CI artifacts
+.firebase/
+lighthouse-report.json
+
 # Data archives (keep in docs/ only, not at repo root)
 /*.xlsx.zip
 /*.xlsx
