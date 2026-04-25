@@ -133,6 +133,18 @@ export default function HomePage() {
               <div className="container mx-auto px-6 relative z-10">
                 <motion.div initial={{ y: 30 }} animate={{ y: 0 }} transition={{ duration: 0.7 }} className="text-center max-w-5xl mx-auto">
 
+                  {/* Anniversary badge — 5 Years */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1, duration: 0.5 }}
+                    className="flex justify-center mb-3"
+                  >
+                    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-400 text-xs font-semibold tracking-wide">
+                      🎉 Celebrating 5 Years of Innovation — 2021 to 2026
+                    </span>
+                  </motion.div>
+
                   {/* Animated badge */}
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8, y: -10 }}

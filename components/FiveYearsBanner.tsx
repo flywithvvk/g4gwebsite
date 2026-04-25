@@ -58,8 +58,7 @@ export default function FiveYearsBanner() {
         {/* Anniversary badge */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="flex justify-center mb-8"
         >
@@ -72,8 +71,7 @@ export default function FiveYearsBanner() {
         <div className="flex flex-col items-center text-center mb-12 md:mb-16">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, type: 'spring', stiffness: 120 }}
             className="relative"
           >
@@ -104,8 +102,7 @@ export default function FiveYearsBanner() {
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white font-display -mt-4 md:-mt-8">
@@ -120,8 +117,7 @@ export default function FiveYearsBanner() {
         {/* Milestone timeline */}
         <motion.div
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
           className="mb-12 md:mb-16"
         >
@@ -132,8 +128,7 @@ export default function FiveYearsBanner() {
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1, duration: 0.5 }}
                   className={`relative flex-shrink-0 w-56 md:w-auto p-4 rounded-2xl border ${m.color} backdrop-blur-sm`}
                 >
@@ -156,8 +151,7 @@ export default function FiveYearsBanner() {
         {/* Stats row */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 md:mb-16"
         >
@@ -179,8 +173,7 @@ export default function FiveYearsBanner() {
         {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
