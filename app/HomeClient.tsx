@@ -141,7 +141,7 @@ export default function HomePage() {
                     className="flex justify-center mb-3"
                   >
                     <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/40 bg-amber-500/10 text-amber-400 text-xs font-semibold tracking-wide">
-                      🎉 Celebrating 5 Years of Innovation — 2021 to 2026
+                      🎉 Celebrating 5 Years of Innovation: 2021 to 2026
                     </span>
                   </motion.div>
 

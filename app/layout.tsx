@@ -51,7 +51,7 @@ export const metadata: Metadata = {
         url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Go4Garage — AI-Powered Automobile Intelligence Platform",
+        alt: "Go4Garage: AI-Powered Automobile Intelligence Platform",
       },
     ],
   },
