@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Go4Garage - The AI Platform Powering India's Automobile Future",
-    description: "India's first AI-powered automobile intelligence platform. 7 products. 84 problems solved. Zero friction.",
+    description: "India's first AI-powered automobile intelligence platform. 7 products. 85 problems solved. Zero friction.",
     url: SITE_URL,
     siteName: "Go4Garage",
     locale: "en_IN",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Go4Garage - AI-Powered Automobile Intelligence",
-    description: "India's first AI-powered automobile intelligence platform. 7 products solving 84 problems across India's EV ecosystem.",
+    description: "India's first AI-powered automobile intelligence platform. 7 products solving 85 problems across India's EV ecosystem.",
     creator: "@go4garage",
     images: [`${SITE_URL}/og-image.png`],
   },
