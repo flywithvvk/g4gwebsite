@@ -26,7 +26,7 @@ const Navigation = () => {
   const navLinks = [
     { label: 'Platform', href: '/platform', icon: 'dashboard' },
     { label: 'Products', href: '/products', icon: 'inventory_2' },
-    { label: 'Who We Serve', href: '/solutions', icon: 'lightbulb' },
+    { label: 'Solutions', href: '/solutions', icon: 'lightbulb' },
     { label: 'Impact', href: '/impact', icon: 'trending_up' },
     { label: 'Pricing', href: '/pricing', icon: 'payments' },
     { label: 'About', href: '/about', icon: 'info' },
@@ -92,7 +92,7 @@ const Navigation = () => {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center gap-1.5 ${
+                  className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap ${
                     isActive
                       ? 'bg-primary-container/20 text-primary font-semibold'
                       : 'text-on-surface-variant hover:text-primary hover:bg-surface-container-high/60'
