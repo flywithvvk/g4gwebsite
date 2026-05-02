@@ -12,7 +12,7 @@ concurrency:
 jobs:
   lighthouse:
     name: Lighthouse Audit
-    runs-on: [self-hosted, g4g-local]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -34,16 +34,17 @@ jobs:
 
       - name: Serve & run Lighthouse CI
         run: |
-          $serveJob = Start-Job -ScriptBlock { npx serve out -l 3000 }
-          Start-Sleep -Seconds 5
-          try {
-            npx @lhci/cli@0.14.x autorun --upload.target=temporary-public-storage
-          } finally {
-            Stop-Job $serveJob -ErrorAction SilentlyContinue
-            Remove-Job $serveJob -ErrorAction SilentlyContinue
-          }
+          serve out -l 3000 &
+          sleep 5
+          npx @lhci/cli@0.14.x autorun --upload.target=temporary-public-storage
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
       - name: Assert thresholds
-        run: npx @lhci/cli@0.14.x assert --assert.preset=lighthouse:recommended '--assert.assertions.categories:performance=["error",{"minScore":0.80}]' '--assert.assertions.categories:accessibility=["warn",{"minScore":0.90}]' '--assert.assertions.categories:best-practices=["warn",{"minScore":0.90}]' '--assert.assertions.categories:seo=["error",{"minScore":0.90}]'
+        run: |
+          npx @lhci/cli@0.14.x assert \
+            --assert.preset=lighthouse:recommended \
+            --assert.assertions.categories:performance=["error",{"minScore":0.80}] \
+            --assert.assertions.categories:accessibility=["warn",{"minScore":0.90}] \
+            --assert.assertions.categories:best-practices=["warn",{"minScore":0.90}] \
+            --assert.assertions.categories:seo=["error",{"minScore":0.90}]
