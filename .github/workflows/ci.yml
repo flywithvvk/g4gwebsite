@@ -14,7 +14,7 @@ concurrency:
 jobs:
   validate:
     name: Lint, Type-check, Build
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, g4g-local]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -39,8 +39,9 @@ jobs:
 
       - name: Verify build output
         run: |
-          if [ ! -f out/index.html ] || [ ! -f out/404.html ]; then
-            echo "::error::Expected out/index.html and out/404.html were not generated"
+          if (!(Test-Path "out/index.html") -or !(Test-Path "out/404.html")) {
+            Write-Error "Expected out/index.html and out/404.html were not generated"
             exit 1
-          fi
-          echo "Build output OK — $(find out -type f | wc -l) files generated"
+          }
+          $fileCount = (Get-ChildItem "out" -Recurse -File).Count
+          Write-Host "Build output OK - $fileCount files generated"

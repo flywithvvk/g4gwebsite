@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: Validate & Build
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, g4g-local]
 
     steps:
       - name: Checkout repository
@@ -35,11 +35,12 @@ jobs:
 
       - name: Verify build output
         run: |
-          if [ ! -d "out" ] || [ -z "$(ls -A out)" ]; then
-            echo "::error::Build output directory 'out' is empty or missing"
+          if (!(Test-Path "out") -or -not (Get-ChildItem "out")) {
+            Write-Error "Build output directory 'out' is empty or missing"
             exit 1
-          fi
-          echo "Build output OK — $(find out -type f | wc -l) files generated"
+          }
+          $fileCount = (Get-ChildItem "out" -Recurse -File).Count
+          Write-Host "Build output OK - $fileCount files generated"
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
@@ -51,7 +52,7 @@ jobs:
   deploy:
     name: Deploy to Firebase
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, g4g-local]
 
     steps:
       - name: Checkout repository
