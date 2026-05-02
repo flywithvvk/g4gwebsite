@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRef, useEffect, useState } from 'react';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Icon } from '@/components/Icon';
+import { isExternalHref, productExternalUrls } from '@/lib/productLinks';
 
 /* ─────────────────────────────────────────────
    Stakeholder Data
@@ -224,7 +225,7 @@ const stakeholders: Stakeholder[] = [
       { icon: 'factory', value: 'Industry-aligned', label: 'Curriculum' },
     ],
     ctaText: 'Explore Training Platform',
-    ctaHref: '/products',
+    ctaHref: productExternalUrls.arjun,
   },
   {
     id: 'consumers',
@@ -251,7 +252,7 @@ const stakeholders: Stakeholder[] = [
       { icon: 'verified', value: 'Certified', label: 'Service Locator' },
     ],
     ctaText: 'Download Ignition App',
-    ctaHref: '/products',
+    ctaHref: productExternalUrls.ignition,
   },
   {
     id: 'oems',
@@ -353,7 +354,7 @@ const stakeholders: Stakeholder[] = [
       { icon: 'description', value: 'OEM-ready', label: 'Procedures' },
     ],
     ctaText: 'Start Learning',
-    ctaHref: '/products/arjun',
+    ctaHref: productExternalUrls.arjun,
   },
   {
     id: 'discoms',
@@ -561,15 +562,27 @@ function StakeholderSection({
                 </div>
               </div>
             </div>
-            <Link href={stakeholder.ctaHref}>
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="shrink-0 px-6 py-3 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
-              >
-                {stakeholder.ctaText}
-              </motion.button>
-            </Link>
+            {isExternalHref(stakeholder.ctaHref) ? (
+              <a href={stakeholder.ctaHref} target="_blank" rel="noopener noreferrer">
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="shrink-0 px-6 py-3 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
+                >
+                  {stakeholder.ctaText}
+                </motion.button>
+              </a>
+            ) : (
+              <Link href={stakeholder.ctaHref}>
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="shrink-0 px-6 py-3 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
+                >
+                  {stakeholder.ctaText}
+                </motion.button>
+              </Link>
+            )}
           </div>
 
           <div className="h-px bg-outline-variant/30 mb-8" />
@@ -603,6 +616,7 @@ function StakeholderSection({
 
               {/* Stakeholder image: fills blank space at bottom of card */}
               <div className="relative -mx-7 -mb-7 mt-6 h-44 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={stakeholder.image}
                   alt={stakeholder.name}

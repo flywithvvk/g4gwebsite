@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import { Icon } from '@/components/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 

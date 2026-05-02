@@ -70,29 +70,29 @@ const Navigation = () => {
       <div className="relative">
         <div className={`absolute inset-0 backdrop-blur-xl border-b transition-all duration-300 ${scrolled ? 'bg-surface-bright shadow-md border-outline-variant/40' : 'bg-surface-bright shadow-sm border-outline-variant/30'}`} />
 
-        <div className="relative max-w-7xl mx-auto pl-2 sm:pl-3 lg:pl-4 pr-4 sm:pr-6 lg:pr-8">
-          <div className="flex items-center justify-between h-16">
+        <div className="relative mx-auto max-w-[1520px] px-4 sm:px-6 lg:px-6 xl:px-8">
+          <div className="flex h-16 items-center justify-between gap-3">
           {/* Logo */}
-          <Link href="/" className="flex items-center group">
+          <Link href="/" className="flex shrink-0 items-center self-center group">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
               className="flex items-center gap-2.5"
             >
-              <Image src="/logo.jpg" alt="Go4Garage" width={150} height={40} className="h-9 w-auto object-contain" />
+              <Image src="/logo.jpg" alt="Go4Garage" width={150} height={40} className="block h-8 w-auto object-contain xl:h-9" />
             </motion.div>
           </Link>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-0.5">
+          <div className="hidden items-center gap-0.5 xl:flex">
             {visibleNavLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap ${
+                  className={`flex items-center gap-1.5 whitespace-nowrap rounded-xl px-2.5 py-2 text-sm font-medium transition-all duration-200 ${
                     isActive
                       ? 'bg-primary-container/20 text-primary font-semibold'
                       : 'text-on-surface-variant hover:text-primary hover:bg-surface-container-high/60'
@@ -106,9 +106,9 @@ const Navigation = () => {
           </div>
 
           {/* Resources dropdown */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden items-center xl:flex">
             <div className="relative" onMouseEnter={() => setResourcesOpen(true)} onMouseLeave={() => setResourcesOpen(false)}>
-              <button className="px-3.5 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center gap-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container-high/60">
+              <button className="flex items-center gap-1.5 whitespace-nowrap rounded-xl px-2.5 py-2 text-sm font-medium text-on-surface-variant transition-all duration-200 hover:bg-surface-container-high/60 hover:text-primary">
                 <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>menu_book</span>
                 Resources
                 <svg
@@ -147,7 +147,7 @@ const Navigation = () => {
 
           {/* CTAs */}
           <motion.div
-            className="hidden md:flex items-center gap-2"
+            className="hidden shrink-0 items-center gap-2 lg:flex"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -155,14 +155,14 @@ const Navigation = () => {
             <Link
               href="/demo"
               onClick={() => trackCTAClick('nav_book_demo', '/demo')}
-              className="px-4 py-2.5 rounded-xl font-semibold text-sm text-primary border border-primary/30 hover:bg-primary-container/10 transition-all duration-200"
+              className="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-xl border border-primary/30 px-4 text-sm font-semibold text-primary transition-all duration-200 hover:bg-primary-container/10 xl:h-11 xl:px-5"
             >
               Book Demo
             </Link>
             <Link
               href="/contact"
               onClick={() => trackCTAClick('nav_contact_us', '/contact')}
-              className="px-5 py-2.5 rounded-xl font-semibold text-sm text-primary-on bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg transition-all duration-200"
+              className="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-xl bg-primary px-5 text-sm font-semibold text-primary-on shadow-md transition-all duration-200 hover:bg-primary/90 hover:shadow-lg xl:h-11 xl:px-6"
             >
               Contact Us
             </Link>
@@ -170,7 +170,7 @@ const Navigation = () => {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-surface-container-high transition-colors"
+            className="flex flex-col gap-1.5 rounded-lg p-2 transition-colors hover:bg-surface-container-high xl:hidden"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={isOpen}
@@ -196,7 +196,7 @@ const Navigation = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="md:hidden absolute top-[6.25rem] left-0 right-0 bg-surface-bright/95 backdrop-blur-xl border-b border-outline-variant/30 shadow-lg"
+            className="absolute left-0 right-0 top-[6.25rem] border-b border-outline-variant/30 bg-surface-bright/95 shadow-lg backdrop-blur-xl xl:hidden"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}

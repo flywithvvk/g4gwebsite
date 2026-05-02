@@ -218,7 +218,7 @@ This is a proprietary project. For authorized contributors:
 
 - **Email**: hello@go4garage.com
 - **Website**: [Go4Garage](https://go4garage.com)
-- **Location**: Bangalore, India
+- **Location**: India | Bharat 🇮🇳
 
 ## 📜 License
 

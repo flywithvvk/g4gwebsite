@@ -7,6 +7,7 @@ import { Icon } from '@/components/Icon';
 import { SectionHeading } from '@/components/SectionHeading';
 import { StatsCard } from '@/components/StatsCard';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
+import { getProductExternalUrl, isExternalHref } from '@/lib/productLinks';
 
 /* ───────────────────────── DATA ───────────────────────── */
 
@@ -211,38 +212,6 @@ const timelinePhases = [
   { phase: 'Week 4', title: 'Training & Onboarding', icon: 'school', desc: 'Team training & feature walkthrough' },
   { phase: 'Week 5+', title: 'Optimization', icon: 'trending_up', desc: 'AI learns, adapts & scales with your operations' },
 ];
-
-/* ──────────────────── FLOATING ICONS ──────────────────── */
-
-function FloatingProductIcons() {
-  const icons = products.map((p) => ({ icon: p.icon, color: colorMap[p.colorFamily].text }));
-  return (
-    <div className="absolute inset-0 pointer-events-none">
-      {icons.map((item, i) => {
-        const angle = (360 / icons.length) * i;
-        const radius = 220;
-        return (
-          <motion.div
-            key={i}
-            className="absolute left-1/2 top-1/2"
-            style={{ width: 44, height: 44, marginLeft: -22, marginTop: -22 }}
-            animate={{ rotate: [angle, angle + 360] }}
-            transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-          >
-            <motion.div
-              className={`w-11 h-11 rounded-xl bg-surface-bright/80 backdrop-blur border border-outline-variant/30 flex items-center justify-center shadow-sm ${item.color}`}
-              style={{ transform: `translateX(${radius}px)` }}
-              animate={{ rotate: [0, -360] }}
-              transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-            >
-              <Icon name={item.icon} size={22} />
-            </motion.div>
-          </motion.div>
-        );
-      })}
-    </div>
-  );
-}
 
 /* ──────────────────── TECH ARCH DIAGRAM ──────────────────── */
 
@@ -592,14 +561,16 @@ export default function ProductsClient() {
                     )}
                   </motion.button>
                   {p.slug && (
-                    <Link
-                      href={`/products/${p.slug}`}
+                    <a
+                      href={getProductExternalUrl(p.slug) ?? `/products/${p.slug}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={`absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity w-7 h-7 rounded-lg ${c.iconBg} flex items-center justify-center z-10`}
-                      title={`View ${p.name} details`}
+                      title={`Visit ${p.name}`}
                       onClick={(e) => e.stopPropagation()}
                     >
                       <Icon name="open_in_new" size={14} className={c.text} />
-                    </Link>
+                    </a>
                   )}
                   </div>
                 );
@@ -673,13 +644,22 @@ export default function ProductsClient() {
                         <span className="font-medium text-on-surface">{selected.setupTime}</span>
                       </span>
                     )}
-                    <Link
-                      href={selected.slug ? `/products/${selected.slug}` : '/products'}
-                      className={`inline-flex items-center gap-1.5 text-sm font-semibold ${colors.text} hover:underline font-display`}
-                    >
-                      View Full Details
-                      <Icon name="arrow_forward" size={16} className={colors.text} />
-                    </Link>
+                    {(() => {
+                      const href = getProductExternalUrl(selected.slug) ?? (selected.slug ? `/products/${selected.slug}` : '/products');
+                      const external = isExternalHref(href);
+
+                      return (
+                        <a
+                          href={href}
+                          target={external ? '_blank' : undefined}
+                          rel={external ? 'noopener noreferrer' : undefined}
+                          className={`inline-flex items-center gap-1.5 text-sm font-semibold ${colors.text} hover:underline font-display`}
+                        >
+                          {external ? 'Visit Product Site' : 'View Full Details'}
+                          <Icon name="arrow_forward" size={16} className={colors.text} />
+                        </a>
+                      );
+                    })()}
                   </div>
                 </motion.div>
               </AnimatePresence>

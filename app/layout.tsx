@@ -92,25 +92,36 @@ export default function RootLayout({
     <html lang="en-IN">
       <head>
         {/* DNS prefetch + preconnect for faster resource loading */}
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://firebase.googleapis.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
-        {/* Preload LCP image (logo) + critical font */}
+        {/* Preload LCP image (logo) — UNCHANGED */}
         <link rel="preload" href="/logo.jpg" as="image" type="image/jpeg" />
-        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style" />
+
+        {/* ─────────────────────────────────────────────────────────────
+            PR 1 FONT UPDATE
+            Added: Fraunces (display), JetBrains Mono, Noto Sans Devanagari
+            Kept:  Inter (body fallback so existing copy doesn't reflow),
+                   Space Grotesk (kept as a secondary fallback)
+            ───────────────────────────────────────────────────────────── */}
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,30..100,0..1;1,9..144,300..700,30..100,0..1&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        />
+
+        {/* Material Symbols — UNCHANGED (existing icons keep working) */}
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=account_balance,account_balance_wallet,account_tree,analytics,apartment,api,apps,arrow_back,arrow_downward,arrow_forward,article,assignment,auto_awesome,auto_fix_high,auto_graph,auto_mode,auto_stories,bar_chart,battery_charging_full,battery_full,battery_horiz_075,battery_saver,bolt,bug_report,build,build_circle,business,calculate,calendar_month,calendar_today,campaign,cancel,chat,check,check_circle,checklist,chevron_left,chevron_right,close,cloud,code,computer,cookie,corporate_fare,currency_rupee,dashboard,description,domain,eco,electric_bolt,electric_car,electrical_services,emergency,engineering,error,ev_station,event,expand_more,explore,factory,feed,flag,foundation,garage,gavel,grade,group,groups,handshake,help,history,hourglass_empty,hub,info,insights,integration_instructions,inventory,inventory_2,keyboard_arrow_up,leaderboard,library_books,lightbulb,local_shipping,location_on,lock,mail,mail_outline,manage_search,map,menu_book,model_training,monitor_heart,monitoring,notifications_active,open_in_new,palette,payments,people,person,policy,precision_manufacturing,price_check,psychology,public,query_stats,quiz,receipt,receipt_long,recycling,remove,rocket_launch,rule,savings,schedule,school,science,search,search_off,security,send,sensors,settings,shield,smart_toy,smartphone,speed,star,storage,subscriptions,support_agent,swap_horiz,sync_alt,target,task_alt,timer,translate,travel_explore,trending_down,trending_up,troubleshoot,verified,verified_user,warning,warning_amber,wb_sunny,widgets,wifi,work,workspace_premium&display=swap" />
+
+        {/* Browser chrome keeps the Go4Garage brand amber. */}
         <meta name="theme-color" content="#904d00" />
         <meta name="color-scheme" content="light" />
         <meta name="format-detection" content="telephone=no" />
         <GlobalStructuredData />
-        {/* Register service worker for offline caching */}
+        {/* Register service worker for offline caching — UNCHANGED */}
         <script dangerouslySetInnerHTML={{ __html: `if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});})}` }} />
       </head>
       <body className="font-sans antialiased bg-surface text-on-surface">

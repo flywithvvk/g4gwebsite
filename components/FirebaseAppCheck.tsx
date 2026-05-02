@@ -23,6 +23,10 @@ const DEBUG_TOKEN          = process.env.NEXT_PUBLIC_APPCHECK_DEBUG_TOKEN  ?? ''
 
 let appCheckInitialised = false;
 
+type AppCheckGlobal = typeof self & {
+  FIREBASE_APPCHECK_DEBUG_TOKEN?: boolean | string;
+};
+
 export function FirebaseAppCheck() {
   useEffect(() => {
     if (appCheckInitialised) return;
@@ -31,13 +35,12 @@ export function FirebaseAppCheck() {
     // calls work without a real reCAPTCHA score.
     // The SDK logs the auto-generated UUID to the console on first run —
     // register that UUID in Firebase Console → App Check → Manage debug tokens.
+    const appCheckGlobal = self as AppCheckGlobal;
     if (DEBUG_TOKEN) {
-      // @ts-expect-error — FIREBASE_APPCHECK_DEBUG_TOKEN is a global injected before SDK init
-      self.FIREBASE_APPCHECK_DEBUG_TOKEN = DEBUG_TOKEN;
+      appCheckGlobal.FIREBASE_APPCHECK_DEBUG_TOKEN = DEBUG_TOKEN;
     } else if (process.env.NODE_ENV === 'development' && !RECAPTCHA_SITE_KEY) {
       // Auto-generate a debug token and log it; paste the UUID into Firebase Console
-      // @ts-expect-error
-      self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+      appCheckGlobal.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
     }
 
     if (!RECAPTCHA_SITE_KEY && !DEBUG_TOKEN && process.env.NODE_ENV !== 'development') return;

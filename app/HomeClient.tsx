@@ -13,18 +13,20 @@ import { Testimonials } from '@/components/Testimonials';
 import { TrustBar } from '@/components/TrustBar';
 import { EVJourneyVisual } from '@/components/EVJourneyVisual';
 import { SocialProofTicker } from '@/components/SocialProofTicker';
+import { LivingComplianceMap } from '@/components/LivingComplianceMap';
 import { trackCTAClick } from '@/lib/analytics';
+import { productExternalUrls } from '@/lib/productLinks';
 import { useRCString, useRCBoolean } from '@/lib/useRemoteConfig';
 
 /* ─── Data ─── */
 
 const products = [
-  { name: 'URGAA (ऊर्जा)', tagline: 'Regulatory & Grid Intelligence', problems: 27, icon: 'bolt', color: 'bg-primary-container/15 border-primary/20', cf: 'primary', href: '/products/urgaa' },
-  { name: 'GST (Go4Garage Service Tools)', tagline: 'Workshop & Commerce Engine', problems: 17, icon: 'build', color: 'bg-secondary-container/15 border-secondary/20', cf: 'secondary', href: '/products/gstsaas' },
-  { name: 'Ignition App', tagline: 'Consumer Experience App', problems: 11, icon: 'smartphone', color: 'bg-tertiary-container/15 border-tertiary/20', cf: 'tertiary', href: '/products/ignition' },
-  { name: 'EV VIDYA ARJUN', tagline: 'Workforce Skilling Platform', problems: 9, icon: 'school', color: 'bg-secondary-container/15 border-secondary/20', cf: 'secondary', href: '/products/arjun' },
-  { name: 'KAILASH-AI', tagline: 'Document AI & Predictive Analytics', problems: 18, icon: 'analytics', color: 'bg-primary-container/15 border-primary/20', cf: 'primary', href: '/products/kailash-ai' },
-  { name: 'Eka-AI', tagline: 'Agent Orchestration & Q&A', problems: 3, icon: 'smart_toy', color: 'bg-tertiary-container/15 border-tertiary/20', cf: 'tertiary', href: '/products/eka-ai' },
+  { name: 'URGAA (ऊर्जा)', tagline: 'Regulatory & Grid Intelligence', problems: 27, icon: 'bolt', color: 'bg-primary-container/15 border-primary/20', cf: 'primary', href: productExternalUrls.urgaa },
+  { name: 'GST (Go4Garage Service Tools)', tagline: 'Workshop & Commerce Engine', problems: 17, icon: 'build', color: 'bg-secondary-container/15 border-secondary/20', cf: 'secondary', href: productExternalUrls.gstsaas },
+  { name: 'Ignition App', tagline: 'Consumer Experience App', problems: 11, icon: 'smartphone', color: 'bg-tertiary-container/15 border-tertiary/20', cf: 'tertiary', href: productExternalUrls.ignition },
+  { name: 'EV VIDYA ARJUN', tagline: 'Workforce Skilling Platform', problems: 9, icon: 'school', color: 'bg-secondary-container/15 border-secondary/20', cf: 'secondary', href: productExternalUrls.arjun },
+  { name: 'KAILASH-AI', tagline: 'Document AI & Predictive Analytics', problems: 18, icon: 'analytics', color: 'bg-primary-container/15 border-primary/20', cf: 'primary', href: productExternalUrls['kailash-ai'] },
+  { name: 'Eka-AI', tagline: 'Agent Orchestration & Q&A', problems: 3, icon: 'smart_toy', color: 'bg-tertiary-container/15 border-tertiary/20', cf: 'tertiary', href: productExternalUrls['eka-ai'] },
 ];
 
 type ColorFamily = 'primary' | 'secondary' | 'tertiary';
@@ -118,17 +120,17 @@ export default function HomePage() {
             /* ── SLIDE 1: Headline + CTAs ── */
             <motion.div
               key="slide-1"
-              className="absolute inset-0 flex items-center justify-center"
+              className="absolute inset-0 flex items-center justify-center bg-[#fbfaf6]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <ParticleBackground className="absolute inset-0 z-0" />
+              <ParticleBackground className="absolute inset-0 z-0 opacity-35" />
 
               {/* Gradient overlays */}
               <div className="absolute inset-0 z-[1]">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-container/8 via-surface to-secondary-container/8" />
+                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.94),rgba(251,250,246,0.92)_48%,rgba(255,253,247,0.96))]" />
                 <motion.div
                   animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.14, 0.08] }}
                   transition={{ duration: 12, repeat: Infinity }}
@@ -142,10 +144,11 @@ export default function HomePage() {
               </div>
 
               {/* Dot grid */}
-              <div className="absolute inset-0 z-[1] opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+              <div className="absolute inset-0 z-[1] opacity-[0.018]" style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
               <div className="container mx-auto px-6 relative z-10">
-                <motion.div initial={{ y: 30 }} animate={{ y: 0 }} transition={{ duration: 0.7 }} className="text-center max-w-5xl mx-auto">
+                <div className="mx-auto grid max-w-[1440px] items-center gap-8 lg:grid-cols-[0.82fr_1.18fr] xl:gap-10">
+                <motion.div initial={{ y: 30 }} animate={{ y: 0 }} transition={{ duration: 0.7 }} className="text-center lg:text-left max-w-5xl mx-auto lg:mx-0">
 
                   {/* Animated badge */}
                   <motion.div
@@ -163,7 +166,7 @@ export default function HomePage() {
                   </motion.div>
 
                   {/* Headline */}
-                  <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-on-surface mb-6 leading-[1.05] tracking-tight font-display">
+                  <h1 className="text-4xl md:text-6xl lg:text-6xl xl:text-7xl font-bold text-on-surface mb-6 leading-[1.05] tracking-tight font-display">
                     The AI Platform{' '}
                     <br className="hidden md:block" />
                     Powering{' '}
@@ -181,12 +184,25 @@ export default function HomePage() {
                   </motion.div>
 
                   {/* Sub-copy */}
-                  <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-lg md:text-xl text-on-surface-variant mb-10 max-w-2xl mx-auto leading-relaxed">
+                  <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-lg md:text-xl text-on-surface-variant mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                     95 problems identified across India&apos;s EV ecosystem. 85 addressable. 6 products. Zero friction.
                   </motion.p>
 
+                  <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.82 }} className="mb-8 grid grid-cols-3 gap-2 rounded-2xl border border-primary/15 bg-surface-bright/70 p-2 backdrop-blur-sm sm:gap-3 sm:p-3 lg:max-w-xl">
+                    {[
+                      ['33', 'states scanned'],
+                      ['27', 'URGAA workflows'],
+                      ['89.5%', 'automation layer'],
+                    ].map(([value, label]) => (
+                      <div key={label} className="rounded-xl border border-outline-variant/30 bg-surface/65 px-3 py-2 text-center lg:text-left">
+                        <p className="font-display text-lg font-black gradient-text sm:text-2xl">{value}</p>
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">{label}</p>
+                      </div>
+                    ))}
+                  </motion.div>
+
                   {/* CTAs */}
-                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
                     <Link href="/contact" onClick={() => trackCTAClick('hero_schedule_demo', '/contact')}>
                       <motion.button
                         whileHover={{ scale: 1.04, boxShadow: '0 20px 40px -12px rgba(144,77,0,0.35)' }}
@@ -212,11 +228,16 @@ export default function HomePage() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.1 }}
-                    className="flex justify-center"
+                    className="flex justify-center lg:justify-start"
                   >
                     <SocialProofTicker />
                   </motion.div>
                 </motion.div>
+
+                <div className="hidden md:block">
+                  <LivingComplianceMap />
+                </div>
+                </div>
 
                 {/* Scroll indicator */}
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
@@ -328,7 +349,7 @@ export default function HomePage() {
           >
             {products.map((product, idx) => (
               <motion.div key={idx} variants={fadeUp} custom={idx}>
-                <Link href={product.href}>
+                <a href={product.href} target="_blank" rel="noopener noreferrer">
                   <motion.div
                     whileHover={{ y: -6, transition: { duration: 0.2 } }}
                     className={`relative p-6 rounded-2xl border ${product.color} transition-all cursor-pointer group h-full bg-surface-bright shadow-sm hover:shadow-lg`}
@@ -360,11 +381,11 @@ export default function HomePage() {
                     </div>
 
                     <div className={`mt-3 flex items-center gap-1 text-xs ${cfColor[product.cf as ColorFamily].badgeText} opacity-0 group-hover:opacity-100 transition-opacity font-medium`}>
-                      <span>Learn more</span>
+                      <span>Visit product site</span>
                       <Icon name="arrow_forward" size={14} />
                     </div>
                   </motion.div>
-                </Link>
+                </a>
               </motion.div>
             ))}
           </motion.div>

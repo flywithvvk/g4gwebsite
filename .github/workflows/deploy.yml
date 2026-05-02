@@ -6,9 +6,18 @@ on:
       - main
   workflow_dispatch:
 
+concurrency:
+  group: firebase-hosting-live
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
 jobs:
   build:
-    name: Build
+    name: Validate & Build
     runs-on: ubuntu-latest
 
     steps:
@@ -23,6 +32,12 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npx tsc --noEmit
 
       - name: Build Next.js static export
         run: npm run build
@@ -46,31 +61,18 @@ jobs:
     name: Deploy to Firebase
     needs: build
     runs-on: ubuntu-latest
-    # This job checks for the secret at runtime; if missing it skips gracefully
-    steps:
-      - name: Check for Firebase credentials
-        id: check
-        run: |
-          if [ -z "${{ secrets.FIREBASE_SERVICE_ACCOUNT_GO4GARAGE_D66FC }}" ]; then
-            echo "has_creds=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::Firebase service account secret not configured — skipping deploy. Add FIREBASE_SERVICE_ACCOUNT_GO4GARAGE_D66FC to repo secrets."
-          else
-            echo "has_creds=true" >> "$GITHUB_OUTPUT"
-          fi
 
+    steps:
       - name: Checkout repository
-        if: steps.check.outputs.has_creds == 'true'
         uses: actions/checkout@v4
 
       - name: Download build artifact
-        if: steps.check.outputs.has_creds == 'true'
         uses: actions/download-artifact@v4
         with:
           name: build-output
           path: out/
 
       - name: Deploy to Firebase Hosting
-        if: steps.check.outputs.has_creds == 'true'
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}

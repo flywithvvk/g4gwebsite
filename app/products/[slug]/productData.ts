@@ -1,3 +1,5 @@
+import { productExternalUrls } from '@/lib/productLinks';
+
 export interface ProductFeature {
   icon: string;
   title: string;
@@ -165,7 +167,7 @@ export const productData: Record<string, ProductData> = {
     metrics: ['89% compliance automation', '30 days avg DISCOM approval', '33 states covered'],
     cta: 'Book a Demo',
     ctaLink: '/contact',
-    externalDomain: 'https://urgaa.in',
+    externalDomain: productExternalUrls.urgaa,
   },
 
   gstsaas: {
@@ -276,7 +278,7 @@ export const productData: Record<string, ProductData> = {
     metrics: ['3x faster job turnaround', '95% GST automation', '40% better customer retention'],
     cta: 'Book a Demo',
     ctaLink: '/contact',
-    externalDomain: 'https://gstsaas.in',
+    externalDomain: productExternalUrls.gstsaas,
   },
 
   ignition: {
@@ -387,6 +389,7 @@ export const productData: Record<string, ProductData> = {
     metrics: ['Real-time charging network', 'Service cost transparency', 'Certified service locator'],
     cta: 'Download App',
     ctaLink: '/contact',
+    externalDomain: productExternalUrls.ignition,
     mobileApp: { ios: '', android: '', comingSoon: true },
   },
 
@@ -498,7 +501,7 @@ export const productData: Record<string, ProductData> = {
     metrics: ['4-6 week certification programs', 'Industry-aligned curriculum', '200+ technicians target'],
     cta: 'Explore Training',
     ctaLink: '/contact',
-    externalDomain: 'https://ev-vidya.in',
+    externalDomain: productExternalUrls.arjun,
   },
 
   'kailash-ai': {
@@ -609,7 +612,7 @@ export const productData: Record<string, ProductData> = {
     metrics: ['Predictive maintenance alerts', 'Cross-platform analytics', 'Battery health scoring'],
     cta: 'Contact Sales',
     ctaLink: '/contact',
-    externalDomain: 'https://kailash-ai.in',
+    externalDomain: productExternalUrls['kailash-ai'],
   },
 
   'eka-ai': {
@@ -720,7 +723,7 @@ export const productData: Record<string, ProductData> = {
     metrics: ['Natural language queries', 'Multi-agent coordination', 'Hindi + English support'],
     cta: 'Contact Sales',
     ctaLink: '/contact',
-    externalDomain: 'https://go4garage.com',
+    externalDomain: productExternalUrls['eka-ai'],
   },
 };
 

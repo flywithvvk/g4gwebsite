@@ -4,10 +4,8 @@
  * Requires: sharp (already installed as Next.js dependency)
  */
 import sharp from 'sharp';
-import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import fs from 'fs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const outputPath = path.join(__dirname, '..', 'public', 'og-image.png');

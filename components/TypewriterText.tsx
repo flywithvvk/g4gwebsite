@@ -23,13 +23,17 @@ export function TypewriterText({
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => {
-    const current = texts[textIndex];
+    if (texts.length === 0) return;
+
+    const current = texts[textIndex] ?? texts[0];
 
     if (!isDeleting && displayed === current) {
       timeoutRef.current = setTimeout(() => setIsDeleting(true), pauseTime);
     } else if (isDeleting && displayed === '') {
-      setIsDeleting(false);
-      setTextIndex((prev) => (prev + 1) % texts.length);
+      timeoutRef.current = setTimeout(() => {
+        setIsDeleting(false);
+        setTextIndex((prev) => (prev + 1) % texts.length);
+      }, 0);
     } else {
       timeoutRef.current = setTimeout(
         () => {

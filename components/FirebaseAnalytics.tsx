@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
-import { getAnalytics } from 'firebase/analytics';
+import { getAnalytics, setUserProperties } from 'firebase/analytics';
 import { getPerformance } from 'firebase/performance';
 import { app } from '@/lib/firebase';
 import { trackPageView, trackScrollDepth } from '@/lib/analytics';
@@ -20,11 +20,9 @@ export function FirebaseAnalytics() {
       if (perfInitialised.current) return;
       perfInitialised.current = true;
       try {
-        const a = getAnalytics(app);
+        const analytics = getAnalytics(app);
         getPerformance(app);
-        // Set user properties for segmentation in GA4
-        const { setUserProperties } = require('firebase/analytics') as typeof import('firebase/analytics');
-        setUserProperties(a, {
+        setUserProperties(analytics, {
           platform: 'web',
           user_type: 'visitor',
           site_version: '1.0',

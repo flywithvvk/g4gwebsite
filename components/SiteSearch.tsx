@@ -5,14 +5,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { Icon } from '@/components/Icon';
 import { trackSearch } from '@/lib/analytics';
+import { isExternalHref, productExternalUrls } from '@/lib/productLinks';
 
 const RESULTS = [
-  { title: 'URGAA (ऊर्जा): Regulatory Intelligence', desc: 'End-to-end EV charging compliance across 33 states', href: '/products/urgaa', icon: 'bolt', tag: 'Product' },
-  { title: 'GST (Go4Garage Service Tools): Workshop & Commerce Engine', desc: 'Digital job cards, GST billing, inventory management', href: '/products/gstsaas', icon: 'build', tag: 'Product' },
-  { title: 'Ignition App: Consumer Experience', desc: 'EV consumer app for charging, service, and support', href: '/products/ignition', icon: 'smartphone', tag: 'Product' },
-  { title: 'EV VIDYA ARJUN: Workforce Skilling', desc: '4-week EV technician certification, 92% placement rate', href: '/products/arjun', icon: 'school', tag: 'Product' },
-  { title: 'KAILASH-AI: Predictive Analytics', desc: 'Battery SoH grading, document AI, anomaly detection', href: '/products/kailash-ai', icon: 'analytics', tag: 'Product' },
-  { title: 'Eka-AI: Agent Orchestration', desc: 'Conversational AI for guided operations and Q&A', href: '/products/eka-ai', icon: 'smart_toy', tag: 'Product' },
+  { title: 'URGAA (ऊर्जा): Regulatory Intelligence', desc: 'End-to-end EV charging compliance across 33 states', href: productExternalUrls.urgaa, icon: 'bolt', tag: 'Product' },
+  { title: 'GST (Go4Garage Service Tools): Workshop & Commerce Engine', desc: 'Digital job cards, GST billing, inventory management', href: productExternalUrls.gstsaas, icon: 'build', tag: 'Product' },
+  { title: 'Ignition App: Consumer Experience', desc: 'EV consumer app for charging, service, and support', href: productExternalUrls.ignition, icon: 'smartphone', tag: 'Product' },
+  { title: 'EV VIDYA ARJUN: Workforce Skilling', desc: '4-week EV technician certification, 92% placement rate', href: productExternalUrls.arjun, icon: 'school', tag: 'Product' },
+  { title: 'KAILASH-AI: Predictive Analytics', desc: 'Battery SoH grading, document AI, anomaly detection', href: productExternalUrls['kailash-ai'], icon: 'analytics', tag: 'Product' },
+  { title: 'Eka-AI: Agent Orchestration', desc: 'Conversational AI for guided operations and Q&A', href: productExternalUrls['eka-ai'], icon: 'smart_toy', tag: 'Product' },
   { title: 'Book a Live Demo', desc: 'Schedule a demo: workshop, charging, or full platform tour', href: '/demo', icon: 'event', tag: 'Action' },
   { title: 'Pricing', desc: 'Starter, Professional, and Enterprise plans', href: '/pricing', icon: 'payments', tag: 'Page' },
   { title: 'Platform Overview', desc: 'How all 7 products work together', href: '/platform', icon: 'dashboard', tag: 'Page' },
@@ -26,9 +27,9 @@ const RESULTS = [
   { title: 'ROI Calculator', desc: 'Calculate your savings with Go4Garage', href: '/roi', icon: 'calculate', tag: 'Tool' },
   { title: 'Blog', desc: 'EV industry insights, product updates, case studies', href: '/blog', icon: 'article', tag: 'Page' },
   { title: 'Case Studies', desc: 'Real results from Go4Garage deployments', href: '/case-studies', icon: 'psychology', tag: 'Page' },
-  { title: '33 States Compliance', desc: 'DISCOM approvals, MNRE subsidies, state EV policy tracking', href: '/products/urgaa', icon: 'gavel', tag: 'Feature' },
-  { title: 'GST Billing & Invoicing', desc: 'Automated GST-compliant billing for workshops', href: '/products/gstsaas', icon: 'receipt', tag: 'Feature' },
-  { title: 'Battery SoH Grading', desc: 'AI-powered battery state-of-health assessment', href: '/products/kailash-ai', icon: 'battery_charging_full', tag: 'Feature' },
+  { title: '33 States Compliance', desc: 'DISCOM approvals, MNRE subsidies, state EV policy tracking', href: productExternalUrls.urgaa, icon: 'gavel', tag: 'Feature' },
+  { title: 'GST Billing & Invoicing', desc: 'Automated GST-compliant billing for workshops', href: productExternalUrls.gstsaas, icon: 'receipt', tag: 'Feature' },
+  { title: 'Battery SoH Grading', desc: 'AI-powered battery state-of-health assessment', href: productExternalUrls['kailash-ai'], icon: 'battery_charging_full', tag: 'Feature' },
 ];
 
 const TAG_COLORS: Record<string, string> = {
@@ -76,16 +77,17 @@ export function SiteSearch() {
     if (open) setTimeout(() => inputRef.current?.focus(), 50);
   }, [open]);
 
-  useEffect(() => {
-    setActiveIdx(0);
-  }, [query]);
-
   function handleKeyDown(e: React.KeyboardEvent) {
     if (e.key === 'ArrowDown') { e.preventDefault(); setActiveIdx((i) => Math.min(i + 1, filtered.length - 1)); }
     if (e.key === 'ArrowUp') { e.preventDefault(); setActiveIdx((i) => Math.max(i - 1, 0)); }
     if (e.key === 'Enter' && filtered[activeIdx]) {
       if (query) trackSearch(query);
-      window.location.href = filtered[activeIdx].href;
+      const href = filtered[activeIdx].href;
+      if (isExternalHref(href)) {
+        window.open(href, '_blank', 'noopener,noreferrer');
+      } else {
+        window.location.href = href;
+      }
       setOpen(false);
     }
   }
@@ -133,13 +135,13 @@ export function SiteSearch() {
                 <input
                   ref={inputRef}
                   value={query}
-                  onChange={(e) => setQuery(e.target.value)}
+                  onChange={(e) => { setQuery(e.target.value); setActiveIdx(0); }}
                   onKeyDown={handleKeyDown}
                   placeholder="Search products, pages, features…"
                   className="flex-1 bg-transparent text-on-surface text-sm placeholder-on-surface-variant/60 outline-none"
                 />
                 {query && (
-                  <button onClick={() => setQuery('')} className="text-on-surface-variant hover:text-on-surface">
+                  <button onClick={() => { setQuery(''); setActiveIdx(0); }} className="text-on-surface-variant hover:text-on-surface">
                     <Icon name="close" size={18} />
                   </button>
                 )}
@@ -162,6 +164,8 @@ export function SiteSearch() {
                       <Link
                         key={item.href + item.title}
                         href={item.href}
+                        target={isExternalHref(item.href) ? '_blank' : undefined}
+                        rel={isExternalHref(item.href) ? 'noopener noreferrer' : undefined}
                         data-active={i === activeIdx}
                         onClick={() => { if (query) trackSearch(query); setOpen(false); }}
                         onMouseEnter={() => setActiveIdx(i)}

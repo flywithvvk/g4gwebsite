@@ -30,8 +30,8 @@ const contactMethods = [
   {
     icon: 'location_on',
     title: 'Visit Us',
-    detail: 'Bengaluru, Karnataka, India',
-    href: 'https://maps.google.com/?q=Bengaluru,Karnataka,India',
+    detail: 'India | Bharat',
+    href: 'https://maps.google.com/?q=India',
     sub: 'Proudly built for Bharat 🇮🇳',
     color: 'from-tertiary to-[#00a34a]',
   },
@@ -202,7 +202,11 @@ export default function ContactClient() {
                     </div>
                     <div>
                       <h3 className="font-bold text-sm group-hover:text-primary transition-colors font-display">{method.title}</h3>
-                      <p className="text-primary text-sm font-medium">{method.detail}</p>
+                      <p className="text-primary text-sm font-medium">
+                        {method.icon === 'location_on' ? (
+                          <span className="inline-flex items-center gap-1"><IndiaFlag size={14} /> {method.detail}</span>
+                        ) : method.detail}
+                      </p>
                       <p className="text-xs text-on-surface-variant mt-0.5">{method.sub}</p>
                     </div>
                   </motion.a>
@@ -369,12 +373,12 @@ export default function ContactClient() {
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-6">
               <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-surface-bright p-7 rounded-2xl border border-outline-variant/30 shadow-sm">
-                <h3 className="text-lg font-bold mb-4 font-display flex items-center gap-2"><IndiaFlag size={20} /> Bengaluru, Karnataka <span className="gradient-text">Headquarters</span></h3>
+                <h3 className="text-lg font-bold mb-4 font-display flex items-center gap-2"><IndiaFlag size={20} /> India | Bharat <span className="gradient-text">Headquarters</span></h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
                     <Icon name="location_on" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="text-sm font-medium flex items-center gap-1"><IndiaFlag size={16} /> Bengaluru, Karnataka, India</p>
+                      <p className="text-sm font-medium flex items-center gap-1"><IndiaFlag size={16} /> India | Bharat</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -407,8 +411,8 @@ export default function ContactClient() {
                     <Icon name="map" size={32} className="text-primary" />
                   </div>
                   <h4 className="font-bold text-base mb-2 font-display">Go4Garage HQ</h4>
-                  <p className="text-sm text-on-surface-variant mb-4"><span className="inline-flex items-center gap-1"><IndiaFlag size={14} /> Bengaluru, Karnataka, India</span></p>
-                  <motion.a href="https://maps.google.com/?q=Bengaluru,Karnataka,India" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-all">
+                  <p className="text-sm text-on-surface-variant mb-4"><span className="inline-flex items-center gap-1"><IndiaFlag size={14} /> India | Bharat</span></p>
+                  <motion.a href="https://maps.google.com/?q=India" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-on rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-all">
                     <Icon name="open_in_new" size={16} />
                     Open in Maps
                   </motion.a>

@@ -10,7 +10,7 @@ const testimonials = [
     name: 'Rajesh Kumar',
     role: 'Fleet Operations Head',
     company: 'GreenFleet Mobility Pvt. Ltd.',
-    location: 'Bengaluru',
+    location: 'India | Bharat',
     product: 'URGAA',
     icon: 'directions_car',
     borderClass: 'border-primary/30',

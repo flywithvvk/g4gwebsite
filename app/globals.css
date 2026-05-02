@@ -1,57 +1,104 @@
 @import "tailwindcss";
 
-@theme {
-  /* MD3 Surface tokens — white background */
-  --color-surface: #ffffff;
-  --color-surface-dim: #f5f5f5;
-  --color-surface-bright: #ffffff;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #fdf8f4;
-  --color-surface-container: #faf4ec;
-  --color-surface-container-high: #f5f5f5;
-  --color-surface-container-highest: #f0f0f0;
+/* =====================================================================
+   Go4Garage — PR 1: Editorial India-rooted design tokens
+   =====================================================================
+   This file is a DROP-IN replacement for app/globals.css.
+   It keeps ALL existing token names alive (so no component breaks) but
+   remaps their values to a bone / ink / saffron editorial palette,
+   and ADDS new tokens (--color-paper, --color-ink, --color-saffron,
+   --color-rule) for upcoming components.
 
-  /* MD3 Primary */
+   No content, scripts, video, logo, or metadata is affected by this file.
+   ===================================================================== */
+
+@theme {
+  /* ─────────────────────────────────────────────────────────────────
+     NEW: Editorial palette (use these for all new components)
+     ───────────────────────────────────────────────────────────────── */
+  --color-paper:        #f5efe2;   /* warm bone — primary background  */
+  --color-bone:         #ebe3d0;   /* slightly deeper paper           */
+  --color-ink:          #1a1714;   /* near-black warm                 */
+  --color-ink-soft:     #3a342d;
+  --color-ink-mute:     #8a7f6e;
+  --color-paper-mute:   rgba(26,23,20,0.62);
+  --color-saffron:      #f06b1a;   /* the editorial accent            */
+  --color-saffron-deep: #c84d0d;
+  --color-saffron-soft: #fbe7d3;
+  --color-rule:         #d4cab0;   /* hairline borders                */
+
+  /* Brand continuity tokens — keep existing Go4Garage/product colours alive */
+  --color-brand-primary:          #904d00;
+  --color-brand-primary-bright:   #f18a22;
+  --color-brand-secondary:        #7b41b3;
+  --color-brand-secondary-bright: #c588fe;
+  --color-brand-tertiary:         #006e2f;
+  --color-brand-tertiary-bright:  #22bc5a;
+
+  /* ─────────────────────────────────────────────────────────────────
+     EXISTING MD3 TOKEN NAMES — kept alive, remapped to editorial values
+     so every existing component continues to render cleanly.
+     ───────────────────────────────────────────────────────────────── */
+
+  /* Surface — was white; now warm bone paper */
+  --color-surface: #f5efe2;
+  --color-surface-dim: #ebe3d0;
+  --color-surface-bright: #faf5e8;
+  --color-surface-container-lowest: #faf5e8;
+  --color-surface-container-low: #f5efe2;
+  --color-surface-container: #ebe3d0;
+  --color-surface-container-high: #e1d8be;
+  --color-surface-container-highest: #d4cab0;
+
+  /* Primary — Go4Garage brand amber, preserved */
   --color-primary: #904d00;
   --color-primary-container: #f18a22;
   --color-primary-on: #ffffff;
   --color-primary-on-container: #301600;
 
-  /* MD3 Secondary */
+  /* Secondary — product purple, preserved */
   --color-secondary: #7b41b3;
   --color-secondary-container: #c588fe;
   --color-secondary-on: #ffffff;
   --color-secondary-on-container: #2d0052;
 
-  /* MD3 Tertiary */
+  /* Tertiary — product green, preserved */
   --color-tertiary: #006e2f;
   --color-tertiary-container: #22bc5a;
   --color-tertiary-on: #ffffff;
   --color-tertiary-on-container: #00210a;
 
-  /* MD3 Error */
-  --color-error: #ba1a1a;
-  --color-error-container: #ffdad6;
+  /* Error — softened to fit warm palette */
+  --color-error: #b3321a;
+  --color-error-container: #fbe1d6;
 
-  /* Outline — black borders */
-  --color-outline: #c4b5a5;
-  --color-outline-variant: #d9ccc3;
+  /* Outline — was beige; now editorial rule */
+  --color-outline: #1a1714;
+  --color-outline-variant: #d4cab0;
 
   /* On-surface text */
-  --color-on-surface: #1c1b1b;
-  --color-on-surface-variant: #4d4544;
+  --color-on-surface: #1a1714;
+  --color-on-surface-variant: #3a342d;
 
-  /* Inverse */
-  --color-inverse-surface: #312f2f;
-  --color-inverse-on-surface: #f4efed;
-  --color-inverse-primary: #ffb77c;
+  /* Inverse — for dark sections */
+  --color-inverse-surface: #1a1714;
+  --color-inverse-on-surface: #f5efe2;
+  --color-inverse-primary: #f06b1a;
 
-  /* Fonts */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  /* ─────────────────────────────────────────────────────────────────
+     Fonts — Inter stays as fallback so existing copy doesn't reflow.
+     New components opt into Fraunces / JetBrains Mono / Noto Devanagari
+     via the new utility classes below.
+     ───────────────────────────────────────────────────────────────── */
+  --font-sans:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Fraunces', 'Space Grotesk', 'Inter', Georgia, serif;
+  --font-mono:    'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+  --font-deva:    'Noto Sans Devanagari', 'Inter', sans-serif;
 }
 
-/* Material Symbols helper */
+/* =====================================================================
+   Material Symbols helper (UNCHANGED — your existing icons keep working)
+   ===================================================================== */
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';
   font-weight: normal;
@@ -68,6 +115,11 @@
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
+/* =====================================================================
+   Existing utilities — kept, but values remapped to editorial palette
+   ===================================================================== */
+
+/* Brand gradient — keeps current Go4Garage amber/orange identity. */
 @utility gradient-text {
   background: linear-gradient(135deg, #904d00 0%, #f18a22 100%);
   -webkit-background-clip: text;
@@ -75,44 +127,79 @@
   background-clip: text;
 }
 
-@utility glass-effect {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+@utility brand-gradient {
+  background: linear-gradient(135deg, #904d00 0%, #f18a22 58%, #c84d0d 100%);
 }
 
+/* Glass — warmer paper tint */
+@utility glass-effect {
+  background: rgba(245, 239, 226, 0.78);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(26, 23, 20, 0.08);
+}
+
+/* Cards — bone surface with editorial rule */
 @utility card-surface {
-  background: #ffffff;
-  border: 1px solid var(--color-outline-variant, #d4c4bf);
+  background: #faf5e8;
+  border: 1px solid var(--color-rule, #d4cab0);
   border-radius: 1rem;
 }
 
-/* Scrollbar — light theme */
-::-webkit-scrollbar {
-  width: 10px;
+/* =====================================================================
+   NEW utilities for editorial components (use in PR 2 onward)
+   ===================================================================== */
+@utility font-display {
+  font-family: var(--font-display);
+  font-feature-settings: 'ss01', 'ss02';
 }
-::-webkit-scrollbar-track {
-  background: #ffffff;
+@utility font-display-italic {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
 }
-::-webkit-scrollbar-thumb {
-  background: #000000;
-  border-radius: 5px;
+@utility font-mono {
+  font-family: var(--font-mono);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #904d00;
+@utility font-deva {
+  font-family: var(--font-deva);
+  font-weight: 500;
+}
+@utility tnum {
+  font-variant-numeric: tabular-nums;
+}
+@utility hairline {
+  border-color: var(--color-rule);
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* =====================================================================
+   Scrollbar — editorial palette
+   ===================================================================== */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #f5efe2; }
+::-webkit-scrollbar-thumb { background: #1a1714; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #c84d0d; }
+
+html { scroll-behavior: smooth; }
+
+::selection {
+  background: rgba(241, 138, 34, 0.28);
+  color: #1a1714;
+}
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid #904d00;
+  outline-offset: 3px;
 }
 
 body {
-  background: #ffffff;
-  color: #1c1b1b;
+  background: #f5efe2;       /* paper */
+  color: #1a1714;            /* ink   */
+  font-family: var(--font-sans);
 }
 
-/* Responsive section padding helper */
+/* =====================================================================
+   Section spacing helper (UNCHANGED)
+   ===================================================================== */
 .section-py {
   padding-top: 3.5rem;
   padding-bottom: 3.5rem;
@@ -124,7 +211,9 @@ body {
   }
 }
 
-/* Crisp video rendering — GPU layer, no interpolation blur */
+/* =====================================================================
+   Existing fixes (UNCHANGED)
+   ===================================================================== */
 video {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -132,19 +221,13 @@ video {
   -webkit-transform: translateZ(0);
 }
 
-/* Prevent horizontal overflow on all pages */
-main, .page-wrapper {
-  overflow-x: hidden;
-}
+main, .page-wrapper { overflow-x: hidden; }
 
-/* Better tap targets on mobile */
 @media (max-width: 640px) {
-  button, a {
-    min-height: 44px;
-  }
+  button, a { min-height: 44px; }
 }
 
-/* Announcement ticker — left-to-right continuous scroll */
+/* Announcement ticker (UNCHANGED) */
 @keyframes g4g-ticker {
   0%   { transform: translateX(-50%); }
   100% { transform: translateX(0); }

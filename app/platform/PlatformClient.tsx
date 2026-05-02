@@ -7,6 +7,7 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { StatsCard } from '@/components/StatsCard';
 import { Icon } from '@/components/Icon';
 import { EVJourneyVisual } from '@/components/EVJourneyVisual';
+import { productExternalUrls } from '@/lib/productLinks';
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -492,7 +493,7 @@ export default function PlatformClient() {
                 ))}
               </div>
 
-              <Link href="/products/urgaa">
+              <a href={productExternalUrls.urgaa} target="_blank" rel="noopener noreferrer">
                 <motion.button
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
@@ -501,7 +502,7 @@ export default function PlatformClient() {
                   <Icon name="ev_station" size={18} />
                   Explore URGAA: CPO Platform
                 </motion.button>
-              </Link>
+              </a>
             </motion.div>
 
             {/* Right: flow diagram */}

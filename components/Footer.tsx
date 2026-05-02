@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { IndiaFlag } from '@/components/IndiaFlag';
+import { isExternalHref, productExternalUrls } from '@/lib/productLinks';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -22,12 +23,12 @@ const Footer: React.FC = () => {
     {
       title: 'Products',
       links: [
-        { label: 'URGAA (ऊर्जा)', href: '/products/urgaa' },
-        { label: 'GST (Go4Garage Service Tools)', href: '/products/gstsaas' },
-        { label: 'Ignition App', href: '/products/ignition' },
-        { label: 'EV VIDYA ARJUN', href: '/products/arjun' },
-        { label: 'KAILASH-AI', href: '/products/kailash-ai' },
-        { label: 'Eka-AI', href: '/products/eka-ai' },
+        { label: 'URGAA (ऊर्जा)', href: productExternalUrls.urgaa },
+        { label: 'GST (Go4Garage Service Tools)', href: productExternalUrls.gstsaas },
+        { label: 'Ignition App', href: productExternalUrls.ignition },
+        { label: 'EV VIDYA ARJUN', href: productExternalUrls.arjun },
+        { label: 'KAILASH-AI', href: productExternalUrls['kailash-ai'] },
+        { label: 'Eka-AI', href: productExternalUrls['eka-ai'] },
       ],
     },
     {
@@ -59,7 +60,13 @@ const Footer: React.FC = () => {
           {/* Brand */}
           <div className="lg:col-span-2 space-y-5">
             <div className="flex items-center">
-      <Image src="/logo.jpg" alt="Go4Garage" width={150} height={40} className="h-8 w-auto object-contain" />
+              <Image
+                src="/icon.png"
+                alt="Go4Garage icon"
+                width={48}
+                height={48}
+                className="h-12 w-12 rounded-2xl bg-surface-bright object-contain p-2 shadow-sm ring-1 ring-outline-variant/30"
+              />
             </div>
             <p className="text-sm text-on-surface-variant leading-relaxed max-w-xs">
               India&apos;s AI-powered automobile intelligence platform accelerating EV adoption and charging scale across 33 states.
@@ -109,7 +116,7 @@ const Footer: React.FC = () => {
               </a>
               <span className="flex items-center gap-2 text-xs text-on-surface-variant">
                 <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>location_on</span>
-                <IndiaFlag size={16} /> Bengaluru, Karnataka
+                <IndiaFlag size={16} /> India | Bharat
               </span>
             </div>
           </div>
@@ -119,13 +126,22 @@ const Footer: React.FC = () => {
             <div key={section.title} className="space-y-4">
               <h3 className="text-sm font-semibold font-display text-on-surface tracking-wide">{section.title}</h3>
               <ul className="space-y-2.5">
-                {section.links.map((link) => (
-                  <li key={link.label}>
-                    <Link href={link.href} className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+                {section.links.map((link) => {
+                  const external = isExternalHref(link.href);
+                  return (
+                    <li key={link.label}>
+                      {external ? (
+                        <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link href={link.href} className="text-sm text-on-surface-variant hover:text-primary transition-colors">
+                          {link.label}
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}

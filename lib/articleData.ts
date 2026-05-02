@@ -183,7 +183,7 @@ export const articleData: Record<string, Article> = {
           "BSES/TPDDL (Delhi): 15–25 working days for LT. Delhi has streamlined processes with a dedicated EV tariff (TPDDL's EV rate: ₹4.50/unit off-peak).",
           'TNEB (Tamil Nadu): 30–60 working days. Additional Form EB-3 required for commercial EV charging classification.',
           'DGVCL/MGVCL (Gujarat): 20–35 working days. Gujarat offers a preferential EV tariff of ₹3.00/unit during designated off-peak hours.',
-          'BESCOM (Karnataka): 25–40 working days. Bangalore Urban has a fast-track process for DC fast chargers above 50 kW.',
+          'BESCOM (Karnataka): 25–40 working days. Select urban zones have a fast-track process for DC fast chargers above 50 kW.',
           'TSSPDCL (Telangana): 30–50 working days. Requires prior NoC from local municipal body for commercial sites.',
         ],
       },
@@ -1048,7 +1048,7 @@ export const articleData: Record<string, Article> = {
       {
         type: 'paragraph',
         content:
-          "Beyond maintenance prediction, AI fleet telematics delivers a second major value stream through route and charging optimisation. EV range anxiety in commercial operations is primarily a planning problem: vehicles run out of charge not because the battery is undersized for the route, but because operators lack real-time visibility into the interaction between route conditions, load factors, and battery state. KAILASH-AI's route intelligence module calculates optimal route assignments in real-time, factoring in current SoC, vehicle-specific energy consumption profiles, traffic conditions, and the locations and current availability of compatible charging stations. In a 2026 pilot across a 78-vehicle last-mile delivery fleet in Bengaluru, AI-assisted route planning reduced per-vehicle daily energy consumption by 11.4%, extended battery cycle life by an estimated 14%, and eliminated 96% of range-related failed deliveries, which had previously cost the operator approximately ₹40,000 per month in customer compensation and driver overtime.",
+          "Beyond maintenance prediction, AI fleet telematics delivers a second major value stream through route and charging optimisation. EV range anxiety in commercial operations is primarily a planning problem: vehicles run out of charge not because the battery is undersized for the route, but because operators lack real-time visibility into the interaction between route conditions, load factors, and battery state. KAILASH-AI's route intelligence module calculates optimal route assignments in real-time, factoring in current SoC, vehicle-specific energy consumption profiles, traffic conditions, and the locations and current availability of compatible charging stations. In a 2026 pilot across a 78-vehicle last-mile delivery fleet in India, AI-assisted route planning reduced per-vehicle daily energy consumption by 11.4%, extended battery cycle life by an estimated 14%, and eliminated 96% of range-related failed deliveries, which had previously cost the operator approximately ₹40,000 per month in customer compensation and driver overtime.",
       },
       {
         type: 'heading',
@@ -1781,7 +1781,7 @@ export const articleData: Record<string, Article> = {
       {
         type: 'callout',
         content:
-          'A CPO operating 20 DC fast chargers (60 kW) across four corporate campus locations in Bengaluru ran flat-rate pricing at ₹16/kWh with an average utilisation of 32%. After implementing 3-block time-of-use pricing (₹12/kWh off-peak, ₹16/kWh standard, ₹21/kWh peak) and offering fleet operators a contracted off-peak rate of ₹11/kWh, utilisation rose to 49% within two months. Monthly revenue increased from ₹4.1 lakh to ₹5.9 lakh, an increase of ₹1.8 lakh, without adding chargers or changing the hardware.',
+          'A CPO operating 20 DC fast chargers (60 kW) across four corporate campus locations in India ran flat-rate pricing at ₹16/kWh with an average utilisation of 32%. After implementing 3-block time-of-use pricing (₹12/kWh off-peak, ₹16/kWh standard, ₹21/kWh peak) and offering fleet operators a contracted off-peak rate of ₹11/kWh, utilisation rose to 49% within two months. Monthly revenue increased from ₹4.1 lakh to ₹5.9 lakh, an increase of ₹1.8 lakh, without adding chargers or changing the hardware.',
       },
       {
         type: 'paragraph',
