@@ -70,7 +70,7 @@ config.toml
 
 # Firebase local cache / CI artifacts
 .firebase/
-lighthouse-report.json
+lighthouse-report*.json
 
 # Data archives (keep in docs/ only, not at repo root)
 /*.xlsx.zip
