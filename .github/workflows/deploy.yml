@@ -6,10 +6,20 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     name: Validate & Build
     runs-on: ubuntu-latest
+    timeout-minutes: 25
 
     steps:
       - name: Checkout repository
@@ -20,9 +30,15 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Show tool versions
+        run: |
+          node --version
+          npm --version
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --no-audit --no-fund
 
       - name: Lint
         run: npm run lint
@@ -46,12 +62,14 @@ jobs:
         with:
           name: build-output
           path: out/
+          if-no-files-found: error
           retention-days: 7
 
   deploy:
     name: Deploy to Firebase
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Checkout repository
@@ -62,6 +80,14 @@ jobs:
         with:
           name: build-output
           path: out/
+
+      - name: Verify artifact contents
+        run: |
+          if [ ! -d "out" ] || [ -z "$(ls -A out)" ]; then
+            echo "::error::Downloaded artifact directory 'out' is empty or missing"
+            exit 1
+          fi
+          echo "Artifact unpacked - $(find out -type f | wc -l) files found"
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
