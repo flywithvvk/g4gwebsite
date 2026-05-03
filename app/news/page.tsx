@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import NewsClient from './NewsClient';
 import { NewsArticleListStructuredData, BreadcrumbStructuredData, WebPageStructuredData } from '@/components/StructuredData';
 
-const SITE_URL = 'https://www.go4garage.in';
+const SITE_URL = 'https://go4garage.com';
 
 export const metadata: Metadata = {
   title: 'Industry News & Updates',

@@ -4,7 +4,7 @@ import { articleData } from '@/lib/articleData';
 import ArticleClient from './ArticleClient';
 import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/StructuredData';
 
-const SITE_URL = 'https://www.go4garage.in';
+const SITE_URL = 'https://go4garage.com';
 
 type Props = { params: Promise<{ slug: string }> };
 

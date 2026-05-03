@@ -4,7 +4,7 @@ import { productData, slugs } from './productData';
 import ProductDetailClient from './ProductDetailClient';
 import { SoftwareAppStructuredData, BreadcrumbStructuredData, FAQStructuredData } from '@/components/StructuredData';
 
-const SITE_URL = 'https://www.go4garage.in';
+const SITE_URL = 'https://go4garage.com';
 
 type Props = {
   params: Promise<{ slug: string }>;

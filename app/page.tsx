@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import HomePage from './HomeClient';
 import { WebPageStructuredData } from '@/components/StructuredData';
 
-const SITE_URL = 'https://www.go4garage.in';
+const SITE_URL = 'https://go4garage.com';
 
 export const metadata: Metadata = {
   title: {

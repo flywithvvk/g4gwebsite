@@ -15,7 +15,7 @@ export function trackPageView(pagePath: string, pageTitle: string) {
   const a = getAnalyticsInstance();
   if (!a) return;
   logEvent(a, 'page_view', {
-    page_location: `https://www.go4garage.in${pagePath}`,
+    page_location: `https://go4garage.com${pagePath}`,
     page_path: pagePath,
     page_title: pageTitle,
   });

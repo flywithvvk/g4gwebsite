@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "go4garage-d66fc"
-  }
+  },
+  "targets": {
+    "go4garage-d66fc": {
+      "hosting": {
+        "redirectin": [
+          "go4garage-in-redirect"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

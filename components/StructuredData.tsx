@@ -1,4 +1,4 @@
-const SITE_URL = 'https://www.go4garage.in';
+const SITE_URL = 'https://go4garage.com';
 
 const organizationSchema = {
   '@context': 'https://schema.org',
@@ -70,7 +70,7 @@ const organizationSchema = {
     'https://www.linkedin.com/company/go4garage',
     'https://twitter.com/go4garage',
     'https://github.com/go4garage',
-    'https://www.go4garage.in',
+    'https://go4garage.com',
     'https://www.zaubacorp.com/company/GO4GARAGE-PRIVATE-LIMITED/U34300UP2021PTC145107',
     'https://www.thecompanycheck.com/company/go4garage-private-limited/U34300UP2021PTC145107',
     'https://tracxn.com/d/legal-entities/india/go4garage-private-limited/__vH6l079l4l8hrDB4T6wxW5uim4TmRCz0d-xVu-Avrf8',

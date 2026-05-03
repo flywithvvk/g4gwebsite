@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function ROIPage() {
   const breadcrumbs = [
-    { name: 'Home', url: 'https://www.go4garage.in' },
-    { name: 'ROI Calculator', url: 'https://www.go4garage.in/roi' },
+    { name: 'Home', url: 'https://go4garage.com' },
+    { name: 'ROI Calculator', url: 'https://go4garage.com/roi' },
   ];
   return (
     <>

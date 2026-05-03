@@ -13,7 +13,7 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 import { ExitIntentModal } from "@/components/ExitIntentModal";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
-const SITE_URL = "https://www.go4garage.in";
+const SITE_URL = "https://go4garage.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

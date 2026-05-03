@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ContactClient from './ContactClient';
 import { WebPageStructuredData, BreadcrumbStructuredData } from '@/components/StructuredData';
 
-const SITE_URL = 'https://www.go4garage.in';
+const SITE_URL = 'https://go4garage.com';
 
 export const metadata: Metadata = {
   title: 'Contact',
