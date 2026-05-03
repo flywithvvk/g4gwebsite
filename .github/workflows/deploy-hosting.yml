@@ -15,6 +15,8 @@ concurrency:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+  FIREBASE_PROJECT_ID: go4garage-d66fc
+  FIREBASE_HOSTING_URL: https://go4garage-d66fc.web.app/
 
 jobs:
   deploy:
@@ -72,7 +74,7 @@ jobs:
 
       - name: Deploy to Firebase Hosting (CLI)
         run: |
-          $deployRaw = npx firebase-tools@latest deploy --only hosting --project go4garage-d66fc --non-interactive --json
+          $deployRaw = npx firebase-tools@latest deploy --only hosting --project $env:FIREBASE_PROJECT_ID --non-interactive --json
           $exitCode = $LASTEXITCODE
 
           $deployRaw | Out-Host
@@ -101,6 +103,10 @@ jobs:
             if ($urlMatch.Success) {
               $deployUrl = $urlMatch.Value
             }
+          }
+
+          if (-not $deployUrl) {
+            $deployUrl = $env:FIREBASE_HOSTING_URL
           }
 
           if ($deployUrl) {
