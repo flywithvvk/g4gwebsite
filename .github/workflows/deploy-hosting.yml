@@ -72,7 +72,7 @@ jobs:
 
       - name: Deploy to Firebase Hosting (CLI)
         run: |
-          $deployRaw = npx firebase-tools@latest hosting:channel:deploy live --project go4garage-d66fc --non-interactive --json
+          $deployRaw = npx firebase-tools@latest deploy --only hosting --project go4garage-d66fc --non-interactive --json
           $exitCode = $LASTEXITCODE
 
           $deployRaw | Out-Host
@@ -81,19 +81,29 @@ jobs:
             exit $exitCode
           }
 
+          $deployText = ($deployRaw | Out-String).Trim()
+          $deployUrl = $null
+
           try {
-            $deployJson = $deployRaw | ConvertFrom-Json
+            $deployJson = $deployText | ConvertFrom-Json
             $deployUrl = $deployJson.result.url
 
             if (-not $deployUrl -and $deployJson.result.urls.Count -gt 0) {
               $deployUrl = $deployJson.result.urls[0]
             }
-
-            if ($deployUrl) {
-              Write-Host "details_url: '$deployUrl'"
-              "### Production deploy succeeded`n- URL: $deployUrl" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
-            }
           }
           catch {
-            Write-Warning "Deploy completed but JSON parsing failed; inspect raw output above."
+            Write-Warning "Deploy JSON parse fallback: scanning raw output for hosting URL."
+          }
+
+          if (-not $deployUrl) {
+            $urlMatch = [regex]::Match($deployText, 'https://[A-Za-z0-9.-]+\.web\.app/?')
+            if ($urlMatch.Success) {
+              $deployUrl = $urlMatch.Value
+            }
+          }
+
+          if ($deployUrl) {
+            Write-Host "details_url: '$deployUrl'"
+            "### Production deploy succeeded`n- URL: $deployUrl" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
           }
