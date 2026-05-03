@@ -256,7 +256,7 @@ const productNodes: ProductNode[] = [
     tone: 'tertiary',
     backdrop: '/images/ev-on-road.jpg',
     signal: 'Journey Health',
-    focus: 'Bengaluru',
+    focus: 'South India',
     lon: 77.5946,
     lat: 12.9716,
   },

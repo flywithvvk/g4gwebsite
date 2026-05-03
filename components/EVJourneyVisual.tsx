@@ -118,7 +118,6 @@ export function EVJourneyVisual({ onComplete }: Props) {
   }, []);
 
   const activeIdx = CHALLENGE_WINDOWS.findIndex(([s, e]) => time >= s && time < e);
-  const completedCount = CHALLENGE_WINDOWS.filter(([, e]) => time >= e).length;
   const progress = Math.min(100, (time / VIDEO_DURATION) * 100);
   const showArrived = time >= ARRIVED_TIME;
 
