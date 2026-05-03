@@ -16,7 +16,7 @@ permissions:
 jobs:
   analyze:
     name: Analyze (${{ matrix.language }})
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, g4g-local]
     timeout-minutes: 45
     permissions:
       actions: read
