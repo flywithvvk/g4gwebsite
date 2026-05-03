@@ -161,6 +161,65 @@ const INDIA_OUTLINE: Array<[number, number]> = [
   [77.837451, 35.49401],
 ];
 
+const INDIA_INTERNAL_BOUNDARIES: Array<Array<[number, number]>> = [
+  [
+    [73.2, 31.1],
+    [76.5, 30.0],
+    [79.6, 29.4],
+    [82.4, 29.2],
+    [85.4, 28.7],
+  ],
+  [
+    [72.8, 26.4],
+    [75.5, 25.6],
+    [78.2, 24.8],
+    [81.3, 24.2],
+    [84.2, 23.8],
+    [87.2, 23.2],
+  ],
+  [
+    [73.5, 22.5],
+    [75.1, 21.2],
+    [77.4, 20.4],
+    [79.8, 19.8],
+    [82.6, 19.1],
+    [85.1, 18.2],
+  ],
+  [
+    [75.6, 17.6],
+    [77.4, 16.1],
+    [79.1, 14.9],
+    [80.3, 13.8],
+  ],
+  [
+    [77.3, 23.4],
+    [78.4, 21.1],
+    [79.1, 18.7],
+    [79.5, 16.3],
+    [79.3, 13.8],
+  ],
+  [
+    [81.8, 25.5],
+    [82.8, 23.1],
+    [83.9, 21.0],
+    [84.8, 18.8],
+    [85.9, 16.8],
+  ],
+  [
+    [86.8, 26.6],
+    [88.9, 26.0],
+    [91.0, 26.4],
+    [93.2, 26.8],
+  ],
+  [
+    [88.0, 24.3],
+    [89.3, 22.4],
+    [90.3, 20.7],
+    [91.5, 19.0],
+    [92.4, 17.0],
+  ],
+];
+
 const productNodes: ProductNode[] = [
   {
     name: 'URGAA',
@@ -324,14 +383,22 @@ export function LivingComplianceMap() {
     return { x, y };
   }, [bounds]);
 
-  const indiaPath = useMemo(() => {
-    return (
-      INDIA_OUTLINE.map(([lon, lat], index) => {
+  const pathFromGeoLine = useCallback((line: Array<[number, number]>, closePath = false) => {
+    const path = line
+      .map(([lon, lat], index) => {
         const point = projectPoint(lon, lat);
         return `${index === 0 ? 'M' : 'L'} ${point.x.toFixed(2)} ${point.y.toFixed(2)}`;
-      }).join(' ') + ' Z'
-    );
+      })
+      .join(' ');
+
+    return closePath ? `${path} Z` : path;
   }, [projectPoint]);
+
+  const indiaPath = useMemo(() => pathFromGeoLine(INDIA_OUTLINE, true), [pathFromGeoLine]);
+
+  const internalBoundaryPaths = useMemo(() => {
+    return INDIA_INTERNAL_BOUNDARIES.map((line) => pathFromGeoLine(line));
+  }, [pathFromGeoLine]);
 
   const projectedProducts = useMemo(() => {
     return productNodes.map((product) => ({
@@ -371,37 +438,45 @@ export function LivingComplianceMap() {
       </div>
 
       <div className="grid lg:grid-cols-[0.86fr_1.14fr]">
-        <div className="relative border-b border-outline-variant/45 bg-[linear-gradient(180deg,#fbfdff,#f6f9fc)] p-2.5 sm:p-3 lg:border-b-0 lg:border-r">
-          <div className="absolute inset-0 opacity-[0.26]" style={{ backgroundImage: 'linear-gradient(rgba(144,77,0,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(144,77,0,0.06) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
+        <div className="relative border-b border-outline-variant/45 bg-[linear-gradient(180deg,#fcfdff,#f7fafc)] p-2.5 sm:p-3 lg:border-b-0 lg:border-r">
+          <div className="pointer-events-none absolute inset-x-6 top-8 h-36 rounded-full bg-[radial-gradient(circle,rgba(63,99,146,0.18),rgba(63,99,146,0))] opacity-80 blur-2xl" />
 
           <svg
             viewBox={`0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`}
-            className="relative z-10 h-[280px] w-full"
-            aria-label="Real map of India"
+            className="relative z-10 h-[282px] w-full drop-shadow-[0_18px_24px_rgba(24,35,58,0.15)]"
+            aria-label="India map with state-level detail"
             role="img"
           >
             <defs>
-              <linearGradient id="indiaRealFill" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0" stopColor="#fffdf5" />
-                <stop offset="1" stopColor="#f3ead2" />
-              </linearGradient>
-              <filter id="indiaGlow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="10" stdDeviation="8" floodColor="#904d00" floodOpacity="0.16" />
-              </filter>
+              <clipPath id="indiaMapClip">
+                <path d={indiaPath} />
+              </clipPath>
             </defs>
 
             <path
               d={indiaPath}
-              fill="url(#indiaRealFill)"
-              stroke="#8d4c02"
-              strokeWidth="2"
+              fill="#ffffff"
+              stroke="#1f2937"
+              strokeWidth="2.1"
               strokeLinejoin="round"
-              filter="url(#indiaGlow)"
             />
 
-            <circle cx="312" cy="300" r="4" fill="#8d4c02" opacity="0.55" />
-            <circle cx="318" cy="314" r="3.2" fill="#8d4c02" opacity="0.45" />
-            <circle cx="120" cy="318" r="2.8" fill="#8d4c02" opacity="0.35" />
+            <g clipPath="url(#indiaMapClip)" opacity="0.92">
+              {internalBoundaryPaths.map((path, index) => (
+                <path
+                  key={`boundary-${index}`}
+                  d={path}
+                  fill="none"
+                  stroke="#8b98ac"
+                  strokeWidth="1.05"
+                  strokeLinecap="round"
+                />
+              ))}
+            </g>
+
+            <circle cx="312" cy="300" r="4.1" fill="#ffffff" stroke="#1f2937" strokeWidth="1" opacity="0.85" />
+            <circle cx="318" cy="314" r="3.3" fill="#ffffff" stroke="#1f2937" strokeWidth="0.9" opacity="0.8" />
+            <circle cx="120" cy="318" r="2.9" fill="#ffffff" stroke="#1f2937" strokeWidth="0.85" opacity="0.75" />
 
             {projectedProducts.map((product, index) => {
               const tone = toneClasses[product.tone];
@@ -414,7 +489,8 @@ export function LivingComplianceMap() {
                       cx={product.point.x}
                       cy={product.point.y}
                       r={16}
-                      fill="rgba(144,77,0,0.15)"
+                      fill={tone.dot}
+                      fillOpacity={0.2}
                       animate={{ scale: [0.7, 1.25, 0.7], opacity: [0.5, 0.15, 0.5] }}
                       transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
                     />
@@ -433,6 +509,17 @@ export function LivingComplianceMap() {
               );
             })}
           </svg>
+
+          <div className="relative z-10 mt-1.5 rounded-xl border border-outline-variant/35 bg-white/90 px-3 py-2 backdrop-blur-sm">
+            <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-on-surface-variant">Active hotspot</p>
+            <div className="mt-1.5 flex items-center justify-between gap-2">
+              <p className="text-sm font-black text-on-surface">{selectedProduct.name}</p>
+              <span className={`rounded-full border px-2 py-0.5 text-[10px] font-bold ${selectedTone.chip}`}>
+                {selectedProduct.focus}
+              </span>
+            </div>
+            <p className="mt-1 text-xs text-on-surface-variant">{selectedProduct.signal}</p>
+          </div>
 
           <div className="relative z-10 mt-1.5 grid grid-cols-3 overflow-hidden rounded-xl border border-outline-variant/35 bg-white/85 text-center backdrop-blur-sm">
             <div className="border-r border-outline-variant/30 px-2 py-2">
