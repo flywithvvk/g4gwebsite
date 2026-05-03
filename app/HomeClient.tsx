@@ -96,7 +96,7 @@ export default function HomePage() {
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="relative mt-[6.25rem]">
         {/* ── Slides (full viewport height) ── */}
-        <div className="relative h-[calc(100vh-4rem)] overflow-hidden">
+        <div className="relative min-h-[calc(100vh-6.25rem)] overflow-hidden">
         <AnimatePresence mode="wait">
           {heroSlide === 0 ? (
             /* ── SLIDE 0: Full-screen EV Journey Video ── */
@@ -146,9 +146,9 @@ export default function HomePage() {
               {/* Dot grid */}
               <div className="absolute inset-0 z-[1] opacity-[0.018]" style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
-              <div className="container mx-auto px-6 relative z-10">
-                <div className="mx-auto grid max-w-[1440px] items-center gap-8 lg:grid-cols-[0.82fr_1.18fr] xl:gap-10">
-                <motion.div initial={{ y: 30 }} animate={{ y: 0 }} transition={{ duration: 0.7 }} className="text-center lg:text-left max-w-5xl mx-auto lg:mx-0">
+              <div className="container mx-auto px-6 py-6 md:py-8 lg:py-10 relative z-10">
+                <div className="mx-auto grid max-w-[1400px] items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,660px)] xl:max-w-[1460px] xl:grid-cols-[minmax(0,1fr)_minmax(0,710px)] xl:gap-10">
+                <motion.div initial={{ y: 30 }} animate={{ y: 0 }} transition={{ duration: 0.7 }} className="text-center lg:text-left max-w-3xl mx-auto lg:mx-0">
 
                   {/* Animated badge */}
                   <motion.div
@@ -234,7 +234,7 @@ export default function HomePage() {
                   </motion.div>
                 </motion.div>
 
-                <div className="hidden md:block">
+                <div className="hidden lg:block">
                   <LivingComplianceMap />
                 </div>
                 </div>

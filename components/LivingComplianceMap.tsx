@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Icon } from '@/components/Icon';
 import { IndiaFlag } from '@/components/IndiaFlag';
@@ -14,262 +15,547 @@ interface ProductNode {
   metric: string;
   icon: string;
   tone: ProductTone;
+  backdrop: string;
+  signal: string;
+  focus: string;
+  lon: number;
+  lat: number;
 }
 
-interface StateSignal {
-  name: string;
-  x: number;
-  y: number;
-  risk: 'high' | 'medium' | 'low';
-}
+const INDIA_OUTLINE: Array<[number, number]> = [
+  [77.837451, 35.49401],
+  [78.912269, 34.321936],
+  [78.811086, 33.506198],
+  [79.208892, 32.994395],
+  [79.176129, 32.48378],
+  [78.458446, 32.618164],
+  [78.738894, 31.515906],
+  [79.721367, 30.882715],
+  [81.111256, 30.183481],
+  [80.476721, 29.729865],
+  [80.088425, 28.79447],
+  [81.057203, 28.416095],
+  [81.999987, 27.925479],
+  [83.304249, 27.364506],
+  [84.675018, 27.234901],
+  [85.251779, 26.726198],
+  [86.024393, 26.630985],
+  [87.227472, 26.397898],
+  [88.060238, 26.414615],
+  [88.174804, 26.810405],
+  [88.043133, 27.445819],
+  [88.120441, 27.876542],
+  [88.730326, 28.086865],
+  [88.814248, 27.299316],
+  [88.835643, 27.098966],
+  [89.744528, 26.719403],
+  [90.373275, 26.875724],
+  [91.217513, 26.808648],
+  [92.033484, 26.83831],
+  [92.103712, 27.452614],
+  [91.696657, 27.771742],
+  [92.503119, 27.896876],
+  [93.413348, 28.640629],
+  [94.56599, 29.277438],
+  [95.404802, 29.031717],
+  [96.117679, 29.452802],
+  [96.586591, 28.83098],
+  [96.248833, 28.411031],
+  [97.327114, 28.261583],
+  [97.402561, 27.882536],
+  [97.051989, 27.699059],
+  [97.133999, 27.083774],
+  [96.419366, 27.264589],
+  [95.124768, 26.573572],
+  [95.155153, 26.001307],
+  [94.603249, 25.162495],
+  [94.552658, 24.675238],
+  [94.106742, 23.850741],
+  [93.325188, 24.078556],
+  [93.286327, 23.043658],
+  [93.060294, 22.703111],
+  [93.166128, 22.27846],
+  [92.672721, 22.041239],
+  [92.146035, 23.627499],
+  [91.869928, 23.624346],
+  [91.706475, 22.985264],
+  [91.158963, 23.503527],
+  [91.46773, 24.072639],
+  [91.915093, 24.130414],
+  [92.376202, 24.976693],
+  [91.799596, 25.147432],
+  [90.872211, 25.132601],
+  [89.920693, 25.26975],
+  [89.832481, 25.965082],
+  [89.355094, 26.014407],
+  [88.563049, 26.446526],
+  [88.209789, 25.768066],
+  [88.931554, 25.238692],
+  [88.306373, 24.866079],
+  [88.084422, 24.501657],
+  [88.69994, 24.233715],
+  [88.52977, 23.631142],
+  [88.876312, 22.879146],
+  [89.031961, 22.055708],
+  [88.888766, 21.690588],
+  [88.208497, 21.703172],
+  [86.975704, 21.495562],
+  [87.033169, 20.743308],
+  [86.499351, 20.151638],
+  [85.060266, 19.478579],
+  [83.941006, 18.30201],
+  [83.189217, 17.671221],
+  [82.192792, 17.016636],
+  [82.191242, 16.556664],
+  [81.692719, 16.310219],
+  [80.791999, 15.951972],
+  [80.324896, 15.899185],
+  [80.025069, 15.136415],
+  [80.233274, 13.835771],
+  [80.286294, 13.006261],
+  [79.862547, 12.056215],
+  [79.857999, 10.357275],
+  [79.340512, 10.308854],
+  [78.885345, 9.546136],
+  [79.18972, 9.216544],
+  [78.277941, 8.933047],
+  [77.941165, 8.252959],
+  [77.539898, 7.965535],
+  [76.592979, 8.899276],
+  [76.130061, 10.29963],
+  [75.746467, 11.308251],
+  [75.396101, 11.781245],
+  [74.864816, 12.741936],
+  [74.616717, 13.992583],
+  [74.443859, 14.617222],
+  [73.534199, 15.990652],
+  [73.119909, 17.92857],
+  [72.820909, 19.208234],
+  [72.824475, 20.419503],
+  [72.630533, 21.356009],
+  [71.175273, 20.757441],
+  [70.470459, 20.877331],
+  [69.16413, 22.089298],
+  [69.644928, 22.450775],
+  [69.349597, 22.84318],
+  [68.176645, 23.691965],
+  [68.842599, 24.359134],
+  [71.04324, 24.356524],
+  [70.844699, 25.215102],
+  [70.282873, 25.722229],
+  [70.168927, 26.491872],
+  [69.514393, 26.940966],
+  [70.616496, 27.989196],
+  [71.777666, 27.91318],
+  [72.823752, 28.961592],
+  [73.450638, 29.976413],
+  [74.42138, 30.979815],
+  [74.405929, 31.692639],
+  [75.258642, 32.271105],
+  [74.451559, 32.7649],
+  [74.104294, 33.441473],
+  [73.749948, 34.317699],
+  [74.240203, 34.748887],
+  [75.757061, 34.504923],
+  [76.871722, 34.653544],
+  [77.837451, 35.49401],
+];
 
 const productNodes: ProductNode[] = [
-  { name: 'URGAA', short: 'Compliance', role: 'State EV policy, DISCOM and grid approvals', metric: '33 states', icon: 'ev_station', tone: 'primary' },
-  { name: 'GST', short: 'Workshops', role: 'Job cards, billing, inventory and service flow', metric: '17 flows', icon: 'receipt_long', tone: 'secondary' },
-  { name: 'Ignition', short: 'Consumer App', role: 'Charging, service booking and EV ownership', metric: '10 journeys', icon: 'smartphone', tone: 'tertiary' },
-  { name: 'EV VIDYA', short: 'Skills', role: 'Technician training, assessment and certification', metric: '8 tracks', icon: 'school', tone: 'blue' },
-  { name: 'KAILASH-AI', short: 'Analytics', role: 'Predictive diagnostics and intelligence APIs', metric: '18 models', icon: 'psychology', tone: 'danger' },
-  { name: 'Eka-AI', short: 'Agent', role: 'Natural-language orchestration across products', metric: '1 brain', icon: 'smart_toy', tone: 'tertiary' },
+  {
+    name: 'URGAA',
+    short: 'Regulatory Intelligence',
+    role: 'Policy engine for state EV norms, DISCOM approvals, and compliance orchestration.',
+    metric: '33 states mapped',
+    icon: 'gavel',
+    tone: 'primary',
+    backdrop: '/images/power-grid.jpg',
+    signal: 'Policy Alert',
+    focus: 'Delhi NCR',
+    lon: 77.209,
+    lat: 28.6139,
+  },
+  {
+    name: 'GST',
+    short: 'Workshop Operations',
+    role: 'Runs job cards, spares, service billing, and workshop process control for scale.',
+    metric: '17 workflow tracks',
+    icon: 'build',
+    tone: 'secondary',
+    backdrop: '/images/charging-station.jpg',
+    signal: 'Ops Throughput',
+    focus: 'Mumbai',
+    lon: 72.8777,
+    lat: 19.076,
+  },
+  {
+    name: 'Ignition',
+    short: 'Consumer Journey App',
+    role: 'Manages consumer charging, service bookings, ownership insights, and retention journeys.',
+    metric: '10 consumer journeys',
+    icon: 'smartphone',
+    tone: 'tertiary',
+    backdrop: '/images/ev-on-road.jpg',
+    signal: 'Journey Health',
+    focus: 'Bengaluru',
+    lon: 77.5946,
+    lat: 12.9716,
+  },
+  {
+    name: 'EV VIDYA',
+    short: 'Skilling Platform',
+    role: 'Upskills EV technicians through curated modules, assessments, and certification tracks.',
+    metric: '8 skilling tracks',
+    icon: 'school',
+    tone: 'blue',
+    backdrop: '/images/road-highway.jpg',
+    signal: 'Skill Readiness',
+    focus: 'Hyderabad',
+    lon: 78.4867,
+    lat: 17.385,
+  },
+  {
+    name: 'KAILASH-AI',
+    short: 'Predictive Analytics',
+    role: 'Analyzes fault patterns and operational trends to forecast failures and optimize uptime.',
+    metric: '18 AI models',
+    icon: 'analytics',
+    tone: 'danger',
+    backdrop: '/images/ev-charging-close.jpg',
+    signal: 'Predictive Risk',
+    focus: 'Pune',
+    lon: 73.8567,
+    lat: 18.5204,
+  },
+  {
+    name: 'Eka-AI',
+    short: 'Agent Orchestration',
+    role: 'Unifies product workflows with natural-language copilots and cross-stack automation.',
+    metric: '1 orchestration brain',
+    icon: 'smart_toy',
+    tone: 'tertiary',
+    backdrop: '/images/journey-poster.jpg',
+    signal: 'Agent Pulse',
+    focus: 'Kolkata',
+    lon: 88.3639,
+    lat: 22.5726,
+  },
 ];
 
-const stateSignals: StateSignal[] = [
-  { name: 'J&K', x: 37, y: 10, risk: 'medium' },
-  { name: 'Delhi NCR', x: 42, y: 27, risk: 'high' },
-  { name: 'Rajasthan', x: 26, y: 41, risk: 'medium' },
-  { name: 'Uttar Pradesh', x: 53, y: 38, risk: 'high' },
-  { name: 'Gujarat', x: 25, y: 57, risk: 'low' },
-  { name: 'Maharashtra', x: 39, y: 67, risk: 'high' },
-  { name: 'Karnataka', x: 39, y: 83, risk: 'medium' },
-  { name: 'Tamil Nadu', x: 48, y: 93, risk: 'medium' },
-  { name: 'Telangana', x: 48, y: 73, risk: 'low' },
-  { name: 'Madhya Pradesh', x: 45, y: 55, risk: 'high' },
-  { name: 'Odisha', x: 65, y: 66, risk: 'medium' },
-  { name: 'West Bengal', x: 72, y: 53, risk: 'high' },
-  { name: 'Assam', x: 83, y: 43, risk: 'medium' },
-  { name: 'North East', x: 88, y: 36, risk: 'low' },
-];
-
-const toneClasses: Record<ProductTone, { card: string; icon: string; dot: string; line: string }> = {
+const toneClasses: Record<
+  ProductTone,
+  {
+    dot: string;
+    chip: string;
+    icon: string;
+    progress: string;
+  }
+> = {
   primary: {
-    card: 'border-primary/30 bg-primary-container/10 text-primary',
+    dot: '#904d00',
+    chip: 'border-primary/30 bg-primary-container/12 text-primary',
     icon: 'bg-primary text-primary-on',
-    dot: 'bg-primary',
-    line: 'border-primary/30',
+    progress: 'from-primary to-primary-container',
   },
   secondary: {
-    card: 'border-secondary/25 bg-secondary-container/10 text-secondary',
+    dot: '#7b41b3',
+    chip: 'border-secondary/30 bg-secondary-container/12 text-secondary',
     icon: 'bg-secondary text-secondary-on',
-    dot: 'bg-secondary',
-    line: 'border-secondary/25',
+    progress: 'from-secondary to-secondary-container',
   },
   tertiary: {
-    card: 'border-tertiary/25 bg-tertiary-container/10 text-tertiary',
+    dot: '#006e2f',
+    chip: 'border-tertiary/30 bg-tertiary-container/12 text-tertiary',
     icon: 'bg-tertiary text-tertiary-on',
-    dot: 'bg-tertiary',
-    line: 'border-tertiary/25',
+    progress: 'from-tertiary to-tertiary-container',
   },
   danger: {
-    card: 'border-red-400/30 bg-red-500/[0.08] text-red-700',
+    dot: '#dc2626',
+    chip: 'border-red-500/30 bg-red-500/10 text-red-700',
     icon: 'bg-red-700 text-white',
-    dot: 'bg-red-600',
-    line: 'border-red-400/30',
+    progress: 'from-red-700 to-red-400',
   },
   blue: {
-    card: 'border-blue-500/25 bg-blue-500/[0.08] text-blue-700',
+    dot: '#2563eb',
+    chip: 'border-blue-500/30 bg-blue-500/10 text-blue-700',
     icon: 'bg-blue-700 text-white',
-    dot: 'bg-blue-600',
-    line: 'border-blue-500/25',
+    progress: 'from-blue-700 to-blue-400',
   },
 };
 
-const riskClasses = {
-  high: 'bg-red-500 shadow-red-500/35',
-  medium: 'bg-primary shadow-primary/35',
-  low: 'bg-tertiary shadow-tertiary/30',
-};
-
-function productStatus(index: number, activeIndex: number) {
-  if (index === activeIndex) return 'Active layer';
-  if (index < activeIndex) return 'Synced';
-  return 'Standby';
-}
+const MAP_WIDTH = 360;
+const MAP_HEIGHT = 420;
+const MAP_PADDING = 24;
 
 export function LivingComplianceMap() {
   const [activeProduct, setActiveProduct] = useState(0);
-  const [activeSignal, setActiveSignal] = useState(0);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
       setActiveProduct((current) => (current + 1) % productNodes.length);
-      setActiveSignal((current) => (current + 1) % stateSignals.length);
-    }, 1600);
+    }, 4200);
 
     return () => window.clearInterval(timer);
   }, []);
 
+  const bounds = useMemo(() => {
+    const lons = INDIA_OUTLINE.map(([lon]) => lon);
+    const lats = INDIA_OUTLINE.map(([, lat]) => lat);
+    return {
+      minLon: Math.min(...lons),
+      maxLon: Math.max(...lons),
+      minLat: Math.min(...lats),
+      maxLat: Math.max(...lats),
+    };
+  }, []);
+
+  const projectPoint = useCallback((lon: number, lat: number) => {
+    const lonRange = bounds.maxLon - bounds.minLon;
+    const latRange = bounds.maxLat - bounds.minLat;
+
+    const x =
+      MAP_PADDING +
+      ((lon - bounds.minLon) / lonRange) * (MAP_WIDTH - MAP_PADDING * 2);
+    const y =
+      MAP_HEIGHT -
+      MAP_PADDING -
+      ((lat - bounds.minLat) / latRange) * (MAP_HEIGHT - MAP_PADDING * 2);
+
+    return { x, y };
+  }, [bounds]);
+
+  const indiaPath = useMemo(() => {
+    return (
+      INDIA_OUTLINE.map(([lon, lat], index) => {
+        const point = projectPoint(lon, lat);
+        return `${index === 0 ? 'M' : 'L'} ${point.x.toFixed(2)} ${point.y.toFixed(2)}`;
+      }).join(' ') + ' Z'
+    );
+  }, [projectPoint]);
+
+  const projectedProducts = useMemo(() => {
+    return productNodes.map((product) => ({
+      ...product,
+      point: projectPoint(product.lon, product.lat),
+    }));
+  }, [projectPoint]);
+
   const selectedProduct = productNodes[activeProduct];
   const selectedTone = toneClasses[selectedProduct.tone];
-  const activeState = stateSignals[activeSignal];
-  const synchronizedCount = useMemo(() => activeProduct + 1, [activeProduct]);
+  const progress = ((activeProduct + 1) / productNodes.length) * 100;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 18, scale: 0.985 }}
+      initial={{ opacity: 0, y: 14, scale: 0.99 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ delay: 0.42, duration: 0.65, ease: 'easeOut' }}
-      className="relative mx-auto w-full max-w-[720px] overflow-hidden rounded-[1.75rem] border border-outline-variant/45 bg-[#fffdf7] shadow-2xl shadow-primary/10"
+      transition={{ delay: 0.35, duration: 0.55, ease: 'easeOut' }}
+      className="relative mx-auto w-full max-w-[700px] overflow-hidden rounded-[1.5rem] border border-outline-variant/45 bg-white shadow-[0_24px_60px_-28px_rgba(26,23,20,0.35)]"
     >
-      <div className="border-b border-outline-variant/45 bg-white/80 px-5 py-4 backdrop-blur-sm">
-        <div className="flex items-start justify-between gap-4">
+      <div className="border-b border-outline-variant/45 bg-surface-bright/92 px-4 py-3 backdrop-blur-sm sm:px-5">
+        <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary-container/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-primary">
-              <IndiaFlag size={16} /> India command layer
+            <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary-container/12 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-primary">
+              <IndiaFlag size={14} /> Real India command view
             </div>
-            <h3 className="max-w-xl text-2xl font-black leading-tight text-on-surface md:text-[2rem] font-display">
-              6 products coordinate India&apos;s automobile intelligence
+            <h3 className="text-lg font-black leading-tight text-on-surface sm:text-xl font-display">
+              Product-by-product intelligence across India
             </h3>
           </div>
-          <div className="hidden shrink-0 rounded-2xl border border-tertiary/25 bg-tertiary-container/10 px-4 py-2 text-right sm:block">
-            <p className="text-[10px] font-bold uppercase tracking-widest text-tertiary">Live stack</p>
-            <p className="text-2xl font-black text-tertiary font-display">{synchronizedCount}/6</p>
+          <div className="hidden shrink-0 rounded-xl border border-outline-variant/40 bg-white px-3 py-2 text-right sm:block">
+            <p className="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant">Slide</p>
+            <p className="font-display text-lg font-black text-primary">
+              {activeProduct + 1}/{productNodes.length}
+            </p>
           </div>
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
-        <div className="relative min-h-[390px] border-b border-outline-variant/45 bg-[#fbfaf4] lg:border-b-0 lg:border-r">
-          <div className="absolute inset-0 opacity-[0.42]" style={{ backgroundImage: 'linear-gradient(rgba(144,77,0,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(144,77,0,0.08) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-          <svg viewBox="0 0 320 360" className="absolute inset-x-6 top-5 h-[330px] w-[calc(100%-3rem)] drop-shadow-xl" aria-label="India operations map" role="img">
+      <div className="grid lg:grid-cols-[0.86fr_1.14fr]">
+        <div className="relative border-b border-outline-variant/45 bg-[linear-gradient(180deg,#fbfdff,#f6f9fc)] p-3 sm:p-4 lg:border-b-0 lg:border-r">
+          <div className="absolute inset-0 opacity-[0.26]" style={{ backgroundImage: 'linear-gradient(rgba(144,77,0,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(144,77,0,0.06) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
+
+          <svg
+            viewBox={`0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`}
+            className="relative z-10 h-[340px] w-full"
+            aria-label="Real map of India"
+            role="img"
+          >
             <defs>
-              <linearGradient id="g4gIndiaFill" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0" stopColor="#fff8e8" />
-                <stop offset="0.48" stopColor="#ead8ad" />
-                <stop offset="1" stopColor="#f7e6c8" />
+              <linearGradient id="indiaRealFill" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stopColor="#fffdf5" />
+                <stop offset="1" stopColor="#f3ead2" />
               </linearGradient>
-              <filter id="g4gMapShadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="12" stdDeviation="12" floodColor="#904d00" floodOpacity="0.14" />
+              <filter id="indiaGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="10" stdDeviation="8" floodColor="#904d00" floodOpacity="0.16" />
               </filter>
             </defs>
-            <path
-              d="M121 12 C135 7 150 13 159 27 C174 24 190 31 199 47 C214 51 224 64 228 78 C242 82 252 93 254 108 C269 116 281 130 285 146 C266 146 249 154 237 169 C229 181 230 197 219 211 C211 225 210 244 197 261 C187 273 179 289 176 306 C169 315 160 321 149 329 C145 312 137 300 128 288 C120 277 118 263 105 252 C93 242 81 229 78 214 C67 210 57 201 51 189 C60 178 67 166 60 152 C53 139 46 128 52 115 C64 107 74 99 79 87 C82 71 91 60 96 47 C101 32 109 20 121 12 Z"
-              fill="url(#g4gIndiaFill)"
-              stroke="#904d00"
-              strokeWidth="2.3"
-              strokeLinejoin="round"
-              filter="url(#g4gMapShadow)"
-            />
-            <path
-              d="M236 113 C253 105 279 111 299 125 C285 139 263 139 247 150 C244 137 238 127 236 113 Z"
-              fill="url(#g4gIndiaFill)"
-              stroke="#904d00"
-              strokeWidth="2.1"
-              strokeLinejoin="round"
-              filter="url(#g4gMapShadow)"
-            />
-            <path d="M131 292 C138 305 142 321 145 341" stroke="#904d00" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.5" />
-            <circle cx="253" cy="276" r="3" fill="#904d00" opacity="0.55" />
-            <circle cx="261" cy="291" r="2.4" fill="#904d00" opacity="0.45" />
-          </svg>
 
-          <div className="absolute inset-x-6 top-5 h-[330px]">
-            {stateSignals.map((signal, index) => {
-              const active = index === activeSignal;
+            <path
+              d={indiaPath}
+              fill="url(#indiaRealFill)"
+              stroke="#8d4c02"
+              strokeWidth="2"
+              strokeLinejoin="round"
+              filter="url(#indiaGlow)"
+            />
+
+            <circle cx="312" cy="320" r="4" fill="#8d4c02" opacity="0.55" />
+            <circle cx="318" cy="334" r="3.2" fill="#8d4c02" opacity="0.45" />
+            <circle cx="120" cy="338" r="2.8" fill="#8d4c02" opacity="0.35" />
+
+            {projectedProducts.map((product, index) => {
+              const tone = toneClasses[product.tone];
+              const active = index === activeProduct;
+
               return (
-                <button
-                  key={signal.name}
-                  type="button"
-                  className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full focus:outline-none"
-                  style={{ left: `${signal.x}%`, top: `${signal.y}%` }}
-                  aria-label={`${signal.name} ${signal.risk} signal`}
-                  onClick={() => setActiveSignal(index)}
-                >
-                  <motion.span
-                    animate={{ scale: active ? [1, 1.35, 1] : 1 }}
-                    transition={{ duration: 1.2, repeat: active ? Infinity : 0 }}
-                    className={`block h-3.5 w-3.5 rounded-full border-2 border-white shadow-lg ${riskClasses[signal.risk]}`}
+                <g key={product.name}>
+                  {active && (
+                    <motion.circle
+                      cx={product.point.x}
+                      cy={product.point.y}
+                      r={16}
+                      fill="rgba(144,77,0,0.15)"
+                      animate={{ scale: [0.7, 1.25, 0.7], opacity: [0.5, 0.15, 0.5] }}
+                      transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+                    />
+                  )}
+                  <motion.circle
+                    cx={product.point.x}
+                    cy={product.point.y}
+                    r={active ? 7 : 5.5}
+                    fill={tone.dot}
+                    stroke="#ffffff"
+                    strokeWidth={active ? 2.6 : 2}
+                    animate={active ? { scale: [1, 1.12, 1] } : { scale: 1 }}
+                    transition={{ duration: 1.3, repeat: active ? Infinity : 0 }}
                   />
-                </button>
+                </g>
               );
             })}
-          </div>
+          </svg>
 
-          <div className="absolute bottom-4 left-4 right-4 grid grid-cols-3 overflow-hidden rounded-2xl border border-outline-variant/40 bg-white/[0.82] text-center backdrop-blur-sm">
-            <div className="border-r border-outline-variant/35 px-3 py-2">
-              <p className="text-lg font-black text-primary font-display">33</p>
+          <div className="relative z-10 mt-2 grid grid-cols-3 overflow-hidden rounded-xl border border-outline-variant/35 bg-white/85 text-center backdrop-blur-sm">
+            <div className="border-r border-outline-variant/30 px-2 py-2">
+              <p className="font-display text-base font-black text-primary">33</p>
               <p className="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant">States</p>
             </div>
-            <div className="border-r border-outline-variant/35 px-3 py-2">
-              <p className="text-lg font-black text-secondary font-display">85</p>
+            <div className="border-r border-outline-variant/30 px-2 py-2">
+              <p className="font-display text-base font-black text-secondary">95</p>
               <p className="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant">Problems</p>
             </div>
-            <div className="px-3 py-2">
-              <p className="text-lg font-black text-tertiary font-display">6</p>
+            <div className="px-2 py-2">
+              <p className="font-display text-base font-black text-tertiary">6</p>
               <p className="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant">Products</p>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/[0.76]">
-          <div className={`border-b p-4 ${selectedTone.line}`}>
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <span className={`flex h-11 w-11 items-center justify-center rounded-2xl ${selectedTone.icon}`}>
-                  <Icon name={selectedProduct.icon} size={22} />
-                </span>
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.18em] text-on-surface-variant">Active product layer</p>
-                  <p className="font-display text-xl font-black text-on-surface">{selectedProduct.name}</p>
+        <div className="flex flex-col bg-surface-bright/70 p-3 sm:p-4">
+          <motion.div
+            key={selectedProduct.name}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
+            className="overflow-hidden rounded-2xl border border-outline-variant/35 bg-white"
+          >
+            <div className="relative h-40 sm:h-44">
+              <Image
+                src={selectedProduct.backdrop}
+                alt={`${selectedProduct.name} background`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 420px"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(130deg,rgba(10,10,10,0.74),rgba(10,10,10,0.22)_58%,rgba(10,10,10,0.08))]" />
+
+              <div className="absolute left-3 right-3 top-3 flex items-start justify-between gap-3">
+                <div className={`inline-flex items-center gap-2 rounded-xl border px-2.5 py-1 text-xs font-black ${selectedTone.chip}`}>
+                  <span className={`flex h-7 w-7 items-center justify-center rounded-lg ${selectedTone.icon}`}>
+                    <Icon name={selectedProduct.icon} size={16} />
+                  </span>
+                  {selectedProduct.name}
+                </div>
+                <div className="rounded-lg border border-white/30 bg-black/35 px-2 py-1 text-right text-white backdrop-blur-sm">
+                  <p className="text-[9px] font-bold uppercase tracking-widest text-white/80">Signal</p>
+                  <p className="text-xs font-black">{selectedProduct.signal}</p>
                 </div>
               </div>
-              <div className="rounded-xl border border-outline-variant/35 bg-surface/70 px-3 py-2 text-right">
-                <p className="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant">Signal</p>
-                <p className="text-sm font-black text-primary">{activeState.name}</p>
+
+              <div className="absolute bottom-3 left-3 right-3">
+                <p className="text-[10px] font-black uppercase tracking-[0.16em] text-white/80">{selectedProduct.short}</p>
+                <p className="font-display text-lg font-black leading-tight text-white">{selectedProduct.metric}</p>
               </div>
             </div>
-            <p className="mt-3 text-sm leading-relaxed text-on-surface-variant">{selectedProduct.role}</p>
-          </div>
 
-          <div className="grid grid-cols-2 gap-2 p-4">
-            {productNodes.map((product, index) => {
-              const active = index === activeProduct;
-              const tone = toneClasses[product.tone];
+            <div className="space-y-3 p-3 sm:p-4">
+              <p className="text-sm leading-relaxed text-on-surface-variant">{selectedProduct.role}</p>
+              <div className="flex items-center justify-between gap-2 rounded-xl border border-outline-variant/30 bg-surface-container-low px-3 py-2">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Focus Region</p>
+                <p className="text-sm font-black text-primary">{selectedProduct.focus}</p>
+              </div>
+            </div>
+          </motion.div>
 
-              return (
+          <div className="mt-3 rounded-xl border border-outline-variant/35 bg-white/85 p-3">
+            <div className="mb-2 flex items-center justify-between gap-2">
+              <p className="text-[10px] font-black uppercase tracking-[0.16em] text-on-surface-variant">
+                Product Scroller
+              </p>
+              <div className="flex items-center gap-2">
                 <button
-                  key={product.name}
                   type="button"
-                  onClick={() => setActiveProduct(index)}
-                  className={`min-h-[92px] rounded-2xl border p-3 text-left transition-all ${active ? `${tone.card} shadow-sm` : 'border-outline-variant/35 bg-surface/[0.55] hover:border-primary/25'}`}
+                  onClick={() =>
+                    setActiveProduct((current) =>
+                      current === 0 ? productNodes.length - 1 : current - 1,
+                    )
+                  }
+                  className="rounded-lg border border-outline-variant/40 p-1.5 text-on-surface-variant transition-colors hover:border-primary/40 hover:text-primary"
+                  aria-label="Previous product"
                 >
-                  <div className="mb-2 flex items-start justify-between gap-2">
-                    <span className={`flex h-8 w-8 items-center justify-center rounded-xl ${active ? tone.icon : 'bg-surface-container-high text-on-surface-variant'}`}>
-                      <Icon name={product.icon} size={17} />
-                    </span>
-                    <span className={`h-2 w-2 rounded-full ${active ? tone.dot : 'bg-outline-variant'}`} />
-                  </div>
-                  <p className="font-display text-sm font-black text-on-surface">{product.name}</p>
-                  <div className="mt-1 flex items-center justify-between gap-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">{product.short}</span>
-                    <span className="text-[10px] font-black text-primary">{product.metric}</span>
-                  </div>
-                  <p className="mt-1 text-[10px] font-semibold text-on-surface-variant">{productStatus(index, activeProduct)}</p>
+                  <Icon name="chevron_left" size={16} />
                 </button>
-              );
-            })}
-          </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setActiveProduct((current) => (current + 1) % productNodes.length)
+                  }
+                  className="rounded-lg border border-outline-variant/40 p-1.5 text-on-surface-variant transition-colors hover:border-primary/40 hover:text-primary"
+                  aria-label="Next product"
+                >
+                  <Icon name="chevron_right" size={16} />
+                </button>
+              </div>
+            </div>
 
-          <div className="mt-auto border-t border-outline-variant/45 bg-[#fbfaf4] p-4">
-            <div className="grid grid-cols-3 overflow-hidden rounded-2xl border border-outline-variant/40 bg-white/75">
-              {[
-                ['manage_search', 'Reads policy'],
-                ['hub', 'Routes to product'],
-                ['task_alt', 'Closes workflow'],
-              ].map(([icon, label], index) => (
-                <div key={label} className={`px-3 py-3 text-center ${index < 2 ? 'border-r border-outline-variant/35' : ''}`}>
-                  <Icon name={icon} size={18} className="mx-auto mb-1 text-primary" />
-                  <p className="text-[10px] font-black uppercase tracking-wider text-on-surface-variant">{label}</p>
-                </div>
-              ))}
+            <div className="mb-3 h-1.5 overflow-hidden rounded-full bg-outline-variant/25">
+              <motion.div
+                className={`h-full rounded-full bg-gradient-to-r ${selectedTone.progress}`}
+                animate={{ width: `${progress}%` }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
+              />
+            </div>
+
+            <div className="grid grid-cols-3 gap-1.5">
+              {productNodes.map((product, index) => {
+                const active = index === activeProduct;
+                return (
+                  <button
+                    key={product.name}
+                    type="button"
+                    onClick={() => setActiveProduct(index)}
+                    className={`rounded-lg border px-2 py-1.5 text-left transition-all ${
+                      active
+                        ? `${toneClasses[product.tone].chip} shadow-sm`
+                        : 'border-outline-variant/35 bg-surface text-on-surface-variant hover:border-primary/35'
+                    }`}
+                  >
+                    <p className="text-[11px] font-black leading-tight">{product.name}</p>
+                    <p className="mt-0.5 text-[9px] font-semibold uppercase tracking-wide opacity-80">
+                      {product.short}
+                    </p>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
