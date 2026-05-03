@@ -94,9 +94,9 @@ export default function HomePage() {
           HERO: Slide 0: EV Journey Video | Slide 1: Platform Message
           + 5-YEAR ANNIVERSARY BANNER (same section)
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="relative mt-[6.25rem]">
+      <section className="relative mt-[5.5rem] sm:mt-[6.25rem]">
         {/* ── Slides (full viewport height) ── */}
-        <div className="relative min-h-[calc(100vh-6.25rem)] overflow-hidden">
+        <div className="relative min-h-[calc(100vh-5.5rem)] sm:min-h-[calc(100vh-6.25rem)] overflow-hidden">
         <AnimatePresence mode="wait">
           {heroSlide === 0 ? (
             /* ── SLIDE 0: Full-screen EV Journey Video ── */
@@ -120,7 +120,7 @@ export default function HomePage() {
             /* ── SLIDE 1: Headline + CTAs ── */
             <motion.div
               key="slide-1"
-              className="absolute inset-0 flex items-center justify-center bg-[#fcfdff]"
+              className="absolute inset-0 flex items-start sm:items-center justify-center bg-[#fcfdff]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -146,7 +146,7 @@ export default function HomePage() {
               {/* Dot grid */}
               <div className="absolute inset-0 z-[1] opacity-[0.018]" style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
-              <div className="container mx-auto px-5 sm:px-6 py-6 md:py-8 lg:py-10 relative z-10">
+              <div className="container mx-auto px-5 sm:px-6 py-4 sm:py-6 md:py-8 lg:py-10 relative z-10">
                 <div className="mx-auto grid max-w-[1320px] items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,600px)] min-[1366px]:max-w-[1400px] min-[1366px]:grid-cols-[minmax(0,1fr)_minmax(0,650px)] min-[1536px]:max-w-[1460px] min-[1536px]:grid-cols-[minmax(0,1fr)_minmax(0,710px)] min-[1536px]:gap-10">
                 <motion.div initial={{ y: 30 }} animate={{ y: 0 }} transition={{ duration: 0.7 }} className="text-center lg:text-left max-w-3xl min-[1536px]:max-w-[58ch] mx-auto lg:mx-0">
 
@@ -155,7 +155,7 @@ export default function HomePage() {
                     initial={{ opacity: 0, scale: 0.8, y: -10 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ delay: 0.3, type: 'spring', stiffness: 200 }}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 mb-8 rounded-full border border-primary/20 bg-primary-container/10 backdrop-blur-sm"
+                    className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 mb-6 sm:mb-8 rounded-full border border-primary/20 bg-primary-container/10 backdrop-blur-sm"
                   >
                     <motion.span
                       animate={{ scale: [1, 1.4, 1] }}
@@ -166,7 +166,7 @@ export default function HomePage() {
                   </motion.div>
 
                   {/* Headline */}
-                  <h1 className="text-[clamp(2.75rem,5.7vw,5.9rem)] font-bold text-on-surface mb-5 md:mb-6 leading-[0.98] tracking-[-0.02em] font-display">
+                  <h1 className="text-[clamp(2.2rem,10vw,5.9rem)] font-bold text-on-surface mb-4 sm:mb-5 md:mb-6 leading-[0.98] tracking-[-0.02em] font-display">
                     The AI Platform{' '}
                     <br className="hidden md:block" />
                     Powering{' '}
@@ -176,7 +176,7 @@ export default function HomePage() {
                   </h1>
 
                   {/* Typewriter */}
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mb-6">
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mb-5 sm:mb-6">
                     <TypewriterText
                       texts={['Regulatory Intelligence', 'Operational Excellence', 'Workforce Development', 'Grid Optimization', 'Consumer Experience', 'Predictive Analytics']}
                       className="text-lg md:text-xl min-[1536px]:text-2xl font-semibold gradient-text font-display"
@@ -184,11 +184,11 @@ export default function HomePage() {
                   </motion.div>
 
                   {/* Sub-copy */}
-                  <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-base sm:text-lg min-[1536px]:text-xl text-on-surface-variant mb-8 sm:mb-10 max-w-[36ch] mx-auto lg:mx-0 leading-relaxed">
+                  <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-[1.02rem] sm:text-lg min-[1536px]:text-xl text-on-surface-variant mb-7 sm:mb-9 max-w-[36ch] mx-auto lg:mx-0 leading-relaxed">
                     95 problems identified across India&apos;s EV ecosystem. 85 addressable. 6 products. Zero friction.
                   </motion.p>
 
-                  <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.82 }} className="mb-8 grid grid-cols-3 gap-2 rounded-2xl border border-primary/15 bg-surface-bright/70 p-2 backdrop-blur-sm sm:gap-3 sm:p-3 lg:max-w-xl">
+                  <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.82 }} className="mb-7 sm:mb-8 grid grid-cols-3 gap-2 rounded-2xl border border-primary/15 bg-surface-bright/70 p-2 backdrop-blur-sm sm:gap-3 sm:p-3 lg:max-w-xl">
                     {[
                       ['33', 'states scanned'],
                       ['27', 'URGAA workflows'],
@@ -202,7 +202,7 @@ export default function HomePage() {
                   </motion.div>
 
                   {/* CTAs */}
-                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap gap-3 sm:gap-4 justify-center lg:justify-start mb-8">
+                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap gap-3 sm:gap-4 justify-center lg:justify-start mb-7 sm:mb-8">
                     <Link href="/contact" onClick={() => trackCTAClick('hero_schedule_demo', '/contact')}>
                       <motion.button
                         whileHover={{ scale: 1.04, boxShadow: '0 20px 40px -12px rgba(144,77,0,0.35)' }}
@@ -240,7 +240,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Scroll indicator */}
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8 }} className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:block">
                   <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }} className="w-6 h-10 rounded-full border-2 border-outline-variant flex items-start justify-center p-1.5">
                     <motion.div className="w-1.5 h-1.5 rounded-full bg-primary" />
                   </motion.div>

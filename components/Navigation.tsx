@@ -48,10 +48,10 @@ const Navigation = () => {
     >
       {/* ── Announcement Ticker ── */}
       <div className="w-full bg-black overflow-hidden border-b border-white/10">
-        <div className="flex items-center h-9 overflow-hidden">
+        <div className="flex items-center h-8 sm:h-9 overflow-hidden">
           <div className="g4g-ticker flex whitespace-nowrap">
             {[0, 1].map((i) => (
-              <span key={i} aria-hidden={i === 1} className="text-white text-xs font-medium px-10 inline-flex items-center gap-3">
+              <span key={i} aria-hidden={i === 1} className="text-white text-[11px] sm:text-xs font-medium px-8 sm:px-10 inline-flex items-center gap-3">
                 🎉 Go4Garage: 5 Years of Innovation (2021–2026)
                 <span className="text-white/40">•</span>
                 ⚡ India&apos;s First AI-Powered EV Intelligence Platform
@@ -71,7 +71,7 @@ const Navigation = () => {
         <div className={`absolute inset-0 backdrop-blur-xl border-b transition-all duration-300 ${scrolled ? 'bg-surface-bright shadow-md border-outline-variant/40' : 'bg-surface-bright shadow-sm border-outline-variant/30'}`} />
 
         <div className="relative mx-auto max-w-[1520px] px-4 sm:px-6 lg:px-6 xl:px-8">
-          <div className="flex h-16 items-center justify-between gap-3">
+          <div className="flex h-14 sm:h-16 items-center justify-between gap-3">
           {/* Logo */}
           <Link href="/" className="flex shrink-0 items-center self-center group">
             <motion.div
@@ -80,7 +80,7 @@ const Navigation = () => {
               transition={{ duration: 0.5 }}
               className="flex items-center gap-2.5"
             >
-              <Image src="/logo.jpg" alt="Go4Garage" width={150} height={40} className="block h-8 w-auto object-contain xl:h-[33px] 2xl:h-9" />
+              <Image src="/logo.jpg" alt="Go4Garage" width={150} height={40} className="block h-7 sm:h-8 w-auto object-contain xl:h-[33px] 2xl:h-9" />
             </motion.div>
           </Link>
 
@@ -170,7 +170,7 @@ const Navigation = () => {
 
           {/* Mobile hamburger */}
           <button
-            className="flex flex-col gap-1.5 rounded-lg p-2 transition-colors hover:bg-surface-container-high xl:hidden"
+            className="flex flex-col gap-1.5 rounded-lg p-1.5 sm:p-2 transition-colors hover:bg-surface-container-high xl:hidden"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={isOpen}
@@ -196,7 +196,7 @@ const Navigation = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute left-0 right-0 top-[6.25rem] border-b border-outline-variant/30 bg-surface-bright/95 shadow-lg backdrop-blur-xl xl:hidden"
+            className="absolute left-0 right-0 top-[5.5rem] sm:top-[6.25rem] border-b border-outline-variant/30 bg-surface-bright/95 shadow-lg backdrop-blur-xl xl:hidden"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
