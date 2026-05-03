@@ -284,8 +284,8 @@ const toneClasses: Record<
 };
 
 const MAP_WIDTH = 360;
-const MAP_HEIGHT = 420;
-const MAP_PADDING = 24;
+const MAP_HEIGHT = 340;
+const MAP_PADDING = 16;
 
 export function LivingComplianceMap() {
   const [activeProduct, setActiveProduct] = useState(0);
@@ -349,15 +349,15 @@ export function LivingComplianceMap() {
       initial={{ opacity: 0, y: 14, scale: 0.99 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ delay: 0.35, duration: 0.55, ease: 'easeOut' }}
-      className="relative mx-auto w-full max-w-[700px] overflow-hidden rounded-[1.5rem] border border-outline-variant/45 bg-white shadow-[0_24px_60px_-28px_rgba(26,23,20,0.35)]"
+      className="relative mx-auto w-full max-w-[680px] overflow-hidden rounded-[1.5rem] border border-outline-variant/45 bg-white shadow-[0_24px_60px_-28px_rgba(26,23,20,0.35)]"
     >
-      <div className="border-b border-outline-variant/45 bg-surface-bright/92 px-4 py-3 backdrop-blur-sm sm:px-5">
+      <div className="border-b border-outline-variant/45 bg-surface-bright/92 px-4 py-2.5 backdrop-blur-sm sm:px-5">
         <div className="flex items-center justify-between gap-3">
           <div>
             <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary-container/12 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-primary">
               <IndiaFlag size={14} /> Real India command view
             </div>
-            <h3 className="text-lg font-black leading-tight text-on-surface sm:text-xl font-display">
+            <h3 className="text-base font-black leading-tight text-on-surface sm:text-lg font-display">
               Product-by-product intelligence across India
             </h3>
           </div>
@@ -371,12 +371,12 @@ export function LivingComplianceMap() {
       </div>
 
       <div className="grid lg:grid-cols-[0.86fr_1.14fr]">
-        <div className="relative border-b border-outline-variant/45 bg-[linear-gradient(180deg,#fbfdff,#f6f9fc)] p-3 sm:p-4 lg:border-b-0 lg:border-r">
+        <div className="relative border-b border-outline-variant/45 bg-[linear-gradient(180deg,#fbfdff,#f6f9fc)] p-2.5 sm:p-3 lg:border-b-0 lg:border-r">
           <div className="absolute inset-0 opacity-[0.26]" style={{ backgroundImage: 'linear-gradient(rgba(144,77,0,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(144,77,0,0.06) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
 
           <svg
             viewBox={`0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`}
-            className="relative z-10 h-[340px] w-full"
+            className="relative z-10 h-[280px] w-full"
             aria-label="Real map of India"
             role="img"
           >
@@ -399,9 +399,9 @@ export function LivingComplianceMap() {
               filter="url(#indiaGlow)"
             />
 
-            <circle cx="312" cy="320" r="4" fill="#8d4c02" opacity="0.55" />
-            <circle cx="318" cy="334" r="3.2" fill="#8d4c02" opacity="0.45" />
-            <circle cx="120" cy="338" r="2.8" fill="#8d4c02" opacity="0.35" />
+            <circle cx="312" cy="300" r="4" fill="#8d4c02" opacity="0.55" />
+            <circle cx="318" cy="314" r="3.2" fill="#8d4c02" opacity="0.45" />
+            <circle cx="120" cy="318" r="2.8" fill="#8d4c02" opacity="0.35" />
 
             {projectedProducts.map((product, index) => {
               const tone = toneClasses[product.tone];
@@ -434,7 +434,7 @@ export function LivingComplianceMap() {
             })}
           </svg>
 
-          <div className="relative z-10 mt-2 grid grid-cols-3 overflow-hidden rounded-xl border border-outline-variant/35 bg-white/85 text-center backdrop-blur-sm">
+          <div className="relative z-10 mt-1.5 grid grid-cols-3 overflow-hidden rounded-xl border border-outline-variant/35 bg-white/85 text-center backdrop-blur-sm">
             <div className="border-r border-outline-variant/30 px-2 py-2">
               <p className="font-display text-base font-black text-primary">33</p>
               <p className="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant">States</p>

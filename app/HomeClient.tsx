@@ -120,7 +120,7 @@ export default function HomePage() {
             /* ── SLIDE 1: Headline + CTAs ── */
             <motion.div
               key="slide-1"
-              className="absolute inset-0 flex items-start sm:items-center justify-center bg-[#fcfdff]"
+              className="absolute inset-0 flex items-start justify-center bg-[#fcfdff]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -146,8 +146,8 @@ export default function HomePage() {
               {/* Dot grid */}
               <div className="absolute inset-0 z-[1] opacity-[0.018]" style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
-              <div className="container mx-auto px-5 sm:px-6 py-4 sm:py-6 md:py-8 lg:py-10 relative z-10">
-                <div className="mx-auto grid max-w-[1320px] items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,600px)] min-[1366px]:max-w-[1400px] min-[1366px]:grid-cols-[minmax(0,1fr)_minmax(0,650px)] min-[1536px]:max-w-[1460px] min-[1536px]:grid-cols-[minmax(0,1fr)_minmax(0,710px)] min-[1536px]:gap-10">
+              <div className="container mx-auto px-5 sm:px-6 py-4 sm:py-5 md:py-7 lg:py-8 relative z-10">
+                <div className="mx-auto grid max-w-[1320px] items-start gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,560px)] min-[1366px]:max-w-[1400px] min-[1366px]:grid-cols-[minmax(0,1fr)_minmax(0,610px)] min-[1536px]:max-w-[1460px] min-[1536px]:grid-cols-[minmax(0,1fr)_minmax(0,680px)] min-[1536px]:gap-8">
                 <motion.div initial={{ y: 30 }} animate={{ y: 0 }} transition={{ duration: 0.7 }} className="text-center lg:text-left max-w-3xl min-[1536px]:max-w-[58ch] mx-auto lg:mx-0">
 
                   {/* Animated badge */}
@@ -166,7 +166,7 @@ export default function HomePage() {
                   </motion.div>
 
                   {/* Headline */}
-                  <h1 className="text-[clamp(2.2rem,10vw,5.9rem)] font-bold text-on-surface mb-4 sm:mb-5 md:mb-6 leading-[0.98] tracking-[-0.02em] font-display">
+                  <h1 className="text-[clamp(2rem,8.2vw,5.4rem)] font-bold text-on-surface mb-3 sm:mb-4 md:mb-5 leading-[0.98] tracking-[-0.02em] font-display">
                     The AI Platform{' '}
                     <br className="hidden md:block" />
                     Powering{' '}
@@ -176,19 +176,19 @@ export default function HomePage() {
                   </h1>
 
                   {/* Typewriter */}
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mb-5 sm:mb-6">
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mb-4 sm:mb-5">
                     <TypewriterText
                       texts={['Regulatory Intelligence', 'Operational Excellence', 'Workforce Development', 'Grid Optimization', 'Consumer Experience', 'Predictive Analytics']}
-                      className="text-lg md:text-xl min-[1536px]:text-2xl font-semibold gradient-text font-display"
+                      className="text-base md:text-lg min-[1536px]:text-xl font-semibold gradient-text font-display"
                     />
                   </motion.div>
 
                   {/* Sub-copy */}
-                  <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-[1.02rem] sm:text-lg min-[1536px]:text-xl text-on-surface-variant mb-7 sm:mb-9 max-w-[36ch] mx-auto lg:mx-0 leading-relaxed">
+                  <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-base sm:text-[1.05rem] min-[1536px]:text-lg text-on-surface-variant mb-6 sm:mb-7 max-w-[34ch] mx-auto lg:mx-0 leading-relaxed">
                     95 problems identified across India&apos;s EV ecosystem. 85 addressable. 6 products. Zero friction.
                   </motion.p>
 
-                  <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.82 }} className="mb-7 sm:mb-8 grid grid-cols-3 gap-2 rounded-2xl border border-primary/15 bg-surface-bright/70 p-2 backdrop-blur-sm sm:gap-3 sm:p-3 lg:max-w-xl">
+                  <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.82 }} className="mb-6 sm:mb-7 grid grid-cols-3 gap-2 rounded-2xl border border-primary/15 bg-surface-bright/70 p-2 backdrop-blur-sm sm:gap-2.5 sm:p-2.5 lg:max-w-lg">
                     {[
                       ['33', 'states scanned'],
                       ['27', 'URGAA workflows'],
@@ -202,12 +202,12 @@ export default function HomePage() {
                   </motion.div>
 
                   {/* CTAs */}
-                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap gap-3 sm:gap-4 justify-center lg:justify-start mb-7 sm:mb-8">
+                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap gap-3 sm:gap-3.5 justify-center lg:justify-start mb-6 sm:mb-7">
                     <Link href="/contact" onClick={() => trackCTAClick('hero_schedule_demo', '/contact')}>
                       <motion.button
                         whileHover={{ scale: 1.04, boxShadow: '0 20px 40px -12px rgba(144,77,0,0.35)' }}
                         whileTap={{ scale: 0.98 }}
-                        className="w-full sm:w-auto px-7 py-3.5 bg-primary text-primary-on rounded-2xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-shadow"
+                        className="w-full sm:w-auto px-6 py-3 bg-primary text-primary-on rounded-2xl font-semibold text-base sm:text-[1.02rem] shadow-lg hover:shadow-xl transition-shadow"
                       >
                         {heroCTAPrimary}
                       </motion.button>
@@ -216,7 +216,7 @@ export default function HomePage() {
                       <motion.button
                         whileHover={{ scale: 1.04 }}
                         whileTap={{ scale: 0.98 }}
-                        className="w-full sm:w-auto px-7 py-3.5 rounded-2xl font-semibold text-base sm:text-lg border-2 border-outline-variant bg-surface-bright/80 backdrop-blur-sm text-on-surface hover:border-primary/40 hover:bg-surface-container-low transition-all"
+                        className="w-full sm:w-auto px-6 py-3 rounded-2xl font-semibold text-base sm:text-[1.02rem] border-2 border-outline-variant bg-surface-bright/80 backdrop-blur-sm text-on-surface hover:border-primary/40 hover:bg-surface-container-low transition-all"
                       >
                         {heroCTASecondary}
                       </motion.button>
