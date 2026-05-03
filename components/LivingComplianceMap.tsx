@@ -344,7 +344,10 @@ const toneClasses: Record<
 
 const MAP_WIDTH = 360;
 const MAP_HEIGHT = 340;
-const MAP_PADDING = 16;
+const MAP_PADDING = 12;
+const MAP_SCALE = 1.11;
+const MAP_OFFSET_X = -8;
+const MAP_OFFSET_Y = 6;
 
 export function LivingComplianceMap() {
   const [activeProduct, setActiveProduct] = useState(0);
@@ -380,7 +383,12 @@ export function LivingComplianceMap() {
       MAP_PADDING -
       ((lat - bounds.minLat) / latRange) * (MAP_HEIGHT - MAP_PADDING * 2);
 
-    return { x, y };
+    const centerX = MAP_WIDTH / 2;
+    const centerY = MAP_HEIGHT / 2;
+    const scaledX = centerX + (x - centerX) * MAP_SCALE + MAP_OFFSET_X;
+    const scaledY = centerY + (y - centerY) * MAP_SCALE + MAP_OFFSET_Y;
+
+    return { x: scaledX, y: scaledY };
   }, [bounds]);
 
   const pathFromGeoLine = useCallback((line: Array<[number, number]>, closePath = false) => {
@@ -443,7 +451,7 @@ export function LivingComplianceMap() {
 
           <svg
             viewBox={`0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`}
-            className="relative z-10 h-[282px] w-full drop-shadow-[0_18px_24px_rgba(24,35,58,0.15)]"
+            className="relative z-10 h-[300px] w-full drop-shadow-[0_18px_24px_rgba(24,35,58,0.15)]"
             aria-label="India map with state-level detail"
             role="img"
           >

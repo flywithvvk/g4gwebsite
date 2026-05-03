@@ -96,7 +96,7 @@ export default function HomePage() {
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <section className="relative mt-[5.5rem] sm:mt-[6.25rem]">
         {/* ── Slides (full viewport height) ── */}
-        <div className="relative min-h-[calc(100vh-5.5rem)] sm:min-h-[calc(100vh-6.25rem)] overflow-hidden">
+        <div className="relative min-h-[calc(100vh-5.5rem)] sm:min-h-[calc(100vh-6.25rem)] lg:min-h-[760px] xl:min-h-[780px] overflow-x-hidden overflow-y-visible">
         <AnimatePresence mode="wait">
           {heroSlide === 0 ? (
             /* ── SLIDE 0: Full-screen EV Journey Video ── */
@@ -120,7 +120,7 @@ export default function HomePage() {
             /* ── SLIDE 1: Headline + CTAs ── */
             <motion.div
               key="slide-1"
-              className="absolute inset-0 flex items-start justify-center bg-[#fcfdff]"
+              className="absolute inset-0 flex items-start justify-center bg-[#fcfdff] overflow-y-visible"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -146,9 +146,9 @@ export default function HomePage() {
               {/* Dot grid */}
               <div className="absolute inset-0 z-[1] opacity-[0.018]" style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
-              <div className="container mx-auto px-5 sm:px-6 py-4 sm:py-5 md:py-7 lg:py-8 relative z-10">
+              <div className="container mx-auto px-5 sm:px-6 py-6 sm:py-7 md:py-8 lg:py-10 relative z-10">
                 <div className="mx-auto grid max-w-[1320px] items-start gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,560px)] min-[1366px]:max-w-[1400px] min-[1366px]:grid-cols-[minmax(0,1fr)_minmax(0,610px)] min-[1536px]:max-w-[1460px] min-[1536px]:grid-cols-[minmax(0,1fr)_minmax(0,680px)] min-[1536px]:gap-8">
-                <motion.div initial={{ y: 30 }} animate={{ y: 0 }} transition={{ duration: 0.7 }} className="text-center lg:text-left max-w-3xl min-[1536px]:max-w-[58ch] mx-auto lg:mx-0">
+                <motion.div initial={{ y: 30 }} animate={{ y: 0 }} transition={{ duration: 0.7 }} className="text-center lg:text-left max-w-3xl min-[1536px]:max-w-[58ch] mx-auto lg:mx-0 overflow-visible">
 
                   {/* Animated badge */}
                   <motion.div
