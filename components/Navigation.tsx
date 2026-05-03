@@ -80,19 +80,19 @@ const Navigation = () => {
               transition={{ duration: 0.5 }}
               className="flex items-center gap-2.5"
             >
-              <Image src="/logo.jpg" alt="Go4Garage" width={150} height={40} className="block h-8 w-auto object-contain xl:h-9" />
+              <Image src="/logo.jpg" alt="Go4Garage" width={150} height={40} className="block h-8 w-auto object-contain xl:h-[33px] 2xl:h-9" />
             </motion.div>
           </Link>
 
           {/* Desktop Links */}
-          <div className="hidden items-center gap-0.5 xl:flex">
+          <div className="hidden items-center gap-0 xl:flex">
             {visibleNavLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className={`flex items-center gap-1.5 whitespace-nowrap rounded-xl px-2.5 py-2 text-sm font-medium transition-all duration-200 ${
+                  className={`flex items-center gap-1.5 whitespace-nowrap rounded-xl px-2 py-2 text-[0.92rem] 2xl:text-sm font-medium transition-all duration-200 ${
                     isActive
                       ? 'bg-primary-container/20 text-primary font-semibold'
                       : 'text-on-surface-variant hover:text-primary hover:bg-surface-container-high/60'
@@ -108,7 +108,7 @@ const Navigation = () => {
           {/* Resources dropdown */}
           <div className="hidden items-center xl:flex">
             <div className="relative" onMouseEnter={() => setResourcesOpen(true)} onMouseLeave={() => setResourcesOpen(false)}>
-              <button className="flex items-center gap-1.5 whitespace-nowrap rounded-xl px-2.5 py-2 text-sm font-medium text-on-surface-variant transition-all duration-200 hover:bg-surface-container-high/60 hover:text-primary">
+              <button className="flex items-center gap-1.5 whitespace-nowrap rounded-xl px-2 py-2 text-[0.92rem] 2xl:text-sm font-medium text-on-surface-variant transition-all duration-200 hover:bg-surface-container-high/60 hover:text-primary">
                 <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>menu_book</span>
                 Resources
                 <svg
@@ -155,14 +155,14 @@ const Navigation = () => {
             <Link
               href="/demo"
               onClick={() => trackCTAClick('nav_book_demo', '/demo')}
-              className="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-xl border border-primary/30 px-4 text-sm font-semibold text-primary transition-all duration-200 hover:bg-primary-container/10 xl:h-11 xl:px-5"
+              className="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-xl border border-primary/30 px-3.5 text-sm font-semibold text-primary transition-all duration-200 hover:bg-primary-container/10 2xl:h-11 2xl:px-5"
             >
               Book Demo
             </Link>
             <Link
               href="/contact"
               onClick={() => trackCTAClick('nav_contact_us', '/contact')}
-              className="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-xl bg-primary px-5 text-sm font-semibold text-primary-on shadow-md transition-all duration-200 hover:bg-primary/90 hover:shadow-lg xl:h-11 xl:px-6"
+              className="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-xl bg-primary px-4 text-sm font-semibold text-primary-on shadow-md transition-all duration-200 hover:bg-primary/90 hover:shadow-lg 2xl:h-11 2xl:px-6"
             >
               Contact Us
             </Link>

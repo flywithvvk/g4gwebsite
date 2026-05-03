@@ -146,9 +146,9 @@ export default function HomePage() {
               {/* Dot grid */}
               <div className="absolute inset-0 z-[1] opacity-[0.018]" style={{ backgroundImage: 'radial-gradient(circle, #904d00 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
-              <div className="container mx-auto px-6 py-6 md:py-8 lg:py-10 relative z-10">
-                <div className="mx-auto grid max-w-[1400px] items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,660px)] xl:max-w-[1460px] xl:grid-cols-[minmax(0,1fr)_minmax(0,710px)] xl:gap-10">
-                <motion.div initial={{ y: 30 }} animate={{ y: 0 }} transition={{ duration: 0.7 }} className="text-center lg:text-left max-w-3xl mx-auto lg:mx-0">
+              <div className="container mx-auto px-5 sm:px-6 py-6 md:py-8 lg:py-10 relative z-10">
+                <div className="mx-auto grid max-w-[1320px] items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,600px)] min-[1366px]:max-w-[1400px] min-[1366px]:grid-cols-[minmax(0,1fr)_minmax(0,650px)] min-[1536px]:max-w-[1460px] min-[1536px]:grid-cols-[minmax(0,1fr)_minmax(0,710px)] min-[1536px]:gap-10">
+                <motion.div initial={{ y: 30 }} animate={{ y: 0 }} transition={{ duration: 0.7 }} className="text-center lg:text-left max-w-3xl min-[1536px]:max-w-[58ch] mx-auto lg:mx-0">
 
                   {/* Animated badge */}
                   <motion.div
@@ -166,7 +166,7 @@ export default function HomePage() {
                   </motion.div>
 
                   {/* Headline */}
-                  <h1 className="text-4xl md:text-6xl lg:text-6xl xl:text-7xl font-bold text-on-surface mb-6 leading-[1.05] tracking-tight font-display">
+                  <h1 className="text-[clamp(2.75rem,5.7vw,5.9rem)] font-bold text-on-surface mb-5 md:mb-6 leading-[0.98] tracking-[-0.02em] font-display">
                     The AI Platform{' '}
                     <br className="hidden md:block" />
                     Powering{' '}
@@ -179,12 +179,12 @@ export default function HomePage() {
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mb-6">
                     <TypewriterText
                       texts={['Regulatory Intelligence', 'Operational Excellence', 'Workforce Development', 'Grid Optimization', 'Consumer Experience', 'Predictive Analytics']}
-                      className="text-xl md:text-2xl font-semibold gradient-text font-display"
+                      className="text-lg md:text-xl min-[1536px]:text-2xl font-semibold gradient-text font-display"
                     />
                   </motion.div>
 
                   {/* Sub-copy */}
-                  <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-lg md:text-xl text-on-surface-variant mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                  <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="text-base sm:text-lg min-[1536px]:text-xl text-on-surface-variant mb-8 sm:mb-10 max-w-[36ch] mx-auto lg:mx-0 leading-relaxed">
                     95 problems identified across India&apos;s EV ecosystem. 85 addressable. 6 products. Zero friction.
                   </motion.p>
 
@@ -202,12 +202,12 @@ export default function HomePage() {
                   </motion.div>
 
                   {/* CTAs */}
-                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap gap-3 sm:gap-4 justify-center lg:justify-start mb-8">
                     <Link href="/contact" onClick={() => trackCTAClick('hero_schedule_demo', '/contact')}>
                       <motion.button
                         whileHover={{ scale: 1.04, boxShadow: '0 20px 40px -12px rgba(144,77,0,0.35)' }}
                         whileTap={{ scale: 0.98 }}
-                        className="px-8 py-4 bg-primary text-primary-on rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-shadow"
+                        className="w-full sm:w-auto px-7 py-3.5 bg-primary text-primary-on rounded-2xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-shadow"
                       >
                         {heroCTAPrimary}
                       </motion.button>
@@ -216,7 +216,7 @@ export default function HomePage() {
                       <motion.button
                         whileHover={{ scale: 1.04 }}
                         whileTap={{ scale: 0.98 }}
-                        className="px-8 py-4 rounded-2xl font-semibold text-lg border-2 border-outline-variant bg-surface-bright/80 backdrop-blur-sm text-on-surface hover:border-primary/40 hover:bg-surface-container-low transition-all"
+                        className="w-full sm:w-auto px-7 py-3.5 rounded-2xl font-semibold text-base sm:text-lg border-2 border-outline-variant bg-surface-bright/80 backdrop-blur-sm text-on-surface hover:border-primary/40 hover:bg-surface-container-low transition-all"
                       >
                         {heroCTASecondary}
                       </motion.button>
