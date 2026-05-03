@@ -8,8 +8,6 @@ on:
 
 permissions:
   contents: read
-  checks: write
-  pull-requests: write
 
 concurrency:
   group: deploy-hosting-${{ github.ref }}
@@ -32,8 +30,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
-          cache: npm
-          cache-dependency-path: package-lock.json
 
       - name: Show tool versions
         run: |
@@ -61,10 +57,43 @@ jobs:
           $fileCount = (Get-ChildItem "out" -Recurse -File).Count
           Write-Host "Build output OK - $fileCount files generated"
 
-      - name: Deploy to Firebase Hosting
-        uses: FirebaseExtended/action-hosting-deploy@v0.10.0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_GO4GARAGE_D66FC }}
-          channelId: live
-          projectId: go4garage-d66fc
+      - name: Materialize Firebase service account
+        run: |
+          $serviceAccountJson = @'
+          ${{ secrets.FIREBASE_SERVICE_ACCOUNT_GO4GARAGE_D66FC }}
+          '@
+
+          $serviceAccountJson | ConvertFrom-Json | Out-Null
+
+          $serviceAccountPath = Join-Path $env:RUNNER_TEMP "firebase-service-account.json"
+          [System.IO.File]::WriteAllText($serviceAccountPath, $serviceAccountJson)
+
+          "GOOGLE_APPLICATION_CREDENTIALS=$serviceAccountPath" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+
+      - name: Deploy to Firebase Hosting (CLI)
+        run: |
+          $deployRaw = npx firebase-tools@latest hosting:channel:deploy live --project go4garage-d66fc --non-interactive --json
+          $exitCode = $LASTEXITCODE
+
+          $deployRaw | Out-Host
+
+          if ($exitCode -ne 0) {
+            exit $exitCode
+          }
+
+          try {
+            $deployJson = $deployRaw | ConvertFrom-Json
+            $deployUrl = $deployJson.result.url
+
+            if (-not $deployUrl -and $deployJson.result.urls.Count -gt 0) {
+              $deployUrl = $deployJson.result.urls[0]
+            }
+
+            if ($deployUrl) {
+              Write-Host "details_url: '$deployUrl'"
+              "### Production deploy succeeded`n- URL: $deployUrl" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
+            }
+          }
+          catch {
+            Write-Warning "Deploy completed but JSON parsing failed; inspect raw output above."
+          }
