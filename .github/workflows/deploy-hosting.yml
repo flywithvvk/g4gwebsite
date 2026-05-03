@@ -16,10 +16,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    name: Validate & Build
+  deploy:
+    name: Validate, Build & Deploy
     runs-on: [self-hosted, g4g-local]
-    timeout-minutes: 25
+    timeout-minutes: 35
 
     steps:
       - name: Checkout repository
@@ -57,39 +57,6 @@ jobs:
           }
           $fileCount = (Get-ChildItem "out" -Recurse -File).Count
           Write-Host "Build output OK - $fileCount files generated"
-
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-output
-          path: out/
-          if-no-files-found: error
-          retention-days: 7
-
-  deploy:
-    name: Deploy to Firebase
-    needs: build
-    runs-on: [self-hosted, g4g-local]
-    timeout-minutes: 15
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build-output
-          path: out/
-
-      - name: Verify artifact contents
-        run: |
-          if (!(Test-Path "out") -or -not (Get-ChildItem "out")) {
-            Write-Error "Downloaded artifact directory 'out' is empty or missing"
-            exit 1
-          }
-          $fileCount = (Get-ChildItem "out" -Recurse -File).Count
-          Write-Host "Artifact unpacked - $fileCount files found"
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
