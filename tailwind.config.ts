@@ -21,10 +21,10 @@ const config: Config = {
       colors: {
         // ─── NEW editorial tokens ──────────────────────────────────────
         paper: {
-          DEFAULT: '#f5efe2',
+          DEFAULT: '#f9fbfd',
           mute: 'rgba(26,23,20,0.62)',
         },
-        bone:    '#ebe3d0',
+        bone:    '#f2f5f8',
         ink: {
           DEFAULT: '#1a1714',
           soft:    '#3a342d',
@@ -35,7 +35,7 @@ const config: Config = {
           deep:    '#c84d0d',
           soft:    '#fbe7d3',
         },
-        rule: '#d4cab0',
+        rule: '#d5dee7',
 
         // Brand continuity tokens — preserve current Go4Garage/product colours
         brand: {
@@ -50,14 +50,14 @@ const config: Config = {
         // ─── EXISTING MD3 tokens — kept alive, remapped to editorial ──
         // Surface (was white; now warm bone paper)
         surface: {
-          DEFAULT:                  '#f5efe2',
-          dim:                      '#ebe3d0',
-          bright:                   '#faf5e8',
-          'container-lowest':       '#faf5e8',
-          'container-low':          '#f5efe2',
-          container:                '#ebe3d0',
-          'container-high':         '#e1d8be',
-          'container-highest':      '#d4cab0',
+          DEFAULT:                  '#f9fbfd',
+          dim:                      '#f2f5f8',
+          bright:                   '#ffffff',
+          'container-lowest':       '#ffffff',
+          'container-low':          '#f9fbfd',
+          container:                '#f3f6f9',
+          'container-high':         '#e9eef3',
+          'container-highest':      '#dde5ed',
         },
         // Primary — Go4Garage brand amber, preserved
         primary: {
@@ -88,7 +88,7 @@ const config: Config = {
         // Outline (was black; now editorial ink)
         outline: {
           DEFAULT: '#1a1714',
-          variant: '#d4cab0',
+          variant: '#d5dee7',
         },
         // On-surface text
         'on-surface': {
@@ -97,7 +97,7 @@ const config: Config = {
         },
         // Inverse — for dark sections
         'inverse-surface':    '#1a1714',
-        'inverse-on-surface': '#f5efe2',
+        'inverse-on-surface': '#f8fafc',
         'inverse-primary':    '#f06b1a',
       },
       fontFamily: {

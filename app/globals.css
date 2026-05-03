@@ -16,8 +16,8 @@
   /* ─────────────────────────────────────────────────────────────────
      NEW: Editorial palette (use these for all new components)
      ───────────────────────────────────────────────────────────────── */
-  --color-paper:        #f5efe2;   /* warm bone — primary background  */
-  --color-bone:         #ebe3d0;   /* slightly deeper paper           */
+  --color-paper:        #f9fbfd;   /* neutral paper — primary background */
+  --color-bone:         #f2f5f8;   /* subtle depth surface              */
   --color-ink:          #1a1714;   /* near-black warm                 */
   --color-ink-soft:     #3a342d;
   --color-ink-mute:     #8a7f6e;
@@ -25,7 +25,7 @@
   --color-saffron:      #f06b1a;   /* the editorial accent            */
   --color-saffron-deep: #c84d0d;
   --color-saffron-soft: #fbe7d3;
-  --color-rule:         #d4cab0;   /* hairline borders                */
+  --color-rule:         #d5dee7;   /* hairline borders                */
 
   /* Brand continuity tokens — keep existing Go4Garage/product colours alive */
   --color-brand-primary:          #904d00;
@@ -41,14 +41,14 @@
      ───────────────────────────────────────────────────────────────── */
 
   /* Surface — was white; now warm bone paper */
-  --color-surface: #f5efe2;
-  --color-surface-dim: #ebe3d0;
-  --color-surface-bright: #faf5e8;
-  --color-surface-container-lowest: #faf5e8;
-  --color-surface-container-low: #f5efe2;
-  --color-surface-container: #ebe3d0;
-  --color-surface-container-high: #e1d8be;
-  --color-surface-container-highest: #d4cab0;
+  --color-surface: #f9fbfd;
+  --color-surface-dim: #f2f5f8;
+  --color-surface-bright: #ffffff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f9fbfd;
+  --color-surface-container: #f3f6f9;
+  --color-surface-container-high: #e9eef3;
+  --color-surface-container-highest: #dde5ed;
 
   /* Primary — Go4Garage brand amber, preserved */
   --color-primary: #904d00;
@@ -74,7 +74,7 @@
 
   /* Outline — was beige; now editorial rule */
   --color-outline: #1a1714;
-  --color-outline-variant: #d4cab0;
+  --color-outline-variant: #d5dee7;
 
   /* On-surface text */
   --color-on-surface: #1a1714;
@@ -82,7 +82,7 @@
 
   /* Inverse — for dark sections */
   --color-inverse-surface: #1a1714;
-  --color-inverse-on-surface: #f5efe2;
+  --color-inverse-on-surface: #f8fafc;
   --color-inverse-primary: #f06b1a;
 
   /* ─────────────────────────────────────────────────────────────────
@@ -133,15 +133,15 @@
 
 /* Glass — warmer paper tint */
 @utility glass-effect {
-  background: rgba(245, 239, 226, 0.78);
+  background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(26, 23, 20, 0.08);
 }
 
 /* Cards — bone surface with editorial rule */
 @utility card-surface {
-  background: #faf5e8;
-  border: 1px solid var(--color-rule, #d4cab0);
+  background: #ffffff;
+  border: 1px solid var(--color-rule, #d5dee7);
   border-radius: 1rem;
 }
 
@@ -175,7 +175,7 @@
    Scrollbar — editorial palette
    ===================================================================== */
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #f5efe2; }
+::-webkit-scrollbar-track { background: #f3f6fa; }
 ::-webkit-scrollbar-thumb { background: #1a1714; border-radius: 5px; }
 ::-webkit-scrollbar-thumb:hover { background: #c84d0d; }
 
@@ -192,7 +192,7 @@ html { scroll-behavior: smooth; }
 }
 
 body {
-  background: #f5efe2;       /* paper */
+  background: #f9fbfd;       /* paper */
   color: #1a1714;            /* ink   */
   font-family: var(--font-sans);
 }

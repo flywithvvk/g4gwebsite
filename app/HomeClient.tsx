@@ -120,7 +120,7 @@ export default function HomePage() {
             /* ── SLIDE 1: Headline + CTAs ── */
             <motion.div
               key="slide-1"
-              className="absolute inset-0 flex items-center justify-center bg-[#fbfaf6]"
+              className="absolute inset-0 flex items-center justify-center bg-[#fcfdff]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -130,7 +130,7 @@ export default function HomePage() {
 
               {/* Gradient overlays */}
               <div className="absolute inset-0 z-[1]">
-                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.94),rgba(251,250,246,0.92)_48%,rgba(255,253,247,0.96))]" />
+                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(252,253,255,0.94)_48%,rgba(249,251,254,0.96))]" />
                 <motion.div
                   animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.14, 0.08] }}
                   transition={{ duration: 12, repeat: Infinity }}
