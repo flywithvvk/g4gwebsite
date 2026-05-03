@@ -1,4 +1,4 @@
-name: Build & Deploy
+name: Build & Deploy Hosting
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: deploy-${{ github.ref }}
+  group: deploy-hosting-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
