@@ -78,8 +78,15 @@ export function ExitIntentModal() {
       source: 'exit_intent',
     });
 
-    trackContactFormSubmit(interest || 'newsletter');
-    trackLeadConversion(50);
+    const safeTrack = (fn: () => void) => {
+      try {
+        fn();
+      } catch {
+        return;
+      }
+    };
+    safeTrack(() => trackContactFormSubmit(interest || 'newsletter'));
+    safeTrack(() => trackLeadConversion(50));
     setSubmitted(true);
   }
 

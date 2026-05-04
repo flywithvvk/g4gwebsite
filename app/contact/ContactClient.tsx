@@ -146,8 +146,15 @@ export default function ContactClient() {
       source: 'contact_form',
     });
 
-    trackContactFormSubmit(formData.interest || 'General');
-    trackLeadConversion();
+    const safeTrack = (fn: () => void) => {
+      try {
+        fn();
+      } catch {
+        return;
+      }
+    };
+    safeTrack(() => trackContactFormSubmit(formData.interest || 'General'));
+    safeTrack(() => trackLeadConversion());
     setTimeout(() => { setIsLoading(false); setSubmitted(true); }, 800);
   };
 

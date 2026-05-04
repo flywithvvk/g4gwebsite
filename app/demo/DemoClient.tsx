@@ -123,6 +123,13 @@ export default function DemoClient() {
   const [formErrors, setFormErrors] = useState<Partial<BookingForm>>({});
 
   const canBook = selectedDemo !== null && selectedSlot !== null;
+  const safeTrack = (fn: () => void) => {
+    try {
+      fn();
+    } catch {
+      return;
+    }
+  };
 
   const handleFormChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -166,9 +173,9 @@ export default function DemoClient() {
       source: 'demo_form',
     });
 
-    trackDemoBookingCompleted(demoLabel, selectedSlot ?? '');
-    trackDemoConversion();
-    trackPurchase(`demo_${Date.now()}`, demoLabel);
+    safeTrack(() => trackDemoBookingCompleted(demoLabel, selectedSlot ?? ''));
+    safeTrack(() => trackDemoConversion());
+    safeTrack(() => trackPurchase(`demo_${Date.now()}`, demoLabel));
 
     setSubmitted(true);
     setTimeout(() => {
@@ -181,8 +188,8 @@ export default function DemoClient() {
 
   const openModal = () => {
     const demoLabel = demoOptions.find((d) => d.id === selectedDemo)?.title ?? (selectedDemo ?? '');
-    trackDemoBookingStarted(demoLabel);
-    trackBeginCheckout(demoLabel);
+    safeTrack(() => trackDemoBookingStarted(demoLabel));
+    safeTrack(() => trackBeginCheckout(demoLabel));
     setSubmitted(false);
     setShowModal(true);
   };
