@@ -345,9 +345,9 @@ const toneClasses: Record<
 const MAP_WIDTH = 360;
 const MAP_HEIGHT = 340;
 const MAP_PADDING = 12;
-const MAP_SCALE = 1.11;
-const MAP_OFFSET_X = -8;
-const MAP_OFFSET_Y = 6;
+const MAP_SCALE = 1.12;
+const MAP_OFFSET_X = 0;
+const MAP_OFFSET_Y = 0;
 
 export function LivingComplianceMap() {
   const [activeProduct, setActiveProduct] = useState(0);
@@ -451,7 +451,7 @@ export function LivingComplianceMap() {
 
           <svg
             viewBox={`0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`}
-            className="relative z-10 h-[300px] w-full drop-shadow-[0_18px_24px_rgba(24,35,58,0.15)]"
+            className="relative z-10 h-[316px] w-full drop-shadow-[0_18px_24px_rgba(24,35,58,0.15)] sm:h-[324px]"
             aria-label="India map with state-level detail"
             role="img"
           >
